@@ -221,6 +221,11 @@ var configuration = (function () {
         } else {
              $("#exportpng").remove();
         }
+        // Debut modif CT 24/09/2019
+        if (conf.application.printMap === "true" ) {
+            _crossorigin = "anonymous";   
+        }
+        //FIN
         if ((!conf.application.mouseposition) || (conf.application.mouseposition ==="false")){
             $("#mouse-position").hide();
         }
@@ -473,6 +478,10 @@ var configuration = (function () {
                     oLayer.layerid = mvid;
                     oLayer.infospanel = layer.infopanel ||'right-panel';
                     oLayer.featurecount = layer.featurecount;
+                    // Debut modif CT 18/09/2019
+                    oLayer.tooltipRM = (layer.tooltipRM === "true") ? true : false;
+                    oLayer.tooltipRMContent = layer.tooltipRMContent ? layer.tooltipRMContent : '';
+                    // FIN
                     //styles
                     if (layer.style && layer.style !== "") {
                         var styles = layer.style.split(",");
