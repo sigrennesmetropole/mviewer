@@ -81,6 +81,15 @@ var info = (function () {
     var _sourceOverlay;
 
     /**
+     * Property: _clickNbItems
+     * @type {integer}
+     * Used to show number of features on click
+     * by sigRennesMetropole
+     */
+
+    var _clickNbItems = 0;
+
+    /**
      * Private Method: _customizeHTML
      * @param html {Array}
      * @param featurescount {Integer}
@@ -122,10 +131,11 @@ var info = (function () {
 
     var _queryMap = function (evt, options) {
         var queryType = "map"; // default behaviour
+        // modified by sigRennesMetropole
         var views = {
-            "right-panel":{ "panel": "right-panel", "layers": []},
-            "bottom-panel":{ "panel": "bottom-panel", "layers": []},
-            "modal-panel": { "panel": "modal-panel", "layers": []}
+            "right-panel":{ "panel": "right-panel", "layers": [], "multiple": false},
+            "bottom-panel":{ "panel": "bottom-panel", "layers": [], "multiple": false},
+            "modal-panel": { "panel": "modal-panel", "layers": [], "multiple": false}
         };
         if (options) {
             // used to link elasticsearch feature with wms getFeatureinfo
@@ -573,6 +583,12 @@ var info = (function () {
                 var obj=list[j];
                 for(var prop in obj) {
                     if(obj.hasOwnProperty(prop))
+                        /* AJOUT sigRennesMetropole - CBR 20180905*/
+                        for (var valeur in obj[prop]) {
+                            if (obj[prop][valeur]=="true") {obj[prop][valeur]=true}
+                            else if (obj[prop][valeur]=="false") {obj[prop][valeur]=false}
+                        }
+                        /* FIN AJOUT CBR 20180905*/
                         o.features.push({layername:prop, properties:obj[prop]});
                 }
             }
@@ -836,6 +852,14 @@ var info = (function () {
         _queryableLayers.push(oLayer.layer);
     };
 
+    /**
+     * Public Method: getClickNbItems
+     */
+
+    var _getClickNbItems = function () {
+       return _clickNbItems;
+    };
+
     return {
         init: init,
         enable: enable,
@@ -846,7 +870,8 @@ var info = (function () {
         queryLayer: queryLayer,
         formatHTMLContent: createContentHtml,
         templateHTMLContent: applyTemplate,
-        addQueryableLayer: _addQueryableLayer
+        addQueryableLayer: _addQueryableLayer,
+        getClickNbItems: _getClickNbItems
     };
 
 })();
