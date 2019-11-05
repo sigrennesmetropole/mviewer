@@ -933,7 +933,7 @@ mviewer = (function () {
                         crossOrigin: crossorigin,
                         maxZoom: baselayer.maxzoom || 18,
                         params: params,
-                        attributions:  baselayer.attribution
+                        attributions:  baselayer.attribution,
                         // Debut modif RM - CT 23/10/2019
                         minZoom: baselayer.minzoom || null,
                     }),
