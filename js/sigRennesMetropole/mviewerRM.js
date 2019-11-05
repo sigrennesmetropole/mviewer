@@ -476,6 +476,9 @@ mviewer = (function () {
         //GetFeatureInfo tool
         mviewer.tools.info = info;
         mviewer.tools.info.init();
+        // Debut modif CT 18/09/2019
+        mviewer.tools.tooltipRM = tooltipRM;
+        mviewer.tools.tooltipRM.init();
         //Measure tool
         // Debut modif RM - CT 20/09/2019
         if (configuration.getConfiguration().application.searchRM === "true") {
@@ -1305,6 +1308,7 @@ mviewer = (function () {
                 if (oLayer.scale) {
                     _scaledDependantLayers.push(oLayer);
                 }
+                info.addQueryableLayer(_overLayers[oLayer.id]);
             }
 
         });
