@@ -1,0 +1,27 @@
+{{#features}}
+	<li class="item" style="width:238px;">
+		<h5 class="title-feature">Axe routier</h5>
+		<p class="text-feature">
+			{{#id_troncon}}<span style="font-family:'roboto_bold'"> Numéro de tronçon :</span> {{{id_troncon}}}<br/>{{/id_troncon}}
+			{{#sens_circule}}<span style="font-family:'roboto_bold'"> Sens de circulation :</span> {{{sens_circule}}}<br/>{{/sens_circule}}
+			{{#domaine}}<span style="font-family:'roboto_bold'"> Domaine :</span> {{{domaine}}}<br/>{{/domaine}}
+			{{#gestionnaire}}<span style="font-family:'roboto_bold'"> Gestionnaire: :</span> {{{gestionnaire}}}<br/>{{/gestionnaire}}
+		</p>
+	</li>
+{{/features}}
+
+<style>
+	.title-feature {
+		color: #032E46;
+		font-family:"roboto_bold";
+		font-size:23px;
+		margin-bottom:1%;
+		line-height:1;
+	}
+	.text-feature{
+		font-family:"roboto_regular";
+		color:#555;
+		font-size:13px;
+		margin-top:10%;
+	}
+</style>
