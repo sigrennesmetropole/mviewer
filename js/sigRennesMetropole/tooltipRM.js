@@ -214,8 +214,8 @@ var tooltipRM = (function () {
                                     var tooltipResult = createTooltipContent(tooltipContent, response);
 
                                    if (tooltipResult != '') {
-                                        var posX = evt.b.clientX + 5;
-                                        var posY = evt.b.clientY + 2;
+                                        var posX = evt.pixel[0] + 5;
+                                        var posY = evt.pixel[1] + 2;
                                         $('.tooltipRM').show();
                                         $('.tooltipRM').css({"top":posY, "left":posX});
                                         $('.tooltipRM').html(tooltipResult);
@@ -245,6 +245,9 @@ var tooltipRM = (function () {
 
 
     var activateTooltipRm = function (layerName, tooltipData) {
+        if(!_map && mviewer) {
+            _map = mviewer.getMap();
+        }
         _map.on('pointermove', function (evt) {
             tooltipRM(evt, layerName, tooltipData);
         }); 
