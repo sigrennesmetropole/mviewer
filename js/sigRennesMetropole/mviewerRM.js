@@ -935,7 +935,7 @@ mviewer = (function () {
                         params: params,
                         attributions:  baselayer.attribution,
                         // Debut modif RM - CT 23/10/2019
-                        minZoom: baselayer.minzoom || null,
+                        minZoom: baselayer.minzoom || null
                     }),
                     visible: false
                 });
@@ -1011,9 +1011,9 @@ mviewer = (function () {
                         url: baselayer.url,
                         crossOrigin: 'anonymous',
                         maxZoom: baselayer.maxzoom || 18,
-                        attributions: baselayer.attribution
+                        attributions: baselayer.attribution,
                         // Debut modif RM - CT 23/10/2019
-                        minZoom: baselayer.minzoom || null,
+                        minZoom: baselayer.minzoom || null
                         //Fin modif
                     }),
                     visible: false
