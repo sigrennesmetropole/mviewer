@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <metadata>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+            <rdf:Description rdf:about="http://www.ilrt.bristol.ac.uk/people/cmdjb/">
+                <dc:title>Permanences généralistes</dc:title>
+                <dc:creator>anonymous</dc:creator>
+                <dc:publisher>publisher</dc:publisher>
+                <dc:subject>Carte du droit général</dc:subject>
+                <dc:date>2018-08-27T13:18:58.462Z</dc:date>
+            </rdf:Description>
+        </rdf:RDF>
+    </metadata>
+    <application
+            title="Permanences généralistes"
+            logo="https://public.sig.rennesmetropole.fr/ressources/img/logos/rm/logo_mviewer_gris_inverse.png"
+            help=""
+            style="css/themes/site_internet_gris.css"
+            exportpng="false"
+            showhelp="false"
+            coordinates="false"
+            measuretools="false"
+            togglealllayersfromtheme="false">
+    </application>
+    <mapoptions maxzoom="20" projection="EPSG:3857" center="-183890.24433942206,6125725.984905125" zoom="13" />
+    <searchparameters bbox="false" localities="false" features="false" static="false"/>
+    <baselayers style="default">
+        <baselayer visible="true" id="pvcisimple" thumbgallery="img/basemap/pvcisimple.jpg" title="Rennes Metropole" label="Plan de ville" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="ref_fonds:pvci_simple_gris" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  ></baselayer>
+        <baselayer visible="false" id="ortho2017" thumbgallery="img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  ></baselayer>
+    </baselayers>
+    <themes mini="true">
+        <theme id="theme-20180827150815" name="Permanences généralistes" collapsed="true" icon="child">
+            <layer
+                    id="eq_poi:v_sitorg_sites_par_organisme"
+                    name="Permanences généralistes"
+                    type="wms"
+                    url="https://public.sig.rennesmetropole.fr/geoserver/ows"
+                    visible="true"
+                    infoformat="application/vnd.ogc.gml"
+                    sld="https://public.sig.rennesmetropole.fr/ressources/img/mviewer/sld/sites_organisme_bleu.sld"
+                    metadata="undefined"
+                    metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/46a39b8c-5ec4-449a-bfe1-8410d0b76c84"
+                    queryable="true"
+                    filter="etat_organisme = 'actif' AND (code_nomenclature_principale = '5.3.1' OR code_nomenclature_secondaire like '%5.3.1%') AND adresse_commune_site = 'Rennes'"
+                    infopanel="right-panel"><template url="templates/aide-victimes.mst"></template>
+            </layer>
+        </theme>
+    </themes>
+</config>

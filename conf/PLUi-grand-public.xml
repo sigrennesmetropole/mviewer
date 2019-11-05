@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+<metadata>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="http://www.ilrt.bristol.ac.uk/people/cmdjb/">
+<dc:title>Plan Local d'Urbanisme Intercommunal</dc:title>
+<dc:creator>anonymous</dc:creator>
+<dc:publisher>publisher</dc:publisher>
+<dc:subject>PLUi</dc:subject>
+<dc:date>2019-07-29T13:18:58.462Z</dc:date>
+</rdf:Description>
+</rdf:RDF>
+</metadata>
+<application
+    title="Plan Local d'Urbanisme Intercommunal"
+    logo="https://public.sig.rennesmetropole.fr/ressources/img/logos/rm/logo_mviewer_gris_inverse.png"
+    help=""
+    style="css/themes/site_internet_gris.css"
+    exportpng="false"
+    showhelp="false"
+    coordinates="false"
+    measuretools="false"
+    togglealllayersfromtheme="false">
+</application>
+<mapoptions maxzoom="20" projection="EPSG:3857" center="-188244.25943429657,6125209.881604007" zoom="11" />
+<searchparameters bbox="false" localities="false" features="false" static="false"/>
+<baselayers style="default">
+    <baselayer visible="true" id="pvcisimple" thumbgallery="img/basemap/pvcisimple.jpg" title="Rennes Metropole" label="Plan de ville" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="ref_fonds:pvci_simple_gris" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  ></baselayer>
+    <baselayer visible="false" id="cadastre" thumbgallery="img/basemap/cadastre.png" title="Rennes Metropole" label="Cadastre" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="ref_cad:cadastre" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  ></baselayer>
+    <baselayer visible="false" id="ortho2017" thumbgallery="img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  ></baselayer>
+</baselayers>
+<themes mini="true"> 
+    <theme id="theme-20190729105201" name="PLUi" collapsed="true" icon="compass"> 
+        <layer 
+            id="urba_docs:plu_zone_urba"
+            name="Zonage du PLUi"
+            type="wms"
+            url="https://public.sig.rennesmetropole.fr/geoserver/ows"
+            visible="true"
+            opacity="0.4"
+            expanded="true"
+            infoformat="application/vnd.ogc.gml"
+            metadata="undefined"
+            metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/ec2f8296-5567-467f-8992-04a71d58b762"
+            queryable="true"
+            infopanel="right-panel"><template url="templates/zonage_PLUi.mst"></template>
+        </layer>
+    </theme> 
+    <theme id="theme-20190729105202" name="ZAC" collapsed="true" icon="map"> 
+        <layer 
+            id="urba_fonc:zac"
+            name="Zones d'aménagement Concerté (ZAC)"
+            type="wms"
+            url="https://public.sig.rennesmetropole.fr/geoserver/ows"
+            visible="true"
+            opacity="0.4"
+            expanded="true"
+            infoformat="application/vnd.ogc.gml"
+            metadata="undefined"
+            metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/c41ad277-bc32-4eed-b681-b4f8f75d3276"
+            queryable="true"
+            infopanel="right-panel"><template url="templates/ZAC.mst"></template>
+        </layer>
+    </theme> 
+    <theme id="theme-20190729105203" name="infiltrabilite" collapsed="true" icon="tint"> 
+        <layer 
+            id="ocsol_sol:sol_infiltrabilite"
+            name="Imperméabilité des sols"
+            type="wms"
+            url="https://public.sig.rennesmetropole.fr/geoserver/ows"
+            visible="true"
+            opacity="0.4"
+            expanded="true"
+            infoformat="application/vnd.ogc.gml"
+            metadata="undefined"
+            metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/e07b2f11-f0a1-4123-80c6-026ca660dec4"
+            queryable="true"
+            infopanel="right-panel"><template url="templates/infiltrabilite_sols.mst"></template>
+        </layer>
+    </theme> 
+    <theme id="theme-20190827105201" name="parcelles" collapsed="true" icon="map-marker"> 
+        <layer 
+            id="ref_cad:parcelle"
+            name="Parcelles cadastralesi"
+            type="wms"
+            url="https://public.sig.rennesmetropole.fr/geoserver/ows"
+            visible="true"
+            opacity="0"
+            infoformat="application/vnd.ogc.gml"
+            metadata="undefined"
+            metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/ec2f8296-5567-467f-8992-04a71d58b762"
+            queryable="true"
+            infopanel="right-panel"><template url="templates/parcelle_cad.mst"></template>
+        </layer>
+    </theme> 
+</themes>
+</config>
