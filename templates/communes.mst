@@ -1,0 +1,47 @@
+{{#features}}
+	<li class="item" style="width:238px;">
+		<h5 class="title-feature">{{nom_usage}}</h5>
+		<p class="text-feature">
+			<span style="font-family:'roboto_bold'"> Adresse :</span> {{adresse_postale_adr}} {{adresse_postale_cp}} {{adresse_postale_comm}}<br/>
+			{{#descriptif}}<span style="font-family:'roboto_bold'"> Descriptif :</span> {{{descriptif}}}<br/>{{/descriptif}}
+			{{#horaire_grille}}<span style="font-family:'roboto_bold'"> Horaires :</span><br><span class='horaires'>{{{horaire_grille}}}</span><br/>{{/horaire_grille}}
+
+            {{#jour_periode_ferme}}<span style="font-family:'roboto_bold'"> Fermetures :</span> <br/> <span class='daysOff'> {{{jour_periode_ferme}}} </span><br/>{{/jour_periode_ferme}}
+			{{#variation_conges_scolaires}}- {{{variation_conges_scolaires}}}<br/>{{/variation_conges_scolaires}}
+			{{#com_fermeture_conges}}- {{{com_fermeture_conges}}}<br/>{{/com_fermeture_conges}}
+
+            {{#jours_excep_fermes}}
+                <span>
+                    <span style="font-family:'roboto_bold'"> Fermetures exceptionnelles :</span> <br/>
+                    <span class="exceptionalClosures">{{{jours_excep_fermes}}}</span> <br/>
+                </span>
+            {{/jours_excep_fermes}}
+
+			{{#web}}<span style="font-family:'roboto_bold'"> Page internet :</span><a id='lienweb' class='lienweb' href="{{{web}}}" target="_blank" title="{{{web}}}"> Cliquez ici </a> {{/web}}
+		</p>
+	</li>
+{{/features}}
+
+<script>
+    formatter.formatHoraires();
+    formatter.reducerDayOff();
+    formatter.exceptionalClosure();
+    formatter.corrWebAddr();
+</script>
+
+<style>
+	.title-feature {
+		color: #032E46;
+		font-family:"roboto_bold";
+		font-size:23px;
+		margin-bottom:1%;
+		line-height:1;
+		overflow-wrap: break-word;
+	}
+	.text-feature{
+		font-family:"roboto_regular";
+		color:#555;
+		font-size:13px;
+		margin-top:10%;
+	}
+</style>
