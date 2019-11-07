@@ -21,7 +21,7 @@ var searchRM_openLayers = (function () {
     var init = function(apiRVAKey, map) {
         key = apiRVAKey;
         olMap = map;
-        projection = map.getView().getProjection().ub;
+        projection = map.getView().getProjection().getCode();
     };
 
     var getCities = function() {
