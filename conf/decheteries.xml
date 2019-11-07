@@ -42,6 +42,7 @@
             metadata="undefined"
             metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/9bd66532-036e-44c8-957d-9156362e5576"
             queryable="true"
+            featurecount="5"
             filter="etat='actif'"
 
             infopanel="right-panel"><template url="templates/decheterie.mst"></template>
