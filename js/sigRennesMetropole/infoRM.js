@@ -329,7 +329,6 @@ var info = (function () {
                         });
                     }
                 });
-                // _clickNbItems = pos;
 
                 $.each(views, function (panel, view) {
                     if (views[panel].layers.length > 0){
