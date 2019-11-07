@@ -148,7 +148,7 @@ var info = (function () {
             var format = new ol.format.GeoJSON();
             _map.forEachFeatureAtPixel(pixel, function(feature, layer) {
                 var l = layer.get('mviewerid');
-                if (l && l != 'featureoverlay' && l != 'elasticsearch' ) {
+                if (l != 'featureoverlay' && l != 'elasticsearch') {
                     var queryable = _overLayers[l].queryable;
                     if (queryable) {
                         if (vectorLayers[l] && vectorLayers[l].features) {
@@ -421,7 +421,6 @@ var info = (function () {
             });
         }
         var pixel = _map.getEventPixel(evt.originalEvent);
-        var _o = mviewer.getLayers();
 
         var feature = _map.forEachFeatureAtPixel(pixel, function (feature, layer) {
             if (!layer || layer.get('mviewerid') === 'featureoverlay') {
@@ -471,7 +470,7 @@ var info = (function () {
             $("#map").css("cursor", "pointer");
             var l = _overLayers[feature.get('mviewerid')];
             if (l && ((l.fields && l.fields.length > 0) || l.tooltipcontent)) {
-                if (newFeature && !l.nohighlight) {
+                if (newFeature) {
                     _sourceOverlay.clear();
                     _sourceOverlay.addFeature(feature);
                 }
@@ -845,7 +844,6 @@ var info = (function () {
         enabled : enabled,
         toggleTooltipLayer: toggleTooltipLayer,
         queryLayer: queryLayer,
-        queryMap: _queryMap,
         formatHTMLContent: createContentHtml,
         templateHTMLContent: applyTemplate,
         addQueryableLayer: _addQueryableLayer
