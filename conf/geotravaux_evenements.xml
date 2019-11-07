@@ -47,7 +47,7 @@
             infoformat="application/vnd.ogc.gml"
             metadata="undefined"
             queryable="true"
-
+            featurecount="5"
             tooltip="true"
             tooltipcontent="localisation"
             tooltipenabled="trp_rout:geotravaux_evenement_6j"
@@ -66,7 +66,7 @@
             infoformat="application/vnd.ogc.gml"
             metadata="undefined"
             queryable="true"
-
+            featurecount="5"
             tooltipRM="true"
             tooltipRMContent= "[b]$localisation[/b][br] $type[br] du $date_deb au $date_fin"
 

@@ -41,6 +41,7 @@
             metadata="undefined"
             metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/46a39b8c-5ec4-449a-bfe1-8410d0b76c84"
             queryable="true"
+            featurecount="5"
             filter="code_nomenclature_principale = '11.1.3' AND etat_organisme='actif'"
             infopanel="right-panel"><template url="templates/covoiturage.mst"></template>
         </layer> 
@@ -56,6 +57,7 @@
             metadata="undefined"
             metadata-csw="https://geobretagne.fr/geonetwork/srv/fre/catalog.search#/metadata/4936e02a-81ef-4b22-8fb7-9ee053002764"
             queryable="true"
+            featurecount="5"
             infopanel="right-panel"><template url="templates/airecovoiturage.mst"></template>
         </layer> 
     </theme> 

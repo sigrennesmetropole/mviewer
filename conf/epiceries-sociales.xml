@@ -19,5 +19,6 @@
                 metadata="undefined"
                 metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/9bd66532-036e-44c8-957d-9156362e5576"
                 queryable="true"
+                featurecount="5"
                 filter="etat_organisme='actif' and (code_nomenclature_principale='8.2.9' or code_nomenclature_secondaire like '%8.2.9%')"
                 infopanel="right-panel">            <template url="templates/epiceries-sociales.mst"></template>            </layer>         </theme>     </themes></config>
