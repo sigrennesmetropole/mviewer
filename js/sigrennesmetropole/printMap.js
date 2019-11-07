@@ -115,7 +115,7 @@ var printMap = (function() {
       var printWindow = window.open('', 'Print', 'height=600,width=800');
   
       printWindow.document.write('<html><head><title>Impression de votre plan</title>');
-      printWindow.document.write('<link rel="stylesheet" href="css/printMap.css" type="text/css" />');
+      printWindow.document.write('<link rel="stylesheet" href="css/sigrennesmetropole/printMap.css" type="text/css" />');
       printWindow.document.write('<script type="text/javascript" src="lib/jquery/base/1.10.2/jquery-1.10.2.min.js"></script>');
       printWindow.document.write('<script type="text/javascript" src="lib/bootstrap/3.3.6/js/bootstrap.min.js"></script>');
       printWindow.document.write('<link href="lib/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />');
