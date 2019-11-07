@@ -41,6 +41,7 @@
             metadata="undefined"
             metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/264f362a-8552-4689-af57-10de9a0c1594"
             queryable="true"
+            featurecount="5"
             filter="publication='oui'"
             infopanel="right-panel">
             <template url="templates/immobilier-neuf.mst"></template>
