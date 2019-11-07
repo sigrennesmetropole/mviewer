@@ -1,0 +1,56 @@
+#printPage {
+    margin: 1rem;
+    padding: 1rem;
+    font-family: "VistaSansOT_regular", "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.notesContainer {
+    margin-top: 3%;
+    display: flex;
+}
+
+#printPage label{
+    margin-right: 2%;
+}
+
+#printPage textarea {
+    width: 100%;
+}
+
+.mapToPrint {
+    width: 100%;
+    margin-top: 3%;
+}
+
+.exportMap {
+    width: 100%;
+    /*height: 90%;*/
+}
+
+.printBtnContainer {
+    margin-top: 3%;
+}
+
+.printLabel {
+    font-family: "VistaSansOT_regular","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+
+.printBtnContainer a {
+    border: 1px solid #A7A3A3;
+    background-color: #C7C7C7 ;
+    color: #333;
+    text-align: center;
+}
+
+.printBtnContainer a:hover {
+    color: #fff;
+}
+
+.legendContainer {
+    display: flex;
+}
+
+.legendItem {
+    margin-right: 5%;
+}
