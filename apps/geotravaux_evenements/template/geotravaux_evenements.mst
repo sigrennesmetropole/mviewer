@@ -1,0 +1,73 @@
+{{#features}}
+	<li class="item" style="width:238px;">
+		<h5 class="title-feature">{{#niv_perturbation}} {{{niv_perturbation}}}  {{/niv_perturbation}}</h5>
+
+		<div class="descriptionField">
+			{{#niv_perturbation}} <strong>Niveau de perturbation</strong> : <span class="info">{{{niv_perturbation}}}</span> {{/niv_perturbation}}
+		</div>
+
+		<div class="descriptionField">
+			{{#type}} <strong>Gêne occasionnée</strong> :  <span class="info">{{{type}}}</span> {{/type}}
+		</div>
+
+		<div class="descriptionField">
+			{{#libelle}} <strong>Description</strong> :  <span class="info">{{{libelle}}}</span> {{/libelle}}
+		</div>
+
+		<div class="descriptionField">
+			{{#localisation}} <strong>Localisation</strong> :  <span class="info">{{{localisation}}}<span> {{/localisation}}
+		</div>
+
+		<div class="descriptionField">
+			{{#date_deb}} <strong>Début estimé des travaux</strong> : <span class="dateField info">{{{date_deb}}}</span> {{/date_deb}}
+		</div>
+
+		<div class="descriptionField">
+			{{#date_fin}} <strong>Fin estimée des travaux</strong> : <span class="dateField info">{{{date_fin}}}</span> {{/date_fin}}
+		</div>
+
+		<div class="descriptionField">
+			{{#tel_fixe}} <strong>Contact</strong> :  <span class="info">{{{tel_fixe}}}</span>  {{/tel_fixe}}
+		</div>
+	</li>
+{{/features}}
+
+
+<script>
+   var dates = document.getElementsByClassName("dateField");
+   for (var i = 0; i < dates.length; i++) {
+	   var text = dates[i].innerText;
+		var date = text.slice(0,10);
+		var dateSplit = date.split('-');
+		if (typeof dateSplit[2] === 'undefined' || typeof dateSplit[1] === 'undefined') {
+			dates[i].innerText = dateSplit[0];
+		} else {
+			dates[i].innerText = dateSplit[2] + '/' + dateSplit[1] + '/' + dateSplit[0];
+		}
+   }
+</script>
+
+<style>
+	.title-feature {
+		color: #032E46;
+		font-family:"roboto_bold";
+		font-size:23px;
+		margin-bottom:1%;
+		line-height:1;
+		overflow-wrap: break-word;
+	}
+	.text-feature{
+		font-family:"roboto_regular";
+		color:#555;
+		font-size:13px;
+		margin-top:10%;
+	}
+
+	.descriptionField {
+		margin-top: 2%;
+	}
+
+	.info {
+		margin-left: 2.5%;
+	}
+</style>
