@@ -1,0 +1,46 @@
+{{#features}}
+	<li class="item" style="width:238px;">
+		<h5 class="title-feature">Point d'apport volontaire</h5>
+		<p class="text-feature">
+			{{#adresse_complete}}<span style="font-family:'roboto_bold'"> Adresse :</span> {{{num_voie}}}{{{adresse_complete}}}<br/>
+				{{#localisation}}{{{localisation}}}<br/>{{/localisation}}
+			{{/adresse_complete}}
+			{{#quartier}}<span class="pavquartier"><span style="font-family:'roboto_bold'"> Quartier :</span> {{{quartier}}}<br/></span>{{/quartier}}
+			{{#domaine}}<span style="font-family:'roboto_bold'"> Domaine :</span> {{{domaine}}}<br/>{{/domaine}}
+			{{#typepav}}<span style="font-family:'roboto_bold'"> Type :</span> {{{typepav}}}<br/>{{/typepav}}
+			{{#contenu}}<span style="font-family:'roboto_bold'"> Contenu(s) accepté(s): </span> {{{contenu}}}<br/>{{/contenu}}
+		</p>
+	</li>
+{{/features}}
+
+<style>
+	.title-feature {
+		color: #032E46;
+		font-family:"roboto_bold";
+		font-size:23px;
+		margin-bottom:1%;
+		line-height:1;
+	}
+	.text-feature{
+		font-family:"roboto_regular";
+		color:#555;
+		font-size:13px;
+		margin-top:10%;
+	}
+</style>
+
+<script>
+
+function verifQuartiers() {
+    // ne pas afficher les champs quartier qui ont pour valeur "Non attribué"
+    var pav_quartiers=document.getElementsByClassName("pavquartier");
+    for (var i = 0, len = pav_quartiers.length; i < len; i++ ) {
+        if (pav_quartiers[i].innerHTML.indexOf("Non attribué") >= 0){
+            pav_quartiers[i].style.display = "none";
+        }
+    }
+}
+
+verifQuartiers();
+
+</script>
