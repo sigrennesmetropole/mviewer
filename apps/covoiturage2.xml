@@ -26,7 +26,11 @@
 <searchparameters bbox="false" localities="false" features="false" static="false"/>
 <baselayers style="default">
     <baselayer visible="true" id="pvcisimple" thumbgallery="img/basemap/pvcisimple.jpg" title="Rennes Metropole" label="Plan de ville" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="ref_fonds:pvci_simple_gris" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  ></baselayer>
+<<<<<<< HEAD
     <baselayer visible="false" id="ortho2017" thumbgallery="apps/public/img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  ></baselayer>
+=======
+    <baselayer visible="false" id="ortho2017" thumbgallery="img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  ></baselayer>
+>>>>>>> Regroup RM files as recommanded
 </baselayers>
 <themes mini="true"> 
     <theme id="theme-20180827150815" name="Covoiturage" collapsed="true" icon="car"> 
@@ -43,7 +47,11 @@
             queryable="true"
             featurecount="5"
             filter="code_nomenclature_principale = '11.1.3' AND etat_organisme='actif'"
+<<<<<<< HEAD
             infopanel="right-panel"><template url="apps/covoiturage2/templates/covoiturage.mst"></template>
+=======
+            infopanel="right-panel"><template url="covoiturage2/templates/covoiturage.mst"></template>
+>>>>>>> Regroup RM files as recommanded
         </layer> 
     </theme> 
     <theme id="theme-201900905150815" name="Aires de covoiturage" collapsed="true" icon="thumbs-up"> 
@@ -58,7 +66,11 @@
             metadata-csw="https://geobretagne.fr/geonetwork/srv/fre/catalog.search#/metadata/4936e02a-81ef-4b22-8fb7-9ee053002764"
             queryable="true"
             featurecount="5"
+<<<<<<< HEAD
             infopanel="right-panel"><template url="apps/covoiturage2/templates/airecovoiturage.mst"></template>
+=======
+            infopanel="right-panel"><template url="covoiturage2/templates/airecovoiturage.mst"></template>
+>>>>>>> Regroup RM files as recommanded
         </layer> 
     </theme> 
 </themes>
