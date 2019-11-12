@@ -44,7 +44,7 @@
             metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/ec2f8296-5567-467f-8992-04a71d58b762"
             queryable="true"
             featurecount="5"
-            infopanel="right-panel"><template url="PLUi-grand-public/templates/zonage_PLUi.mst"></template>
+            infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/zonage_PLUi.mst"></template>
         </layer>
     </theme> 
     <theme id="theme-20190729105202" name="ZAC" collapsed="true" icon="map"> 
@@ -61,7 +61,7 @@
             metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/c41ad277-bc32-4eed-b681-b4f8f75d3276"
             queryable="true"
             featurecount="5"
-            infopanel="right-panel"><template url="PLUi-grand-public/templates/ZAC.mst"></template>
+            infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/ZAC.mst"></template>
         </layer>
     </theme> 
     <theme id="theme-20190729105203" name="infiltrabilite" collapsed="true" icon="tint"> 
@@ -78,7 +78,7 @@
             metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/e07b2f11-f0a1-4123-80c6-026ca660dec4"
             queryable="true"
             featurecount="5"
-            infopanel="right-panel"><template url="PLUi-grand-public/templates/infiltrabilite_sols.mst"></template>
+            infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/infiltrabilite_sols.mst"></template>
         </layer>
     </theme> 
     <theme id="theme-20190827105201" name="parcelles" collapsed="true" icon="map-marker"> 
@@ -94,7 +94,7 @@
             metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/ec2f8296-5567-467f-8992-04a71d58b762"
             queryable="true"
             featurecount="5"
-            infopanel="right-panel"><template url="PLUi-grand-public/templates/parcelle_cad.mst"></template>
+            infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/parcelle_cad.mst"></template>
         </layer>
     </theme> 
 </themes>
