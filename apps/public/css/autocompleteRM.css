@@ -1,0 +1,32 @@
+/* autocomplete list */
+.autocomplete-suggestions { 
+    border: 1px solid #999; 
+    background: #FFF;
+    overflow: auto; 
+}
+
+/* set style of searched element for each items from the autocomplete list */
+.autocomplete-suggestions strong { 
+    font-style: italic;
+    font-weight: normal;
+}
+
+/* for each items from the autocomplete list */
+.autocomplete-suggestion { 
+    padding: 2px 4px; 
+    white-space: nowrap;
+}
+
+/*  autocomplete list hovered item */
+.autocomplete-selected { 
+    background: #CCCCCC; 
+}
+
+
+/* Groups names design, when autocomplete list items are grouped*/
+.autocomplete-group { 
+    text-align: center;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-weight: bold;
+}
