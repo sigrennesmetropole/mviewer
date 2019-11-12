@@ -320,10 +320,14 @@ mviewer = (function () {
             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">',
             '<span aria-hidden="true">&times;</span></button>',
 <<<<<<< HEAD
+<<<<<<< HEAD
             mviewer.tr (msg),
 =======
             msg,
 >>>>>>> Move JS and CSS files to public folder
+=======
+            mviewer.tr (msg),
+>>>>>>> Update file from master
             '</div>'].join (""));
             $("#alerts-zone").append(item);
     };
@@ -712,9 +716,13 @@ mviewer = (function () {
                 //Show searchtool on main div
                 $("#searchtool").appendTo("#main");
 <<<<<<< HEAD
+<<<<<<< HEAD
                 $("#searchtool").removeClass("navbar-form");
 =======
 >>>>>>> Move JS and CSS files to public folder
+=======
+                $("#searchtool").removeClass("navbar-form");
+>>>>>>> Update file from master
             }
         }
         if ($(window).width() < 992 || displayMode !== "d") {
@@ -823,10 +831,14 @@ mviewer = (function () {
                 view.cls = classes.join(" ");
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
             htmlListGroup += _renderHTMLFromTemplate(mviewer.templates.theme, view);
 =======
             htmlListGroup += Mustache.render(mviewer.templates.theme, view);
 >>>>>>> Move JS and CSS files to public folder
+=======
+            htmlListGroup += _renderHTMLFromTemplate(mviewer.templates.theme, view);
+>>>>>>> Update file from master
         });
         var panelMini = configuration.getConfiguration().themes.mini;
         if (panelMini && (panelMini === 'true')) {
@@ -1427,6 +1439,9 @@ mviewer = (function () {
     };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Update file from master
     var _initTranslate = function() {
         mviewer.tr = function (s) { return s; };
         if (configuration.getLang()) {
@@ -1537,8 +1552,11 @@ mviewer = (function () {
         return result;
     };
 
+<<<<<<< HEAD
 =======
 >>>>>>> Move JS and CSS files to public folder
+=======
+>>>>>>> Update file from master
     /*
      * Public
      */
@@ -1815,11 +1833,17 @@ mviewer = (function () {
                 linkParams.config = API.config;
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (API.lang) {
                 linkParams.lang = API.lang;
             }
 =======
 >>>>>>> Move JS and CSS files to public folder
+=======
+            if (API.lang) {
+                linkParams.lang = API.lang;
+            }
+>>>>>>> Update file from master
             if (API.wmc) {
                 linkParams.wmc = API.wmc;
             }
@@ -1848,9 +1872,13 @@ mviewer = (function () {
         init: function () {
                 _setVariables();
 <<<<<<< HEAD
+<<<<<<< HEAD
                 _initTranslate();
 =======
 >>>>>>> Move JS and CSS files to public folder
+=======
+                _initTranslate();
+>>>>>>> Update file from master
                 _initDisplayMode();
                 _initDataList();
                 _initVectorOverlay();
@@ -1883,10 +1911,14 @@ mviewer = (function () {
          */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         zoomToLocation: function (x, y, zoom, lib, querymap) {
 =======
         zoomToLocation: function (x, y, zoom, lib) {
 >>>>>>> Move JS and CSS files to public folder
+=======
+        zoomToLocation: function (x, y, zoom, lib, querymap) {
+>>>>>>> Update file from master
             if (_sourceOverlay) {
                 _sourceOverlay.clear();
             }
@@ -1894,6 +1926,9 @@ mviewer = (function () {
             _map.getView().setCenter(ptResult);
             _map.getView().setZoom(zoom);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Update file from master
             if (querymap) {
                 var i = function () {
                     var e = {
@@ -1904,8 +1939,11 @@ mviewer = (function () {
                 };
                 setTimeout(i, 250);
             }
+<<<<<<< HEAD
 =======
 >>>>>>> Move JS and CSS files to public folder
+=======
+>>>>>>> Update file from master
         },
 
 
@@ -2122,12 +2160,17 @@ mviewer = (function () {
                     view.secure_layer = true;
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
             var item = _renderHTMLFromTemplate(mviewer.templates.layerControl, view);
 =======
             
             var item = Mustache.render(mviewer.templates.layerControl, view);
 >>>>>>> Move JS and CSS files to public folder
+=======
+
+            var item = _renderHTMLFromTemplate(mviewer.templates.layerControl, view);
+>>>>>>> Update file from master
             if (layer.customcontrol && mviewer.customControls[layer.layerid] && mviewer.customControls[layer.layerid].form) {
                 item = $(item).find('.mv-custom-controls').append(mviewer.customControls[layer.layerid].form).closest(".mv-layer-details");
             }
@@ -2778,10 +2821,15 @@ mviewer = (function () {
         overLayersReady: _overLayersReady,
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         renderHTMLFromTemplate : _renderHTMLFromTemplate,
 
 =======
 >>>>>>> Move JS and CSS files to public folder
+=======
+        renderHTMLFromTemplate : _renderHTMLFromTemplate,
+
+>>>>>>> Update file from master
         events: function () { return _events; }
 
 
