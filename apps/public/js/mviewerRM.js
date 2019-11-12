@@ -319,7 +319,7 @@ mviewer = (function () {
         var item = $(['<div class="alert '+cls+' alert-dismissible" role="alert">',
             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">',
             '<span aria-hidden="true">&times;</span></button>',
-            msg,
+            mviewer.tr (msg),
             '</div>'].join (""));
             $("#alerts-zone").append(item);
     };
@@ -707,6 +707,7 @@ mviewer = (function () {
             if (API.mode === "u") {
                 //Show searchtool on main div
                 $("#searchtool").appendTo("#main");
+                $("#searchtool").removeClass("navbar-form");
             }
         }
         if ($(window).width() < 992 || displayMode !== "d") {
@@ -814,7 +815,7 @@ mviewer = (function () {
                 view.layers = reverse_layers.reverse();
                 view.cls = classes.join(" ");
             }
-            htmlListGroup += Mustache.render(mviewer.templates.theme, view);
+            htmlListGroup += _renderHTMLFromTemplate(mviewer.templates.theme, view);
         });
         var panelMini = configuration.getConfiguration().themes.mini;
         if (panelMini && (panelMini === 'true')) {
@@ -1414,6 +1415,116 @@ mviewer = (function () {
         return xyz;
     };
 
+    var _initTranslate = function() {
+        mviewer.tr = function (s) { return s; };
+        if (configuration.getLang()) {
+            var lang = configuration.getLang();
+            var dicFile = configuration.getConfiguration().application.langfile || "mviewer.i18n.json";
+            $.ajax({
+                url: dicFile,
+                dataType: "json",
+                success: function (dic) {
+                    var languages = configuration.getLanguages();
+                    if (languages.length > 1) {
+                        var langitems = [];
+                        var showHelp = (configuration.getConfiguration().application.showhelp === "true");
+                        languages.forEach(function(language) {
+                            var langStr = "";
+                            var icon = language;
+                            var p;
+                            if (language === "en") {
+                                icon = "gb";
+                            }
+                            if (langitems.length === 0 && showHelp) {
+                                // set no padding for the first item element
+                                // help popup only
+                                p = 0;
+                            }
+                            langitems.push('<li style="padding-left:' + p + '" type="button" class="btn mv-translate""><a href="#" idlang="' + language + '"><span style="margin-right: 5px;" class="flag-icon flag-icon-squared flag-icon-' + icon + '"></span><span>' + language + '</span></a></li>');
+                        });
+
+                        // if help popup only
+                        if (showHelp) {
+                            $("#help .modal-body").append('<ul style="padding-left:0">' + langitems.join("") + '</ul>');
+
+                        } else {
+                            // display selector or modal according to device
+                            $("#lang-button, #lang-selector").addClass("enabled");
+                            $("#lang-body>ul").append(langitems.join(""));
+                            $("#lang-selector>ul").append(langitems.join(""));
+                        }
+                        $(".mv-translate a").click(function() {
+                            _changeLanguage($(this).attr("idlang"));
+                        });
+                    }
+
+                    mviewer.lang = {};
+                    //load i18n for all languages availables
+                    Object.entries(dic).forEach(function (l) {
+                        mviewer.lang[l[0]] = i18n.create({"values": l[1]});
+                    });
+                    if (mviewer.lang[lang]) {
+                        mviewer.tr = mviewer.lang[lang];
+                        _elementTranslate("body");
+                        mviewer.lang.lang = lang;
+                    } else {
+                         console.log("langue non disponible " + lang);
+                    }
+                    mviewer.lang.changeLanguage = _changeLanguage;
+                },
+                error: function () {
+                    console.log("Error: can't load JSON lang file!")
+                }
+            });
+        }
+    };
+
+    /**
+     * Translate DOM elements
+     * @param element String - tag to identify DOM elements to translate
+     */
+
+    var _elementTranslate = function (element) {
+        // translate each html elements with i18n as attribute
+        var lang = configuration.getLang();
+        var htmlType = ["placeholder", "title", "accesskey", "alt", "value", "data-original-title"];
+        var _element = $(element);
+        _element.find("[i18n]").each((i, el) => {
+            let find = false;
+            let tr = mviewer.lang[lang]($(el).attr("i18n"));
+            htmlType.forEach((att) => {
+                if ($(el).attr(att) && tr) {
+                    $(el).attr(att, tr);
+                    find = true;
+                }
+            });
+            if(!find && $(el).text().indexOf("{{")=== -1) {
+                $(el).text(tr);
+            }
+        });
+        var ret = (element === "body")?true:_element[0].outerHTML;
+        return ret;
+    };
+
+    var _changeLanguage = function(lang) {
+        if (typeof mviewer.lang[lang] === "function" ) {
+            configuration.setLang(lang);
+            mviewer.tr = mviewer.lang[lang];
+            _elementTranslate("body");
+        } else {
+            console.log("langue non disponible " + lang);
+        }
+    };
+
+    var _renderHTMLFromTemplate = function(tpl, data) {
+        var result = Mustache.render(tpl, data);
+        var lang = configuration.getLang();
+        if ( lang && mviewer.lang && mviewer.lang[lang]) {
+            result = _elementTranslate(result);
+        }
+        return result;
+    };
+
     /*
      * Public
      */
@@ -1689,6 +1800,9 @@ mviewer = (function () {
             if (API.config) {
                 linkParams.config = API.config;
             }
+            if (API.lang) {
+                linkParams.lang = API.lang;
+            }
             if (API.wmc) {
                 linkParams.wmc = API.wmc;
             }
@@ -1716,6 +1830,7 @@ mviewer = (function () {
 
         init: function () {
                 _setVariables();
+                _initTranslate();
                 _initDisplayMode();
                 _initDataList();
                 _initVectorOverlay();
@@ -1747,13 +1862,23 @@ mviewer = (function () {
          *
          */
 
-        zoomToLocation: function (x, y, zoom, lib) {
+        zoomToLocation: function (x, y, zoom, lib, querymap) {
             if (_sourceOverlay) {
                 _sourceOverlay.clear();
             }
             var ptResult = ol.proj.transform([x, y], 'EPSG:4326', _projection.getCode());
             _map.getView().setCenter(ptResult);
             _map.getView().setZoom(zoom);
+            if (querymap) {
+                var i = function () {
+                    var e = {
+                        coordinate:ptResult,
+                        pixel: _map.getPixelFromCoordinate(_map.getView().getCenter())
+                    };
+                    info.queryMap(e);
+                };
+                setTimeout(i, 250);
+            }
         },
 
 
@@ -1969,8 +2094,8 @@ mviewer = (function () {
                 if(layer.secure == "layer")
                     view.secure_layer = true;
             }
-            
-            var item = Mustache.render(mviewer.templates.layerControl, view);
+
+            var item = _renderHTMLFromTemplate(mviewer.templates.layerControl, view);
             if (layer.customcontrol && mviewer.customControls[layer.layerid] && mviewer.customControls[layer.layerid].form) {
                 item = $(item).find('.mv-custom-controls').append(mviewer.customControls[layer.layerid].form).closest(".mv-layer-details");
             }
@@ -2619,6 +2744,8 @@ mviewer = (function () {
         drawVectorLegend: _drawVectorLegend,
 
         overLayersReady: _overLayersReady,
+
+        renderHTMLFromTemplate : _renderHTMLFromTemplate,
 
         events: function () { return _events; }
 
