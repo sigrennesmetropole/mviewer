@@ -55,10 +55,14 @@
             queryable="true"
             featurecount="5"
 <<<<<<< HEAD
+<<<<<<< HEAD
             infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/zonage_PLUi.mst"></template>
 =======
             infopanel="right-panel"><template url="PLUi-grand-public/templates/zonage_PLUi.mst"></template>
 >>>>>>> Regroup RM files as recommanded
+=======
+            infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/zonage_PLUi.mst"></template>
+>>>>>>> Fix path for templates
         </layer>
     </theme> 
     <theme id="theme-20190729105202" name="ZAC" collapsed="true" icon="map"> 
@@ -76,10 +80,14 @@
             queryable="true"
             featurecount="5"
 <<<<<<< HEAD
+<<<<<<< HEAD
             infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/ZAC.mst"></template>
 =======
             infopanel="right-panel"><template url="PLUi-grand-public/templates/ZAC.mst"></template>
 >>>>>>> Regroup RM files as recommanded
+=======
+            infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/ZAC.mst"></template>
+>>>>>>> Fix path for templates
         </layer>
     </theme> 
     <theme id="theme-20190729105203" name="infiltrabilite" collapsed="true" icon="tint"> 
@@ -97,10 +105,14 @@
             queryable="true"
             featurecount="5"
 <<<<<<< HEAD
+<<<<<<< HEAD
             infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/infiltrabilite_sols.mst"></template>
 =======
             infopanel="right-panel"><template url="PLUi-grand-public/templates/infiltrabilite_sols.mst"></template>
 >>>>>>> Regroup RM files as recommanded
+=======
+            infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/infiltrabilite_sols.mst"></template>
+>>>>>>> Fix path for templates
         </layer>
     </theme> 
     <theme id="theme-20190827105201" name="parcelles" collapsed="true" icon="map-marker"> 
@@ -117,10 +129,14 @@
             queryable="true"
             featurecount="5"
 <<<<<<< HEAD
+<<<<<<< HEAD
             infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/parcelle_cad.mst"></template>
 =======
             infopanel="right-panel"><template url="PLUi-grand-public/templates/parcelle_cad.mst"></template>
 >>>>>>> Regroup RM files as recommanded
+=======
+            infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/parcelle_cad.mst"></template>
+>>>>>>> Fix path for templates
         </layer>
     </theme> 
 </themes>
