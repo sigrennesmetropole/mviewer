@@ -28,8 +28,9 @@
 		font-size:13px;
 		margin-top:10%;
 	}
-        .labelPictureEnlarge {
-               font-family:"roboto_regular"; 
-               font-style: italic;       
-        }
+    .labelPictureEnlarge {
+        font-family:"roboto_regular"; 
+        font-style: italic; 
+		text-align: center;     
+    }
 </style>
