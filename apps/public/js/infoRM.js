@@ -194,6 +194,7 @@ var info = (function () {
                         } else {
                             html_result = createContentHtml(features, l);
                         }
+                        html_result = _customizeHTML(html_result, features.length);
                         //Set view with layer info & html formated features
                         views[panel].layers.push({
                             "panel": panel,
@@ -256,6 +257,7 @@ var info = (function () {
             var requests = [];
             var carrousel=false;
             var callback = function (result) {
+                var pos = 0;
                 $.each(featureInfoByLayer, function (index, response) {
                     var layerinfos = response.layerinfos;
                     var panel = layerinfos.infospanel;
@@ -320,27 +322,28 @@ var info = (function () {
                         if (xml) {
                             var obj = _parseGML(xml);
                             var features = obj.features;
+                            var templateName = configuration.getConfiguration().application.templaterightinfopanel;
                             _clickNbItems = features.length > 1 ? features.length : 0;
-                            /*if (features.length > 0) {
+                            // original code
+                            if (features.length > 0 && templateName != "tabs") {
                                 features = features.reverse();
                                 if (layerinfos.template) {
                                    html_result.push(applyTemplate(features.reverse(), layerinfos));
                                 } else {
                                     html_result.push(createContentHtml(features.reverse(), layerinfos));
                                 }
-                            }*/
-                            if (features.length > 0) {
+                            } else if (features.length > 0 && templateName === "tabs") {
                                 features = features.reverse();
                                 features.forEach(function(feature) {
                                     var array = [];
-                                    var temp = [];
+                                    var temp;
                                     array.push(feature);
                                     if (layerinfos.template) {
-                                        temp.push(applyTemplate(array, layerinfos));
+                                        temp = applyTemplate(array, layerinfos);
                                     } else {
-                                        temp.push(createContentHtml(array, layerinfos));
+                                        temp = createContentHtml(array, layerinfos);
                                     }
-                                    html_result.push(_customizeHTML(temp, 1));
+                                    html_result.push(temp);
                                 });
                             }                            
                         }
@@ -348,18 +351,40 @@ var info = (function () {
                     //If some results, apppend panels views
                     if (html_result.length > 0) {
                         //Set view with layer info & html formated features
-                        views[panel].layers.push({
-                            "panel": panel,
-                            "id": id,
-                            "firstlayer": false,
-                            "manyfeatures": (features.length > 1),
-                            "nbfeatures": features.length,
-                            "name": name,
-                            "layerid": layerid,
-                            "theme_icon": theme_icon,
-                            "car_color": color_back,
-                            "html": html_result.join("")
-                        });
+                        if (templateName != "tabs") {                        
+                            // Adaptation for SIG RM
+                            for (var i = 0; i < html_result.length; i++) {
+                                pos++;
+                                if (i > 0) {
+                                    id = id + i;
+                                }
+                                views[panel].layers.push({
+                                    "panel": panel,
+                                    "id": id,
+                                    "firstlayer": false,
+                                    "manyfeatures": (features.length > 1),
+                                    "nbfeatures": features.length,
+                                    "name": name,
+                                    "layerid": layerid,
+                                    "theme_icon": theme_icon,
+                                    "cat_color": color_back,
+                                    "html": html_result[i]
+                                });
+                            };
+                        } else {
+                            // original code from geoBretagne mviewer v3
+                            views[panel].layers.push({
+                                "panel": panel,
+                                "id": id,
+                                "firstlayer": (id === 1),
+                                "manyfeatures": (features.length > 1),
+                                "nbfeatures": features.length,
+                                "name": name,
+                                "layerid": layerid,
+                                "theme_icon": theme_icon,
+                                "html": html_result.join("")
+                            });
+                        }
                     }
                 });
 
