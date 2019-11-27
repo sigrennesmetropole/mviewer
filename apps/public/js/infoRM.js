@@ -252,6 +252,7 @@ var info = (function () {
                     var theme = layerinfos.theme;
                     var layerid = layerinfos.layerid;
                     var theme_icon = layerinfos.icon;
+                    var color_back = getColorBack(layerinfos.sld);
                     var id = views[panel].layers.length + 1;
                     var manyfeatures = false;
                     var html_result = [];
@@ -304,13 +305,28 @@ var info = (function () {
                             var obj = _parseGML(xml);
                             var features = obj.features;
                             _clickNbItems = features.length > 1 ? features.length : 0;
-                            if (features.length > 0) {
+                            /*if (features.length > 0) {
+                                features = features.reverse();
                                 if (layerinfos.template) {
                                    html_result.push(applyTemplate(features.reverse(), layerinfos));
                                 } else {
                                     html_result.push(createContentHtml(features.reverse(), layerinfos));
                                 }
-                            }
+                            }*/
+                            if (features.length > 0) {
+                                features = features.reverse();
+                                features.forEach(function(feature) {
+                                    var array = [];
+                                    var temp = [];
+                                    array.push(feature);
+                                    if (layerinfos.template) {
+                                        temp.push(applyTemplate(array, layerinfos));
+                                    } else {
+                                        temp.push(createContentHtml(array, layerinfos));
+                                    }
+                                    html_result.push(_customizeHTML(temp, 1));
+                                });
+                            }                            
                         }
                     }
                     //If some results, apppend panels views
@@ -325,6 +341,7 @@ var info = (function () {
                             "name": name,
                             "layerid": layerid,
                             "theme_icon": theme_icon,
+                            "car_color": color_back,
                             "html": html_result.join("")
                         });
                     }
