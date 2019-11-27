@@ -56,6 +56,7 @@
             featurecount="5"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             infopanel="right-panel"><template url="apps/art-ville/templates/art-ville.mst"></template>
 =======
             infopanel="right-panel"><template url="art-ville/templates/art-ville.mst"></template>
@@ -63,6 +64,10 @@
 =======
             infopanel="right-panel"><template url="apps/art-ville/templates/art-ville.mst"></template>
 >>>>>>> Fix path for templates
+=======
+            infopanel="right-panel"
+            ><template url="apps/art-ville/templates/art-ville.mst"></template>
+>>>>>>> Fix wrong path
         </layer> 
     </theme> 
 </themes>

@@ -20,7 +20,8 @@
     showhelp="false"
     coordinates="false"
     measuretools="false"
-    togglealllayersfromtheme="false">
+    togglealllayersfromtheme="false"
+    templaterightinfopanel="tabs">
 </application>
 <mapoptions maxzoom="20" projection="EPSG:3857" center="-190690.24433942206,6128725.984905125" zoom="11" />
 <searchparameters bbox="false" localities="false" features="false" static="false"/>
@@ -57,6 +58,7 @@
                 filter="etat_organisme = 'actif' AND code_nomenclature_principale = '7.5.3'"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 infopanel="right-panel"><template url="apps/point-acces-multimedia/templates/points-acces-multimedia.mst"></template>
 =======
                 infopanel="right-panel"><template url="point-acces-multimedia/templates/points-acces-multimedia.mst"></template>
@@ -64,6 +66,9 @@
 =======
                 infopanel="right-panel"><template url="apps/point-acces-multimedia/templates/points-acces-multimedia.mst"></template>
 >>>>>>> Fix path for templates
+=======
+                infopanel="right-panel"><template url="apps/points-acces-multimedia/templates/points-acces-multimedia.mst"></template>
+>>>>>>> Fix wrong path
         </layer>
         <layer
                 id="eq_poi:v_sitorg_organisme"
@@ -80,6 +85,7 @@
                 filter="etat_organisme = 'actif' AND code_nomenclature_principale = '7.5.1'"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 infopanel="right-panel"><template url="apps/point-acces-multimedia/templates/points-acces-multimedia.mst"></template>
 =======
                 infopanel="right-panel"><template url="point-acces-multimedia/templates/points-acces-multimedia.mst"></template>
@@ -87,6 +93,9 @@
 =======
                 infopanel="right-panel"><template url="apps/point-acces-multimedia/templates/points-acces-multimedia.mst"></template>
 >>>>>>> Fix path for templates
+=======
+                infopanel="right-panel"><template url="apps/points-acces-multimedia/templates/points-acces-multimedia.mst"></template>
+>>>>>>> Fix wrong path
         </layer>
     </theme> 
 </themes>
