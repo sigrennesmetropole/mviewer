@@ -237,6 +237,22 @@ var info = (function () {
                 }
             }
 
+            var getColorBack = function (sld) {
+                var color = 'not-def';
+                if (sld) {
+                    if (sld.indexOf('goutte') != -1) {
+                        color = sld.split('sld/')[1].split('.')[0];
+                    } else if (sld.indexOf('bleu') != -1|sld.indexOf('anglais') != -1) {
+                        color = 'goutte_bleu';
+                    } else if (sld.indexOf('vert') != -1|sld.indexOf('breton') != -1) {
+                        color = 'goutte_vert';
+                    } else if (sld.indexOf('chinois') != -1){
+                        color = 'goutte_violet';
+                    }
+                }
+                return color;
+            };
+            
             var requests = [];
             var carrousel=false;
             var callback = function (result) {
