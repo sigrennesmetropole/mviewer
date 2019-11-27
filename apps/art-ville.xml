@@ -42,7 +42,8 @@
             metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/2ff4b02a-7d1e-4e9c-a0c2-dddbb11a3168"
             queryable="true"
             featurecount="5"
-            infopanel="right-panel"><template url="apps/art-ville/templates/art-ville.mst"></template>
+            infopanel="right-panel"
+            ><template url="apps/art-ville/templates/art-ville.mst"></template>
         </layer> 
     </theme> 
 </themes>
