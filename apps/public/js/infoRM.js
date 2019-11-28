@@ -322,8 +322,7 @@ var info = (function () {
                         if (xml) {
                             var obj = _parseGML(xml);
                             var features = obj.features;
-                            var templateName = configuration.getConfiguration().application.templaterightinfopanel;
-                            _clickNbItems = features.length > 1 ? features.length : 0;
+                            var templateName = configuration.getConfiguration().application.templaterightinfopanel;                            
                             // original code
                             if (features.length > 0 && templateName != "tabs") {
                                 features = features.reverse();
@@ -372,6 +371,8 @@ var info = (function () {
                                     "html": html_result[i]
                                 });
                             };
+                            // get number of selected items
+                            _clickNbItems = views[panel].layers.length > 1 ? views[panel].layers.length : 0;
                             if (pos > 1) {
                                 views[panel].multiple = true;
                             } else {
