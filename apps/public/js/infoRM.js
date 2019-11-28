@@ -351,7 +351,7 @@ var info = (function () {
                     //If some results, apppend panels views
                     if (html_result.length > 0) {
                         //Set view with layer info & html formated features
-                        if (templateName != "tabs") {                        
+                        if (templateName === "tabs") {                        
                             // Adaptation for SIG RM
                             for (var i = 0; i < html_result.length; i++) {
                                 pos++;
