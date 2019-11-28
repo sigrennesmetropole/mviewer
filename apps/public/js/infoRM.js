@@ -368,9 +368,15 @@ var info = (function () {
                                     "layerid": layerid,
                                     "theme_icon": theme_icon,
                                     "cat_color": color_back,
+                                    "index": pos,
                                     "html": html_result[i]
                                 });
                             };
+                            if (pos > 1) {
+                                views[panel].multiple = true;
+                            } else {
+                                views[panel].multiple = false;
+                            }                            
                         } else {
                             // original code from geoBretagne mviewer v3
                             views[panel].layers.push({
