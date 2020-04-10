@@ -28,6 +28,7 @@
     <baselayer visible="true" id="pvcisimple" thumbgallery="img/basemap/pvcisimple.jpg" title="Rennes Metropole" label="Plan de ville" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="ref_fonds:pvci_simple_gris" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  ></baselayer>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <baselayer visible="false" id="cadastre" thumbgallery="public/img/basemap/cadastre.png" title="Rennes Metropole" label="Cadastre" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="ref_cad:cadastre" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  ></baselayer>
     <baselayer visible="false" id="ortho2017" thumbgallery="public/img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  ></baselayer>
 =======
@@ -38,6 +39,10 @@
     <baselayer visible="false" id="cadastre" thumbgallery="public/img/basemap/cadastre.png" title="Rennes Metropole" label="Cadastre" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="ref_cad:cadastre" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  ></baselayer>
     <baselayer visible="false" id="ortho2017" thumbgallery="public/img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  ></baselayer>
 >>>>>>> Change basemap path to public
+=======
+    <baselayer visible="false" id="cadastre" thumbgallery="public/img/basemap/cadastre.png" title="Rennes Metropole" label="Cadastre" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="ref_cad:cadastre" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  ></baselayer>
+    <baselayer visible="false" id="ortho2017" thumbgallery="public/img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  ></baselayer>
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
 </baselayers>
 <themes mini="true"> 
     <theme id="theme-20190729105201" name="PLUi" collapsed="true" icon="compass"> 
@@ -56,6 +61,7 @@
             featurecount="5"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/zonage_PLUi.mst"></template>
 =======
             infopanel="right-panel"><template url="PLUi-grand-public/templates/zonage_PLUi.mst"></template>
@@ -63,6 +69,9 @@
 =======
             infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/zonage_PLUi.mst"></template>
 >>>>>>> Fix path for templates
+=======
+            infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/zonage_PLUi.mst"></template>
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
         </layer>
     </theme> 
     <theme id="theme-20190729105202" name="ZAC" collapsed="true" icon="map"> 
@@ -81,6 +90,7 @@
             featurecount="5"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/ZAC.mst"></template>
 =======
             infopanel="right-panel"><template url="PLUi-grand-public/templates/ZAC.mst"></template>
@@ -88,6 +98,9 @@
 =======
             infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/ZAC.mst"></template>
 >>>>>>> Fix path for templates
+=======
+            infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/ZAC.mst"></template>
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
         </layer>
     </theme> 
     <theme id="theme-20190729105203" name="infiltrabilite" collapsed="true" icon="tint"> 
@@ -106,6 +119,7 @@
             featurecount="5"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/infiltrabilite_sols.mst"></template>
 =======
             infopanel="right-panel"><template url="PLUi-grand-public/templates/infiltrabilite_sols.mst"></template>
@@ -113,6 +127,9 @@
 =======
             infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/infiltrabilite_sols.mst"></template>
 >>>>>>> Fix path for templates
+=======
+            infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/infiltrabilite_sols.mst"></template>
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
         </layer>
     </theme> 
     <theme id="theme-20190827105201" name="parcelles" collapsed="true" icon="map-marker"> 
@@ -130,6 +147,7 @@
             featurecount="5"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/parcelle_cad.mst"></template>
 =======
             infopanel="right-panel"><template url="PLUi-grand-public/templates/parcelle_cad.mst"></template>
@@ -137,6 +155,9 @@
 =======
             infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/parcelle_cad.mst"></template>
 >>>>>>> Fix path for templates
+=======
+            infopanel="right-panel"><template url="apps/PLUi-grand-public/templates/parcelle_cad.mst"></template>
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
         </layer>
     </theme> 
 </themes>

@@ -19,6 +19,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <baselayer visible="false" id="ortho2017" thumbgallery="apps/public/img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"></baselayer>
 =======
         <baselayer visible="false" id="ortho2017" thumbgallery="img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"></baselayer>
@@ -29,10 +30,14 @@
 =======
         <baselayer visible="false" id="ortho2017" thumbgallery="apps/public/img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"></baselayer>
 >>>>>>> Fix path for templates
+=======
+        <baselayer visible="false" id="ortho2017" thumbgallery="apps/public/img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"></baselayer>
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
     </baselayers>
     <themes mini="true">
         <theme id="theme-20180824152940" name="Stations de vélo libre service" collapsed="true" icon="bicycle">
             <layer id="trp_doux:stations_vls" name="Stations de vélo libre service" type="wms" url="https://public.sig.rennesmetropole.fr/geoserver/ows" visible="true" infoformat="application/vnd.ogc.gml" metadata="undefined" metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/03268497-3416-4326-9119-48744df1a3c2" queryable="true" featurecount="5" infopanel="right-panel">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                 <template url="apps/plan-cycles/templates/station-velo-ls.mst"></template>
@@ -42,11 +47,15 @@
 =======
                 <template url="apps/plan-cycles/templates/station-velo-ls.mst"></template>
 >>>>>>> Fix path for templates
+=======
+                <template url="apps/plan-cycles/templates/station-velo-ls.mst"></template>
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
             </layer>
         </theme>
         <!--    <theme id="theme-20180824152940" name="Stations de vélo libre service" collapsed="true" icon="bicycle">         <layer             id="eq_poi:v_sitorg_organisme"            name="Parking vélo"            type="wms"            url="https://public.sig.rennesmetropole.fr/geoserver/ows"            visible="true"            infoformat="application/vnd.ogc.gml"            sld="https://public.sig.rennesmetropole.fr/ressources/img/mviewer/sld/goutte_violet.sld"            metadata="undefined"            metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/46a39b8c-5ec4-449a-bfe1-8410d0b76c84"            queryable="true"            infopanel="right-panel"><template url="templates/stationnement-velo.mst"></template>        </layer>    </theme>    -->
         <theme id="theme-20180824152940" name="Gonflage et réparation de vélo" collapsed="true" icon="bicycle">
             <layer id="trp_doux:v_reparation_velo" name="Gonflage et réparation de vélo" type="wms" url="https://public.sig.rennesmetropole.fr/geoserver/ows" visible="true" infoformat="application/vnd.ogc.gml" sld="https://public.sig.rennesmetropole.fr/ressources/img/mviewer/sld/reparation-velo-service.sld" metadata="undefined" metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/422a6ed5-619a-4156-8785-174d786ec95c" queryable="true" featurecount="5" infopanel="right-panel">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                 <template url="apps/plan-cycles/templates/stations-gonflages-velo.mst"></template>
@@ -56,10 +65,14 @@
 =======
                 <template url="apps/plan-cycles/templates/stations-gonflages-velo.mst"></template>
 >>>>>>> Fix path for templates
+=======
+                <template url="apps/plan-cycles/templates/stations-gonflages-velo.mst"></template>
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
             </layer>
         </theme>
         <theme id="theme-20180824152940" name="Parcs vélos sécurisés" collapsed="true" icon="bicycle">
             <layer id="trp_doux:parc_velo_securise" name="Parcs vélos sécurisés" type="wms" url="https://public.sig.rennesmetropole.fr/geoserver/ows" visible="true" infoformat="application/vnd.ogc.gml" sld="https://public.sig.rennesmetropole.fr/ressources/img/mviewer/sld/stationnement-velo-securise.sld" metadata="undefined" metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/8dfdbb9a-29ca-4780-b767-7b2aa3ab5d2a" queryable="true" featurecount="5" infopanel="right-panel">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                 <template url="apps/plan-cycles/templates/stationnement-velo-securise.mst"></template>
@@ -69,10 +82,14 @@
 =======
                 <template url="apps/plan-cycles/templates/stationnement-velo-securise.mst"></template>
 >>>>>>> Fix path for templates
+=======
+                <template url="apps/plan-cycles/templates/stationnement-velo-securise.mst"></template>
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
             </layer>
         </theme>
         <theme id="theme-20180824152940" name="Supports vélos" collapsed="true" icon="bicycle">
             <layer id="trp_doux:v_support_velo" name="Supports vélos" type="wms" url="https://public.sig.rennesmetropole.fr/geoserver/ows" visible="true" infoformat="application/vnd.ogc.gml" metadata="undefined" metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/8578170b-8f19-482c-8d8c-1ce60a179fed" queryable="true" featurecount="5" infopanel="right-panel">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                 <template url="apps/plan-cycles/templates/support-velo.mst"></template>
@@ -82,6 +99,9 @@
 =======
                 <template url="apps/plan-cycles/templates/support-velo.mst"></template>
 >>>>>>> Fix path for templates
+=======
+                <template url="apps/plan-cycles/templates/support-velo.mst"></template>
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
             </layer>
         </theme>
         <theme id="theme-20180824152940" name="Pistes cyclables" collapsed="true" icon="bicycle">

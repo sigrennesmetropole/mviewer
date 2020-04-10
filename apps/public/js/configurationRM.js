@@ -624,7 +624,10 @@ var configuration = (function () {
                         }
                     }
                     oLayer.secure = layer.secure || "public";
+<<<<<<< HEAD
 
+=======
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
                     oLayer.authentification = (layer.authentification === "true") ? true : false;
                     if (layer.authorization){
                         sessionStorage.removeItem(oLayer.url);
@@ -694,7 +697,10 @@ var configuration = (function () {
                                         var xhr = new XMLHttpRequest();
                                         xhr.responseType = 'blob';
                                         xhr.open('GET', src);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
                                         var _ba_ident = sessionStorage.getItem(layer.url);
                                         if (_ba_ident && _ba_ident != '')
                                             xhr.setRequestHeader("Authorization","Basic " + window.btoa( _ba_ident));
@@ -742,7 +748,10 @@ var configuration = (function () {
                                             }
                                         });
                                         xhr.send();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
                                     }, params: wms_params
                                 });
                                 l = new ol.layer.Image({

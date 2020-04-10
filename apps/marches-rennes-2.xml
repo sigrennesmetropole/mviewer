@@ -37,6 +37,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <baselayer visible="false" id="ortho2017" thumbgallery="apps/public/img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  />
 =======
         <baselayer visible="false" id="ortho2017" thumbgallery="img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  />
@@ -47,6 +48,9 @@
 =======
         <baselayer visible="false" id="ortho2017" thumbgallery="apps/public/img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  />
 >>>>>>> Fix path for templates
+=======
+        <baselayer visible="false" id="ortho2017" thumbgallery="apps/public/img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  />
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
 
     </baselayers>
 
@@ -80,6 +84,7 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             infopanel="right-panel"><template url="apps/marches-rennes-2/templates/marches.mst"/>
 =======
             infopanel="right-panel"><template url="marches-rennes-2/templates/marches.mst"/>
@@ -87,6 +92,9 @@
 =======
             infopanel="right-panel"><template url="apps/marches-rennes-2/templates/marches.mst"/>
 >>>>>>> Fix path for templates
+=======
+            infopanel="right-panel"><template url="apps/marches-rennes-2/templates/marches.mst"/>
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
 
             </layer>
 
@@ -114,6 +122,7 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             infopanel="right-panel"><template url="apps/marches-rennes-2/templates/marches.mst"/>
 =======
             infopanel="right-panel"><template url="marches-rennes-2/templates/marches.mst"/>
@@ -121,6 +130,9 @@
 =======
             infopanel="right-panel"><template url="apps/marches-rennes-2/templates/marches.mst"/>
 >>>>>>> Fix path for templates
+=======
+            infopanel="right-panel"><template url="apps/marches-rennes-2/templates/marches.mst"/>
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
 
             </layer>
 

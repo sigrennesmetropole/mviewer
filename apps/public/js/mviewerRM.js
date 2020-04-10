@@ -321,6 +321,7 @@ mviewer = (function () {
             '<span aria-hidden="true">&times;</span></button>',
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             mviewer.tr (msg),
 =======
             msg,
@@ -328,6 +329,9 @@ mviewer = (function () {
 =======
             mviewer.tr (msg),
 >>>>>>> Update file from master
+=======
+            mviewer.tr (msg),
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
             '</div>'].join (""));
             $("#alerts-zone").append(item);
     };
@@ -717,12 +721,16 @@ mviewer = (function () {
                 $("#searchtool").appendTo("#main");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 $("#searchtool").removeClass("navbar-form");
 =======
 >>>>>>> Move JS and CSS files to public folder
 =======
                 $("#searchtool").removeClass("navbar-form");
 >>>>>>> Update file from master
+=======
+                $("#searchtool").removeClass("navbar-form");
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
             }
         }
         if ($(window).width() < 992 || displayMode !== "d") {
@@ -832,6 +840,7 @@ mviewer = (function () {
             }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             htmlListGroup += _renderHTMLFromTemplate(mviewer.templates.theme, view);
 =======
             htmlListGroup += Mustache.render(mviewer.templates.theme, view);
@@ -839,6 +848,9 @@ mviewer = (function () {
 =======
             htmlListGroup += _renderHTMLFromTemplate(mviewer.templates.theme, view);
 >>>>>>> Update file from master
+=======
+            htmlListGroup += _renderHTMLFromTemplate(mviewer.templates.theme, view);
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
         });
         var panelMini = configuration.getConfiguration().themes.mini;
         if (panelMini && (panelMini === 'true')) {
@@ -1440,8 +1452,11 @@ mviewer = (function () {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Update file from master
+=======
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
     var _initTranslate = function() {
         mviewer.tr = function (s) { return s; };
         if (configuration.getLang()) {
@@ -1553,10 +1568,13 @@ mviewer = (function () {
     };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Move JS and CSS files to public folder
 =======
 >>>>>>> Update file from master
+=======
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
     /*
      * Public
      */
@@ -1834,6 +1852,7 @@ mviewer = (function () {
             }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (API.lang) {
                 linkParams.lang = API.lang;
             }
@@ -1844,6 +1863,11 @@ mviewer = (function () {
                 linkParams.lang = API.lang;
             }
 >>>>>>> Update file from master
+=======
+            if (API.lang) {
+                linkParams.lang = API.lang;
+            }
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
             if (API.wmc) {
                 linkParams.wmc = API.wmc;
             }
@@ -1873,12 +1897,16 @@ mviewer = (function () {
                 _setVariables();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 _initTranslate();
 =======
 >>>>>>> Move JS and CSS files to public folder
 =======
                 _initTranslate();
 >>>>>>> Update file from master
+=======
+                _initTranslate();
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
                 _initDisplayMode();
                 _initDataList();
                 _initVectorOverlay();
@@ -1912,6 +1940,7 @@ mviewer = (function () {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         zoomToLocation: function (x, y, zoom, lib, querymap) {
 =======
         zoomToLocation: function (x, y, zoom, lib) {
@@ -1919,6 +1948,9 @@ mviewer = (function () {
 =======
         zoomToLocation: function (x, y, zoom, lib, querymap) {
 >>>>>>> Update file from master
+=======
+        zoomToLocation: function (x, y, zoom, lib, querymap) {
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
             if (_sourceOverlay) {
                 _sourceOverlay.clear();
             }
@@ -1927,8 +1959,11 @@ mviewer = (function () {
             _map.getView().setZoom(zoom);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Update file from master
+=======
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
             if (querymap) {
                 var i = function () {
                     var e = {
@@ -1940,10 +1975,13 @@ mviewer = (function () {
                 setTimeout(i, 250);
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Move JS and CSS files to public folder
 =======
 >>>>>>> Update file from master
+=======
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
         },
 
 
@@ -2161,6 +2199,7 @@ mviewer = (function () {
             }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
             var item = _renderHTMLFromTemplate(mviewer.templates.layerControl, view);
 =======
@@ -2171,6 +2210,10 @@ mviewer = (function () {
 
             var item = _renderHTMLFromTemplate(mviewer.templates.layerControl, view);
 >>>>>>> Update file from master
+=======
+
+            var item = _renderHTMLFromTemplate(mviewer.templates.layerControl, view);
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
             if (layer.customcontrol && mviewer.customControls[layer.layerid] && mviewer.customControls[layer.layerid].form) {
                 item = $(item).find('.mv-custom-controls').append(mviewer.customControls[layer.layerid].form).closest(".mv-layer-details");
             }
@@ -2822,6 +2865,7 @@ mviewer = (function () {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         renderHTMLFromTemplate : _renderHTMLFromTemplate,
 
 =======
@@ -2830,6 +2874,10 @@ mviewer = (function () {
         renderHTMLFromTemplate : _renderHTMLFromTemplate,
 
 >>>>>>> Update file from master
+=======
+        renderHTMLFromTemplate : _renderHTMLFromTemplate,
+
+>>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
         events: function () { return _events; }
 
 
