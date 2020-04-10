@@ -1,0 +1,27 @@
+{{#features}}
+	<li class="item" style="width:238px;">
+		<h5 class="title-feature">{{nom}}</h5>
+		<p class="text-feature">
+			{{#adresse}}<span style="font-family:'roboto_bold'"> Adresse :</span> {{adresse}} <br/>{{/adresse}}
+			{{#type}}<span style="font-family:'roboto_bold'"> Type :</span> {{{type}}}<br/>{{/type}}
+			{{#nombre}}<span style="font-family:'roboto_bold'"> Nombre d'emplacements :</span> {{nombre}}<br/>{{/nombre}}
+			{{#gestionnaire}}<span style="font-family:'roboto_bold'"> Gestionnaire :</span> {{gestionnaire}}<br/>{{/gestionnaire}}
+		</p>
+	</li>
+{{/features}}
+
+<style>
+	.title-feature {
+		color: #032E46;
+		font-family:"VistaSansOT_bold","roboto_bold";
+		font-size:23px;
+		margin-bottom:1%;
+		line-height:1;
+	}
+	.text-feature{
+		font-family:"VistaSansOT_regular","roboto_regular";
+		color:#555;
+		font-size:13px;
+		margin-top:10%;
+	}
+</style>

@@ -1,0 +1,66 @@
+{{#features}}
+	<li class="item" style="width:238px;">
+		<h5 class="title-feature">{{nom_usage}}</h5>
+		<p class="text-feature">
+			<span>Le plan détermine la part minimale d'espace végétalisé à préserver pour chaque terrain soit à partir d'une valeur fixe (ex : 30%), soit à partir d'une valeur variable (ex : T2).</span> <br/>
+			<span>Dans le cas d'une valeur variable, le % minimal de surface éco-aménagée à respecter est déterminé selon la taille du terrain (voir la pièce du dossier D-2-2-2-2 Liste des valeurs variables en fonction de la taille du terrain)LINK</span> <br/>
+			<span>Dans les secteurs concernés par un plan de détail (d), un plan masse (m), un plan d'épannelage (e) ou une orientation d'aménagement et de programmation de quartier (OAPq), des règles spécifiques à la végétalisation peuvent être indiquées dans ces documents qu'il convient de consulter.</span> <br/>
+			<span>Les couleurs n'ont pas de valeur règlementaires, c'est la valeur de l'étiquette qui détermine la part minimale d'espace végétalisé à préserver.</span> <br/>
+			<span>Pour en savoir plus sur le mode de calcul, les cas particuliers et pour les secteurs non représentés sur les plans, voir les règles de Végétalisation dans le règlement littéral (Titre IV – Règles applicables à toutes les zones).</span> <br/>
+					</p>
+		</br>
+		<span class='alerte-legende'>La légende indique systématiquement l’ensemble des informations identifiées sur la métropole. Toutes les communes ne sont pas pour autant dotées de toutes ces thématiques sur leur territoire.</span>
+	
+		<div class="footer">
+			<div>
+				<span class="glyphicon glyphicon-hand-up"></span>
+				<a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/consulter-les-documents-du-plan-local-durbanisme-intercommunal-plui?idParent=10&typeParent=node" target="_blank">&nbsp;&nbsp; consulter les pièces du PLUi</a>
+			</div>
+			<div>
+				<span class="glyphicon glyphicon-hand-up"></span>
+				<a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/un-plan-local-durbanisme-intercommunal-plui-pour-43-communes" target="_blank"> consulter la page web dédiée au PLUi </a>
+			</div>
+		</div>
+	</li>
+{{/features}}
+
+
+<script>
+    formatter.formatHoraires();
+    formatter.reducerDayOff();
+    formatter.exceptionalClosure();
+    formatter.corrWebAddr();
+
+    interfaceModifying.removeSameTabs();
+</script>
+
+<style>
+		.footer {
+			position: absolute;
+			bottom: 0;
+			border: 2px solid;
+			border-radius: 11%;
+			padding: 2% 4% 2% 3%;
+			color:#4d4d4d;
+		}
+
+        .alerte-legende {
+                font-family:"VistaSansOT_italic";
+                font-size:10px;
+        }
+	.title-feature {
+		color: #032E46;
+		font-family:"VistaSansOT_bold","roboto_bold";
+		font-size:23px;
+		margin-bottom:1%;
+		line-height:1;
+		overflow-wrap: break-word;
+	}
+	.text-feature{
+		font-family:"VistaSansOT_regular","roboto_regular";
+		color:#555;
+		font-size:13px;
+		margin-top:10%;
+		text-align: justify;
+	}
+</style>

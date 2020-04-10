@@ -1,0 +1,101 @@
+{{#features}}
+	<li class="item" style="width:238px;">
+		<h5 class="title-feature decheterie-title">{{nom_court}}</h5>
+		<p class="text-feature">
+			{{#adresse}}<span style="font-family:'roboto_bold'"> Adresse :</span> {{{adresse}}}<br/>{{/adresse}}
+			{{#horaires}}<span style="font-family:'roboto_bold'"> Horaires :</span><br><span class='horaires'>{{{horaires}}}</span><br/>{{/horaires}}
+
+			<div class="days-off-container not-displayed">
+			    <span style="font-family:'roboto_bold'"> Fermetures :</span> <br/>
+			    <span class='daysOff'>
+			        Jours ou périodes de fermeture :
+			        {{#ferme_jour_an}} Jour de l'an, {{/ferme_jour_an}}
+			        {{#ferme_lundi_paques}} Lundi de Pâques, {{/ferme_lundi_paques}}
+			        {{#ferme_fete_travail}} Fête du travail, {{/ferme_fete_travail}}
+			        {{#ferme_victoire_1945}} Victoire 1945, {{/ferme_victoire_1945}}
+			        {{#ferme_ascension}} Ascension, {{/ferme_ascension}}
+			        {{#ferme_lundi_pentecote}} Lundi de Pentecôte, {{/ferme_lundi_pentecote}}
+			        {{#ferme_fete_nationale}} Fête nationale, {{/ferme_fete_nationale}}
+			        {{#ferme_assomption}} Assomption, {{/ferme_assomption}}
+			        {{#ferme_toussaint}} Toussaint, {{/ferme_toussaint}}
+			        {{#ferme_armistice_1918}} Armistice 1918, {{/ferme_armistice_1918}}
+			        {{#ferme_noel}} Noël, {{/ferme_noel}}
+			        {{#ferme_vacances_toussaint}} Vacances de la Toussaint, {{/ferme_vacances_toussaint}}
+			        {{#ferme_vacances_noel}} Vacances de Noël, {{/ferme_vacances_noel}}
+			        {{#ferme_vacances_hiver}} Vacances d'hiver, {{/ferme_vacances_hiver}}
+			        {{#ferme_vacances_printemps}} Vacances de printemps, {{/ferme_vacances_printemps}}
+			        {{#ferme_vacances_ete}} Vacances d'été {{/ferme_vacances_ete}}
+			    </span>
+			</div>
+			{{#variation_conges_scolaires}}<div>- Les horaires sont susceptibles de varier durant les congés scolaires.</div>{{/variation_conges_scolaires}}
+			{{#comm_variation_conges_scolaires}}<div>- {{{comm_variation_conges_scolaires}}}</div>{{/comm_variation_conges_scolaires}}
+			{{#commentaire}}<div>- {{{commentaire}}}</div>{{/commentaire}}
+
+            {{#fermeture_except}}
+                <span>
+                    <span style="font-family:'roboto_bold'"> Fermetures exceptionnelles :</span><br/>
+                    <span class="exceptionalClosuresDechet">{{{fermeture_except}}}</span>
+        		</span>
+        	{{/fermeture_except}}
+			<br/>
+
+
+			<span style="font-family:'roboto_bold'"> Matières acceptées :</span><br/><ul>
+			{{#dv_caisson}}<li> Végétaux en caisson</li>{{/dv_caisson}}
+			{{#dv_pf}}<li> Végétaux sur plateforme</li>{{/dv_pf}}
+			{{#reemploi}}<li> Réemploi (objets réutilisables)</li>{{/reemploi}}
+			{{#f_amiante}}<li> Amiante</li>{{/f_amiante}}
+			{{#f_bois}}<li> Bois</li>{{/f_bois}}
+			{{#f_carton}}<li> Carton</li>{{/f_carton}}
+			{{#f_toxique}}<li> Produits toxiques</li>{{/f_toxique}}
+			{{#f_mobilier}}<li> Mobilier</li>{{/f_mobilier}}
+			{{#f_dee}}<li> Electroménager (DEEE)</li>{{/f_dee}}
+			{{#f_ferraille}}<li> Ferraille</li>{{/f_ferraille}}
+			{{#f_gravats}}<li> Gravats</li>{{/f_gravats}}
+			{{#f_huile_f}}<li> Huiles de friture</li>{{/f_huile_f}}
+			{{#f_huile_v}}<li> Huiles de vidange</li>{{/f_huile_v}}
+			{{#f_jm}}<li> Journaux et magazines</li>{{/f_jm}}
+			{{#f_platre}}<li> Plâtre</li>{{/f_platre}}
+			{{#f_tt_vt}}<li> Tout-venant</li>{{/f_tt_vt}}
+			{{#f_textile}}<li> Textile</li>{{/f_textile}}
+			{{#f_verre}}<li> Verre</li>{{/f_verre}}
+			{{#f_pneus}}<li> Pneus</li>{{/f_pneus}}
+			{{#f_batteries}}<li> Batteries</li>{{/f_batteries}}
+			{{#f_cart_impr}}<li> Cartouches d'imprimante</li>{{/f_cart_impr}}
+			{{#f_incinerables}}<li> Incinérables</li>{{/f_incinerables}}
+			{{#f_piles}}<li> Piles</li>{{/f_piles}}
+			</ul>
+		</p>
+	</li>
+{{/features}}
+
+<script>
+    formatter.formatHoraires();
+    formatter.reducerDayOff(true);
+    formatter.exceptionalClosureDechet();
+
+    /*
+        <span style="font-family:'roboto_bold'"> Lien annuaire :</span><a id='directory-link' href="{{{nom_usage}}}-{{{id_organisme}}}" target="_blank"> Cliquez ici </a><br/>
+        formatter.formatDirectoryLink();
+    */
+
+</script>
+
+<style>
+	.title-feature {
+		font-family:"VistaSansOT_bold","roboto_bold";
+		font-size:23px;
+		margin-bottom:1%;
+		line-height:1;
+		overflow-wrap: break-word;
+	}
+	.decheterie-title {
+		color: #8d4915;
+	}
+	.text-feature{
+		font-family:"VistaSansOT_regular","roboto_regular";
+		color:#555;
+		font-size:13px;
+		margin-top:10%;
+	}
+</style>

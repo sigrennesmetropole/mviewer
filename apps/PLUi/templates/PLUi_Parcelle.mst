@@ -1,0 +1,107 @@
+﻿{{#features}}
+	<li class="item" style="width:238px;">
+		<h5 class="title-feature">Zonages et parcelle</h5>
+		<p class="text-feature">
+			<span style="font-family:'VistaSansOT_bold'">Limites de zone et autres règlements graphique :  </span></br>
+			<span style="font-family:'VistaSansOT_regular'">Pour connaître les règles applicables dans les différentes zones et les effets des règles graphiques, consulter le règlement littéral</span></br></br>
+			<span style="font-family:'VistaSansOT_bold'">Zonage simplifié :  </span></br>
+                        <span style="font-family:'VistaSansOT_regular'">Avertissement : le zonage simplifié en couleur ne renseigne que le nom de la zone. Il ne comporte pas les règles graphiques (emplacements réservés, espaces boisés  classés, zones inondables,…).</span>
+
+			</br></br>
+                        <span style="font-family:'VistaSansOT_bold'">Renseignements d'urbanisme :  </span></br>
+			<span> Pour éditer la fiche de Renseignement d'Urbanisme, </span>
+			<!--<a id='lienweb' class='lienweb' href="#" target="_blank" title="{{nru}}"> Cliquez ici </a>-->
+			<button id='lienNru' class='lienweb' title="{{nru}}">&gt;Cliquez ici&lt;</button>
+			
+			{{#web}}<br/><span style="font-family:'roboto_bold'"> Pour la fiche de Renseignement d'urbanisme, </span><a id='lienweb' class='lienweb' title="{{nru}}"> Cliquez ici </a> {{/web}}
+			{{#id_parc}} <input type="hidden" id="urlNru" value="https://api-urba.sig.rennesmetropole.fr/v1/nru/{{{id_parc}}}"> {{/id_parc}}
+		</p>
+	    <div class="footer">
+            <div>
+                <span class="glyphicon glyphicon-hand-up"></span>
+                <a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/consulter-les-documents-du-plan-local-durbanisme-intercommunal-plui?idParent=10&typeParent=node" target="_blank">&nbsp;&nbsp; consulter les pièces du PLUi </a>
+            </div>
+            <div>
+                <span class="glyphicon glyphicon-hand-up"></span>
+                <a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/un-plan-local-durbanisme-intercommunal-plui-pour-43-communes" target="_blank"> consulter la page web dédiée au PLUi </a>
+            </div>
+        </div>
+
+	</li>
+
+{{/features}}
+
+
+<script>
+    formatter.formatHoraires();
+    formatter.reducerDayOff();
+    formatter.exceptionalClosure();
+    formatter.corrWebAddr();
+
+	var urlNruVal = $('#urlNru').val();
+
+	var content =  '<p>'
+	+	'La note de <strong>renseignements d\'urbanisme</strong> est un document qui indique la nature des règles d\'urbanisme applicable au terrain au moment où elle est établie. Elle est informative. Ce document ne conclut pas sur la possibilité ou non de construire.'
+	+ '</p>'
+	+ '<p>'
+	+	'La note de renseignements d\'urbanisme précise, pour une parcelle :'
+	+ '</p>'
+	+ '<ul>'
+	+	'<li>la nature des dispositions d\'urbanisme applicables au terrain (exemple : zone du PLU),</li>'
+	+	'<li>les droits de préemption éventuels,</li>'
+	+	'<li>la nature des servitudes d\'utilité publique (exemple : périmètre de protection au titre des Monuments Historiques),</li>'
+	+	'<li>l\'existence d\'emplacements réservés ou autres observations particulières (exemple : servitude de constructibilité limitée)...</li>'
+	+'</ul>'
+	+'<p>'
+	+	'ATTENTION :'
+	+'</p>'
+	+'<p>'
+	+	'Les renseignements d\'urbanisme délivrés par Internet n\'ont de valeur que le jour où ils sont délivrés.'
+	+	'Ils constituent un simple document d\'information et ne peuvent en aucun cas être considérés comme une autorisation administrative quelconque ni un certificat d\'urbanisme.'
+	+	'Par ailleurs, ils ne sauraient engager la responsabilité de la Collectivité dans le cas d\'application de l\'Article L-125-5 du Code de l\'Environnement (Risques majeurs).'
+	+'</p>'
+	+'<p>'
+	+	'Ils ne dispensent de l\'observation d\'aucune des règlementations spéciales relatives, notamment aux déclarations d\'intention d\'aliéner (toute décision relative au droit de préemption ne pouvant être prise qu\'au vu de la déclaration d\'intention d\'aliéner), au permis de construire, aux divisions de propriétés et lotissements, etc.'
+	+'</p>'
+	+'<p>'
+	+	'Enfin, les renseignements d\'urbanisme reproduits par impression d\'écran n\'ont aucune valeur légale et ne peuvent engager la responsabilité de RENNES METROPOLE.'
+	+'</p>'
+	+ '<div> <a id="btn-nru" class="btn btn-primary" href="#" onClick="rmTools.generatePDFNru(\''+ urlNruVal +'\')">'
+	+ 'Télécharger la fiche de Renseignement d\'urbanisme </a> </div>';
+
+	$('#lienNru').click(function () {
+		
+		rmTools.displayMessageModal(content);
+	});
+
+</script>
+
+<style>
+    .footer {
+        position: absolute;
+        bottom: 0;
+        border: 2px solid;
+        border-radius: 11%;
+        padding: 2% 4% 2% 3%;
+	color:#4d4d4d;
+    } 
+	
+.title-feature {
+		color: #032E46;
+		font-family:"VistaSansOT_bold","roboto_bold";
+		font-size:23px;
+		margin-bottom:1%;
+		line-height:1;
+		overflow-wrap: break-word;
+	}
+	.text-feature{
+		font-family:"VistaSansOT_regular","roboto_regular";
+		color:#555;
+		font-size:13px;
+		margin-top:10%;
+	}
+	#lienNru {
+		border: none;
+    		background-color: #fff;
+	}
+</style>

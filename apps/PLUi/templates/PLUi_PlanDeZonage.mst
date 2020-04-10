@@ -1,0 +1,42 @@
+{{#features}}
+	<li class="item" style="width:238px;">
+		<h5 class="title-feature">{{nom_usage}}</h5>
+		<p class="text-feature">
+			<span style="font-family:'roboto_italic'"> La légende indique systématiquement l’ensemble des informations identifiées sur la métropole (par simplification). Toutes les communes ne sont pas pour autant dotées de toutes ces thématiques sur leur territoire</span> <br/><br/>
+			<span style="font-family:'roboto_bold'"> Normes de stationnement pour la sous-destination « logement » </span><span> (indiquées en annotation sur chaque secteur cartographié)</span><br/><br/>
+			<span> Nombre de places minimum exigées (ex : 0,80 pl./logt) : </span> <br/>
+			<span> Par type de logement : </span> <br/>
+			<span> - Logement locatif financé par un prêt aidé ou agrée par l’Etat (LLS)</span> <br/>
+			<span> (ex. : 0,80 pl./LLS)</span> <br/>
+			<span> - Autre logement (AL) : </span> <br/>
+			<span> (ex.: 1,25pl./AL)</span> <br/>
+			<span> avec indication possible de places bana&lisées (PB) : </span> <br/>
+			<span> (ex. : 1,25 pl./AL + 0,20PB)</span> <br/>
+		</p>
+	</li>
+{{/features}}
+
+
+<script>
+    formatter.formatHoraires();
+    formatter.reducerDayOff();
+    formatter.exceptionalClosure();
+    formatter.corrWebAddr();
+</script>
+
+<style>
+	.title-feature {
+		color: #032E46;
+		font-family:"VistaSansOT_bold","roboto_bold";
+		font-size:23px;
+		margin-bottom:1%;
+		line-height:1;
+		overflow-wrap: break-word;
+	}
+	.text-feature{
+		font-family:"VistaSansOT_regular","roboto_regular";
+		color:#555;
+		font-size:13px;
+		margin-top:10%;
+	}
+</style>

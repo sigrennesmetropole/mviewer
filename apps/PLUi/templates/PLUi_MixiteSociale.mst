@@ -1,0 +1,65 @@
+{{#features}}
+	<li class="item" style="width:238px;">
+		<h5 class="title-feature">{{nom_usage}}</h5>
+		<p class="text-feature">
+			<span>Le plan indique la part de logements aidés ou régulés à réaliser sur certains terrains</span> <br/><br/>
+			<span>Pour en savoir plus sur les règles applicables dans ces secteurs, voir les règles liées aux Equipements, réseaux, servitudes et emplacements réservés dans le règlement littéral (Titre III – Légende du règlement graphique).</span> <br/><br/>
+		</p>
+		</br></br>
+		<span class='alerte-legende'>La légende indique systématiquement l’ensemble des informations identifiées sur la métropole. Toutes les communes ne sont pas pour autant dotées de toutes ces thématiques sur leur territoire.</span>
+	
+
+		<div class="footer">
+			<div>
+				<span class="glyphicon glyphicon-hand-up"></span>
+				<a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/consulter-les-documents-du-plan-local-durbanisme-intercommunal-plui?idParent=10&typeParent=node" target="_blank">&nbsp;&nbsp; consulter les pièces du PLUi</a>
+			</div>
+			<div>
+				<span class="glyphicon glyphicon-hand-up"></span>
+				<a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/un-plan-local-durbanisme-intercommunal-plui-pour-43-communes" target="_blank"> consulter la page web dédiée au PLUi </a>
+			</div>
+		</div>
+
+	</li>
+{{/features}}
+
+
+<script>
+    formatter.formatHoraires();
+    formatter.reducerDayOff();
+    formatter.exceptionalClosure();
+    formatter.corrWebAddr();
+
+    interfaceModifying.removeSameTabs();
+</script>
+
+<style>
+		.footer {
+			position: absolute;
+			bottom: 0;
+			border: 2px solid;
+			border-radius: 11%;
+			padding: 2% 4% 2% 3%;
+			color:#4d4d4d;
+		}
+
+        .alerte-legende {
+                font-family:"VistaSansOT_italic";
+                font-size:10px;
+        }
+	.title-feature {
+		color: #032E46;
+		font-family:"VistaSansOT_bold","roboto_bold";
+		font-size:23px;
+		margin-bottom:1%;
+		line-height:1;
+		overflow-wrap: break-word;
+	}
+	.text-feature{
+		font-family:"VistaSansOT_regular","roboto_regular";
+		color:#555;
+		font-size:13px;
+		margin-top:10%;
+		text-align: justify;
+	}
+</style>

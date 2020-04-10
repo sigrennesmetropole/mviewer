@@ -1,0 +1,36 @@
+/*******************************
+------------- FONTS -----------
+********************************/
+
+@font-face {
+    font-family: 'VistaSansOT_black';
+    src: url('../../font/Vista_Sans-OT/VistaSansOT-Black.otf');
+}
+@font-face {
+    font-family: 'VistaSansOT_bold';
+    src: url('../../font/Vista_Sans-OT/VistaSansOT-Bold.otf');
+}
+@font-face {
+    font-family: 'VistaSansOT_regular';
+    src: url('../../font/Vista_Sans-OT/VistaSansOT-Reg.otf');
+}
+
+$font-black: 'VistaSansOT_black', Arial, Sans-serif;
+$font-bold: 'VistaSansOT_bold','roboto_bold', Arial, Sans-serif;
+$font-regular: 'VistaSansOT_regular','roboto_regular', Arial, Sans-serif;
+
+/*******************************
+------------- NAVBAR -----------
+********************************/
+
+.mv-navbar-btn{
+    border-radius:50%;
+	width:34px;
+	height:34px;
+	min-width:34px;
+	border: 0px!important;
+	font-family: $font-black;
+	font-size: 15px;
+}
+
+@import '../../../../css/scss/theme';

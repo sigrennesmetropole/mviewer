@@ -1,0 +1,45 @@
+/******************************************************************************
+--------------------------- rmTools -------------------------
+********************************************************************************/
+
+$rmTools-color-1: #4d4d4d;
+$rmTools-color-2: #fff;
+$rmTools-color-3: #555;
+$rmTools-border-radius: 5px;
+$rmTools-padding-1: 10px;
+$rmTools-padding-2: 20px;
+$rmTools-margin-1: 0;
+$rmTools-margin-left: -50px;
+$rmTools-margin-top: -80px;
+$rmTools-width: 100px;
+$rmTools-border-width: 1px;
+$rmTools-border-style: solid;
+  
+  .rm-modal-header {
+    background: $rmTools-color-1;
+    padding: $rmTools-padding-1;
+    color: $rmTools-color-2;
+    border-top-left-radius: $rmTools-border-radius;
+    border-top-right-radius: $rmTools-border-radius;
+
+    h2 {
+        margin: $rmTools-margin-1;
+      }
+  }
+  
+  .rm-modal-body {
+      padding: $rmTools-padding-1 $rmTools-padding-2;
+      background: $rmTools-color-2;
+    }
+  
+    #popup-number-results {
+      width: $rmTools-width;
+      border: $rmTools-border-width $rmTools-border-style $rmTools-color-3;
+      border-radius: $rmTools-border-radius;
+      background-color: $rmTools-color-2;
+      padding: $rmTools-padding-1;
+      text-align: center;
+      margin-left: $rmTools-margin-left;
+      margin-top: $rmTools-margin-top;
+  
+  }
