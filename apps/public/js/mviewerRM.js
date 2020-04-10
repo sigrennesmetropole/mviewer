@@ -205,6 +205,10 @@ mviewer = (function () {
 
     var _marker = null;
 
+    // debut modif CT 03/02/2020
+    var _popup = null;
+    //
+
     var _topLayer = false;
 
     var _exclusiveLayer;
@@ -263,13 +267,10 @@ mviewer = (function () {
         //TODO rename els_marker to mv-marker
         _marker = new ol.Overlay({ positioning: 'bottom-center', element: $("#els_marker")[0], stopEvent: false})
         overlays.push(_marker);
-        // Modification by RM
-        _popup = new ol.Overlay({
-            positioning: 'center',
-            element: $("#popup-number-results")[0],
-            stopEvent: false
-        })
+        // debut modif CT 03/02/2020
+        _popup = new ol.Overlay({ positioning: 'center', element: $("#popup-number-results")[0], stopEvent: false})
         overlays.push(_popup);
+        // fin 
         _map = new ol.Map({
             target: 'map',
             controls: [
@@ -297,7 +298,6 @@ mviewer = (function () {
             view: new ol.View({
                 projection: _projection,
                 maxZoom: mapoptions.maxzoom || 19,
-                minZoom: mapoptions.minzoom || null, // modification by RM
                 center: _center,
                 enableRotation: _rotation,
                 zoom: _zoom
@@ -319,19 +319,7 @@ mviewer = (function () {
         var item = $(['<div class="alert '+cls+' alert-dismissible" role="alert">',
             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">',
             '<span aria-hidden="true">&times;</span></button>',
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
             mviewer.tr (msg),
-=======
-            msg,
->>>>>>> Move JS and CSS files to public folder
-=======
-            mviewer.tr (msg),
->>>>>>> Update file from master
-=======
-            mviewer.tr (msg),
->>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
             '</div>'].join (""));
             $("#alerts-zone").append(item);
     };
@@ -355,14 +343,24 @@ mviewer = (function () {
             legendUrl = layer.legendurl;
         } else if (layer.sld) {
             legendUrl = _layerUrl.indexOf('?') === -1 ? _layerUrl + '?' : _layerUrl + '&';
-            legendUrl = legendUrl + 'service=WMS&Version=1.3.0&request=GetLegendGraphic&SLD_VERSION=1.1.0'+
+            // debut modif CT 31/01/2020
+            /*legendUrl = legendUrl + 'service=WMS&Version=1.3.0&request=GetLegendGraphic&SLD_VERSION=1.1.0'+
             '&format=image%2Fpng&width=30&height=20&layer=' + layer.layername + '&style=' + sld+
+            '&legend_options=fontName:Open%20Sans;fontAntiAliasing:true;fontColor:0x777777;fontSize:10;dpi:96&TRANSPARENT=true';*/
+            legendUrl = legendUrl + 'service=WMS&Version=1.3.0&request=GetLegendGraphic&SLD_VERSION=1.1.0'+
+            '&format=image%2Fpng&layer=' + layer.layername + '&style=' + sld+
             '&legend_options=fontName:Open%20Sans;fontAntiAliasing:true;fontColor:0x777777;fontSize:10;dpi:96&TRANSPARENT=true';
+            // fin
         } else {
             legendUrl = _layerUrl.indexOf('?') === -1 ? _layerUrl + '?' : _layerUrl + '&';
-            legendUrl = legendUrl + 'service=WMS&Version=1.3.0&request=GetLegendGraphic&SLD_VERSION=1.1.0'+
+            // debut modif CT 31/01/2020
+            /*legendUrl = legendUrl + 'service=WMS&Version=1.3.0&request=GetLegendGraphic&SLD_VERSION=1.1.0'+
             '&format=image%2Fpng&width=30&height=20&layer=' + layer.layername + '&style=' + layer.style + sld+
+            '&legend_options=fontName:Open%20Sans;fontAntiAliasing:true;fontColor:0x777777;fontSize:10;dpi:96&TRANSPARENT=true';*/
+            legendUrl = legendUrl + 'service=WMS&Version=1.3.0&request=GetLegendGraphic&SLD_VERSION=1.1.0'+
+            '&format=image%2Fpng&layer=' + layer.layername + '&style=' + layer.style + sld+
             '&legend_options=fontName:Open%20Sans;fontAntiAliasing:true;fontColor:0x777777;fontSize:10;dpi:96&TRANSPARENT=true';
+            // fin
         }
         if (layer.dynamiclegend) {
             if (!scale) {
@@ -488,30 +486,7 @@ mviewer = (function () {
         //GetFeatureInfo tool
         mviewer.tools.info = info;
         mviewer.tools.info.init();
-        // Debut modif CT 18/09/2019
-        mviewer.tools.tooltipRM = tooltipRM;
-        mviewer.tools.tooltipRM.init();
         //Measure tool
-        // Debut modif RM - CT 20/09/2019
-        if (configuration.getConfiguration().application.searchRM === "true") {
-            mviewer.tools.searchRM = searchRM;
-            var searchParams = configuration.getConfiguration().application.searchRMContent;
-            var defaultChecked = configuration.getConfiguration().application.searchRMDefaultCheck;
-            mviewer.tools.searchRM.init(searchParams, defaultChecked);
-            searchRM.enable();
-        } else {
-            searchRM.disable();
-        }
-        // FIN
-        // Debut modif RM - CT 23/09/2019
-        if (configuration.getConfiguration().application.printMap === "true") {
-            mviewer.tools.printMap = printMap;
-            mviewer.tools.printMap.init();
-            printMap.enable();
-        } else {
-            printMap.disable();
-        }
-        // FIN
         if (configuration.getConfiguration().application.measuretools === "true") {
             //Load measure moadule
             mviewer.tools.measure = measure;
@@ -593,9 +568,6 @@ mviewer = (function () {
         var scale = _calculateScale(resolution);
         _updateLayersScaleDependancy(scale);
         _updateLegendsScaleDependancy(scale);
-        // Modification by RM
-        $("#popup-number-results").hide();
-        $('#right-panel').removeClass('active');
     };
 
     /**
@@ -719,18 +691,7 @@ mviewer = (function () {
             if (API.mode === "u") {
                 //Show searchtool on main div
                 $("#searchtool").appendTo("#main");
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                 $("#searchtool").removeClass("navbar-form");
-=======
->>>>>>> Move JS and CSS files to public folder
-=======
-                $("#searchtool").removeClass("navbar-form");
->>>>>>> Update file from master
-=======
-                $("#searchtool").removeClass("navbar-form");
->>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
             }
         }
         if ($(window).width() < 992 || displayMode !== "d") {
@@ -838,19 +799,7 @@ mviewer = (function () {
                 view.layers = reverse_layers.reverse();
                 view.cls = classes.join(" ");
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
             htmlListGroup += _renderHTMLFromTemplate(mviewer.templates.theme, view);
-=======
-            htmlListGroup += Mustache.render(mviewer.templates.theme, view);
->>>>>>> Move JS and CSS files to public folder
-=======
-            htmlListGroup += _renderHTMLFromTemplate(mviewer.templates.theme, view);
->>>>>>> Update file from master
-=======
-            htmlListGroup += _renderHTMLFromTemplate(mviewer.templates.theme, view);
->>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
         });
         var panelMini = configuration.getConfiguration().themes.mini;
         if (panelMini && (panelMini === 'true')) {
@@ -972,9 +921,7 @@ mviewer = (function () {
                         crossOrigin: crossorigin,
                         maxZoom: baselayer.maxzoom || 18,
                         params: params,
-                        attributions:  baselayer.attribution,
-                        // Debut modif RM - CT 23/10/2019
-                        minZoom: baselayer.minzoom || null
+                        attributions:  baselayer.attribution
                     }),
                     visible: false
                 });
@@ -1050,10 +997,7 @@ mviewer = (function () {
                         url: baselayer.url,
                         crossOrigin: 'anonymous',
                         maxZoom: baselayer.maxzoom || 18,
-                        attributions: baselayer.attribution,
-                        // Debut modif RM - CT 23/10/2019
-                        minZoom: baselayer.minzoom || null
-                        //Fin modif
+                        attributions: baselayer.attribution
                     }),
                     visible: false
                 });
@@ -1344,7 +1288,6 @@ mviewer = (function () {
                 if (oLayer.scale) {
                     _scaledDependantLayers.push(oLayer);
                 }
-                info.addQueryableLayer(_overLayers[oLayer.id]);
             }
 
         });
@@ -1414,10 +1357,10 @@ mviewer = (function () {
 
         /**
          * Private Method: _getLonLatZfromGeometry
-         * Modified by RM - minzoom param added
+         *
          */
 
-    var _getLonLatZfromGeometry = function (geometry, proj, maxzoom, minzoom) {
+    var _getLonLatZfromGeometry = function (geometry, proj, maxzoom) {
         var xyz = {};
 		var coordinates;
         //For Point or multiPoints with one point
@@ -1443,81 +1386,90 @@ mviewer = (function () {
             var center = ol.proj.transform(ol.extent.getCenter(extent),proj, 'EPSG:4326');
             xyz = { lon: center[0],
                     lat: center[1],
-                    // Debut modif RM - CT 23/10/2019 - set min zoom param
-                    zoom: zoom && minzoom && zoom < minzoom ? minzoom : zoom
+                    zoom: zoom
             };
         }
         return xyz;
     };
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Update file from master
-=======
->>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
+    var _configureTranslate = function (dic) {
+        var lang = configuration.getLang();
+        var languages = configuration.getLanguages();
+        if (languages.length > 1) {
+            var langitems = [];
+            var showHelp = (configuration.getConfiguration().application.showhelp === "true");
+            languages.forEach(function(language) {
+                var langStr = "";
+                var icon = language;
+                var p;
+                if (language === "en") {
+                    icon = "gb";
+                }
+                if (langitems.length === 0 && showHelp) {
+                    // set no padding for the first item element
+                    // help popup only
+                    p = 0;
+                }
+                langitems.push('<li style="padding-left:' + p + '" type="button" class="btn mv-translate""><a href="#" idlang="' + language + '"><span style="margin-right: 5px;" class="flag-icon flag-icon-squared flag-icon-' + icon + '"></span><span>' + language + '</span></a></li>');
+            });
+
+            // if help popup only
+            if (showHelp) {
+                $("#help .modal-body").append('<ul style="padding-left:0">' + langitems.join("") + '</ul>');
+
+            } else {
+                // display selector or modal according to device
+                $("#lang-button, #lang-selector").addClass("enabled");
+                $("#lang-body>ul").append(langitems.join(""));
+                $("#lang-selector>ul").append(langitems.join(""));
+            }
+            $(".mv-translate a").click(function() {
+                _changeLanguage($(this).attr("idlang"));
+            });
+        }
+
+        mviewer.lang = {};
+        //load i18n for all languages availables
+        Object.entries(dic).forEach(function (l) {
+            mviewer.lang[l[0]] = i18n.create({"values": l[1]});
+        });
+        if (mviewer.lang[lang]) {
+            mviewer.tr = mviewer.lang[lang];
+            _elementTranslate("body");
+            mviewer.lang.lang = lang;
+        } else {
+             console.log("langue non disponible " + lang);
+        }
+        mviewer.lang.changeLanguage = _changeLanguage;
+    };
+
     var _initTranslate = function() {
         mviewer.tr = function (s) { return s; };
         if (configuration.getLang()) {
-            var lang = configuration.getLang();
-            var dicFile = configuration.getConfiguration().application.langfile || "mviewer.i18n.json";
-            $.ajax({
-                url: dicFile,
-                dataType: "json",
-                success: function (dic) {
-                    var languages = configuration.getLanguages();
-                    if (languages.length > 1) {
-                        var langitems = [];
-                        var showHelp = (configuration.getConfiguration().application.showhelp === "true");
-                        languages.forEach(function(language) {
-                            var langStr = "";
-                            var icon = language;
-                            var p;
-                            if (language === "en") {
-                                icon = "gb";
-                            }
-                            if (langitems.length === 0 && showHelp) {
-                                // set no padding for the first item element
-                                // help popup only
-                                p = 0;
-                            }
-                            langitems.push('<li style="padding-left:' + p + '" type="button" class="btn mv-translate""><a href="#" idlang="' + language + '"><span style="margin-right: 5px;" class="flag-icon flag-icon-squared flag-icon-' + icon + '"></span><span>' + language + '</span></a></li>');
-                        });
-
-                        // if help popup only
-                        if (showHelp) {
-                            $("#help .modal-body").append('<ul style="padding-left:0">' + langitems.join("") + '</ul>');
-
-                        } else {
-                            // display selector or modal according to device
-                            $("#lang-button, #lang-selector").addClass("enabled");
-                            $("#lang-body>ul").append(langitems.join(""));
-                            $("#lang-selector>ul").append(langitems.join(""));
-                        }
-                        $(".mv-translate a").click(function() {
-                            _changeLanguage($(this).attr("idlang"));
-                        });
+            var extraFile = configuration.getConfiguration().application.langfile;
+            var defaultFile = "mviewer.i18n.json";
+            if (!extraFile) {
+                $.ajax({
+                    url: defaultFile,
+                    dataType: "json",
+                    success: _configureTranslate,
+                    error: function () {
+                        console.log("Error: can't load JSON lang file!")
                     }
-
-                    mviewer.lang = {};
-                    //load i18n for all languages availables
-                    Object.entries(dic).forEach(function (l) {
-                        mviewer.lang[l[0]] = i18n.create({"values": l[1]});
-                    });
-                    if (mviewer.lang[lang]) {
-                        mviewer.tr = mviewer.lang[lang];
-                        _elementTranslate("body");
-                        mviewer.lang.lang = lang;
-                    } else {
-                         console.log("langue non disponible " + lang);
+                });
+            } else {
+                $.when( $.getJSON( defaultFile ), $.getJSON( extraFile ) ).then(
+                    function( a, b ) {
+                        var globalDic = a[0];
+                        var extraDic = b[0];
+                        $.extend(true, globalDic, extraDic);
+                        _configureTranslate(globalDic);
+                    },
+                    function () {
+                        console.log("Error: can't load all JSON lang files!");
                     }
-                    mviewer.lang.changeLanguage = _changeLanguage;
-                },
-                error: function () {
-                    console.log("Error: can't load JSON lang file!")
-                }
-            });
+                );
+            }
         }
     };
 
@@ -1567,14 +1519,6 @@ mviewer = (function () {
         return result;
     };
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Move JS and CSS files to public folder
-=======
->>>>>>> Update file from master
-=======
->>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
     /*
      * Public
      */
@@ -1850,24 +1794,9 @@ mviewer = (function () {
             if (API.config) {
                 linkParams.config = API.config;
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
             if (API.lang) {
                 linkParams.lang = API.lang;
             }
-=======
->>>>>>> Move JS and CSS files to public folder
-=======
-            if (API.lang) {
-                linkParams.lang = API.lang;
-            }
->>>>>>> Update file from master
-=======
-            if (API.lang) {
-                linkParams.lang = API.lang;
-            }
->>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
             if (API.wmc) {
                 linkParams.wmc = API.wmc;
             }
@@ -1895,18 +1824,7 @@ mviewer = (function () {
 
         init: function () {
                 _setVariables();
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                 _initTranslate();
-=======
->>>>>>> Move JS and CSS files to public folder
-=======
-                _initTranslate();
->>>>>>> Update file from master
-=======
-                _initTranslate();
->>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
                 _initDisplayMode();
                 _initDataList();
                 _initVectorOverlay();
@@ -1938,32 +1856,13 @@ mviewer = (function () {
          *
          */
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        zoomToLocation: function (x, y, zoom, lib, querymap) {
-=======
-        zoomToLocation: function (x, y, zoom, lib) {
->>>>>>> Move JS and CSS files to public folder
-=======
-        zoomToLocation: function (x, y, zoom, lib, querymap) {
->>>>>>> Update file from master
-=======
-        zoomToLocation: function (x, y, zoom, lib, querymap) {
->>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
+        zoomToLocation: function (x, y, zoom, querymap) {
             if (_sourceOverlay) {
                 _sourceOverlay.clear();
             }
             var ptResult = ol.proj.transform([x, y], 'EPSG:4326', _projection.getCode());
             _map.getView().setCenter(ptResult);
             _map.getView().setZoom(zoom);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Update file from master
-=======
->>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
             if (querymap) {
                 var i = function () {
                     var e = {
@@ -1974,14 +1873,6 @@ mviewer = (function () {
                 };
                 setTimeout(i, 250);
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Move JS and CSS files to public folder
-=======
->>>>>>> Update file from master
-=======
->>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
         },
 
 
@@ -1996,16 +1887,24 @@ mviewer = (function () {
             var ptResult = ol.proj.transform([x, y], proj, _projection.getCode());
             _marker.setPosition(ptResult);
             $("#els_marker").show();
-            // Modification from RM
-            // TODO : insert into corresponding template.js
-            var nbItems = info.getClickNbItems();
-            if (nbItems > 1) {
+            // debut modif CT 31/01/2020
+            //var nbItems = info.getClickNbItems();
+            var nbItems = RmOptionsManager.getClickNbItems();
+            if (nbItems > 1 && RmOptionsManager.getApplicationConfiguration().showClickNbItems !== "false") { 
+                
                 _popup.setPosition(ptResult);
-                $("#popup-number-results").html(info.getClickNbItems() + ' résultats');
+
+               //$("#popup-number-results").html(info.getClickNbItems() + ' résultats');
+               $("#popup-number-results").html(RmOptionsManager.getClickNbItems() + ' résultats');
+
                 $("#popup-number-results").show();
+
             } else {
+
                 $("#popup-number-results").hide();
+
             }
+            // fin
             _map.render();
         },
 
@@ -2115,7 +2014,7 @@ mviewer = (function () {
          * Public Method: setLoginInfo
          *
          */
-         
+
         setLoginInfo: function (ctx) {
             var _layer_id = ctx.id.split('#')[1];
             var _service_url = mviewer.getLayers()[_layer_id].url;
@@ -2177,7 +2076,7 @@ mviewer = (function () {
 
             if (layer.attributefilter && layer.attributevalues != "undefined" && layer.attributefield != "undefined") {
                 view.attributeControl = true;
-                view.attributeLabel = layer.attributelabel || 'Filtrer';
+                view.attributeLabel = layer.attributelabel;
                 var options = [];
                 if (layer.attributefilterenabled === false) {
                     options.push({"label": "Par défaut", "attribute": "all"});
@@ -2197,23 +2096,8 @@ mviewer = (function () {
                 if(layer.secure == "layer")
                     view.secure_layer = true;
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
             var item = _renderHTMLFromTemplate(mviewer.templates.layerControl, view);
-=======
-            
-            var item = Mustache.render(mviewer.templates.layerControl, view);
->>>>>>> Move JS and CSS files to public folder
-=======
-
-            var item = _renderHTMLFromTemplate(mviewer.templates.layerControl, view);
->>>>>>> Update file from master
-=======
-
-            var item = _renderHTMLFromTemplate(mviewer.templates.layerControl, view);
->>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
             if (layer.customcontrol && mviewer.customControls[layer.layerid] && mviewer.customControls[layer.layerid].form) {
                 item = $(item).find('.mv-custom-controls').append(mviewer.customControls[layer.layerid].form).closest(".mv-layer-details");
             }
@@ -2451,11 +2335,6 @@ mviewer = (function () {
             if (layer.type === 'customlayer' && layer.tooltip && layer.tooltipenabled) {
                 info.toggleTooltipLayer($('.layer-tooltip[data-layerid="'+layer.layerid+'"]')[0]);
             }
-            // Debut modif CT 18/09/2019
-            if (layer.tooltipRM) {
-                tooltipRM.activateTooltipRm(layer.layername, layer.tooltipRMContent);
-            }
-            // FIN
             if (layer.expanded) {
                 this.toggleLayerOptions($('.mv-layer-details[data-layerid="'+layer.layerid+'"]')[0]);
             }
@@ -2863,21 +2742,8 @@ mviewer = (function () {
 
         overLayersReady: _overLayersReady,
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         renderHTMLFromTemplate : _renderHTMLFromTemplate,
 
-=======
->>>>>>> Move JS and CSS files to public folder
-=======
-        renderHTMLFromTemplate : _renderHTMLFromTemplate,
-
->>>>>>> Update file from master
-=======
-        renderHTMLFromTemplate : _renderHTMLFromTemplate,
-
->>>>>>> 068589b0b9cf583a90956d652397a1f674ec8c95
         events: function () { return _events; }
 
 

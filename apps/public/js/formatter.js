@@ -281,15 +281,19 @@ var formatter = (function () {
             for (var i = 0; i < my_links.length; i++) {
                 var adresse = my_links[i].getAttribute("href");
                 console.log("adresse = " + adresse);
-                if (adresse.substr(0, 4) != "http") {
-                    my_links[i].setAttribute("href", "http://" + adresse);
-                }
-                if (adresse.trim() === 'Sans objet') {
-                    var bloc_link = document.getElementsByClassName('champ_lien');
-                    for (var a = 0; a < bloc_link.length; a++) {
-                        bloc_link[a].innerHTML = "";
+                if (adresse !== null) {
+
+                    if (adresse.substr(0, 4) != "http") {
+                        my_links[i].setAttribute("href", "http://" + adresse);
+                    }
+                    if (adresse.trim() === 'Sans objet') {
+                        var bloc_link = document.getElementsByClassName('champ_lien');
+                        for (var a = 0; a < bloc_link.length; a++) {
+                            bloc_link[a].innerHTML = "";
+                        }
                     }
                 }
+           
             }
         }
      /*   if (Boolean(document.getElementById("lienweb"))){

@@ -17,18 +17,13 @@ var printMap = (function() {
 
     var init = function () {
         _map = mviewer.getMap();
-        //$('#main').append(printPage);
-        //$('#printPage').hide();
+    
         $('#toolstoolbar').append(printInput);
         $('#printMapbtn').hide();
 
        $('#printMapbtn').click(function(event) {
             event.preventDefault();
             print();
-        });
-
-        $('#printPage_printBtn').click(function(event) {
-          console.log('coucou');
         });
     };
 
@@ -47,29 +42,8 @@ var printMap = (function() {
         $('#printMapbtn').hide();
     };
 
-    var printDiv = function (divId) {
-      var content = document.getElementById(divId).innerHTML;
-      var printWindow = window.open('', 'Print', 'height=600,width=800');
-  
-      printWindow.document.write('<html><head><title>Impression de votre plan</title>');
-      printWindow.document.write('</head><body >');
-      printWindow.document.write(printPage);
-      printWindow.document.write('</body></html>');
-      printWindow.document.close();
-
-      printWindow.focus();
-      printWindow.print();
-      //printWindow.close();
-      return true;
-  };
 
     var createPrintWindow = function(pictureSrc) {
-
-      //console.log($('#layers-container')[0]);
-
-      /*$('.layerdisplay-title').forEach(function (layerDisplay) {
-        console.log(layerDisplay.innerText);
-      });*/
 
       var legendTitles = [];
       var legendImages = [];
@@ -99,7 +73,7 @@ var printMap = (function() {
       +   '<label>Notes</label> '
       +    '<textarea rows="3" type="textfield"></textarea>'
       +  '</div>'
-      +   '<div class="printBtnContainer"> <a href="#" id="printPage_printBtn" class="btn btn-secondary">'
+      +   '<div class="printBtnContainer"> <a href="#" id="printPage_printBtn" class="btn">'
       +       '<span class="glyphicon glyphicon-print" aria-hidden="true"> <span class="printLabel">Imprimer</span> </span>'
      +     '</a> </div>'
       +'</div>';
@@ -115,7 +89,7 @@ var printMap = (function() {
       var printWindow = window.open('', 'Print', 'height=600,width=800');
   
       printWindow.document.write('<html><head><title>Impression de votre plan</title>');
-      printWindow.document.write('<link rel="stylesheet" href="css/sigrennesmetropole/printMap.css" type="text/css" />');
+      printWindow.document.write('<link rel="stylesheet" href="apps/public/css/printMap.css" type="text/css" />');
       printWindow.document.write('<script type="text/javascript" src="lib/jquery/base/1.10.2/jquery-1.10.2.min.js"></script>');
       printWindow.document.write('<script type="text/javascript" src="lib/bootstrap/3.3.6/js/bootstrap.min.js"></script>');
       printWindow.document.write('<link href="lib/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />');
@@ -138,7 +112,6 @@ var printMap = (function() {
               var canvas = event.context.canvas;
               exportPNGElement.href = canvas.toDataURL('image/png');
               createPrintWindow(exportPNGElement.href);
-              //$('#exportMap').attr('src', exportPNGElement.href);
           }
           catch(err) {
               mviewer.alert(err, "alert-info");

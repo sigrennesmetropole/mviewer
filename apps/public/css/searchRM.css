@@ -1,88 +1,99 @@
-#rechercheRVA {
-	position: fixed;
-	top: 65px;
-  right: 10px;
-  width: 20%;
+/******************************************************************************
+--------------------------- searchRM / searchCadastre -------------------------
+********************************************************************************/
+/************** RM search fields ********************/
+#searchRMContainer {
+  position: fixed;
+  top: 65px;
+  right: 0px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 }
 
-#searchContainer {
+#searchRm {
+  margin-top: 5px;
+}
+
+#searchContainer, #parcelSelector, #parcelInputs {
   display: flex;
 }
 
-.alerts-searchRVA {
-
-  bottom: 0px;
-
-  position: absolute;
-
-  left: 200px;
-
-  padding-left: 10px;
-
-  min-width: 300px;
-
-  background-color:#BE0011;
-  color: floralwhite;
-
-}
-
-#adressInput, #searchConfig {
+#searchConfig, #searchRmInput, .sectionsList, .parcellesList, #dispalysearchParcel {
   height: 28px;
 }
 
-.select2-selection {
-  border: none;
+#searchRmInput {
+  border-radius: 3px;
 }
 
-
-.ui-autocomplete {
-  width: 10%;
+.sectionsList {
+  width: 4rem;
 }
 
-.ui-autocomplete-category {
-  margin: 2% 1% 1% 1%;
+.parcellesList {
+  width: 5rem;
 }
 
+#searchConfig, #dispalysearchParcel {
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 2%;
+}
 
-@media (max-width: 980px) {
-  #rechercheRVA {
-   width: 25%;
+#searchConfig {
+  background-image: url("../../public/img/filtre.png");
+}
+
+#dispalysearchParcel {
+  align-self: end;
+  background-image: url("../../public/img/options-horizontal.png");
+}
+
+.selectCityInput {
+  padding-left: 0;
+}
+
+#containerSearchParams {
+  margin-left: 2%;
+}
+
+#parcelInputs {
+  width: 100%;
+}
+
+.slideInEffect {
+  animation-duration: 1.5s;
+  animation-name: slidein;
+}
+
+.slideOutEffect {
+  animation-duration: 1.5s;
+  animation-name: slideout;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 92%;
+    width: 0%;
+    overflow-x: hidden;
+  }
+  to {
+    margin-left: 0%;
+    width: 100%;
+    overflow-x: hidden;
+  }
+}
+@keyframes slideout {
+  from {
+    margin-left: 0%;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  to {
+    margin-left: 92%;
+    width: 0%;
+    overflow-x: hidden;
   }
 }
 
-
-@media (max-width: 820px) {
-  #rechercheRVA {
-    width: 30%;
-  }
-}
-
-@media (max-width: 660px) {
-  #rechercheRVA {
-    width: 35%;
-  }
-}
-
-@media (max-width: 560px) {
-  #rechercheRVA {
-    width: 40%;
-  }
-}
-
-@media (max-width: 460px) {
-  #rechercheRVA {
-    width: 45%;
-  }
-}
-
-@media (max-width: 400px) {
-  #rechercheRVA {
-    right: 31px;
-  }
-}
-
-@media (max-width: 370px) {
-  #rechercheRVA {
-    right: 46px;
-  }
-}
+/*# sourceMappingURL=searchRM.css.map */

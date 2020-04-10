@@ -1,9 +1,14 @@
-.tooltipRM {
-    position: fixed;
-    width: 180px;
-    background-color: #777;
-    display: none;
-    color: #f7f7f7;
-    padding: 0.3%;
-    text-align: center;
+/******************************************************************************
+--------------------------- TooltipWMS -------------------------
+********************************************************************************/
+.tooltipWMS {
+  position: fixed;
+  width: 180px;
+  background-color: #777;
+  display: none;
+  color: #f7f7f7;
+  padding: 0.3%;
+  text-align: center;
 }
+
+/*# sourceMappingURL=tooltipRM.css.map */

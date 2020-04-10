@@ -80,14 +80,10 @@ var info = (function () {
 
     var _sourceOverlay;
 
-    /**
-     * Property: _clickNbItems
-     * @type {integer}
-     * Used to show number of features on click
-     * by sigRennesMetropole
-     */
-
-    var _clickNbItems = 0;
+    // debut modif CT 31/01/2020
+    var nbItemsSelectedLayer = 0;
+    var layerCount  = "";
+    // fin
 
     /**
      * Private Method: _customizeHTML
@@ -131,11 +127,10 @@ var info = (function () {
 
     var _queryMap = function (evt, options) {
         var queryType = "map"; // default behaviour
-        // modified by sigRennesMetropole
         var views = {
-            "right-panel":{ "panel": "right-panel", "layers": [], "multiple": false},
-            "bottom-panel":{ "panel": "bottom-panel", "layers": [], "multiple": false},
-            "modal-panel": { "panel": "modal-panel", "layers": [], "multiple": false}
+            "right-panel":{ "panel": "right-panel", "layers": []},
+            "bottom-panel":{ "panel": "bottom-panel", "layers": []},
+            "modal-panel": { "panel": "modal-panel", "layers": []}
         };
         if (options) {
             // used to link elasticsearch feature with wms getFeatureinfo
@@ -158,7 +153,7 @@ var info = (function () {
             var format = new ol.format.GeoJSON();
             _map.forEachFeatureAtPixel(pixel, function(feature, layer) {
                 var l = layer.get('mviewerid');
-                if (l != 'featureoverlay' && l != 'elasticsearch') {
+                if (l !== 'featureoverlay' && l !== 'elasticsearch') {
                     var queryable = _overLayers[l].queryable;
                     if (queryable) {
                         if (vectorLayers[l] && vectorLayers[l].features) {
@@ -194,7 +189,6 @@ var info = (function () {
                         } else {
                             html_result = createContentHtml(features, l);
                         }
-                        html_result = _customizeHTML(html_result, features.length);
                         //Set view with layer info & html formated features
                         views[panel].layers.push({
                             "panel": panel,
@@ -238,26 +232,13 @@ var info = (function () {
                 }
             }
 
-            var getColorBack = function (sld) {
-                var color = 'not-def';
-                if (sld) {
-                    if (sld.indexOf('goutte') != -1) {
-                        color = sld.split('sld/')[1].split('.')[0];
-                    } else if (sld.indexOf('bleu') != -1|sld.indexOf('anglais') != -1) {
-                        color = 'goutte_bleu';
-                    } else if (sld.indexOf('vert') != -1|sld.indexOf('breton') != -1) {
-                        color = 'goutte_vert';
-                    } else if (sld.indexOf('chinois') != -1){
-                        color = 'goutte_violet';
-                    }
-                }
-                return color;
-            };
-            
             var requests = [];
             var carrousel=false;
             var callback = function (result) {
+                // debut modif CT 31/01/2020
                 var pos = 0;
+                nbItemsSelectedLayer = 0;
+                // fin
                 $.each(featureInfoByLayer, function (index, response) {
                     var layerinfos = response.layerinfos;
                     var panel = layerinfos.infospanel;
@@ -270,7 +251,9 @@ var info = (function () {
                     var theme = layerinfos.theme;
                     var layerid = layerinfos.layerid;
                     var theme_icon = layerinfos.icon;
-                    var color_back = getColorBack(layerinfos.sld);
+                    // debut modif CT 03/02/2020
+                    var color_back = interfaceModifying.getColorBack(layerinfos.sld);
+                    // fin
                     var id = views[panel].layers.length + 1;
                     var manyfeatures = false;
                     var html_result = [];
@@ -309,7 +292,7 @@ var info = (function () {
                         //Chaque élément trouvé est une feature avec ses propriétés
                         // Be carefull .carrousel renamed to mv-features
                         var features = $(layerResponse).find(".mv-features li").addClass("item");
-                        if(features.length == 0){
+                        if(features.length === 0){
                             html_result.push('<li class="item active">'+layerResponse+'</li>');
                         }
                         else {
@@ -322,78 +305,104 @@ var info = (function () {
                         if (xml) {
                             var obj = _parseGML(xml);
                             var features = obj.features;
-                            var templateName = configuration.getConfiguration().application.templaterightinfopanel;                            
-                            // original code
-                            if (features.length > 0 && templateName != "tabs") {
-                                features = features.reverse();
+                            if (features.length > 0) {
                                 if (layerinfos.template) {
                                    html_result.push(applyTemplate(features.reverse(), layerinfos));
                                 } else {
                                     html_result.push(createContentHtml(features.reverse(), layerinfos));
                                 }
-                            } else if (features.length > 0 && templateName === "tabs") {
-                                features = features.reverse();
-                                features.forEach(function(feature) {
-                                    var array = [];
-                                    var temp;
-                                    array.push(feature);
-                                    if (layerinfos.template) {
-                                        temp = applyTemplate(array, layerinfos);
-                                    } else {
-                                        temp = createContentHtml(array, layerinfos);
-                                    }
-                                    html_result.push(temp);
-                                });
-                            }                            
+                            }
                         }
                     }
                     //If some results, apppend panels views
                     if (html_result.length > 0) {
-                        //Set view with layer info & html formated features
-                        if (templateName === "tabs") {                        
-                            // Adaptation for SIG RM
-                            for (var i = 0; i < html_result.length; i++) {
-                                pos++;
-                                if (i > 0) {
-                                    id = id + i;
+                        // debut modif CT 31/01/2020
+                        /*interfaceModifying.queryMapModifications(html_result, layerid, layerCount, nbItemsSelectedLayer, pos, id, views, panel, name, layerid,
+                                    theme_icon, color_back);*/
+
+                        for (var i = 0; i < html_result.length; i++) {
+                            // debut modif CT 09/01/2020
+                            if (typeof layerCount !== 'undefined') {
+                                if (layerCount.trim().length > 0 && layerCount.replace(':', '') === layerid) {
+                                    nbItemsSelectedLayer++;
                                 }
-                                views[panel].layers.push({
-                                    "panel": panel,
-                                    "id": id,
-                                    "firstlayer": false,
-                                    "manyfeatures": (features.length > 1),
-                                    "nbfeatures": features.length,
-                                    "name": name,
-                                    "layerid": layerid,
-                                    "theme_icon": theme_icon,
-                                    "cat_color": color_back,
-                                    "index": pos,
-                                    "html": html_result[i]
-                                });
-                            };
-                            // get number of selected items
-                            _clickNbItems = views[panel].layers.length > 1 ? views[panel].layers.length : 0;
-                            if (pos > 1) {
-                                views[panel].multiple = true;
-                            } else {
-                                views[panel].multiple = false;
-                            }                            
-                        } else {
-                            // original code from geoBretagne mviewer v3
+                            }
+                            // fin
+                            pos++;
+                        
+                            if (i > 0) {
+                        
+                                id = id + i;
+                        
+                            }
+                        
+                            //Set view with layer info & html formated features
+                        
                             views[panel].layers.push({
+                        
                                 "panel": panel,
+                        
                                 "id": id,
+                        
                                 "firstlayer": (id === 1),
-                                "manyfeatures": (features.length > 1),
-                                "nbfeatures": features.length,
+                        
+                                //"manyfeatures": (features.length > 1),
+                        
+                                //"nbfeatures": features.length,
+                        
                                 "name": name,
+                        
                                 "layerid": layerid,
+                        
                                 "theme_icon": theme_icon,
-                                "html": html_result.join("")
+                        
+                                "cat_color": color_back,
+                        
+                                "index": pos,
+                        
+                                "html": html_result[i]
+                        
                             });
+                        
+                        
+                        
+                            if (pos > 1) {
+                        
+                                views[panel].multiple = true;
+                        
+                            } else {
+                        
+                                views[panel].multiple = false;
+                        
+                            }
+                        
                         }
+                        // fin
+
+                        //Set view with layer info & html formated features
+                        /*views[panel].layers.push({
+                            "panel": panel,
+                            "id": id,
+                            "firstlayer": false,
+                            "manyfeatures": (features.length > 1),
+                            "nbfeatures": features.length,
+                            "name": name,
+                            "layerid": layerid,
+                            "theme_icon": theme_icon,
+                            "html": html_result.join("")
+                        });*/
                     }
                 });
+
+                // debut modif CT 31/01/2020
+                if (typeof layerCount !== 'undefined') {
+                    if (layerCount.trim().length > 0) {
+                        RmOptionsManager.setClickNbItems(nbItemsSelectedLayer);
+                    }
+                } else {
+                    RmOptionsManager.setClickNbItems(pos);
+                }
+                // fin
 
                 $.each(views, function (panel, view) {
                     if (views[panel].layers.length > 0){
@@ -406,6 +415,9 @@ var info = (function () {
                         }
                         $("#"+panel+" .popup-content").append(template);
                     //TODO reorder tabs like in theme panel
+                        // debut modif CT 07/02/2020
+                        interfaceModifying.setTabFirstPosition(template);
+                        // fin
 
                     var title = $("[href='#slide-"+panel+"-1']").closest("li").attr("title");
                     $("#"+panel+" .mv-header h5").text(title);
@@ -441,7 +453,7 @@ var info = (function () {
                       $(e.currentTarget).find(".counter-slide").text($(e.relatedTarget).attr("data-counter"));
                    });
                    mviewer.showLocation(_projection.getCode(), _clickCoordinates[0], _clickCoordinates[1]);
-
+                
                 } else {
                     $('#'+panel).removeClass("active");
                 }
@@ -649,12 +661,6 @@ var info = (function () {
                 var obj=list[j];
                 for(var prop in obj) {
                     if(obj.hasOwnProperty(prop))
-                        /* AJOUT sigRennesMetropole - CBR 20180905*/
-                        for (var valeur in obj[prop]) {
-                            if (obj[prop][valeur]=="true") {obj[prop][valeur]=true}
-                            else if (obj[prop][valeur]=="false") {obj[prop][valeur]=false}
-                        }
-                        /* FIN AJOUT CBR 20180905*/
                         o.features.push({layername:prop, properties:obj[prop]});
                 }
             }
@@ -706,17 +712,17 @@ var info = (function () {
             });
             var featureTitle = feature.properties.title || feature.properties.name || feature.properties[fields[0]];
             var li = '<li class="item" ><div class="gml-item" ><div class="gml-item-title">'
-            if (typeof featureTitle != 'undefined') {
+            if (typeof featureTitle !== 'undefined') {
                 li += featureTitle;
             }
             li += '</div>';
 
             var aliases = (olayer.fields) ? olayer.aliases : false;
             fields.forEach(function (f) {
-                if (attributes[f] && f != fields[0]) { // si valeur != null
+                if (attributes[f] && f !== fields[0]) { // si valeur != null
                     fieldValue = attributes[f];
-                    if ((typeof fieldValue == "string") && ((fieldValue.indexOf("http://") == 0) ||
-                        (fieldValue.indexOf("https://") == 0))){
+                    if ((typeof fieldValue === "string") && ((fieldValue.indexOf("http://") === 0) ||
+                        (fieldValue.indexOf("https://") === 0))){
                         if (fieldValue.toLowerCase().match( /(.jpg|.png|.bmp)/ )) {
                             li += '<a onclick="mviewer.popupPhoto(\'' +  fieldValue + '\')" >' +
                             '<img class="popphoto" src="' + fieldValue + '" alt="image..." ></a>';
@@ -840,6 +846,9 @@ var info = (function () {
                 $('#feature-info').tooltip('hide');
             }
         });
+        // debut modif CT 03/02/2020
+        layerCount  = RmOptionsManager.getLayerCount();
+        // fin
     };
 
     /**
@@ -918,14 +927,6 @@ var info = (function () {
         _queryableLayers.push(oLayer.layer);
     };
 
-    /**
-     * Public Method: getClickNbItems
-     */
-
-    var _getClickNbItems = function () {
-       return _clickNbItems;
-    };
-
     return {
         init: init,
         enable: enable,
@@ -937,7 +938,9 @@ var info = (function () {
         formatHTMLContent: createContentHtml,
         templateHTMLContent: applyTemplate,
         addQueryableLayer: _addQueryableLayer,
-        getClickNbItems: _getClickNbItems
+        // debut modif CT 31/01/2020
+        queryMap: _queryMap
+        // fin
     };
 
 })();

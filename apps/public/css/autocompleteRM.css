@@ -1,32 +1,35 @@
-/* autocomplete list */
-.autocomplete-suggestions { 
-    border: 1px solid #999; 
-    background: #FFF;
-    overflow: auto; 
+/******************************************************************************
+--------------------------- Autocomplete -------------------------
+********************************************************************************/
+#rm-autocomplete-list {
+  background-color: white;
+  overflow: scroll;
+  max-height: 174px;
+}
+#rm-autocomplete-list li {
+  list-style: none;
 }
 
-/* set style of searched element for each items from the autocomplete list */
-.autocomplete-suggestions strong { 
-    font-style: italic;
-    font-weight: normal;
+.autocomplete-item:hover, .autocomplete-item:focus {
+  background-color: #37B6FA;
 }
 
-/* for each items from the autocomplete list */
-.autocomplete-suggestion { 
-    padding: 2px 4px; 
-    white-space: nowrap;
+#autocomplete-datas-list {
+  padding-left: 4%;
 }
 
-/*  autocomplete list hovered item */
-.autocomplete-selected { 
-    background: #CCCCCC; 
+.autocomplete-list-title {
+  color: #666666;
+  font-style: italic;
 }
 
-
-/* Groups names design, when autocomplete list items are grouped*/
-.autocomplete-group { 
-    text-align: center;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    font-weight: bold;
+.autocomplete-item {
+  color: #333;
+  font-style: normal;
 }
+
+.autocomplete-item-substr {
+  color: #0205AF;
+}
+
+/*# sourceMappingURL=autocompleteRM.css.map */
