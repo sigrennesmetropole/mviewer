@@ -1,4 +1,7 @@
 dist/*
 panels/*
-apps/public/font/*
-apps/public/data/*
+apps/*
+!apps/public/css/*
+!apps/public/img/*
+!apps/public/js/*
+!apps/public/lib/*
