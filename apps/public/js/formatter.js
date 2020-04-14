@@ -5,10 +5,10 @@
 var formatter = (function () {
 
     /**
-     *  -- Fonctions pour les organismes --
+     *  -- Organizations functions --
      */
 
-    // Mise en forme des horaires avec retour à la ligne
+    // timetable formating with line break
     var _formatHoraires = function formatHoraires() {
         var li_elements = document.getElementsByClassName("horaires");
         for (var i = 0, len = li_elements.length; i < len; i++) {
@@ -17,7 +17,7 @@ var formatter = (function () {
         }
     };
 
-    // Affichage mode réduit des jours fériés et des vacances scolaires
+    // public holiday and school holidays reduced displaying
     var _reducerDayOff = function reducerDayOff(hidden = false) {
         var elements = document.getElementsByClassName("daysOff");
         for (var a = 0; a < elements.length; a++) {
@@ -28,7 +28,7 @@ var formatter = (function () {
                 var formatDays = days;
                 if (days.indexOf('Fermé les jours fériés') == -1) {
                     if (days.indexOf(':') != -1) {
-                        formatDays = days.trim().split(':')[1]; // !! supprime la partie "Jour ou périodes de fermeture :" attention au formatage
+                        formatDays = days.trim().split(':')[1]; // !! remove "Jour ou périodes de fermeture :" Be careful of formatting 
                     }
                     if (formatDays.length) {
                         if (hidden) {
@@ -97,7 +97,7 @@ var formatter = (function () {
         }
     };
 
-    // Affichage mode réduit des jours fériés et des vacances scolaires
+    // public holiday and school holidays reduced displaying
     var _reducerDayOffForEpiceries = function reducerDayOffForEpiceries(hidden = false) {
         var elements = document.getElementsByClassName("daysOff");
         var list_element = document.getElementsByClassName("liste-des-jours");
@@ -114,7 +114,7 @@ var formatter = (function () {
                     var daysOffArrayRef = ['jour de l\'An', 'lundi de Pâques', 'fête du Travail', 'Victoire 1945', 'Ascension', 'lundi de Pentecôte', 'fête nationale', 'Assomption', 'Toussaint', 'Armistice 1918', 'Noël', 'Vacances de la Toussaint','Vacances de Noël', 'Vacances d\'hiver', 'Vacanc (...)'];
                     var formatDays = days;
                     if (days.indexOf(':') != -1) {
-                        formatDays = days.trim().split(':')[1]; // !! supprime la partie "Jour ou périodes de fermeture :" attention au formatage
+                        formatDays = days.trim().split(':')[1]; // !! remove "Jour ou périodes de fermeture :" be careful of formatting
                     }
                     if (formatDays.length) {
                         if (hidden) {
@@ -173,14 +173,14 @@ var formatter = (function () {
                 if (all_closures) {
                     for (var i = 0; i < all_closures.length; i++) {
                         var closure = all_closures[i].trim();
-                        // isolation des trois parties de la fermeture
+                        // splitting closing three parts
                         var elem = closure.split("|");
-                        // récupération des valeurs uniquement, sans guillemets
+                        // keep only values, without inverted commas
                         var beg = new Date(elem[0].split(":")[1].replace(/\"/g, ""));
                         var end = new Date(elem[1].split(":")[1].replace(/\"/g, ""));
                         var comment = elem[2].split(":")[1].replace(/\"/g, "").length > 0 ? " : " + elem[2].split(":")[1].replace(/\"/g, "") : "";
 
-                        // on ne retient que les plages de fermetures en cours ou futures
+                        // keep only ongoing or future closing
                         if (new Date(end) >= Date.now()) {
                             var output = "";
                             if (beg < end) {
@@ -192,11 +192,11 @@ var formatter = (function () {
                         }
                     }
 
-                    // tri du tableau sur la date de début
+                    // sorting array on start date  
                     closure_array.sort(sortByDate);
                 }
 
-                // sortie de la chaine de caractères correspondante
+                //output corresponding string
                 if (closure_array.length > 0) {
                     for (var j = 0; j < closure_array.length; j++) {
                         closureInfo.innerHTML = closureInfo.innerHTML + closure_array[j][2];
@@ -223,7 +223,7 @@ var formatter = (function () {
                     var end = closure_dates.length > 1 ? closure_dates[1] : beg;
                     var comment = all_closures[i].split(":").length > 1 ? " : " + all_closures[i].split(":")[1] : "";
 
-                    // on ne retient que les plages de fermetures en cours ou futures
+                    // keep only ongoing or future closing
                     if (getDateFromFrench(end)>= Date.now()){
                         var output = "";
                         var begFr = getDateFromFrench(beg);
@@ -237,10 +237,10 @@ var formatter = (function () {
                     }
                 }
 
-                // tri du tableau sur la date de début
+                // sorting on start date 
                 closure_array.sort(sortByDate);
 
-                // sortie de la chaine de caractères correspondante
+                // output corresponding string
                 if (closure_array.length > 0) {
                     for (var j = 0; j < closure_array.length; j++) {
                         closureInfo.innerHTML = closureInfo.innerHTML + closure_array[j][2];
@@ -257,12 +257,13 @@ var formatter = (function () {
         return new Date(val[2], val[1]-1 , val[0]);
     };
 
-    // tri sur les dates de début
+    // sorting on start date 
     var sortByDate = function sortByDate(date1, date2) {
         return (date1[0]-date2[0]);
     };
 
     // Mise en forme du lien vers l'annuaire
+    // directory link formatting
     /*var _formatDirectoryLink = function formatDirectoryLink() {
         var link = document.getElementById("directory-link");
         if (link){
@@ -271,7 +272,7 @@ var formatter = (function () {
         }
     };*/
 
-    // Mise en forme du lien vers le site
+    // website link formatting
     var _corrWebAddr = function corrWebAddr() {
         var my_links = document.getElementsByClassName("lienweb");
         console.log(my_links.length);

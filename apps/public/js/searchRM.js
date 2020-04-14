@@ -177,7 +177,6 @@ var searchRM = (function () {
 
         var idParent = '#' + $('#' + elementId).parent()[0].id;
 
-        // fin catcomplete
         $(document).on('input', '#searchRmInput', function () {
 
             var parametersList = $('#searchItems').val();

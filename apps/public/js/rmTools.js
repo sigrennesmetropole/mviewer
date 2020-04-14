@@ -153,7 +153,7 @@ var rmTools = (function() {
         });
     };
 
-    // Fonction d'appel pour générer le PDF NRU - API Urba 
+    // Function call to generate NRU PDF - API Urba
     function generatePDFNru(pdfUrl) {
         $('body').css('cursor','wait');
         $.get(pdfUrl, function(dataApi) {
