@@ -1,6 +1,6 @@
 dist/*
 panels/*
-apps/*
+!apps/*
 !apps/public/css/*
 !apps/public/img/*
 !apps/public/js/*
