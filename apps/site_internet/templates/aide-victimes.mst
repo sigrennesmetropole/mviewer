@@ -1,0 +1,31 @@
+{{#features}}
+	<li class="item">
+		<h5 class="rm-popup-title-feature">{{nom_usage_org}} {{#sigle_org}} <br/>({{sigle_org}}){{/sigle_org}}</h5>
+        
+		<p class="rm-popup-text-feature">
+        
+            <span  class='rm-popup-label'> Adresse :</span> {{adresse_site}} {{adresse_bp_cs_site}} {{adresse_cp_site}} {{adresse_commune_site}}<br/>
+			{{#nom_site}}<span  class='rm-popup-label'> Site :</span> {{nom_site}}<br/>{{/nom_site}}
+            {{#descriptif_org}}<span  class='rm-popup-label'> Descriptif :</span> {{{descriptif_org}}}<br/>{{/descriptif_org}}
+
+            {{#horaire_grille_org}}<span class='rm-popup-label'> Horaires :</span><br><span class='horaires'>{{{horaire_grille_org}}}</span>{{/horaire_grille_org}}
+			{{#infos_horaires_org}}<span class='rm-popup-label'> Informations :</span> {{{infos_horaires_org}}}<br/>{{/infos_horaires_org}}
+			{{#variation_conges_scolaires_org}}<span class='variationvac'> {{{variation_conges_scolaires_org}}}</span>{{/variation_conges_scolaires_org}}
+            
+            <span class='rm-popup-label'> Fermetures :</span> <span class='rm-fermetures'></span>
+			{{#jour_periode_ferme_org}} <span class='daysOff'> {{{jour_periode_ferme_org}}} </span>{{/jour_periode_ferme_org}}
+			{{#com_fermeture_conges_org}}<span class='comfermeture'> {{{com_fermeture_conges_org}}}</span>{{/com_fermeture_conges_org}}
+
+            {{#jours_excep_fermes_org}}
+                <span class='rm-popup-label'> Fermetures exceptionnelles :</span> <br/>
+                <span class="exceptionalClosures">{{{jours_excep_fermes_org}}}</span>
+            {{/jours_excep_fermes_org}}
+            
+
+			{{#mails_org}}<span class='rm-popup-label'> Courriel :</span> {{{mails_org}}}<br/>{{/mails_org}}
+			{{#telephones_org}}<span class='rm-popup-label'> Téléphone :</span> {{{telephones_org}}}<br/>{{/telephones_org}}
+			{{#web_org}}<span class='rm-popup-label'> Page internet :</span><a id='lienweb' class='lienweb' href="{{{web_org}}}" target="_blank" title="{{{web_org}}}"> Cliquez ici </a> {{/web_org}}
+
+		</p>
+	</li>
+{{/features}}

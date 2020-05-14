@@ -1,0 +1,16 @@
+{{#features}}
+	<li class="item">
+		<h5 class="rm-popup-title-feature">{{#niv_perturbation}} {{{niv_perturbation}}}  {{/niv_perturbation}}</h5>
+        
+        <p class="rm-popup-text-feature">
+                {{#niv_perturbation}}<span class='rm-popup-label'> Niveau de perturbation :</span > {{{niv_perturbation}}} <br/> {{/niv_perturbation}}
+                {{#type}} <span class='rm-popup-label'>Gêne occasionnée :</span> {{{type}}}<br/> {{/type}}
+                {{#libelle}} <span class='rm-popup-label'>Description</strong> :</span>{{{libelle}}}<br/> {{/libelle}}
+                {{#localisation}} <span class='rm-popup-label'>Localisation</strong> :</span> {{{localisation}}} <br/>{{/localisation}}
+                {{#date_deb}} <span class='rm-popup-label'>Début estimé des travaux</strong> :</span> <span class="date_in_french_format">{{{date_deb}}}</span><br/> {{/date_deb}}
+                {{#date_fin}} <span class='rm-popup-label'>Fin estimée des travaux</strong> :</span> <span class="date_in_french_format">{{{date_fin}}}</span><br/> {{/date_fin}}
+                {{#tel_fixe}} <span class='rm-popup-label'>Contact</strong> :</span> {{{tel_fixe}}} {{/tel_fixe}}
+        </p>
+	</li>
+{{/features}}
+

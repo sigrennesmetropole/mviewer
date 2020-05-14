@@ -1,0 +1,12 @@
+{{#features}}
+	<li class="item">
+		<h5 class="rm-popup-title-feature">Stationnement PMR {{nom}}</h5>
+		<p class="rm-popup-text-feature">
+			<span class='rm-popup-label'> Adresse :</span> {{nom_voie}} {{code_insee}} {{nom_commune}}<br/>
+			{{#type}}<span class='rm-popup-label'> Type de parking :</span> {{{type}}}<br/>{{/type}}
+			{{#categorie}}<span class='rm-popup-label'> Catégorie du parking :</span> {{categorie}}<br/>{{/categorie}}
+			{{#payant}}<span class='rm-popup-label'> Payant :</span> {{payant}}<br/>{{/payant}}
+		</p>
+	</li>
+{{/features}}
+

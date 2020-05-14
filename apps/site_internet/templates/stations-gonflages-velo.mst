@@ -1,0 +1,9 @@
+{{#features}}
+	<li class="item">
+		<p class="rm-popup-text-feature">
+			{{#date_creation}}<span class='rm-popup-label'> Date de création :</span> {{date_creation}}<br/>{{/date_creation}}
+			{{#gonflage}}<span class='rm-popup-label'> Gonglage :</span> {{gonflage}}<br/>{{/gonflage}}
+			{{#reparation}}<span class='rm-popup-label'> Réparation :</span> {{reparation}}<br/>{{/reparation}}
+		</p>
+	</li>
+{{/features}}

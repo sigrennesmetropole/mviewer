@@ -1,0 +1,10 @@
+{{#features}}
+	<li class="item">
+		<h5 class="rm-popup-title-feature">Support N°{{objectid}}</h5>
+		<p class="rm-popup-text-feature">
+			{{#nom_voie}}<span class='rm-popup-label'> Adresse :</span> {{nom_voie}} - {{nom_commune}}<br/>{{/nom_voie}}
+			{{#nombre_support}}<span class='rm-popup-label'> Nombre de supports :</span> {{{nombre_support}}}<br/>{{/nombre_support}}
+
+        </p>
+	</li>
+{{/features}}

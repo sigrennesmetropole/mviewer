@@ -1,0 +1,11 @@
+{{#features}}
+	<li class="item">
+		<h5 class="rm-popup-title-feature">{{nom}}</h5>
+		<p class="rm-popup-text-feature">
+			{{#adresse}}<span class='rm-popup-label'> Adresse :</span> {{adresse}} <br/>{{/adresse}}
+			{{#type}}<span class='rm-popup-label'> Type :</span> {{{type}}}<br/>{{/type}}
+			{{#nombre}}<span class='rm-popup-label'> Nombre d'emplacements :</span> {{nombre}}<br/>{{/nombre}}
+			{{#gestionnaire}}<span class='rm-popup-label'> Gestionnaire :</span> {{gestionnaire}}<br/>{{/gestionnaire}}
+		</p>
+	</li>
+{{/features}}

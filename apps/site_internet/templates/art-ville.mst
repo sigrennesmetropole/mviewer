@@ -1,0 +1,17 @@
+{{#features}}
+	<li class="item">
+		<h5 class="rm-popup-title-feature">{{oeuvre_nom}}</h5>
+        
+		<p class="rm-popup-text-feature">
+			{{#localisation}}<span class='rm-popup-label'> Localisation :</span> {{localisation}}<br/>{{/localisation}}
+			{{#oeuvre_desc}}<span class='rm-popup-label'> Description :</span> {{oeuvre_desc}}<br/>{{/oeuvre_desc}}
+			{{#oeuvre_date}}<span class='rm-popup-label'> Date :</span> {{{oeuvre_date}}}<br/>{{/oeuvre_date}}
+			{{#artiste}}<span class='rm-popup-label'> Artiste :</span> {{{artiste}}}<br/>{{{biblio}}}<br/>{{/artiste}}
+			{{#autre_info}}<span class='rm-popup-label'> Information supplémentaire :</span> {{{autre_info}}}<br/>{{/autre_info}}
+		</p>
+		{{#photo}}<img class="photo" src="{{{url_photo}}}{{{photo}}}" alt="{{{oeuvre_nom}}}"> 
+		 <p class="labelPictureEnlarge">Cliquez pour agrandir cette image</p>
+		{{/photo}}
+	</li>
+{{/features}}
+

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<config>
+	<!-- <application
+		title="Travaux du jour et survenant dans la semaine"
+		logo="https://public.sig.rennesmetropole.fr/ressources/img/logos/rm/logo_mviewer_gris_inverse.png"
+        titlehelp="À propos des cartes thématiques" 
+		help="geotravaux_help.html"
+		showhelp="false"
+		style="apps/site_internet/css/site_internet_gris.css"
+		exportpng="true"
+		geoloc="true"
+		measuretools="true"
+		coordinates="true"
+		printMap="true" 
+		togglealllayersfromtheme="true"
+		searchRM="true"
+		searchRMConfFile="data/searchRMConf.json"/>-->
+    <application
+		title="Travaux du jour et survenant dans la semaine"
+		logo="https://public.sig.rennesmetropole.fr/ressources/img/logos/rm/logo_mviewer_gris_inverse.png"
+        titlehelp="À propos des cartes thématiques" 
+		help="geotravaux_help.html"
+		showhelp="false"
+		style="apps/site_internet/css/site_internet_gris.css"
+		exportpng="true"
+		geoloc="true"
+		measuretools="false"
+		coordinates="false"
+		togglealllayersfromtheme="false" />
+	<mapoptions maxzoom="20" minzoom="11" projection="EPSG:3857" center="-186098.36482879001,6125889.9088213602" zoom="12" />
+    
+	<baselayers style="default">
+		<baselayer visible="true" id="pvci_nb" thumbgallery="img/basemap/pvcinb.jpg" title="Rennes Metropole" label="Plan de ville gris" type="WMTS" 
+url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="ref_fonds:pvci_nb" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" 
+attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"/>
+		<baselayer visible="false" id="pvcisimplegris" thumbgallery="img/basemap/pvcilight.jpg" title="Rennes Metropole" label="Plan de ville simple gris" type="WMTS" 
+url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="ref_fonds:pvci_simple_gris" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" 
+attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"/>
+		<baselayer visible="false" id="pvcicouleur" thumbgallery="img/basemap/pvci.jpg" title="Rennes Metropole" label="Plan de ville couleur" type="WMTS" 
+url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="ref_fonds:pvci" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" 
+attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"/>
+		<baselayer visible="false" id="ortho2017" thumbgallery="img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" 
+url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" 
+attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"/>
+	</baselayers>
+    
+	<searchparameters bbox="false" localities="false" features="false" static="false"/>
+    
+	<themes mini="true">
+		<theme id="geotravaux" name="Travaux en cours" collapsed="true" icon="fas fa-exclamation-triangle">
+            <layer
+				id="geotravaux_evenement_1j"
+				name="Travaux du jour"
+				type="customlayer"
+				url="apps/site_internet/customlayer/geotravaux.js"
+				visible="true"
+				metadata="undefined"
+				queryable="true"
+                fields="niv_perturbation,type,libelle,localisation,date_deb,date_fin,tel_fixe"
+                featurecount="5"
+                tooltip="true" 
+                tooltipenabled="true" 
+                tooltipcontent="&lt;b&gt;{{localisation}}&lt;/b&gt;&lt;br/&gt;{{niv_perturbation}}&lt;br/&gt; du &lt;span class=&apos;date_in_french_format&apos;&gt;{{date_deb}}&lt;/span&gt; au &lt;span class=&apos;date_in_french_format&apos;&gt;{{date_fin}}&lt;/span&gt;"
+				infopanel="right-panel">
+                 <template url="apps/site_internet/templates/geotravaux_evenements.mst"></template>
+			</layer>
+            <layer
+				id="geotravaux_evenement_6j"
+				name="Travaux de la semaine"
+				type="customlayer"
+				url="apps/site_internet/customlayer/geotravaux_6j.js"
+				visible="false"
+				metadata="undefined"
+				queryable="true"
+				fields="niv_perturbation,type,libelle,localisation,date_deb,date_fin,tel_fixe"
+                featurecount="5"
+                tooltip="true" 
+                tooltipenabled="true" 
+                tooltipcontent="&lt;b&gt;{{localisation}}&lt;/b&gt;&lt;br/&gt;{{niv_perturbation}}&lt;br/&gt; du &lt;span class=&apos;date_in_french_format&apos;&gt;{{date_deb}}&lt;/span&gt; au &lt;span class=&apos;date_in_french_format&apos;&gt;{{date_fin}}&lt;/span&gt;"
+				infopanel="right-panel">
+                <template url="apps/site_internet/templates/geotravaux_evenements.mst"></template>
+			</layer>
+			
+		</theme>
+	</themes> 
+</config>

@@ -1,0 +1,28 @@
+{{#features}}
+	<li class="item">
+		<h5 class="rm-popup-title-feature">{{nom_usage}}</h5>
+        
+		<p class="rm-popup-text-feature">
+			<span class='rm-popup-label'> Adresse :</span> {{adresse_postale_adr}} {{adresse_postale_cp}} {{adresse_postale_comm}}<br/>
+			{{#descriptif}}<span class='rm-popup-label'> Descriptif :</span> {{{descriptif}}}<br/>{{/descriptif}}
+			{{#horaire_grille}}<span class='rm-popup-label'> Horaires :</span><br><span class='horaires'>{{{horaire_grille}}}</span>{{/horaire_grille}}
+			{{#infos_horaires}}<span class='rm-popup-label'> Informations :</span> {{{infos_horaires}}}<br/>{{/infos_horaires}}
+			{{#variation_conges_scolaires}}<span class='variationvac'> {{{variation_conges_scolaires}}}</span>{{/variation_conges_scolaires}}
+
+            <span class='rm-popup-label'> Fermetures :</span> <span class='rm-fermetures'></span>
+			{{#jour_periode_ferme}} <span class='daysOff'> {{{jour_periode_ferme}}} </span>{{/jour_periode_ferme}}
+			{{#com_fermeture_conges}}<span class='comfermeture'> {{{com_fermeture_conges}}}</span>{{/com_fermeture_conges}}
+            
+            {{#jours_excep_fermes}}
+                <span class='rm-popup-label'> Fermetures exceptionnelles :</span> <br/>
+                <span class="exceptionalClosures">{{{jours_excep_fermes}}}</span>
+            {{/jours_excep_fermes}}
+            
+            {{#mails}}<span class='rm-popup-label'> Courriel :</span> {{{mails}}}<br/>{{/mails}}
+			{{#telephones}}<span class='rm-popup-label'> Téléphone :</span> {{{telephones}}}<br/>{{/telephones}}
+			{{#web}}<span class='rm-popup-label'> Page internet :</span><a id='lienweb' class='lienweb' href="{{{web}}}" target="_blank" title="{{{web}}}"> Cliquez ici </a> {{/web}}
+		
+        </p>
+	</li>
+{{/features}}
+

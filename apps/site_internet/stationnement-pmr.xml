@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <application
+        title="Stationnement PMR"
+        logo="https://public.sig.rennesmetropole.fr/ressources/img/logos/rm/logo_mviewer_gris_inverse.png"
+        titlehelp="À propos des cartes thématiques" 
+        help=""
+        showhelp="false"
+        exportpng="false"
+        style="apps/site_internet/css/site_internet_gris.css"
+        measuretools="false" 
+        togglealllayersfromtheme="false" 
+         />
+        <!-- 
+        stats="true" 
+        statsurl="../ws/kartenn/log.php"
+        templaterightinfopanel="accordion"
+        -->
+    <mapoptions maxzoom="20" projection="EPSG:3857" center="-188244.25943429657,6125209.881604007" zoom="11" />
+    <baselayers style="gallery"><!-- style="default"||gallery" -->     
+        <baselayer visible="true" id="pvcisimple" thumbgallery="apps/site_internet/img/basemap/pvcisimple.jpg" title="Rennes Metropole" label="Plan de ville" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="ref_fonds:pvci_simple_gris" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;" maxzoom="22"  maxscale="1000" ></baselayer>
+        <baselayer visible="false" id="ortho2017" thumbgallery="apps/site_internet/img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;" maxzoom="22"  maxscale="1000" ></baselayer>
+    </baselayers>
+    <!-- <proxy url="../proxy/?url="/>	 -->
+
+    <!-- <olscompletion url="../olscompletion"/> -->
+    <!-- <elasticsearch url="https://ows.region-bretagne.fr/kartenn/_search" geometryfield="geometry" linkid="search_id" querymode="match" version="current" /> -->
+    <searchparameters bbox="false" localities="false" features="false" static="false"/>
+
+
+    <themes mini="true"> 
+        <theme id="theme-20180827150815" name="Stationnement PMR" collapsed="true" icon="fas fa-wheelchair"> 
+            <layer 
+                id="v_parking"
+                name="Stationnement PMR sur Rennes Métropole"
+                type="wms"
+                url="https://public.sig.rennesmetropole.fr/geoserver/trp_statio/ows"
+                visible="true"
+                infoformat="application/vnd.ogc.gml"
+                sld="https://public.sig.rennesmetropole.fr/ressources/img/mviewer/sld/stationnement-pmr.sld"
+                metadata="undefined"
+                metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/ceb9828a-951a-46ed-99e3-dc750d07feb9"
+                queryable="true"
+                featurecount="3"
+                filter="handicape='Oui'"
+                infopanel="right-panel">
+                <template url="apps/site_internet/templates/stationnement-pmr.mst"></template>
+            </layer> 
+        </theme> 
+    </themes>
+</config>
