@@ -153,7 +153,7 @@ var info = (function () {
             var format = new ol.format.GeoJSON();
             _map.forEachFeatureAtPixel(pixel, function(feature, layer) {
                 var l = layer.get('mviewerid');
-                if (l !== 'featureoverlay' && l !== 'elasticsearch') {
+                if (l && l != 'featureoverlay' && l != 'elasticsearch' ) {
                     var queryable = _overLayers[l].queryable;
                     if (queryable) {
                         if (vectorLayers[l] && vectorLayers[l].features) {
@@ -218,11 +218,11 @@ var info = (function () {
             var urls = [];
             var params;
             for (var i = 0; i < visibleLayers.length; i++) {
-                if (visibleLayers[i] instanceof ol.layer.Vector === false) {
+                if (visibleLayers[i] instanceof ol.layer.BaseVector === false) {
                     params = {'INFO_FORMAT': _overLayers[visibleLayers[i].get("mviewerid")].infoformat,
                         'FEATURE_COUNT': _overLayers[visibleLayers[i].get("mviewerid")].featurecount
                     };
-                    var url = visibleLayers[i].getSource().getGetFeatureInfoUrl(
+                    var url = visibleLayers[i].getSource().getFeatureInfoUrl(
                         evt.coordinate, _map.getView().getResolution(), _map.getView().getProjection(), params
                     );
                     if (layer && featureid) {
@@ -292,7 +292,7 @@ var info = (function () {
                         //Chaque élément trouvé est une feature avec ses propriétés
                         // Be carefull .carrousel renamed to mv-features
                         var features = $(layerResponse).find(".mv-features li").addClass("item");
-                        if(features.length === 0){
+                        if(features.length == 0){
                             html_result.push('<li class="item active">'+layerResponse+'</li>');
                         }
                         else {
@@ -306,11 +306,27 @@ var info = (function () {
                             var obj = _parseGML(xml);
                             var features = obj.features;
                             if (features.length > 0) {
+                                // MODIF CBR pour gestion des multiples features
+                                /*
                                 if (layerinfos.template) {
                                    html_result.push(applyTemplate(features.reverse(), layerinfos));
                                 } else {
                                     html_result.push(createContentHtml(features.reverse(), layerinfos));
                                 }
+                                */
+                                var conf = configuration.getConfiguration();
+                                // découper chaque feature en simulant une nouvelle couche
+                                var uniqueFeature = [];
+                                features.forEach(function(feature) {
+                                    var uniqueFeature = [];
+                                    uniqueFeature.push(feature);
+                                    if (layerinfos.template) {
+                                       html_result.push(applyTemplate(uniqueFeature.reverse(), layerinfos));
+                                    } else {
+                                        html_result.push(createContentHtml(uniqueFeature.reverse(), layerinfos));
+                                    }
+                                });
+                                // FIN MODIF CBR
                             }
                         }
                     }
@@ -329,53 +345,29 @@ var info = (function () {
                             }
                             // fin
                             pos++;
-                        
                             if (i > 0) {
-                        
                                 id = id + i;
-                        
                             }
-                        
                             //Set view with layer info & html formated features
-                        
                             views[panel].layers.push({
-                        
                                 "panel": panel,
-                        
                                 "id": id,
-                        
                                 "firstlayer": (id === 1),
-                        
                                 //"manyfeatures": (features.length > 1),
-                        
                                 //"nbfeatures": features.length,
-                        
                                 "name": name,
-                        
                                 "layerid": layerid,
-                        
                                 "theme_icon": theme_icon,
-                        
                                 "cat_color": color_back,
-                        
                                 "index": pos,
-                        
                                 "html": html_result[i]
-                        
                             });
                         
-                        
-                        
                             if (pos > 1) {
-                        
                                 views[panel].multiple = true;
-                        
                             } else {
-                        
                                 views[panel].multiple = false;
-                        
                             }
-                        
                         }
                         // fin
 
@@ -453,13 +445,17 @@ var info = (function () {
                       $(e.currentTarget).find(".counter-slide").text($(e.relatedTarget).attr("data-counter"));
                    });
                    mviewer.showLocation(_projection.getCode(), _clickCoordinates[0], _clickCoordinates[1]);
-                
+
                 } else {
                     $('#'+panel).removeClass("active");
                 }
             });
             $('#loading-indicator').hide();
             search.clearSearchField();
+            // AJOUT CBR 22/04/2020
+            formatter.rmFormatTabs();
+            // FIN AJOUT CBR 22/04/2020
+                
             _mvReady = true;
 
         };
@@ -509,6 +505,7 @@ var info = (function () {
             });
         }
         var pixel = _map.getEventPixel(evt.originalEvent);
+        var _o = mviewer.getLayers();
 
         var feature = _map.forEachFeatureAtPixel(pixel, function (feature, layer) {
             if (!layer || layer.get('mviewerid') === 'featureoverlay') {
@@ -558,7 +555,7 @@ var info = (function () {
             $("#map").css("cursor", "pointer");
             var l = _overLayers[feature.get('mviewerid')];
             if (l && ((l.fields && l.fields.length > 0) || l.tooltipcontent)) {
-                if (newFeature) {
+                if (newFeature && !l.nohighlight) {
                     _sourceOverlay.clear();
                     _sourceOverlay.addFeature(feature);
                 }
@@ -712,17 +709,17 @@ var info = (function () {
             });
             var featureTitle = feature.properties.title || feature.properties.name || feature.properties[fields[0]];
             var li = '<li class="item" ><div class="gml-item" ><div class="gml-item-title">'
-            if (typeof featureTitle !== 'undefined') {
+            if (typeof featureTitle != 'undefined') {
                 li += featureTitle;
             }
             li += '</div>';
 
             var aliases = (olayer.fields) ? olayer.aliases : false;
             fields.forEach(function (f) {
-                if (attributes[f] && f !== fields[0]) { // si valeur != null
+                if (attributes[f] && f != fields[0]) { // si valeur != null
                     fieldValue = attributes[f];
-                    if ((typeof fieldValue === "string") && ((fieldValue.indexOf("http://") === 0) ||
-                        (fieldValue.indexOf("https://") === 0))){
+                    if ((typeof fieldValue == "string") && ((fieldValue.indexOf("http://") == 0) ||
+                        (fieldValue.indexOf("https://") == 0))){
                         if (fieldValue.toLowerCase().match( /(.jpg|.png|.bmp)/ )) {
                             li += '<a onclick="mviewer.popupPhoto(\'' +  fieldValue + '\')" >' +
                             '<img class="popphoto" src="' + fieldValue + '" alt="image..." ></a>';
@@ -760,6 +757,27 @@ var info = (function () {
         olfeatures.forEach(function(feature){
             if (activeAttributeValue) {
                 feature.properties[activeAttributeValue] = true;
+            }
+            // add a key_value array with all the fields, allowing to iterate through all fields in a mustache templaye
+            feature.properties['fields_kv'] = function () {
+              fields_kv = [];
+              keys = Object.keys(this);
+              for (i = 0 ; i < keys.length ; i++ ) {
+                if (keys[i] == "fields_kv" || keys[i] == "serialized") {
+                  continue;
+                }
+                field_kv = {
+                  'key': keys[i],
+                  'value': this[keys[i]]
+                }
+                fields_kv.push(field_kv);
+              }
+              return fields_kv;
+            }
+            // add a serialized version of the object so it can easily be passed through HTML GET request
+            // you can deserialize it with `JSON.parse(data)` when data is the serialized data
+            feature.properties['serialized'] = function () {
+              return encodeURIComponent(JSON.stringify(feature.properties));
             }
             obj.features.push(feature.properties);
         });
@@ -935,12 +953,10 @@ var info = (function () {
         enabled : enabled,
         toggleTooltipLayer: toggleTooltipLayer,
         queryLayer: queryLayer,
+        queryMap: _queryMap,
         formatHTMLContent: createContentHtml,
         templateHTMLContent: applyTemplate,
-        addQueryableLayer: _addQueryableLayer,
-        // debut modif CT 31/01/2020
-        queryMap: _queryMap
-        // fin
+        addQueryableLayer: _addQueryableLayer
     };
 
 })();
