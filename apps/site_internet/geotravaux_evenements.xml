@@ -19,7 +19,7 @@
 		title="Travaux du jour et survenant dans la semaine"
 		logo="https://public.sig.rennesmetropole.fr/ressources/img/logos/rm/logo_mviewer_gris_inverse.png"
         titlehelp="À propos des cartes thématiques" 
-		help="geotravaux_help.html"
+		help="apps/site_internet/html/geotravaux_help.html"
 		showhelp="false"
 		style="apps/site_internet/css/site_internet_gris.css"
 		exportpng="true"
@@ -79,8 +79,7 @@ attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork
                 tooltipcontent="&lt;b&gt;{{localisation}}&lt;/b&gt;&lt;br/&gt;{{niv_perturbation}}&lt;br/&gt; du &lt;span class=&apos;date_in_french_format&apos;&gt;{{date_deb}}&lt;/span&gt; au &lt;span class=&apos;date_in_french_format&apos;&gt;{{date_fin}}&lt;/span&gt;"
 				infopanel="right-panel">
                 <template url="apps/site_internet/templates/geotravaux_evenements.mst"></template>
-			</layer>
-			
+			</layer>			
 		</theme>
 	</themes> 
 </config>

@@ -419,6 +419,10 @@ ul ul {
     padding-bottom: 0px!important;
 }
 
+.popup-content .nav-tabs > li.active > a {
+    background-color: #4D4D4D!important;
+}
+
 .popup-content .nav-tabs > li.active > a.background-not-def {
     background-color: #4D4D4D;
 }
@@ -451,7 +455,7 @@ ul ul {
     opacity: 100%;
 }
 .popup-content .nav-tabs > li.active > a > .fa {
-    /*color: white!important;*/
+    color: white!important;
     opacity: 100%;
 }
 .popup-content .nav-tabs > li.active > a.bg-colored > .item-number {

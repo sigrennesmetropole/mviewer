@@ -525,10 +525,7 @@ var formatter = (function () {
     //var _corrWebAddr = function corrWebAddr() {
     function corrWebAddr() {
         var my_links = document.getElementsByClassName("lienweb");
-        console.log(my_links.length);
-        //console.log('titi');
         if (my_links){
-            console.log('toto'+my_links.length);
             for (var i = 0; i < my_links.length; i++) {
                 var adresse = my_links[i].getAttribute("href");
                 console.log("adresse = " + adresse);

@@ -126,6 +126,9 @@ var info = (function () {
      */
 
     var _queryMap = function (evt, options) {
+        // AJOUT CBR
+        var pos = 0;
+        // FIN AJOUT
         var queryType = "map"; // default behaviour
         var views = {
             "right-panel":{ "panel": "right-panel", "layers": []},
@@ -165,6 +168,8 @@ var info = (function () {
                      }
                 }
             });
+            
+            //CBR : TODO afficher les features des couches vectorielles par onglet
             for(var layerid in vectorLayers) {
                 if (mviewer.customLayers[layerid] && mviewer.customLayers[layerid].handle) {
                     mviewer.customLayers[layerid].handle(vectorLayers[layerid].features, views);
@@ -184,6 +189,8 @@ var info = (function () {
                         //Create html content from features
                         var html_result = "";
                         var features = vectorLayers[layerid].features;
+                        // MODIF CBR
+                        /*
                         if (l.template) {
                             html_result = applyTemplate(features, l);
                         } else {
@@ -201,6 +208,51 @@ var info = (function () {
                             "theme_icon": theme_icon,
                             "html": html_result
                         });
+                        */
+                        
+                        for (var i = 0; i < features.length; i++) {
+                        //features.forEach(function(feature) {
+                            var feature = features[i]; 
+                            if (typeof layerCount !== 'undefined') {
+                                if (layerCount.trim().length > 0 && layerCount.replace(':', '') === layerid) {
+                                    nbItemsSelectedLayer++;
+                                }
+                            }                            
+                            pos++;
+                            if (i > 0) {
+                                id = id + i;
+                            }
+                            
+                            
+                            var uniqueFeature = [];
+                            uniqueFeature.push(feature);
+                            if (l.template) {
+                                html_result = applyTemplate(uniqueFeature, l);
+                            } else {
+                                html_result = createContentHtml(uniqueFeature, l);
+                            }
+                            //Set view with layer info & html formated features
+                            views[panel].layers.push({
+                                "panel": panel,
+                                "id": id,
+                                "firstlayer": (id === 1),
+                                //"manyfeatures": (features.length > 1),
+                                //"nbfeatures": features.length,
+                                "name": name,
+                                "layerid": layerid,
+                                "theme_icon": theme_icon,
+                                "cat_color": 'not-def',                                
+                                "index": pos,
+                                "html": html_result
+                            });
+                        }
+                        //});        
+                        if (pos > 1) {
+                            views[panel].multiple = true;
+                        } else {
+                            views[panel].multiple = false;
+                        }                        
+                        // FIN MODIF CBR
                      }
                 }
             }
@@ -236,7 +288,7 @@ var info = (function () {
             var carrousel=false;
             var callback = function (result) {
                 // debut modif CT 31/01/2020
-                var pos = 0;
+                //var pos = 0;
                 nbItemsSelectedLayer = 0;
                 // fin
                 $.each(featureInfoByLayer, function (index, response) {
@@ -330,7 +382,7 @@ var info = (function () {
                             }
                         }
                     }
-                    //If some results, apppend panels views
+                    //If many results, append panels views
                     if (html_result.length > 0) {
                         // debut modif CT 31/01/2020
                         /*interfaceModifying.queryMapModifications(html_result, layerid, layerCount, nbItemsSelectedLayer, pos, id, views, panel, name, layerid,
