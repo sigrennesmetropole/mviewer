@@ -40,12 +40,12 @@ var rmTools = (function() {
 
         $('body').append('<div id="messageModalContainer"></div>');
 
-        var modal = '<div id="messageModal" class="message-modal">'
-        + '<div class="rm-modal-content">'
-         + '<div class="rm-modal-header">'
+        var modal = '<div id="messageModal" class="modal-dialog">'
+        + '<div class="modal-content">'
+         + '<div class="modal-header">'
          +   '<span class="modalCloseBtn">&times;</span>'
          + '</div>'
-         + '<div class="rm-modal-body">'
+         + '<div class="modal-body">'
          +   '<div>' + message + '</div>'
          + '</div> </div> </div>';
 
@@ -76,83 +76,113 @@ var rmTools = (function() {
 
     };
 
+    // AJOUT CBR
+    var initTutorial = function () {
+        // insert tutorial container
+        if ( document.querySelector('#tutorialContainer') === null ) {
+            $('#main').append('<div id="tutorialContainer" class="tutocontainer" role="dialog"></div>');
+        } else {
+            $('#tutorialContainer').css('z-index', '1');
+        }
+    };
+    
     var displayTutorial = function (tutorialFile) {
 
-        $.getJSON(tutorialFile, function (tutorialData) {
+                $.getJSON(tutorialFile, function (tutorialData) {
 
-            var tutorialCode = ''; // code of all tutorial
-            var ordersTab = [];
+                var tutorialCode = ''; // code of all tutorial
+                var ordersTab = [];
 
-            tutorialData.forEach(function (data) {
-                
-                if (typeof data.height === 'undefined') {
-                    data.height = "auto";
-                }
-                if (typeof data.width === 'undefined') {
-                    data.width = "auto";
-                }
-                if (typeof data.top === 'undefined') {
-                    data.top = "auto";
-                }
-                if (typeof data.left === 'undefined') {
-                    data.left = "auto";
-                }
+                tutorialData.forEach(function (data) {
 
-                // set tutorial item
-                var forewordHtml =  '<div id="tutorial' + data.order + '" class="didacticiel">'
-                        +'<div class="didact-content" style="width: ' + data.width +'; top: ' + data.top +'; left: ' + data.left +'">'
-                        +    '<div class="quote-container">'
-                        +        '<i class="pin"></i>'
-                        +        '<blockquote class="note postit" style="height: '+ data.height +'">' + data.content + '</blockquote>'
-                        +    '</div>'
-                        + '</div></div>';
-                
-                tutorialCode += forewordHtml;
-
-                ordersTab.push( parseFloat(data.order) );
-
-            });
-            
-            // add tutorial container
-            if ( document.querySelector('#tutorialContainer') === null ) {
-                $('body').append('<div id="tutorialContainer" class=""></div>');
-            } else {
-                $('#tutorialContainer').css('z-index', '1');
-            }
-                
-            $('#tutorialContainer').html(tutorialCode);
-
-            // display first element
-            var ordersTabSorted = ordersTab.sort();
-            $('#tutorial' + ordersTabSorted[0]).show();
-            if ( document.querySelector('#forewordContainer') !== null ) {
-                $('#tutorialContainer').hide();
-            }
-
-            $('#tutorialContainer').click(function (e) {
-            
-                if (e.target.className === 'didacticiel') {
-
-                    for (var i =0; i < ordersTabSorted.length; i++) {
-                        if ('tutorial' + ordersTabSorted[i] === e.target.id) {
-
-                            $('#tutorial' + ordersTabSorted[i]).hide();
-
-                            if (i+1 < ordersTabSorted.length) {
-                                $('#tutorial' + ordersTabSorted[i+1]).show();
-                            } else if (i === (ordersTabSorted.length - 1) ) {
-                                $('#tutorialContainer').remove();
-                            }
-                            
-                        }
+                    if (typeof data.height === 'undefined') {
+                        data.height = "auto";
                     }
-            
-                }
-            
-            });
-        });
-    };
+                    if (typeof data.width === 'undefined') {
+                        data.width = "auto";
+                    }
+                    if (typeof data.top === 'undefined') {
+                        data.top = "auto";
+                    }
+                    if (typeof data.left === 'undefined') {
+                        data.left = "auto";
+                    }
 
+                    // set tutorial item
+                    var tutoHtml =  '<div id="tutorial' + data.order + '" class="didacticiel">'
+                            +'<div class="didact-content" style="width: ' + data.width +'; top: ' + data.top +'; left: ' + data.left +'">'
+                            +    '<div class="quote-container">'
+                            +        '<i class="pin"></i>'
+                            +        '<blockquote class="note postit" style="height: '+ data.height +'">' + data.content + '</blockquote>'
+                            +    '</div>'
+                            + '</div></div>';
+
+                    tutorialCode += tutoHtml;
+
+                    ordersTab.push( parseFloat(data.order) );
+
+                });
+
+                // SUPPR CBR - container ajouté en amont    
+                // add tutorial container
+                /*
+                if ( document.querySelector('#tutorialContainer') === null ) {
+                    $('body').append('<div id="tutorialContainer" class=""></div>');
+                } else {
+                    $('#tutorialContainer').css('z-index', '1');
+                }
+                */
+                // FIN SUPPR
+                $('#tutorialContainer').html(tutorialCode);
+
+                // display first element
+                var ordersTabSorted = ordersTab.sort();
+                $('#tutorial' + ordersTabSorted[0]).show();
+                if ( document.querySelector('#forewordContainer') !== null ) {
+                    $('#tutorialContainer').hide();
+                }
+
+                $('#tutorialContainer').click(function (e) {
+
+                    //if (e.target.className === 'didacticiel') {
+                    var target = getFirstParentWithClass(e.target, 'didacticiel');
+                    
+                        for (var i =0; i < ordersTabSorted.length; i++) {
+                            //if ('tutorial' + ordersTabSorted[i] === e.target.id) {
+                            if ('tutorial' + ordersTabSorted[i] === target.id) {
+
+                                $('#tutorial' + ordersTabSorted[i]).hide();
+
+                                if (i+1 < ordersTabSorted.length) {
+                                    $('#tutorial' + ordersTabSorted[i+1]).show();
+                                    break;
+                                } else if (i === (ordersTabSorted.length - 1) ) {
+                                    $('#tutorialContainer').remove();
+                                    $('#help').removeClass('showtuto'); 
+                                    $('#map').focus();
+                                }
+
+                            }
+                        }
+
+                    //}
+
+                });
+            });
+            
+    };
+    
+    //That function returns the first parent of a DOM element which respects the given className
+    function getFirstParentWithClass(element, className){
+                
+        if (element.classList.contains(className)){
+            return element;
+        } else {
+            return getFirstParentWithClass(element.parentElement, className);
+        }
+        
+    }
+    
     // Function call to generate NRU PDF - API Urba
     function generatePDFNru(pdfUrl) {
         $('body').css('cursor','wait');
@@ -184,6 +214,7 @@ var rmTools = (function() {
         return blob;
     };
 
+    /* SUPPR CBR
     var displayForeword = function (title, content, displayCheckbox) {
 
         var forewordContent = '<div class="foreword"> <div class="foreword-modal">'
@@ -255,7 +286,7 @@ var rmTools = (function() {
         }
 
     };
-
+*/
     var getProjection = function () {
 
         return mviewer.getMap().getView().getProjection().getCode();
@@ -267,8 +298,9 @@ var rmTools = (function() {
         gatherLayersInformations: gatherLayersInformations,
         displayMessageModal: displayMessageModal,
         getVisibleLayers: getVisibleLayers,
+        initTutorial: initTutorial,
         displayTutorial: displayTutorial,
-        displayForeword: displayForeword,
+        /* displayForeword: displayForeword, */
         generatePDFNru: generatePDFNru,
         getProjection: getProjection
     }

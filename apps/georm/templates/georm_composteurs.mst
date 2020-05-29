@@ -1,27 +1,10 @@
 {{#features}}
-	<li class="item" style="width:238px;">
-		<h5 class="title-feature composteur-title">Composteur collectif</h5>
-		<p class="text-feature">
-			{{#cmp_id}}<span style="font-family:'roboto_bold'"> Numéro :</span> {{{cmp_id}}}<br/>{{/cmp_id}}
-			{{#domaine}}<span style="font-family:'roboto_bold'"> Domaine :</span> {{{domaine}}}<br/>{{/domaine}}
+	<li class="item">
+		<h5 class="rm-popup-title-feature composteur-title">Composteur collectif</h5>
+		<p class="rm-popup-text-feature">
+			{{#cmp_id}}<span class='rm-popup-label'> Numéro :</span> {{{cmp_id}}}<br/>{{/cmp_id}}
+			{{#domaine}}<span class='rm-popup-label'> Domaine :</span> {{{domaine}}}<br/>{{/domaine}}
 		</p>
 	</li>
 {{/features}}
 
-<style>
-	.title-feature {
-		font-family:"VistaSansOT_bold","roboto_bold";
-		font-size:23px;
-		margin-bottom:1%;
-		line-height:1;
-	}
-	.composteur-title{
-		color: #8a4719;
-	}
-	.text-feature{
-		font-family:"VistaSansOT_regular","roboto_regular";
-		color:#555;
-		font-size:13px;
-		margin-top:10%;
-	}
-</style>

@@ -1,0 +1,44 @@
+/******************************************************************************
+--------------------------- CSS THEME MVIEWER / GEORM -----------------
+********************************************************************************/
+
+/*  Import du style du site internet  */
+@import url("../../site_internet/css/site_internet_gris.css");
+
+
+/*  Couleurs des titres des entités dans la fiche d'info  */
+.transportDeplacement { color: #1d94d2!important; }
+.cadreDeVie { color: #aecb1f!important; }
+.déchets { color: #8d4915!important; }
+.educationEnfance { color :#662483!important; }
+.socialSanté { color: #d3131f!important; }
+.servicesPublics { color: #98231d!important; }
+.cultureSocioculturel { color: #e5007d!important; }
+.sportsLoisirs { color: #004c8c!important; }
+.logementHebergementJeunes { color: #e94f1b!important; }
+.economieEmploi { color: #e94f1b!important; }
+.extras { color : #e94f1b!important; }
+.station-velo-title {color: #004b95!important;}
+.station-metro-title {color: #004b94!important;}
+.arret-bus-title {color: #f28a15!important;}
+.toilette-publique-title {color: #8c4814!important;}
+.quartier-title {color: #000000!important;}
+.bureau-title {color: #000000!important;}
+.pav-title {color: #8d4915!important;}
+.composteur-title{color: #8a4719!important;}
+.election-centre-title {color: #98231d!important;}
+.street-art-title {color: #e6007e!important;}
+.art-ville-title {color: #e6007e!important;}
+.immobilier-title {color: #dc4a18!important;}
+
+
+/*  Ne pas afficher les éléments de cette classe  */
+.hiddenField {display: none;}
+
+
+/*  Icone suppression de couches de la légende  */
+#btn-remove-layers > span.glyphicon-trash:before {
+   content: "\e106"; 
+}
+
+

@@ -1,27 +1,9 @@
 {{#features}}
-        <li class="item" style="width:238px;">
-                <h5 class="title-feature station-metro-title">{{#nom}} {{{nom}}}  {{/nom}}</h5>
-                <p class="text-feature">
-                        <p> {{#ligne}}<span style="font-family:'roboto_bold'"> Ligne : </span> {{{ligne}}}<br/>{{/ligne}} </p>
-                </p>
-        </li> {{/features}} <script>
-    formatter.formatHoraires();
-    formatter.reducerDayOff();
-    formatter.exceptionalClosure(); </script> <style>
-        .title-feature {
-                font-family:"VistaSansOT_bold","roboto_bold";
-                font-size:23px;
-                margin-bottom:1%;
-                line-height:1;
-                overflow-wrap: break-word;
-        }
-        .text-feature{
-                font-family:"VistaSansOT_regular","roboto_regular";
-                color:#555;
-                font-size:13px;
-                margin-top:10%;
-        }
-	.station-metro-title {
-		color: #004b94;
-	}
-</style>
+    <li class="item">
+        <h5 class="rm-popup-title-feature station-metro-title">{{#nom}} {{{nom}}}  {{/nom}}</h5>
+        <p class="rm-popup-text-feature">
+            <p> {{#ligne}}<span class='rm-popup-label'> Ligne : </span> {{{ligne}}}<br/>{{/ligne}} </p>
+        </p>
+    </li> 
+{{/features}} 
+    

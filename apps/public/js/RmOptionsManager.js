@@ -119,9 +119,13 @@ var RmOptionsManager = (function () {
     
                             }
 
+                            // SUPPR CBR - Gestion des options dépliées par défaut gérées dans mviewerRM
+                            /*
                             if (confLayer.displayOpacityByDefault === "true") {
                                 layerDisplayOpacity.push(confLayer.name);
                             }
+                            */
+                            // FIN SUPPR CBR
     
                         }
         
@@ -153,27 +157,37 @@ var RmOptionsManager = (function () {
             repositionRightElement();
          }
 
-         if (typeof applicationOptions.changeBtnremovelayersIcon !== 'undefined' && 
-                applicationOptions.changeBtnremovelayersIcon.trim() !== '') {
-            interfaceModifying.changeBtnremovelayersIcon(applicationOptions.changeBtnremovelayersIcon);
-         }
-
-         if (applicationOptions.refreshInfoPanel === 'true') {
+         // MODIF CBR 
+         //if (applicationOptions.refreshInfoPanel === 'true') {
             interfaceModifying.refreshInfoPanel();
-         }
-
-         if (layerDisplayOpacity.length > 0) {
-            interfaceModifying.displayOpacityByDefault(layerDisplayOpacity);
-         }
+         //}
+         // FIN MODIF CBR
+         
+        // MODIF CBR
+         //enableForeword();
+        if(applicationOptions.tutorial === 'true' && applicationOptions.tutorialFile.trim() !== ''){
+            rmTools.initTutorial();
+            if (applicationOptions.showhelp === 'true') {
+                $('#help').addClass('showtuto');
+                    $('#help').on('hidden.bs.modal', function () {
+                        if ($('#help').hasClass('showtuto')){rmTools.displayTutorial(applicationOptions.tutorialFile);}
+                    });
+            } else {
+                rmTools.displayTutorial(applicationOptions.tutorialFile);
+            }
+        }
+        // FIN MODIF CBR
 
     };
-
+    
+    /* SUPPR CBR
     var enableForeword = function () {
 
-        if (applicationOptions.tutorial === 'true' && applicationOptions.tutorialFile.trim() !== '') {
+        if ($('#help').hasClass('showtuto') && applicationOptions.tutorial === 'true' && applicationOptions.tutorialFile.trim() !== '') {
             rmTools.displayTutorial(applicationOptions.tutorialFile);
+            
         }
-
+        
         if (applicationOptions.foreword === 'true') {
 
             var forewordContentSplit = applicationOptions.forewordContent.split('||');
@@ -190,9 +204,10 @@ var RmOptionsManager = (function () {
             
             rmTools.displayForeword(title, content, false);
         }
-
+ 
     };
-
+    */
+    
     var getLayerCount = function () {
 
         return configuration.getConfiguration().application.layerCount;
@@ -299,7 +314,7 @@ var RmOptionsManager = (function () {
   
     return {
         init: init,
-        enableForeword: enableForeword,
+        /*enableForeword: enableForeword,*/
         getLayerCount: getLayerCount,
         getInfoPaneles: getInfoPaneles,
         getApplicationConfiguration: getApplicationConfiguration,

@@ -502,6 +502,10 @@ mviewer = (function () {
                 template: mviewer.templates.tooltip
             });
         }
+        
+        // AJOUT CBR
+        RmOptionsManager.init();
+        // FIN AJOUT CBR
     };
 
     var _initShare = function () {
@@ -1444,6 +1448,8 @@ mviewer = (function () {
             $(".mv-translate a").click(function() {
                 _changeLanguage($(this).attr("idlang"));
             });
+            
+
         }
 
         mviewer.lang = {};
@@ -2092,6 +2098,12 @@ mviewer = (function () {
                 legendurl: layer.legendurl,
                 attribution: layer.attribution,
                 metadata: layer.metadata,
+                // AJOUT CBR - gestion options dépliées par défaut dans la légende
+                expandedoptions: layer.expandedoptions,
+                // FIN AJOUT CBR
+                // AJOUT CBR - gestion couche permanente qui ne peut pas être supprimée
+                permanentlayer: layer.permanentlayer,
+                // FIN AJOUT CBR
                 tooltipControl: false,
                 styleControl: false,
                 attributeControl: false,
@@ -2138,12 +2150,24 @@ mviewer = (function () {
             if (layer.customcontrol && mviewer.customControls[layer.layerid] && mviewer.customControls[layer.layerid].form) {
                 item = $(item).find('.mv-custom-controls').append(mviewer.customControls[layer.layerid].form).closest(".mv-layer-details");
             }
-
+            
             if (_topLayer && $("#layers-container .toplayer").length > 0) {
                 $("#layers-container .toplayer").after(item);
             } else {
                 $("#layers-container").prepend(item);
             }
+
+            // AJOUT CBR - Options de la couche visibles sur option
+            if (layer.expandedoptions) {
+                this.toggleLayerOptions($('.mv-layer-details[data-layerid="'+layer.id+'"]')[0]);
+            }
+            // FIN AJOUT
+            // AJOUT CBR - Suppression de couche permanente interdite
+            if (layer.permanentlayer) {
+                $('.mv-layer-details[data-layerid="'+layer.id+'"]').find('.mv-layer-remove').remove();
+            }
+            // FIN AJOUT            
+            
 
             //Dynamic vector Legend
             if (layer.vectorlegend  && mviewer.customLayers[layer.layerid] && mviewer.customLayers[layer.layerid].legend) {
@@ -2154,6 +2178,8 @@ mviewer = (function () {
             if (layer.vectorlegend  && layer.legend && layer.legend.items) {
                 _drawVectorLegend( layer.layerid, layer.legend.items );
             }
+            
+            
 
             _setLayerScaleStatus(layer, _calculateScale(_map.getView().getResolution()));
             $("#"+layer.layerid+"-layer-opacity").slider({});
@@ -2464,11 +2490,20 @@ mviewer = (function () {
             $(el).closest("li").find(".mv-layer-options").slideToggle();
             //hack slider js
             $(el).closest("li").find(".mv-slider-timer").slider('relayout');
+            // MODIF CBR - Permet de changer l'icone déplier/replier les options peu importe le type de l'élement qui le porte
+            /*
             if ($(el).find("span.state-icon").hasClass("glyphicon glyphicon-chevron-down")) {
                 $(el).find("span.state-icon").removeClass("glyphicon glyphicon-chevron-down").addClass("glyphicon glyphicon-chevron-up");
             } else {
                 $(el).find("span.state-icon").removeClass("glyphicon glyphicon-chevron-up").addClass("glyphicon glyphicon-chevron-down");
             }
+            */
+            if ($(el).closest("li").find(".state-icon").hasClass("glyphicon glyphicon-chevron-down")) {
+                $(el).closest("li").find(".state-icon").removeClass("glyphicon glyphicon-chevron-down").addClass("glyphicon glyphicon-chevron-up");
+            } else {
+                $(el).closest("li").find(".state-icon").removeClass("glyphicon glyphicon-chevron-up").addClass("glyphicon glyphicon-chevron-down");
+            }
+            // FIN MODIF CBR
         },
 
         setLayerStyle: function (layerid, style, selectCtrl) {

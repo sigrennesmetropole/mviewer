@@ -82,7 +82,7 @@ var info = (function () {
 
     // debut modif CT 31/01/2020
     var nbItemsSelectedLayer = 0;
-    var layerCount  = "";
+    //var layerCount  = "";
     // fin
 
     /**
@@ -156,7 +156,7 @@ var info = (function () {
             var format = new ol.format.GeoJSON();
             _map.forEachFeatureAtPixel(pixel, function(feature, layer) {
                 var l = layer.get('mviewerid');
-                if (l && l != 'featureoverlay' && l != 'elasticsearch' ) {
+                if (l != 'featureoverlay' && l != 'elasticsearch') {
                     var queryable = _overLayers[l].queryable;
                     if (queryable) {
                         if (vectorLayers[l] && vectorLayers[l].features) {
@@ -169,7 +169,7 @@ var info = (function () {
                 }
             });
             
-            //CBR : TODO afficher les features des couches vectorielles par onglet
+            //CBR : affichage des features des couches vectorielles par onglet
             for(var layerid in vectorLayers) {
                 if (mviewer.customLayers[layerid] && mviewer.customLayers[layerid].handle) {
                     mviewer.customLayers[layerid].handle(vectorLayers[layerid].features, views);
@@ -213,11 +213,11 @@ var info = (function () {
                         for (var i = 0; i < features.length; i++) {
                         //features.forEach(function(feature) {
                             var feature = features[i]; 
-                            if (typeof layerCount !== 'undefined') {
-                                if (layerCount.trim().length > 0 && layerCount.replace(':', '') === layerid) {
+         //                   if (typeof layerCount !== 'undefined') {
+         //                       if (layerCount.trim().length > 0 && layerCount.replace(':', '') === layerid) {
                                     nbItemsSelectedLayer++;
-                                }
-                            }                            
+         //                       }
+         //                   }                            
                             pos++;
                             if (i > 0) {
                                 id = id + i;
@@ -291,6 +291,14 @@ var info = (function () {
                 //var pos = 0;
                 nbItemsSelectedLayer = 0;
                 // fin
+                // AJOUT CBR - calcul de l'ordre des résultats en fonction des couches de gauche
+                var orderedFeatures = [];                
+                for (var j = 0; j < urls.length; j++) {
+                    var layerinfo = urls[j].layerinfos;
+                    orderedFeatures.push(featureInfoByLayer.find(obj => {return (obj.layerinfos.id === layerinfo.id && obj.layerinfos.url === layerinfo.url)}));
+                }
+                featureInfoByLayer=[...orderedFeatures];
+                // FIN AJOUT CBR
                 $.each(featureInfoByLayer, function (index, response) {
                     var layerinfos = response.layerinfos;
                     var panel = layerinfos.infospanel;
@@ -390,11 +398,11 @@ var info = (function () {
 
                         for (var i = 0; i < html_result.length; i++) {
                             // debut modif CT 09/01/2020
-                            if (typeof layerCount !== 'undefined') {
-                                if (layerCount.trim().length > 0 && layerCount.replace(':', '') === layerid) {
+          //                  if (typeof layerCount !== 'undefined') {
+          //                      if (layerCount.trim().length > 0 && layerCount.replace(':', '') === layerid) {
                                     nbItemsSelectedLayer++;
-                                }
-                            }
+          //                      }
+          //                  }
                             // fin
                             pos++;
                             if (i > 0) {
@@ -439,13 +447,13 @@ var info = (function () {
                 });
 
                 // debut modif CT 31/01/2020
-                if (typeof layerCount !== 'undefined') {
+        /*        if (typeof layerCount !== 'undefined') {
                     if (layerCount.trim().length > 0) {
                         RmOptionsManager.setClickNbItems(nbItemsSelectedLayer);
                     }
                 } else {
-                    RmOptionsManager.setClickNbItems(pos);
-                }
+         */           RmOptionsManager.setClickNbItems(pos);
+         //       }
                 // fin
 
                 $.each(views, function (panel, view) {
@@ -458,9 +466,10 @@ var info = (function () {
                             template = Mustache.render(mviewer.templates.featureInfo[_panelsTemplate[panel]], view);
                         }
                         $("#"+panel+" .popup-content").append(template);
-                    //TODO reorder tabs like in theme panel
+                        //TODO reorder tabs like in theme panel
                         // debut modif CT 07/02/2020
-                        interfaceModifying.setTabFirstPosition(template);
+                        //SUPPR CBR - l ordre des onglets correspond à l'ordre défini des couches dans le fichier de conf
+                        //interfaceModifying.setTabFirstPosition(template);
                         // fin
 
                     var title = $("[href='#slide-"+panel+"-1']").closest("li").attr("title");
@@ -900,6 +909,9 @@ var info = (function () {
                 _addQueryableLayer(layer);
             }
         });
+        // AJOUT CBR - ordre des couches qui correspond à la liste de gauche
+        _queryableLayers.reverse();
+        // FIN AJOUT
         var noTooltipZone = [
             "#layers-container-box",
             "#sidebar-wrapper",
@@ -917,7 +929,7 @@ var info = (function () {
             }
         });
         // debut modif CT 03/02/2020
-        layerCount  = RmOptionsManager.getLayerCount();
+   //     layerCount  = RmOptionsManager.getLayerCount();
         // fin
     };
 

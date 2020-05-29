@@ -1,28 +1,11 @@
 {{#features}}
-	<li class="item" style="width:238px;">
-		<h5 class="title-feature">{{nom_prog}}</h5>
-		<p class="text-feature">
-			{{#commune}}<span style="font-family:'roboto_bold'"> {{commune}}<br/><br/>{{/commune}}
-			{{#forme_urbaine}}<span style="font-family:'roboto_bold'"> Forme urbaine :</span> {{forme_urbaine}}<br/>{{/forme_urbaine}}
-			{{#type_logmt}}<span style="font-family:'roboto_bold'"> Types de logements :</span> {{type_logmt}}<br/>{{/type_logmt}}
+	<li class="item">
+		<h5 class="rm-popup-title-feature immobilier-title">{{nom_prog}}</h5>
+		<p class="rm-popup-text-feature">
+			{{#commune}}<span class='rm-popup-label'> {{commune}}<br/><br/>{{/commune}}
+			{{#forme_urbaine}}<span class='rm-popup-label'> Forme urbaine :</span> {{forme_urbaine}}<br/>{{/forme_urbaine}}
+			{{#type_logmt}}<span class='rm-popup-label'> Types de logements :</span> {{type_logmt}}<br/>{{/type_logmt}}
 		</p>
-	</li> {{/features}} <style>
-	.title-feature {
-		color: #dc4a18;
-		font-family:"VistaSansOT_bold","roboto_bold";
-		font-size:23px;
-		margin-bottom:1%;
-		line-height:1;
-	}
-	.text-feature{
-		font-family:"VistaSansOT_regular","roboto_regular";
-		color:#555;
-		font-size:13px;
-		margin-top:10%;
-	}
-        .labelPictureEnlarge {
-               font-family:"VistaSansOT_regular","roboto_regular";
-               font-style: italic;
-                text-align: center;
-        }
-</style>
+	</li> 
+{{/features}}
+

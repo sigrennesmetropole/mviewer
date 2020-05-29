@@ -306,7 +306,6 @@ var formatter = (function () {
     };
     
     // TODO : à commenter
-    //var _exceptionalClosureDechet = function exceptionalClosureDechet() {
     function exceptionalClosureDechet() {
         var elements = document.getElementsByClassName("exceptionalClosuresDechet");
         for (var a = 0; a < elements.length; a++) {
@@ -366,161 +365,8 @@ var formatter = (function () {
         }
     };
 
-
-    // TODO : à supprimer
-    // public holiday and school holidays reduced displaying
-    var _reducerDayOff = function reducerDayOff(hidden = false) {
-        var elements = document.getElementsByClassName("daysOff");
-        for (var a = 0; a < elements.length; a++) {
-            var daysOffInfo = elements[a];
-            if (daysOffInfo) {
-                var days = daysOffInfo.innerHTML; // Save to be able to show default value if needed
-                var daysOffArrayRef = ['jour de l\'An', 'lundi de Pâques', 'fête du Travail', 'Victoire 1945', 'Ascension', 'lundi de Pentecôte', 'fête nationale', 'Assomption', 'Toussaint', 'Armistice 1918', 'Noël'];
-                var formatDays = days;
-                if (days.indexOf('Fermé les jours fériés') == -1) {
-                    if (days.indexOf(':') != -1) {
-                        formatDays = days.trim().split(':')[1]; // !! remove "Jour ou périodes de fermeture :" Be careful of formatting 
-                    }
-                    if (formatDays.length) {
-                        if (hidden) {
-                            daysOffInfo.parentElement.classList.remove('not-displayed');
-                        }
-                        var daysOffArray = formatDays.split(',');
-                        var exceptions = [];
-                        var matchNumber = 0;
-                        for (var i = 0, len = daysOffArrayRef.length; i < len; i++) {
-                            var match = null;
-                            for (var j = 0, len2 = daysOffArray.length; j < len2; j++) {
-                                if (daysOffArrayRef[i].toUpperCase().trim() === daysOffArray[j].toUpperCase().trim()) {
-                                    match = j;
-                                }
-                            }
-                            if (match !== null) {
-                                matchNumber++;
-                                daysOffArray.splice(match, 1);
-                            } else {
-                                exceptions.push(daysOffArrayRef[i]);
-                            }
-                        }
-                        if (matchNumber === 11) {
-                            daysOffInfo.innerHTML = "- Fermé les jours fériés";
-                        } else if (matchNumber === 0) {
-                            daysOffInfo.innerHTML = "";
-                        } else {
-                            daysOffInfo.innerHTML = "- Fermé les jours fériés sauf " + exceptions.join(', ');
-                        }
-                        if (daysOffArray.length) {
-                            var holidaysArray = daysOffArray;
-                            var matchingH = [];
-                            var holidaysRef = ['Vacances de la Toussaint', 'Vacances de Noël', 'Vacances d\'hiver', 'Vacances de printemps', 'Vacances d\'été'];
-
-                            var exceptionsH = [];
-                            var matchNumberH = 0;
-                            for (var k = 0, len3 = holidaysRef.length; k < len3; k++) {
-                                var matchH = null;
-                                for (var l = 0, len4 = holidaysArray.length; l < len4; l++) {
-                                    if (holidaysRef[k].toUpperCase().trim() === holidaysArray[l].toUpperCase().trim()) {
-                                        matchH = l;
-                                        matchingH.push(holidaysArray[l]);
-                                    }
-                                }
-                                if (matchH !== null) {
-                                    matchNumberH++;
-                                    holidaysArray.splice(matchH, 1);
-                                } else {
-                                    exceptionsH.push(holidaysRef[k]);
-                                }
-                            }
-                            var output = "";
-                            if (matchNumberH === 5) {
-                                output = "- Fermé pendant les vacances scolaires";
-                            } else if (matchNumberH >= 3) {
-                                output = "- Fermé pendant les vacances scolaires sauf " + exceptionsH.join(', ').toLowerCase();
-                            } else if (matchNumberH > 0) {
-                                output = "- " + matchingH.join(', ') + (matchingH.length && daysOffArray.length ? ", " : "") + daysOffArray.join(', ');
-                            }
-
-                            daysOffInfo.innerHTML = daysOffInfo.innerHTML + (matchNumber > 0 ? "<br/>" : "") + output;
-                        }
-                    }
-                }
-            }
-        }
-    };
-
-    // TODO : à supprimer
-    // public holiday and school holidays reduced displaying
-    var _reducerDayOffForEpiceries = function reducerDayOffForEpiceries(hidden = false) {
-        var elements = document.getElementsByClassName("daysOff");
-        var list_element = document.getElementsByClassName("liste-des-jours");
-        var list_to_show = [];
-        if(elements.length) {
-            console.log(elements.length);
-            for (var a = 0; a < elements.length; a++) {
-                list_to_show = [];
-                var daysOffInfo = elements[a];
-                if (daysOffInfo) {
-                    var days = daysOffInfo.innerHTML;
-                    console.log('Numero ' + a);
-                    //console.log(days);
-                    var daysOffArrayRef = ['jour de l\'An', 'lundi de Pâques', 'fête du Travail', 'Victoire 1945', 'Ascension', 'lundi de Pentecôte', 'fête nationale', 'Assomption', 'Toussaint', 'Armistice 1918', 'Noël', 'Vacances de la Toussaint','Vacances de Noël', 'Vacances d\'hiver', 'Vacanc (...)'];
-                    var formatDays = days;
-                    if (days.indexOf(':') != -1) {
-                        formatDays = days.trim().split(':')[1]; // !! remove "Jour ou périodes de fermeture :" be careful of formatting
-                    }
-                    if (formatDays.length) {
-                        if (hidden) {
-                            daysOffInfo.parentElement.classList.remove('not-displayed');
-                            daysOffInfo.innerHTML = "";
-                        }
-                        var daysOffArray = formatDays.split(',');
-
-                        for (var i = 0, len = daysOffArrayRef.length; i < len; i++) {
-                            for (var j = 0, len2 = daysOffArray.length; j < len2; j++) {
-                                if (daysOffArrayRef[i].toUpperCase().trim() === daysOffArray[j].toUpperCase().trim()) {
-                                    //console.log(daysOffArray[j]);
-                                    list_to_show.push(daysOffArray[j]);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            for (var o = 0; o < list_element.length; o++) {
-                if (list_to_show.length) {
-                    for (var v = 0; v < list_to_show.length; v++) {
-                        var li = document.createElement("li");
-                        //li.setAttribute('id', list_to_show[v]);
-                        li.appendChild(document.createTextNode(list_to_show[v]));
-                        list_element[o].appendChild(li);
-                    }
-                }
-
-            }
-
-
-        }
-
-    };
-
-    
-
     /****** LIENS WEB ******/
-
-
-    // TODO : évolution lien vers la fiche annuaire du site
-    // Mise en forme du lien vers l'annuaire
-    // directory link formatting
-    /*var _formatDirectoryLink = function formatDirectoryLink() {
-        var link = document.getElementById("directory-link");
-        if (link){
-            var nameAndId = link.getAttribute("href").replace(/ +/g, " ").replace(" - ", " ").replace(/ |'/g,"-").toLowerCase();
-            link.setAttribute("href", "https://metropole.rennes.fr/organisme/"+nameAndId.sansAccent());
-        }
-    };*/
-
-    // TODO : à vérifier / à commenter
+    // TODO : à commenter
     // website link formatting
     //var _corrWebAddr = function corrWebAddr() {
     function corrWebAddr() {
@@ -549,7 +395,7 @@ var formatter = (function () {
     
     /****** DATES ******/
     
-    // TODO : à vérifier (amiante)
+    // TODO : à commenter
     //var _formatDateInFrench = function formatDateInFrench() {
     function formatDateInFrench() {
         var span_elements = document.getElementsByClassName("date_in_french_format");
@@ -585,26 +431,16 @@ var formatter = (function () {
         formatHoraires();
         rmFermeturesOrga();
         exceptionalClosure();
-        corrWebAddr();
-        rmListeDechets();
         rmFermeturesDecheterie();
+        rmListeDechets();
+        exceptionalClosureDechet();
         rmListeEquipt();
+        corrWebAddr();
         formatDateInFrench();
         rmQuartiers();
     };
 
     return {
-//        rmListeDechets: _rmListeDechets,
-//        formatHoraires: _formatHoraires,
-//        rmFermeturesOrga: _rmFermeturesOrga,
-//        rmFermeturesDecheterie: _rmFermeturesDecheterie,
-        //reducerDayOff: _reducerDayOff,
-//        exceptionalClosureDechet: _exceptionalClosureDechet,
-//        exceptionalClosure: _exceptionalClosure,
-        //formatDirectoryLink: _formatDirectoryLink,
-//        corrWebAddr: _corrWebAddr,
-//        formatDateInFrench: _formatDateInFrench,
-        //reducerDayOffForEpiceries: _reducerDayOffForEpiceries
         rmFormatTabs: _rmFormatTabs
     };
 })();

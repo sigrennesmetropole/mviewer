@@ -69,13 +69,5 @@
 	</li>
 {{/features}}
 
-<script>
-/*    
-    formatter.rmListeDechets();    
-    formatter.formatHoraires();
-    formatter.rmFermeturesDecheterie();
-    formatter.exceptionalClosureDechet();
-*/
-</script>
 
 

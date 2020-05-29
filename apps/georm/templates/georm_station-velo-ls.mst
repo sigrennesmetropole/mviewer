@@ -1,29 +1,12 @@
 {{#features}}
-	<li class="item" style="width:238px;">
-		<h5 class="title-feature station-velo-title">{{nom}}</h5>
-		<p class="text-feature">
-			{{#adresse}}<span style="font-family:'roboto_bold'"> Adresse : </span> {{adresse}}<br/>{{/adresse}}
-			{{#nb_socles}}<span style="font-family:'roboto_bold'"> Nombre de socles :</span> {{nb_socles}}<br/>{{/nb_socles}}
-			{{#metro}}<span style="font-family:'roboto_bold'"> Proximité métro :</span> {{metro}}<br/>{{/metro}}
-			{{#tpe}}<span style="font-family:'roboto_bold'"> Terminal de paiement :</span> {{tpe}}<br/>{{/tpe}}
+	<li class="item">
+		<h5 class="rm-popup-title-feature station-velo-title">{{nom}}</h5>
+		<p class="rm-popup-text-feature">
+			{{#adresse}}<span class='rm-popup-label'> Adresse : </span> {{adresse}}<br/>{{/adresse}}
+			{{#nb_socles}}<span class='rm-popup-label'> Nombre de socles :</span> {{nb_socles}}<br/>{{/nb_socles}}
+			{{#metro}}<span class='rm-popup-label'> Proximité métro :</span> {{metro}}<br/>{{/metro}}
+			{{#tpe}}<span class='rm-popup-label'> Terminal de paiement :</span> {{tpe}}<br/>{{/tpe}}
 		</p>
 	</li>
 {{/features}}
 
-<style>
-	.title-feature {
-		font-family:"VistaSansOT_bold","roboto_bold";
-		font-size:23px;
-		margin-bottom:1%;
-		line-height:1;
-	}
-	.text-feature{
-		font-family:"VistaSansOT_regular","roboto_regular";
-		color:#555;
-		font-size:13px;
-		margin-top:10%;
-	}
-	.station-velo-title {
-		color: #004b95;
-	}
-</style>

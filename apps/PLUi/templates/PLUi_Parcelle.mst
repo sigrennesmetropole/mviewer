@@ -1,29 +1,28 @@
 ﻿{{#features}}
-	<li class="item" style="width:238px;">
-		<h5 class="title-feature">Zonages et parcelle</h5>
-		<p class="text-feature">
-			<span style="font-family:'VistaSansOT_bold'">Limites de zone et autres règlements graphique :  </span></br>
-			<span style="font-family:'VistaSansOT_regular'">Pour connaître les règles applicables dans les différentes zones et les effets des règles graphiques, consulter le règlement littéral</span></br></br>
-			<span style="font-family:'VistaSansOT_bold'">Zonage simplifié :  </span></br>
-                        <span style="font-family:'VistaSansOT_regular'">Avertissement : le zonage simplifié en couleur ne renseigne que le nom de la zone. Il ne comporte pas les règles graphiques (emplacements réservés, espaces boisés  classés, zones inondables,…).</span>
-
-			</br></br>
-                        <span style="font-family:'VistaSansOT_bold'">Renseignements d'urbanisme :  </span></br>
-			<span> Pour éditer la fiche de Renseignement d'Urbanisme, </span>
-			<!--<a id='lienweb' class='lienweb' href="#" target="_blank" title="{{nru}}"> Cliquez ici </a>-->
-			<button id='lienNru' class='lienweb' title="{{nru}}">&gt;Cliquez ici&lt;</button>
+	<li class="item">
+		<h5 class="rm-popup-title-feature">Zonages et parcelle</h5>
+        
+		<p class="rm-popup-text-feature">
+			<span class='rm-popup-label'>Limites de zone et autres règlements graphique :  </span></br>
+                Pour connaître les règles applicables dans les différentes zones et les effets des règles graphiques, consulter le règlement littéral</br></br>
+                
+			<span class='rm-popup-label'>Zonage simplifié :  </span></br>
+                Avertissement : le zonage simplifié en couleur ne renseigne que le nom de la zone. Il ne comporte pas les règles graphiques (emplacements réservés, espaces boisés  classés, zones inondables,…).</br></br>
+                
+            <span class='rm-popup-label'>Renseignements d'urbanisme :  </span></br>
+                Pour éditer la fiche de Renseignement d'Urbanisme, &gt;<button id='lienNru' class='lienweb' title="{{nru}}">Cliquez ici</button>&lt;
 			
-			{{#web}}<br/><span style="font-family:'roboto_bold'"> Pour la fiche de Renseignement d'urbanisme, </span><a id='lienweb' class='lienweb' title="{{nru}}"> Cliquez ici </a> {{/web}}
+			{{#web}}<br/><span class='rm-popup-label'> Pour la fiche de Renseignement d'urbanisme, </span><a id='lienweb' class='lienweb' title="{{nru}}"> Cliquez ici </a> {{/web}}
 			{{#id_parc}} <input type="hidden" id="urlNru" value="https://api-urba.sig.rennesmetropole.fr/v1/nru/{{{id_parc}}}"> {{/id_parc}}
 		</p>
-	    <div class="footer">
+	    <div class="rm-popup-footer">
             <div>
                 <span class="glyphicon glyphicon-hand-up"></span>
-                <a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/consulter-les-documents-du-plan-local-durbanisme-intercommunal-plui?idParent=10&typeParent=node" target="_blank">&nbsp;&nbsp; consulter les pièces du PLUi </a>
+                <a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/consulter-les-documents-du-plan-local-durbanisme-intercommunal-plui?idParent=10&typeParent=node" target="_blank">&nbsp; consulter les pièces du PLUi </a>
             </div>
             <div>
                 <span class="glyphicon glyphicon-hand-up"></span>
-                <a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/un-plan-local-durbanisme-intercommunal-plui-pour-43-communes" target="_blank"> consulter la page web dédiée au PLUi </a>
+                <a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/un-plan-local-durbanisme-intercommunal-plui-pour-43-communes" target="_blank">&nbsp; consulter la page web dédiée au PLUi </a>
             </div>
         </div>
 
@@ -33,10 +32,6 @@
 
 
 <script>
-    formatter.formatHoraires();
-    formatter.reducerDayOff();
-    formatter.exceptionalClosure();
-    formatter.corrWebAddr();
 
 	var urlNruVal = $('#urlNru').val();
 
@@ -77,29 +72,7 @@
 </script>
 
 <style>
-    .footer {
-        position: absolute;
-        bottom: 0;
-        border: 2px solid;
-        border-radius: 11%;
-        padding: 2% 4% 2% 3%;
-	color:#4d4d4d;
-    } 
-	
-.title-feature {
-		color: #032E46;
-		font-family:"VistaSansOT_bold","roboto_bold";
-		font-size:23px;
-		margin-bottom:1%;
-		line-height:1;
-		overflow-wrap: break-word;
-	}
-	.text-feature{
-		font-family:"VistaSansOT_regular","roboto_regular";
-		color:#555;
-		font-size:13px;
-		margin-top:10%;
-	}
+
 	#lienNru {
 		border: none;
     		background-color: #fff;

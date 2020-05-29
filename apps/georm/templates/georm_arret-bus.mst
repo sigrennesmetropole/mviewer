@@ -1,36 +1,13 @@
 {{#features}}
-	<li class="item" style="width:238px;">
-		<h5 class="title-feature arret-bus-title">{{#ap_nom}} {{{ap_nom}}}  {{/ap_nom}}</h5>
-		<p class="text-feature">
+	<li class="item">
+		<h5 class="rm-popup-title-feature arret-bus-title">{{#ap_nom}} {{{ap_nom}}}  {{/ap_nom}}</h5>
+        
+		<p class="rm-popup-text-feature">
 			<p> {{#nom}} {{{nom}}}  {{/nom}} </p>
-			<p> {{#access_pmr}}<span style="font-family:'roboto_bold'"> Accès personnes à mobilité réduite :</span> {{{access_pmr}}}<br/>{{/access_pmr}} </p>
-			<p> {{#access_li_nok}} <span style="font-family:'roboto_bold'">Ligne(s) non accessible(s) : </span> {{{access_li_nok}}}  {{/access_li_nok}} </p>
-			<p> {{#equip_mobilier}} <span style="font-family:'roboto_bold'">Equipements : </span> {{{equip_mobilier}}}  {{/equip_mobilier}} </p>
+			<p> {{#access_pmr}}<span class='rm-popup-label'> Accès personnes à mobilité réduite :</span> {{{access_pmr}}}<br/>{{/access_pmr}} </p>
+			<p> {{#access_li_nok}} <span class='rm-popup-label'>Ligne(s) non accessible(s) : </span> {{{access_li_nok}}}  {{/access_li_nok}} </p>
+			<p> {{#equip_mobilier}} <span class='rm-popup-label'>Equipements : </span> {{{equip_mobilier}}}  {{/equip_mobilier}} </p>
 		</p>
 	</li>
 {{/features}}
 
-<script>
-    formatter.formatHoraires();
-    formatter.reducerDayOff();
-    formatter.exceptionalClosure();
-</script>
-
-<style>
-	.title-feature {
-		font-family:"VistaSansOT_bold","roboto_bold";
-		font-size:23px;
-		margin-bottom:1%;
-		line-height:1;
-		overflow-wrap: break-word;
-	}
-	.text-feature{
-		font-family:"VistaSansOT_regular","roboto_regular";
-		color:#555;
-		font-size:13px;
-		margin-top:10%;
-	}
-	.arret-bus-title {
-		color: #f28a15;
-	}
-</style>

@@ -43,12 +43,12 @@ $("#menu-toggle").click(function(e) {
           //Si l'élément suivant est une liste (ul) et pas visible --> Referme le menu visible et affiche le menu cliqué
           if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
             if (!$(this).parent().hasClass("level-2")) {
-                // debut modif CT 22/01/2020
+                // debut modif CT 22/01/2020 - l'option openMultipleTheme permet de déplier plusieurs thèmes dans le menu de couches
                 if ( appliConf.openMultipleTheme !== 'true' ) {
                   $('#menu ul:visible').slideUp('normal');
                 }
-                // fin
                 //$('#menu ul:visible').slideUp('normal');
+                // fin
             } else {
                 //Si niveau 2 , on referme les autres niveaux 2
                 $('#menu .level-2 ul:visible').slideUp('normal');

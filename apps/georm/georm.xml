@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <config>
-	<metadata>
-		<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
-			<rdf:Description rdf:about="http://www.ilrt.bristol.ac.uk/people/cmdjb/">
-				<dc:title>GEORM</dc:title>
-				<dc:creator>anonymous</dc:creator>
-				<dc:publisher>publisher</dc:publisher>
-				<dc:subject>Plan interactif de Rennes Métropole</dc:subject>
-				<dc:date>2019-12-23</dc:date>
-			</rdf:Description>
-		</rdf:RDF>
-	</metadata>
 	<application
 		title="Géo Rennes Métropole"
 		logo="https://public.sig.rennesmetropole.fr/ressources/img/logos/rm/logo_mviewer_gris_inverse.png"
@@ -18,21 +7,25 @@
 		showhelp="false"
 		titlehelp="En cours de création ..."
 		iconhelp=""
-		style="apps/public/css/themes/site_internet_gris.css"
+		style="apps/georm/css/mv_georm.css"
 		exportpng="true"
 		geoloc="true"
 		measuretools="true"
 		stats="false"
 		statsurl=""
 		togglealllayersfromtheme="true"
-		printMap="true"
-		searchRM="true"
-		changeBtnremovelayersIcon='glyphicon glyphicon-eye-close'
-		searchRMConfFile="apps/public/data/searchRMConf.json"
+		printMap="true"		
 		>
+        <!--
+        changeBtnremovelayersIcon='glyphicon glyphicon-eye-close'
+
+		searchRM="true"
+		searchRMConfFile="apps/public/data/searchRMConf.json"
+        -->
 	</application>
 	<mapoptions maxzoom="20" minzoom="10" projection="EPSG:3857" center="-186098.36482879001,6125889.9088213602" zoom="12" />
-	<searchparameters bbox="false" localities="false" features="false" static="false"/>
+    
+	
 	<baselayers style="default">
 		<baselayer visible="false" id="pvcisimplegris" thumbgallery="apps/public/img/basemap/pvcilight.jpg" title="Rennes Metropole" label="Plan de ville simple gris" type="WMTS" 
 			url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="ref_fonds:pvci_simple_gris" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" 
@@ -47,10 +40,16 @@
 			attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/6ecb85b1-ec5e-4427-ae81-9c83b21a7f32&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;">
 		</baselayer>
 		<baselayer visible="false" id="ortho2017" thumbgallery="apps/public/img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" 
-url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" 
-attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/6ecb85b1-ec5e-4427-ae81-9c83b21a7f32&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;">
+            url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" 
+            attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/6ecb85b1-ec5e-4427-ae81-9c83b21a7f32&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;">
 		</baselayer>
 	</baselayers>
+    <!-- <proxy url="../proxy/?url="/>	 -->
+
+    <!-- <olscompletion url="../olscompletion"/> -->
+    <!-- <elasticsearch url="https://ows.region-bretagne.fr/kartenn/_search" geometryfield="geometry" linkid="search_id" querymode="match" version="current" /> -->
+    <searchparameters bbox="false" localities="false" features="false" static="false"/>
+    
 	<themes mini="true">
 		<theme id="theme-transport" name="Transport" collapsed="true" icon="fas fa-bus">
 		<layer
@@ -63,7 +62,9 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				metadata="undefined"
 				metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/03268497-3416-4326-9119-48744df1a3c2"
 				queryable="true"
-				infopanel="right-panel"><template url="apps/georm/templates/georm_station-velo-ls.mst"></template>
+                featurecount="5"
+				infopanel="right-panel">
+                <template url="apps/georm/templates/georm_station-velo-ls.mst"></template>
 			</layer>
 			<layer
 				id="v_star_arret_physique"
@@ -75,7 +76,9 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				sld="https://public.sig.rennesmetropole.fr/ressources/img/mviewer/sld/arret-bus.sld"
 				metadata="undefined"
 				queryable="true"
-				infopanel="right-panel"><template url="apps/georm/templates/georm_arret-bus.mst"></template>
+                featurecount="5"
+				infopanel="right-panel">
+                <template url="apps/georm/templates/georm_arret-bus.mst"></template>
 			</layer>
 			<layer
 				id="metro_station"
@@ -87,7 +90,9 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				metadata="undefined"
 				metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/65b1c6dd-249f-4d94-b7e8-2f92c47afae1"
 				queryable="true"
-				infopanel="right-panel"><template url="apps/georm/templates/georm_station-metro.mst"></template>
+                featurecount="5"
+				infopanel="right-panel">
+                <template url="apps/georm/templates/georm_station-metro.mst"></template>
 			</layer>
 			<layer
 				id="sv_sitorg_deplacement"
@@ -98,12 +103,14 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				infoformat="application/vnd.ogc.gml"
 				metadata="undefined"
 				queryable="true"
+                featurecount="5"
 				tooltip="false"
 				tooltipcontent="nom_usage"
 				tooltipenabled="app:sv_sitorg_administration"
 				tooltipWMS="false"
 				tooltipWMSContent= "[b]$nom_usage[/b]"
-				infopanel="right-panel"><template url="apps/georm/templates/organismes.mst"></template>
+				infopanel="right-panel">
+                <template url="apps/georm/templates/organismes.mst"></template>
 			</layer>
 		</theme>
 		<theme id="theme-cadrevie" name="Cadre de vie" collapsed="true" icon="fas fa-leaf">
@@ -116,12 +123,14 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				infoformat="application/vnd.ogc.gml"
 				metadata="undefined"
 				queryable="true"
+                featurecount="5"
 				tooltip="false"
 				tooltipcontent="nom_usage"
 				tooltipenabled="app:sv_sitorg_administration"
 				tooltipWMS="false"
 				tooltipWMSContent= "[b]$nom_usage[/b]"
-				infopanel="right-panel"><template url="apps/georm/templates/organismes.mst"></template>
+				infopanel="right-panel">
+                <template url="apps/georm/templates/organismes.mst"></template>
 			</layer>
 		</theme>
 		<theme id="theme-dechet" name="Déchets, propreté" collapsed="true" icon="fas fa-recycle">
@@ -134,12 +143,14 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				infoformat="application/vnd.ogc.gml"
 				metadata="undefined"
 				queryable="true"
+                featurecount="5"
 				tooltip="false"
 				tooltipcontent="nom_court"
 				tooltipenabled="app:sv_metier_v_decheterie_pf_dv"
 				tooltipWMS="false"
 				tooltipWMSContent= "[b]$nom_usage[/b]"
-				infopanel="right-panel"><template url="apps/georm/templates/georm_decheterie.mst"></template>
+				infopanel="right-panel">
+                <template url="apps/georm/templates/georm_decheterie.mst"></template>
 			</layer>
 			<layer
 				id="sv_metier_v_gesbac_pav"
@@ -150,12 +161,14 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				infoformat="application/vnd.ogc.gml"
 				metadata="undefined"
 				queryable="true"
+                featurecount="5"
 				tooltip="false"
 				tooltipcontent="id_pav"
 				tooltipenabled="app:sv_metier_v_gesbac_pav"
 				tooltipWMS="false"
 				tooltipWMSContent= "[b]$id_pav[/b]"
-				infopanel="right-panel"><template url="apps/georm/templates/georm_pav.mst"></template>
+				infopanel="right-panel">
+                <template url="apps/georm/templates/georm_pav.mst"></template>
 			</layer>
 			<layer
 				id="sv_metier_composteur_coll"
@@ -166,15 +179,17 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				infoformat="application/vnd.ogc.gml"
 				metadata="undefined"
 				queryable="true"
+                featurecount="5"
 				tooltip="false"
 				tooltipcontent="cmp_id"
 				tooltipenabled="app:sv_metier_composteur_coll"
 				tooltipWMS="false"
 				tooltipWMSContent= "[b]$cmp_id[/b]"
-				infopanel="right-panel"><template url="apps/georm/templates/georm_composteurs.mst"></template>
+				infopanel="right-panel">
+                <template url="apps/georm/templates/georm_composteurs.mst"></template>
 			</layer>
 			<layer
-				id="toilettes_publiques_vdr"
+				id="prop_event_toilette_publique"
 				name="Toilettes publiques"
 				type="wms"
 				url="https://public.sig.rennesmetropole.fr/geoserver/espub_dech/ows"
@@ -182,13 +197,15 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				infoformat="application/vnd.ogc.gml"
 				metadata="undefined"
 				queryable="true"
+                featurecount="5"
 				sld="https://public.sig.rennesmetropole.fr/ressources/img/mviewer/sld/georm_toilettes-publiques.sld"
 				tooltip="false"
 				tooltipcontent=""
 				tooltipenabled=""
 				tooltipWMS="false"
 				tooltipWMSContent= "[b]$cmp_id[/b]"
-				infopanel="right-panel"><template url="apps/georm/templates/georm_toilettes-publiques.mst"></template>
+				infopanel="right-panel">
+                <template url="apps/georm/templates/georm_toilettes-publiques.mst"></template>
 			</layer>
 		</theme>
 		<theme id="theme-education" name="Education, enfance" collapsed="true" icon="fas fa-graduation-cap">
@@ -201,12 +218,14 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				infoformat="application/vnd.ogc.gml"
 				metadata="undefined"
 				queryable="true"
+                featurecount="5"
 				tooltip="false"
 				tooltipcontent="nom_usage"
 				tooltipenabled="app:sv_sitorg_education"
 				tooltipWMS="false"
 				tooltipWMSContent= "[b]$nom_usage[/b]"
-				infopanel="right-panel"><template url="apps/georm/templates/organismes.mst"></template>
+				infopanel="right-panel">
+                <template url="apps/georm/templates/organismes.mst"></template>
 			</layer>
 		</theme>
 		<theme id="theme-social" name="Social, Santé" collapsed="true" icon="fas fa-heart">
@@ -219,12 +238,14 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				infoformat="application/vnd.ogc.gml"
 				metadata="undefined"
 				queryable="true"
+                featurecount="5"
 				tooltip="false"
 				tooltipcontent="nom_usage"
 				tooltipenabled="app:sv_sitorg_sante"
 				tooltipWMS="false"
 				tooltipWMSContent= "[b]$nom_usage[/b]"
-				infopanel="right-panel"><template url="apps/georm/templates/organismes.mst"></template>
+				infopanel="right-panel">
+                <template url="apps/georm/templates/organismes.mst"></template>
 			</layer>
 		</theme>
 		<theme id="theme-administration" name="Services publics" collapsed="true" icon="fas fa-users">
@@ -237,12 +258,14 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				infoformat="application/vnd.ogc.gml"
 				metadata="undefined"
 				queryable="true"
+                featurecount="5"
 				tooltip="false"
 				tooltipcontent="nom_usage"
 				tooltipenabled="app:sv_sitorg_administration"
 				tooltipWMS="false"
 				tooltipWMSContent= "[b]$nom_usage[/b]"
-				infopanel="right-panel"><template url="apps/georm/templates/organismes.mst"></template>
+				infopanel="right-panel">
+                <template url="apps/georm/templates/organismes.mst"></template>
 			</layer>
 			<layer
 				id="sv_sitorg_securite"
@@ -253,12 +276,14 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				infoformat="application/vnd.ogc.gml"
 				metadata="undefined"
 				queryable="true"
+                featurecount="5"
 				tooltip="false"
 				tooltipcontent="nom_usage"
 				tooltipenabled="app:sv_sitorg_securite"
 				tooltipWMS="false"
 				tooltipWMSContent= "[b]$nom_usage[/b]"
-				infopanel="right-panel"><template url="apps/georm/templates/organismes.mst"></template>
+				infopanel="right-panel">
+                <template url="apps/georm/templates/organismes.mst"></template>
 			</layer>
 			<layer
 				id="v_election_centre"
@@ -269,13 +294,15 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				infoformat="application/vnd.ogc.gml"
 				metadata="undefined"
 				queryable="true"
+                featurecount="5"
 				sld="https://public.sig.rennesmetropole.fr/ressources/img/mviewer/sld/georm_centre-vote.sld"
 				tooltip="false"
 				tooltipcontent=""
 				tooltipenabled=""
 				tooltipWMS="false"
 				tooltipWMSContent= ""
-				infopanel="right-panel"><template url="apps/georm/templates/georm_election_centre.mst"></template>
+				infopanel="right-panel">
+                <template url="apps/georm/templates/georm_election_centre.mst"></template>
 			</layer>
 		</theme>
 		<theme id="theme-culture" name="Culture, socioculturel" collapsed="true" icon="fas fa-eye">
@@ -288,12 +315,14 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				infoformat="application/vnd.ogc.gml"
 				metadata="undefined"
 				queryable="true"
+                featurecount="5"
 				tooltip="false"
 				tooltipcontent="nom_usage"
 				tooltipenabled="app:sv_sitorg_culture"
 				tooltipWMS="false"
 				tooltipWMSContent= "[b]$nom_usage[/b]"
-				infopanel="right-panel"><template url="apps/georm/templates/organismes.mst"></template>
+				infopanel="right-panel">
+                <template url="apps/georm/templates/organismes.mst"></template>
 			</layer>
 			<layer
 				id="mur_tague"
@@ -306,7 +335,9 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				metadata="undefined"
 				metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/2ff4b02a-7d1e-4e9c-a0c2-dddbb11a3168"
 				queryable="true"
-				infopanel="right-panel"><template url="apps/georm/templates/georm_street-art.mst"></template>
+                featurecount="5"
+				infopanel="right-panel">
+                <template url="apps/georm/templates/georm_street-art.mst"></template>
 			</layer>
 			<layer
 				id="art_ville"
@@ -319,7 +350,9 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				metadata="undefined"
 				metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/5451cbf0-6353-47ad-a274-f237001aed10"
 				queryable="true"
-				infopanel="right-panel"><template url="apps/georm/templates/georm_art-ville.mst"></template>
+                featurecount="5"
+				infopanel="right-panel">
+                <template url="apps/georm/templates/georm_art-ville.mst"></template>
 			</layer>
 		</theme>
 		<theme id="theme-sport" name="Sports, Loisirs" collapsed="true" icon="fas fa-futbol">
@@ -332,12 +365,14 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				infoformat="application/vnd.ogc.gml"
 				metadata="undefined"
 				queryable="true"
+                featurecount="5"
 				tooltip="false"
 				tooltipcontent="nom_usage"
 				tooltipenabled="app:sv_sitorg_sport"
 				tooltipWMS="false"
 				tooltipWMSContent= "[b]$nom_usage[/b]"
-				infopanel="right-panel"><template url="apps/georm/templates/organismes.mst"></template>
+				infopanel="right-panel">
+                <template url="apps/georm/templates/organismes.mst"></template>
 			</layer>
 		</theme>
 		<theme id="theme-hebergement" name="Logement, hébergement" collapsed="true" icon="fas fa-building">
@@ -350,12 +385,14 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				infoformat="application/vnd.ogc.gml"
 				metadata="undefined"
 				queryable="true"
+                featurecount="5"
 				tooltip="false"
 				tooltipcontent="nom_usage"
 				tooltipenabled="app:sv_sitorg_logement"
 				tooltipWMS="false"
 				tooltipWMSContent= "[b]$nom_usage[/b]"
-				infopanel="right-panel"><template url="apps/georm/templates/organismes.mst"></template>
+				infopanel="right-panel">
+                <template url="apps/georm/templates/organismes.mst"></template>
 			</layer>
 			<layer
 				id="v_habitat_prg_immo"
@@ -368,8 +405,10 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				metadata="undefined"
 				metadata-csw=""
 				queryable="true"
+                featurecount="5"
 				filter="publication='oui'"
-				infopanel="right-panel"><template url="apps/georm/templates/georm_immobilier.mst"></template>
+				infopanel="right-panel">
+                <template url="apps/georm/templates/georm_immobilier.mst"></template>
         </layer>
 		</theme>
 		<theme id="theme-economie" name="Economie, emploi" collapsed="true" icon="fas fa-euro-sign">
@@ -382,12 +421,14 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				infoformat="application/vnd.ogc.gml"
 				metadata="undefined"
 				queryable="true"
+                featurecount="5"
 				tooltip="false"
 				tooltipcontent="nom_usage"
 				tooltipenabled="app:sv_sitorg_economie"
 				tooltipWMS="false"
 				tooltipWMSContent= "[b]$nom_usage[/b]"
-				infopanel="right-panel"><template url="apps/georm/templates/organismes.mst"></template>
+				infopanel="right-panel">
+                <template url="apps/georm/templates/organismes.mst"></template>
 			</layer>
 		</theme>
 		<theme id="theme-extras" name="Extras" collapsed="true" icon="fas fa-plus-square">
@@ -400,12 +441,14 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				infoformat="application/vnd.ogc.gml"
 				metadata="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/dc03f7c6-d6f3-4b8f-8491-e97ba77defba"
 				queryable="true"
+                featurecount="5"
 				tooltip="false"
 				tooltipcontent=""
 				tooltipenabled="ladm_terri:commune_emprise"
 				tooltipWMS="false"
 				tooltipWMSContent= "[b]$[/b]"
-				infopanel="right-panel"><template url="apps/georm/templates/georm_commune.mst"></template>
+				infopanel="right-panel">
+                <template url="apps/georm/templates/georm_commune.mst"></template>
 			</layer>
 			<layer
 				id="quartier"
@@ -416,12 +459,14 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				infoformat="application/vnd.ogc.gml"
 				metadata="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/57c79ab9-2289-4a15-a579-0ee668d8dfa1"
 				queryable="true"
+                featurecount="5"
 				tooltip="false"
 				tooltipcontent=""
 				tooltipenabled="ladm_terri:quartier"
 				tooltipWMS="false"
 				tooltipWMSContent= "[b]$[/b]"
-				infopanel="right-panel"><template url="apps/georm/templates/georm_quartier.mst"></template>
+				infopanel="right-panel">
+                <template url="apps/georm/templates/georm_quartier.mst"></template>
 			</layer>
 			<layer
 				id="v_election_perim_bureau"
@@ -432,12 +477,14 @@ attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/s
 				infoformat="application/vnd.ogc.gml"
 				metadata="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/3753bb54-3dfa-4f95-a163-a2c3444802a6"
 				queryable="false"
+                featurecount="5"
 				tooltip="false"
 				tooltipcontent=""
 				tooltipenabled="eq_educ:v_election_perim_bureau"
 				tooltipWMS="false"
 				tooltipWMSContent= "[b]$[/b]"
-				infopanel="right-panel"><template url="apps/georm/templates/georm_perim_bureau_vote.mst"></template>
+				infopanel="right-panel">
+                <template url="apps/georm/templates/georm_perim_bureau_vote.mst"></template>
 			</layer>
 		</theme>
 	</themes>

@@ -1,29 +1,12 @@
 {{#features}}
-	<li class="item" style="width:238px;">
-		<h5 class="title-feature toilette-publique-title"> {{#noms}} {{{noms}}}  {{/noms}} </h5>
-		<p class="text-feature">
-            <p> {{#lieux}} <span style="font-family:'roboto_bold'"> Adresse : </span> {{{lieux}}}  {{/lieux}}  </p>
-            <p> {{#proxi}} <span style="font-family:'roboto_bold'"> A proximité : </span> {{{proxi}}}  {{/proxi}}  </p>
-            <p> {{#pmr}} <span style="font-family:'roboto_bold'"> Accès aux personnes à mobilité réduite : </span> {{{pmr}}}  {{/pmr}}  </p>
-            <p> {{#horaires}} <span style="font-family:'roboto_bold'"> Horaires : </span> {{{horaires}}}  {{/horaires}}  </p>
+	<li class="item">
+		<h5 class="rm-popup-title-feature toilette-publique-title"> {{#noms}} {{{noms}}}  {{/noms}} </h5>
+		<p class="rm-popup-text-feature">
+            <p> {{#lieux}} <span class='rm-popup-label'> Adresse : </span> {{{lieux}}}  {{/lieux}}  </p>
+            <p> {{#proxi}} <span class='rm-popup-label'> A proximité : </span> {{{proxi}}}  {{/proxi}}  </p>
+            <p> {{#pmr}} <span class='rm-popup-label'> Accès aux personnes à mobilité réduite : </span> {{{pmr}}}  {{/pmr}}  </p>
+            <p> {{#horaires}} <span class='rm-popup-label'> Horaires : </span> {{{horaires}}}  {{/horaires}}  </p>
 		</p>
 	</li>
 {{/features}}
 
-<style>
-	.title-feature {
-		font-family:"VistaSansOT_bold","roboto_bold";
-		font-size:23px;
-		margin-bottom:1%;
-		line-height:1;
-	}
-	.text-feature{
-		font-family:"VistaSansOT_regular","roboto_regular";
-		color:#555;
-		font-size:13px;
-		margin-top:10%;
-	}
-	.toilette-publique-title {
-		color: #8c4814;
-	}
-</style>

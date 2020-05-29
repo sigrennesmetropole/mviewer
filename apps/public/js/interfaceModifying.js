@@ -1,11 +1,5 @@
 var interfaceModifying = (function () {
-    /**
-     * replace trash icon on legend panel 
-     */
-    var changeBtnremovelayersIcon = function (glyphiconElement) {
-        $('#btn-remove-layers > span').removeClass('glyphicon glyphicon-trash');
-        $('#btn-remove-layers > span').addClass(glyphiconElement);
-    };
+
     /**
      * hide opacity set function
      * @param {*} idLayer 
@@ -125,7 +119,10 @@ var interfaceModifying = (function () {
             
             var activeRefresh = false;
             infoPanels.forEach(function (panelId) {
-                if ( $('#' + panelId).is(':visible') ) {
+                // MODIF CBR
+                //if ( $('#' + panelId).is(':visible') ) {
+                if ( $('#' + panelId).hasClass('active') ) {
+                // FIN MODIF CBR
                     activeRefresh = true;
                 }
             });
@@ -134,34 +131,7 @@ var interfaceModifying = (function () {
             }
          });
     };
-    var displayOpacityByDefault = function (layerDisplayOpacity) {
-        var mvLayerOptions = $('#layers-container .mv-layer-options');
-        $('#layers-container-box-header > a').click(function (event) {
-            for(var i = 0; i < mvLayerOptions.length; i++) {
-               
-                if (layerDisplayOpacity.includes(mvLayerOptions[i].previousElementSibling.previousElementSibling.innerText)) {
-                    mvLayerOptions[i].style.display = "block";
-                    mvLayerOptions[i].nextSibling.children[0].className = mvLayerOptions[i].nextSibling.children[0].className.replace('glyphicon-chevron-down', 'glyphicon-chevron-up')
-                }
-            }
-        });
-       $('#menu .mv-nav-item').click( function(event) {
-            mvLayerOptions = $('#layers-container .mv-layer-options');
-            layersContainerSpan = $('#layers-container').find('span');
-            if ( $('#legend').hasClass('active')) {
-                for(var i = 0; i < mvLayerOptions.length; i++) {
-               
-                    if (layerDisplayOpacity.includes(mvLayerOptions[i].previousElementSibling.previousElementSibling.innerText)) {
     
-                        mvLayerOptions[i].style.display = "block";
-                        mvLayerOptions[i].nextSibling.children[0].className = mvLayerOptions[i].nextSibling.children[0].className.replace('glyphicon-chevron-down', 'glyphicon-chevron-up')
-    
-                    }
-    
-                }
-            }
-        });
-    };
     var removeSameTabs = function () {
 		var navTabsChildren = $('.nav-tabs')[0].children;
         var ficheInfoTexte = [];
@@ -243,13 +213,11 @@ var interfaceModifying = (function () {
     };
      
      return {
-        changeBtnremovelayersIcon: changeBtnremovelayersIcon,
         disableLayerOpacity: disableLayerOpacity,
         addIconToLayerName: addIconToLayerName,
         setTabFirstPosition: setTabFirstPosition,
         refreshInfoPanel: refreshInfoPanel,
         hideLayerName: hideLayerName,
-        displayOpacityByDefault: displayOpacityByDefault,
         removeSameTabs: removeSameTabs,
         getColorBack: getColorBack,
         queryMapModifications: queryMapModifications,

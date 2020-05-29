@@ -1,5 +1,5 @@
 /******************************************************************************
---------------------------- CSS THEME MVIEWER / ALIZARIN -----------------
+--------------------------- CSS THEME MVIEWER / RENNES METROPOLE---------------
 ********************************************************************************/
 
 /* Import des fonts*/
@@ -27,6 +27,20 @@
 		    font-family: 'vistaSansOT_regular';
 		    src: url('font/Vista_Sans-OT/VistaSansOT-Reg.otf');
 		}
+		@font-face {
+		    font-family: 'vistaSansOT_italic';
+		    src: url('font/Vista_Sans-OT/VistaSansOT-RegItalic.otf');
+		}
+        @font-face {
+		    font-family: 'vistaSansOT_light';
+		    src: url('font/Vista_Sans-OT/VistaSansOT-Light.otf');
+		}
+        @font-face {
+		    font-family: 'vistaSansOT_light_italic';
+		    src: url('font/Vista_Sans-OT/VistaSansOT-LightItalic.otf');
+		}
+
+
 /*******************************
 ------------- NAVBAR 
 ********************************/
@@ -125,6 +139,24 @@ p.navbar-text.mv-title{
 	color: #f8f8f8;
 }
 
+.mv-nav-item{
+	padding-left:10px;
+}
+
+.mv-checked:before {
+    content:"\f058"!important;
+}
+
+.state-icon {
+    margin-right: 5px;
+}
+
+/*  badge du menu qui permet de sélectionner/déselectionner des couches en masse  */
+.toggle-theme-layers .badge {
+    font-family:'vistaSansOT_light', Arial, Sans-serif;
+    font-size: 10px!important;
+}
+
 /*******************************
 ------------- BOTTOM PANEL
 ********************************/
@@ -148,6 +180,8 @@ p.navbar-text.mv-title{
 #layers-container a {
 	color: #4D4D4D;
 	font-family: 'vistaSansOT_bold', Arial, Sans-serif;
+    text-align: left;
+    display: inline-block;
 }
 
 .form-group label {
@@ -240,6 +274,15 @@ span.mv-time-player-selection {
     background-color: #4D4D4D;
 }
 
+
+.layerdisplay-title > a, .layerdisplay-title >i{
+    cursor: pointer!important;
+}
+
+span.text-big-legend {
+    color: #4D4D4D!important;
+    height: 100%;
+}
 /*******************************
 ------------- BASEMAP
 ********************************/
@@ -306,7 +349,6 @@ h4.title{
 .rm-popup-title-feature  {
     font-family: 'vistaSansOT_bold', Arial, Sans-serif; 
     color: #032E46;
-    /*color: #AB1396;*/
     font-size:23px;
     margin-bottom:1%;
     line-height:1;
@@ -316,16 +358,31 @@ h4.title{
 .rm-popup-label {
     font-family: 'vistaSansOT_bold', Arial, Sans-serif;  
     color:#555;
-    /*color: #14a853;*/
 }
 
 
 .rm-popup-text-feature{
-    font-family: 'vistaSansOT_regular', Arial, Sans-serif; 
+    font-family: 'vistaSansOT_light', Arial, Sans-serif; 
     color:#555;
     /*color: #863030;*/
     font-size:13px;
     margin-top:10%;
+}
+
+
+.rm-popup-footer {
+    position: absolute;
+    /*bottom: 0;*/
+    bottom: 80px!important;
+    border: 2px solid;
+    border-radius: 11%;
+    padding: 2% 4% 2% 3%;
+    color:#4d4d4d;
+}
+
+.rm-popup-alerte-legende{
+    font-family:"VistaSansOT_italic";
+    font-size:10px;
 }
 
 ul ul {
@@ -360,111 +417,79 @@ ul ul {
 
 
 /******* ONGLETS ********/
-/* onglet inactifs */
+
 .popup-content .nav-tabs {
     border-width: 0px 1px 1px 0px;
-    /*border-right-color: #fff;*/
     border-right-color:#bcbcbc;
     border-style: solid;
 }
+
+/* Li */
 .popup-content .nav-tabs > li  {
     border-width: 0px 0px 1px 1px;
     border-color:#bcbcbc;
     border-style: solid;
-    /* opacity: 70%; */
     border-left: thick solid #4D4D4D!important;
 }
-.popup-content .nav-tabs > li> a  {
-    opacity: 70%; 
-}
-.popup-content .nav-tabs > li > a:hover  {
-    border-width: 0px 0px 0px 0px;
 
-}
-
-.popup-content .nav-tabs > li > a.background-goutte_vert > .fa {
-    color: #8f9169;
-}
-.popup-content .nav-tabs > li > a.background-goutte_bleu > .fa {
-    color: #33919d;
-}
-.popup-content .nav-tabs > li > a.background-goutte_vert-eau > .fa {
-    color: #33c49d;
-}
-.popup-content .nav-tabs > li > a.background-goutte_violet > .fa {
-    color: #bb3da2;
-}
-.popup-content .nav-tabs > li > a.background-goutte_rouge > .fa {
-    color: #e45e52;
-}
-.popup-content .nav-tabs > li > a.background-goutte_orange > .fa {
-    color: #f9a241;
-}
-
-.popup-content .nav-tabs > li > a > .fa {
-    color: #4D4D4D;
-    /*opacity: 70%;*/
-}
-
-.popup-content .nav-tabs > li > a.bg-colored > .item-number {
-    position: absolute;
-    bottom: 2px;
-    right: 2px;
-    opacity: 70%;
-}
-
-/* onglet actifs */
 .popup-content .nav-tabs > li.active  {
     border-left-width: medium!important;
     padding-bottom: 0px!important;
 }
 
-.popup-content .nav-tabs > li.active > a {
-    background-color: #4D4D4D!important;
+
+/* li.a */
+.popup-content .nav-tabs > li > a:hover  {
+    border-width: 0px 0px 0px 0px;
 }
 
-.popup-content .nav-tabs > li.active > a.background-not-def {
-    background-color: #4D4D4D;
+.popup-content .nav-tabs > li.active > a.background-not-def { background-color: #4D4D4D!important;}
+.popup-content .nav-tabs > li.active > a.background-goutte_vert { background-color: #8f9169!important;}
+.popup-content .nav-tabs > li.active > a.background-goutte_bleu { background-color: #33919d!important;}
+.popup-content .nav-tabs > li.active > a.background-goutte_vert-eau { background-color: #33c49d!important;}
+.popup-content .nav-tabs > li.active > a.background-goutte_violet { background-color: #bb3da2!important;}
+.popup-content .nav-tabs > li.active > a.background-goutte_rouge { background-color: #e45e52!important;}
+.popup-content .nav-tabs > li.active > a.background-goutte_orange { background-color: #f9a241!important;}
+
+
+/* li.a.fa */
+.popup-content .nav-tabs > li > a > .fa {
+    color: #4D4D4D!important;
+    opacity: 55%!important;
 }
 
-.popup-content .nav-tabs > li.active > a.background-goutte_vert {
-    background-color: #8f9169;
-}
+.popup-content .nav-tabs > li > a.background-goutte_vert > .fa { color: #8f9169!important;}
+.popup-content .nav-tabs > li > a.background-goutte_bleu > .fa { color: #33919d!important;}
+.popup-content .nav-tabs > li > a.background-goutte_vert-eau > .fa { color: #33c49d!important;}
+.popup-content .nav-tabs > li > a.background-goutte_violet > .fa { color: #bb3da2!important;}
+.popup-content .nav-tabs > li > a.background-goutte_rouge > .fa { color: #e45e52!important;}
+.popup-content .nav-tabs > li > a.background-goutte_orange > .fa { color: #f9a241!important;}
 
-.popup-content .nav-tabs > li.active > a.background-goutte_bleu {
-    background-color: #33919d;
-}
-
-.popup-content .nav-tabs > li.active > a.background-goutte_vert-eau {
-    background-color: #33c49d;
-}
-
-.popup-content .nav-tabs > li.active > a.background-goutte_violet {
-    background-color: #bb3da2;
-}
-
-.popup-content .nav-tabs > li.active > a.background-goutte_rouge {
-    background-color: #e45e52;
-}
-
-.popup-content .nav-tabs > li.active > a.background-goutte_orange {
-    background-color: #f9a241;
-}
-
-.popup-content .nav-tabs > li.active > a  {
-    opacity: 100%;
-}
-.popup-content .nav-tabs > li.active > a > .fa {
+.popup-content .nav-tabs > li.active > a > .fa {  
     color: white!important;
-    opacity: 100%;
+    opacity: 100%!important;
 }
+
+/* item number */
+.popup-content .nav-tabs > li > a.bg-colored > .item-number {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    color: #4D4D4D;
+    opacity: 70%;
+}
+
 .popup-content .nav-tabs > li.active > a.bg-colored > .item-number {
-    color: white!important;
+    color: white;
 }
-
 
 
 /***** images ****/
+.labelPictureEnlarge {
+    font-family:"VistaSansOT_light_italic","roboto_regular";
+    text-align: center;
+}
+
 .carousel-inner>.item>a>img {
     cursor: pointer;
 }
@@ -476,6 +501,11 @@ ul ul {
 // Photo dans fenetre modale
 .popphoto{
     cursor: default!important;
+}
+
+/****** liens ******/
+.lienweb:hover {
+    text-decoration: underline dotted;
 }
 /*******************************
 ------------- BUTTON RIGHT TOOLBAR
@@ -567,12 +597,26 @@ ul ul {
 
 /* Custom-tooltip-infopanel */
 .mv-tooltip.tooltip-inner {
-    background-color: #4D4D4D;
+    /*background-color: #4D4D4D;
     padding: 8px 8px 8px;
     color: #fff;
     font-family: "vistaSansOT_regular", Arial, Sans-serif;
     font-size: 11px;
-    letter-spacing: 1;
+    letter-spacing: 1;*/
+    font-family: 'vistaSansOT_light', Arial, Sans-serif;
+    /*width: 100px;*/
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    margin-left: -50px;
+    margin-top: -80px;
+}
+.rm-tooltip-title {
+    font-family: 'vistaSansOT_regular', Arial, Sans-serif;
+    color: #FFFFFF;
 }
 
 .tooltip.right .mv-tooltip.tooltip-arrow {
@@ -792,3 +836,131 @@ button.btn.btn-default.navbar-btn.mv-navbar-btn:focus{
     margin-left: -50px;
     margin-top: -80px;
 }
+
+
+/*******************************
+-------------EVOLUTION TUTORIAL
+********************************/
+
+.quote-container {
+    margin-top: 50px;
+    position: relative;
+}
+
+.note {
+    color: #333;
+    position: relative;
+    width: 100%;
+    font-family: 'VistaSansOT_regular';
+    font-size: 11px;
+    box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
+    display: block;
+    text-align: left;
+    padding-top: 20px;
+}
+
+.postit {
+    /*background: #eae672;*/
+    background: #e5b6dc;
+    -webkit-transform: rotate(2deg);
+    -moz-transform: rotate(2deg);
+    -o-transform: rotate(2deg);
+	-ms-transform: rotate(2deg);
+	transform: rotate(2deg);
+}
+
+.pin {
+    background-color: #aaa;
+    display: block;
+    height: 24px;
+    width: 2px;
+    position: relative;
+    left: 50%;
+    top: 13px;
+    z-index: 1;
+  }
+
+  .pin:after {
+    background-color: #AE1910;
+    background-image: radial-gradient(25% 25%, circle, hsla(0,0%,100%,.3), hsla(0,0%,0%,.3));
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.1),
+                inset 3px 3px 3px hsla(0,0%,100%,.2),
+                inset -3px -3px 3px hsla(0,0%,0%,.2),
+                23px 20px 3px hsla(0,0%,0%,.15);
+    content: '';
+    height: 12px;
+    left: -5px;
+    position: absolute;
+    top: -10px;
+    width: 12px;
+  }
+
+  .pin:before {
+    background-color: hsla(0,0%,0%,0.1);
+    box-shadow: 0 0 .25em hsla(0,0%,0%,.1);
+    content: '';
+
+    height: 18px;
+    width: 2px;
+    left: 0;
+    position: absolute;
+    top: 5px;
+   
+    transform: rotate(76deg)!important;
+    -moz-transform: rotate(76deg)!important;
+    -webkit-transform: rotate(76deg)!important;
+    -o-transform: rotate(76deg)!important;
+    -ms-transform: rotate(76deg)!important;
+    transform-origin: 50% 100%!important;
+    -moz-transform-origin: 50% 100%!important;
+    -webkit-transform-origin: 50% 100%!important;
+    -ms-transform-origin: 50% 100%!important;
+    -o-transform-origin: 50% 100%!important;
+  }
+
+  .quote-container blockquote {
+      border: none;
+  }
+
+  :root {
+    --modal-duration: 1s;
+  }
+
+  
+  @keyframes modalopen {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .didacticiel {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+  }
+
+  .didact-content {
+    /*box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);*/
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+    position: relative;
+  }
+
+  .tutocontainer {
+    display: block;
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040
+  }

@@ -1,34 +1,16 @@
 {{#features}}
-	<li class="item" style="width:238px;">
-		<h5 class="title-feature election-centre-title"> Centre de vote - Bureau(x) n° {{#burx_liste}} {{{burx_liste}}}  {{/burx_liste}}</h5>
-		<p class="text-feature">
-            <p>  <span style="font-family:'roboto_bold'"> Commune : </span> {{#c_nom}} {{{c_nom}}} {{/c_nom}} </p>
+	<li class="item">
+		<h5 class="rm-popup-title-feature election-centre-title"> Centre de vote - Bureau(x) n° {{#burx_liste}} {{{burx_liste}}}  {{/burx_liste}}</h5>
+		<p class="rm-popup-text-feature">
+            <p>  <span class='rm-popup-label'> Commune : </span> {{#c_nom}} {{{c_nom}}} {{/c_nom}} </p>
 	    <p> 
-                {{#loc_voie}}<span style="font-family:'roboto_bold'"> Adresse : </span> {{/loc_voie}}
+                {{#loc_voie}}<span class='rm-popup-label'> Adresse : </span> {{/loc_voie}}
                 {{#loc_adr}} {{{loc_adr}}} {{/loc_adr}}
                 {{#loc_voie}} {{{loc_voie}}} {{/loc_voie}}
             </p>
-            <p>  <span style="font-family:'roboto_bold'"> Bâtiment : </span> {{#loc_bat}} {{{loc_bat}}} {{/loc_bat}} </p>
-            <p> {{#loc_salle}}<span style="font-family:'roboto_bold'">Salle : </span> {{{loc_salle}}} {{/loc_salle}} </p>
+            <p>  <span class='rm-popup-label'> Bâtiment : </span> {{#loc_bat}} {{{loc_bat}}} {{/loc_bat}} </p>
+            <p> {{#loc_salle}}<span class='rm-popup-label'>Salle : </span> {{{loc_salle}}} {{/loc_salle}} </p>
         </p>
 	</li>
 {{/features}}
 
-<style>
-	.title-feature {
-		color: #98231d;
-		font-family:"VistaSansOT_bold","roboto_bold";
-		font-size:23px;
-		margin-bottom:1%;
-		line-height:1;
-	}
-	.text-feature{
-		font-family:"VistaSansOT_regular","roboto_regular";
-		color:#555;
-		font-size:13px;
-		margin-top:10%;
-	}
-	.election-centre-title {
-		color: #98231;
-	}
-</style>

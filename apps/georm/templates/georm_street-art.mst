@@ -1,33 +1,17 @@
 {{#features}}
-	<li class="item" style="width:238px;">
-		<h5 class="title-feature">{{nom_mur}}</h5>
-		<p class="text-feature">
-			{{#nom_voie}}<span style="font-family:'roboto_bold'"> Localisation :</span> {{nom_voie}}<br/>{{/nom_voie}}
-			{{#equip_desc}}<span style="font-family:'roboto_bold'"> Description :</span> {{equip_desc}}<br/>{{/equip_desc}}
-			{{#longueur}}<span style="font-family:'roboto_bold'"> Longueur :</span> {{{longueur}}}<br/>{{/longueur}}
-			{{#hauteur}}<span style="font-family:'roboto_bold'"> Hauteur :</span> {{{hauteur}}}<br/>{{/hauteur}}
-			{{#remarque}}<span style="font-family:'roboto_bold'"> Information supplémentaire :</span> {{{remarque}}}<br/>{{/remarque}}
+	<li class="item">
+		<h5 class="rm-popup-title-feature street-art-title">{{nom_mur}}</h5>
+		<p class="rm-popup-text-feature">
+			{{#nom_voie}}<span class='rm-popup-label'> Localisation :</span> {{nom_voie}}<br/>{{/nom_voie}}
+			{{#equip_desc}}<span class='rm-popup-label'> Description :</span> {{equip_desc}}<br/>{{/equip_desc}}
+			{{#longueur}}<span class='rm-popup-label'> Longueur :</span> {{{longueur}}}<br/>{{/longueur}}
+			{{#hauteur}}<span class='rm-popup-label'> Hauteur :</span> {{{hauteur}}}<br/>{{/hauteur}}
+			{{#remarque}}<span class='rm-popup-label'> Information supplémentaire :</span> {{{remarque}}}<br/>{{/remarque}}
 		</p>
 		{{#photo}}<img src="https://public.sig.rennesmetropole.fr/ressources/img/photos/graff/{{{photo}}}" alt="{{{nom_mur}}}">
 			<p class="labelPictureEnlarge">Cliquez pour agrandir cette image</p>
 		{{/photo}}
-	</li> {{/features}} <style>
-	.title-feature {
-		color: #e6007e;
-		font-family:"VistaSansOT_bold","roboto_bold";
-		font-size:23px;
-		margin-bottom:1%;
-		line-height:1;
-	}
-	.text-feature{
-		font-family:"VistaSansOT_regular","roboto_regular";
-		color:#555;
-		font-size:13px;
-		margin-top:10%;
-	}
-        .labelPictureEnlarge {
-               font-family:"VistaSansOT_regular","roboto_regular";
-               font-style: italic;
-                text-align: center;
-        }
-</style>
+	</li> 
+{{/features}} 
+    
+
