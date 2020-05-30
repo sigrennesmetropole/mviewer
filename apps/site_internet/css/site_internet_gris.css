@@ -455,7 +455,7 @@ ul ul {
 /* li.a.fa */
 .popup-content .nav-tabs > li > a > .fa {
     color: #4D4D4D!important;
-    opacity: 55%!important;
+    opacity: 0.55!important;
 }
 
 .popup-content .nav-tabs > li > a.background-goutte_vert > .fa { color: #8f9169!important;}
@@ -467,7 +467,7 @@ ul ul {
 
 .popup-content .nav-tabs > li.active > a > .fa {  
     color: white!important;
-    opacity: 100%!important;
+    opacity: 1!important;
 }
 
 /* item number */
@@ -476,7 +476,7 @@ ul ul {
     bottom: 2px;
     right: 2px;
     color: #4D4D4D;
-    opacity: 70%;
+    opacity: 0.7;
 }
 
 .popup-content .nav-tabs > li.active > a.bg-colored > .item-number {
