@@ -330,6 +330,39 @@ h4.title{
 	font-family: 'vistaSansOT_bold', sans-serif!important; 
 }	
 
+
+
+/*******************************
+------------- MODAL INFO PANEL
+********************************/
+
+#modal-panel .modal-content{
+	font-family: 'vistaSansOT_regular', sans-serif!important; 
+    background-color: #fff;
+    color: #333
+    border-color: #bcbcbc;
+}
+
+#modal-panel .panel{
+    border-color: #bcbcbc;
+}
+
+#modal-panel .panel-heading{    
+    background-color: #4D4D4D;
+    color: #fff;
+    /*
+    background-color: #fff;
+    color: #4D4D4D;
+    */
+}
+
+#modal-panel .modal-title{
+	font-family: 'vistaSansOT_bold', sans-serif!important; 
+    text-align: center;
+    font-size: x-large;
+   /*color #333;*/
+}
+
 /*******************************
 ------------- POPUP
 ********************************/

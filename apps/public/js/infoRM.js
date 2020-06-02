@@ -406,7 +406,7 @@ var info = (function () {
                             // fin
                             pos++;
                             if (i > 0) {
-                                id = id + i;
+                                id = id + 1;
                             }
                             //Set view with layer info & html formated features
                             views[panel].layers.push({
