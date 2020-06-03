@@ -1,0 +1,68 @@
+{{#features}}
+	<li class="item">
+ 		<h5 class="rm-popup-title-feature">{{{nom}}}</br> {{{adresse}}}</h5>
+        
+		<p class="rm-popup-text-feature">
+			Attention !  <span class='rm-popup-label'>Pour retirer votre masque, un courrier sera envoyé à votre domicile entre le 30 avril et le 14 mai. Il vous précisera le jour de retrait.</span> </br>
+			Vous devrez impérativement <span class='rm-popup-label'>présenter ce courrier </span>ainsi qu’<span class='rm-popup-label'>une pièce d’identité</span> et <span class='rm-popup-label'>une pièce justifiant</span> la composition de votre foyer.
+			</br></br>Si après le 14 mai vous n’avez pas reçu ce courrier, une distribution de rattrapage est prévue le dimanche 17 mai dans un centre de distribution près de chez vous.
+			</br></br><a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/distribution-de-masques-10-infos-pour-tout-savoir" target="_blank">Vous avez une question sur la distribution des masques ? cliquez ici</a>
+			</br></br> <span class='rm-popup-label'>Accéder au centre de distribution : </span>
+			</br>	
+			<img src="apps/site_internet/img/masques/googlemaps128.png" width="20" height="20" alt="Exemple stationnement">
+            <a id='lienweb' class='lienweb' href="{{{url_google_maps}}}" target="_blank">&nbsp;&nbsp; Itinéraire Google Maps</a>
+			</br>
+			<img src="apps/site_internet/img/masques/map128c.png" width="20" height="20" alt="Exemple stationnement">
+            <a id='lienweb' class='lienweb' href="{{{url_pdf_couleur}}}" target="_blank">&nbsp;&nbsp; Plan PDF en couleur </a>
+			</br>
+			<img src="apps/site_internet/img/masques/map128.png" width="20" height="20" alt="Exemple stationnement">
+            <a id='lienweb' class='lienweb' href="{{{url_pdf_nb}}}" target="_blank">&nbsp;&nbsp; Plan PDF en Noir & Blanc </a>
+
+		</p>
+	</li>
+{{/features}}
+
+<style>
+/*
+	.title-feature {
+		font-family:"roboto_bold";
+		font-size:18px;
+		margin-bottom:1%;
+		line-height:1;
+	}
+	.text-feature{
+		font-family:"roboto_regular";
+		color:#555;
+		font-size:13px;
+		margin-top:10%;
+	}
+	.pav-title {
+		color: #8d4915;
+	}
+
+    	.footer {
+        	position: absolute;
+        	bottom: 0;
+        	border: 2px solid;
+        	border-radius: 11%;
+        	padding: 2% 4% 2% 3%;
+        	color:#4d4d4d;
+    }
+*/
+</style>
+
+<script>
+/*
+function verifQuartiers() {
+    // ne pas afficher les champs quartier qui ont pour valeur "Non attribué"
+    var pav_quartiers=document.getElementsByClassName("pavquartier");
+    for (var i = 0, len = pav_quartiers.length; i < len; i++ ) {
+        if (pav_quartiers[i].innerHTML.indexOf("Non attribué") >= 0){
+            pav_quartiers[i].style.display = "none";
+        }
+    }
+}
+
+verifQuartiers();
+*/
+</script>

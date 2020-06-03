@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <application
+        title="Covid-19 | Centres de distribution des masques à Rennes"
+        logo="https://public.sig.rennesmetropole.fr/ressources/img/logos/rm/logo_mviewer_gris_inverse.png"
+        titlehelp="Covid-19 | Centres de distribution des masques à Rennes"
+		help="apps/site_internet/html/distri_masques_help.html"
+		showhelp="true"
+		style="apps/site_internet/css/site_internet_gris.css"
+        exportpng="false"
+        coordinates="false"
+        measuretools="false"
+        searchRM="true"
+        searchRMConfFile="data/searchRMConf_masques.json"
+        />
+    <!--
+        foreword="true"
+        forewordContent="Covid-19 | Centres de distribution des masques à Rennes || Localisez facilement le centre de distribution où vous pourrez retirer votre masque (un par personne du foyer)&lt;b&gt;&lt;u&gt; uniquement le jour indiqué&lt;/u&gt; dans le courrier envoyé à votre domicile entre le 30 avril et le 14 mai. &lt;/b&gt; &lt;/br&gt;Venez au centre de distribution avec ce courrier, une pièce d’identité et un justificatif de la composition de votre foyer. Si après le 14 mai, &lt;b&gt;vous n’avez pas reçu ce courrier&lt;/b&gt;, une distribution complémentaire est prévue le dimanche 17 mai."
+        tutorial="false"
+        openMultipleTheme="true"
+        togglealllayersfromtheme="false"
+    -->
+    <mapoptions maxzoom="20" minzoom="11" projection="EPSG:3857" center="-186938,6125563" zoom="13" />
+    
+    <baselayers style="default">
+    <!--    <baselayer visible="true" id="PVCI" thumbgallery="img/basemap/pvcilight.jpg" title="Rennes Metropole" label="Fond de plan PVCI" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="ref_fonds:plui_fond_plan" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  ></baselayer> --> 
+        <baselayer visible="true" id="PLUi" thumbgallery="img/basemap/pvcisimple.jpg" title="Rennes Metropole" label="PVCI simple gris" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="ref_fonds:pvci_simple_gris" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  ></baselayer>
+        <baselayer visible="false" id="ortho2017" thumbgallery="img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  ></baselayer>
+    </baselayers>
+    
+    <searchparameters bbox="false" localities="false" features="false" static="false"/>
+    
+    <themes mini="true">
+        <theme id="theme-20180827150815" name="Sites de distribution Covid19" collapsed="true" icon="map-marker">
+            <layer
+                id="covid_masques_site"
+                name="Centres de distribution"
+                type="wms"
+                url="https://public.sig.rennesmetropole.fr/geoserver/sec_civile/ows"
+                visible="true"
+                infoformat="application/vnd.ogc.gml"
+                metadata="undefined"
+                metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/6db35b05-e8bc-4339-a49b-828da0d3fd9f"
+                tooltip="true"
+                tooltipcontent="{{nom}}"
+                queryable="false"
+                infopanel="right-panel">
+            </layer>
+            <layer
+                id="covid_masques_site_secteur"
+                name="Votre centre de distribution"
+                type="wms"
+                url="https://public.sig.rennesmetropole.fr/geoserver/sec_civile/ows"
+                visible="true"
+                infoformat="application/vnd.ogc.gml"
+                metadata="undefined"
+                metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/6db35b05-e8bc-4339-a49b-828da0d3fd9f"
+                queryable="true"
+                infopanel="right-panel">
+                <template url="apps/site_internet/templates/masques_site.mst"></template>
+            </layer>
+        </theme>
+    </themes>
+</config>
