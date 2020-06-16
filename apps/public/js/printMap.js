@@ -109,7 +109,8 @@ var printMap = (function() {
       var exportPNGElement = document.getElementById('printMapbtn');
       _map.once('postcompose', function(event) {
           try {
-              var canvas = event.context.canvas;
+              //var canvas = event.context.canvas;
+              var canvas = $('.ol-layer > canvas')[0];
               exportPNGElement.href = canvas.toDataURL('image/png');
               createPrintWindow(exportPNGElement.href);
           }

@@ -69,14 +69,14 @@ var RmOptionsManager = (function () {
             printMap.disable();
         }
 
-        if (applicationOptions.searchRM === "true") {
+        /*if (applicationOptions.searchRM === "true") {
 
             searchRM.init(applicationOptions.searchRMConfFile);
             searchRM.enable();
 
         } else {
             searchRM.disable();
-        }
+        }*/
 
         // layers configuration
         for (const layer in layers) {

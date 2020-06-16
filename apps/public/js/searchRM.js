@@ -1,304 +1,372 @@
 var searchRM = (function () {
 
+    var searchParameters = [];
 
-    var accentMap = {
-        "Á": "A", "á": "a", "À": "A", "à": "a", "Â": "A", "â": "a", "Ä": "A", "ä": "a",	"A̧": "A", "a̧" : "a","Ą": "A", "ą": "a", 	
-        "Ⱥ": "A", "ⱥ": "a", "Ǎ": "A", "ǎ": "a", "Ȧ": "A", "ȧ": "a", "Ạ": "A", "ạ": "a", "Ā": "A", "ā": "a", "Ã": "A", "ã": "a",
-        "Ć": "C", "ć": "c", "C̀": "C", "c̀": "c", "Ĉ": "C", "ĉ": "c", "C̈": "C", "c̈": "c", "Ç": "C", "ç": "c", "C̨": "C", "c̨": "c", 
-        "Ȼ": "C", "ȼ": "c", "Č": "C", "č" : "c", "Ċ": "C", "ċ": "c", "C̣": "C", "c̣": "c", "C̄": "C", "c̄": "c", "C̃": "C", "c̃": "c",
-        "É": "E", "é": "e", "È": "E", "è": "e", "Ê": "E", "ê": "e", "Ë": "E", "ë": "e", "Ȩ": "E", "ȩ": "e", "Ę": "E", "ę": "e", 
-        "Ɇ": "E", "ɇ": "e", "Ě": "E", "ě": "e", "Ė": "E", "ė": "e", "Ẹ": "E", "ẹ": "e", "Ē": "E", "ē": "e", "Ẽ": "E", "ẽ": "e",
-        "Í": "I", "í": "i", "Ì": "I", "ì": "i", "Î": "I", "î": "i", "Ï": "I", "ï": "i", "I̧": "I", "i̧": "i", "Į":"I", "į": "i", 	
-        "Ɨ": "I", "ɨ": "i", "Ǐ": "I", "ǐ": "i", "İ": "I", "i": "i", "Ị": "I", "ị": "i", "Ī": "I", "ī": "i", "Ĩ": "I", "ĩ": "i",
-        "J́": "J", "j́": "j", "J̀": "J", "j̀": "j", "Ĵ": "J", "ĵ": "j", "J̈": "J", "j̈": "j", "J̧": "J", "j̧": "j", "J̨": "J", "j̨":"j",
-        "Ɉ": "J", "ɉ": "j",	"J̌": "J", "ǰ": "j", "J̇": "J", "j": "j", "J̣": "J", "j̣": "j", "J̄": "J", "j̄": "j", "J̃": "J", "j̃": "j",
-        "Ĺ": "L", "ĺ": "l", "L̀": "L", "l̀": "l", "L̂": "L", "l̂": "l", "L̈": "L", "l̈": "l", "Ļ": "L", "ļ": "l", "L̨": "L", "l̨": "l", "Ł": "L", 
-        "ł": "l", "Ƚ": "L", "ƚ": "l",	"Ľ": "L", "ľ": "l",	"L̇": "L", "l̇": "l", "Ḷ": "L" ,"ḷ": "l", "L̄": "L", "l̄": "l", "L̃": "L", "l̃": "l",
-        "Ń": "N", "ń": "n", "Ǹ": "N", "ǹ": "n", "N̂": "N", "n̂": "n", "N̈": "N", "n̈": "n", "Ņ": "N", "ņ": "n", "N̨": "N", "n̨": "n", 	
-        "Ꞥ": "N", "ꞥ": "n", "Ň": "N", "ň": "n", "Ṅ": "N", "ṅ": "n", "Ṇ": "N", "ṇ": "n", "N̄": "N", "n̄": "n",	"Ñ": "N", "ñ": "n",
-        "Ó": "O", "ó": "o", "Ò": "O", "ò": "o", "Ô": "O", "ô": "o",	"Ö": "O", "ö": "o",	"O̧": "O", "o̧": "o", "Ǫ": "O", "ǫ": "o", 	
-        "Ø": "O", "ø": "o", "Ɵ": "O", "ɵ": "o", "Ǒ": "O", "ǒ": "o", "Ȯ": "O", "ȯ": "o", "Ọ": "O", "ọ": "o" , "Ō": "O", "ō": "o", "Õ": "O", "õ": "o",
-        "Ś": "S", "ś": "s", "S̀": "S", "s̀": "s", "Ŝ": "S", "ŝ": "s", "S̈": "S", "s̈": "s", "Ş": "S", "ş": "s",	"S̨": "S", "s̨": "s", 
-        "Ꞩ": "S", "ꞩ": "s", "Š": "S", "š": "s", "Ṡ": "S", "ṡ": "s", "Ṣ": "S", "ṣ": "s", "S̄": "S", "s̄": "s", "S̃": "S", "s̃": "s",
-        "T́": "T", "t́": "t", "T̀": "T", "t̀": "t",	"T̂": "T", "t̂": "t", "T̈": "T", "ẗ": "t", "Ţ": "T" ,"ţ": "t",	"T̨": "T", "t̨": "t", 	
-        "Ⱦ": "T", "ⱦ": "t", "Ŧ": "T", "ŧ": "t", "Ť": "T", "ť": "t", "Ṫ": "T", "ṫ":"t", "Ṭ": "T", "ṭ": "t", "T̄": "T", "t̄": "t", "T̃": "T", "t̃": "t",
-        "Ú": "U", "ú": "u", "Ù": "U", "ù": "u", "Û": "U", "û": "u", "Ü": "U", "ü": "u", "U̧": "U", "u̧": "u", "Ų": "U", "ų": "u", 	
-        "Ʉ": "U", "ʉ": "u", "Ǔ": "U", "ǔ": "u", "U̇": "U", "u̇": "u", "Ụ": "U", "ụ": "u", "Ū": "U", "ū": "u", "Ũ": "U" ,"ũ": "u",
-        "Ý": "Y", "ý": "y", "Ỳ": "Y", "ỳ": "y", "Ŷ": "Y", "ŷ": "y", "Ÿ": "Y", "ÿ": "y", "Y̧": "Y", "y̧": "y", "Y̨": "Y", "y̨": "y", 	
-        "Ɏ": "Y", "ɏ": "y", "Y̌": "Y", "y̌": "y", "Ẏ": "Y", "ẏ": "y", "Ỵ": "Y", "ỵ": "y", "Ȳ": "Y", "ȳ": "y", "Ỹ": "Y", "ỹ": "y",
-        "Ź": "Z", "ź": "z", "Z̀": "Z", "z̀": "z", "Ẑ": "Z", "ẑ": "z", "Z̈": "Z", "z̈": "z", "Z̧": "Z", "z̧":"z", "Z̨": "Z", "z̨": "z", 	
-        "Ƶ": "Z", "ƶ": "z", "Ž": "Z", "ž": "z",	"Ż": "Z", "ż": "z", "Ẓ": "Z", "ẓ": "z", "Z̄": "Z", "z̄": "z", "Z̃": "Z", "z̃": "z"
-      };
+    var nbResults = 0;
+    var currentRmAutocompleteItem = -1; 
 
+    var previousRequest;
 
-    var map;
-
-    var apiRVAKey;
-
-    var apiSitesorgKey;
-
-    var projection; // projection used
-
-    var autocompleteEnabled;
-
-    var searchParameters;
-
-    var paramsDefaultCheked;
-
-    var searchInput =  '<div id="searchRm" class="col-sm-offset-6 col-sm-6 col-md-offset-3 col-md-8 col-lg-offset-6 col-lg-6 col-xl-offset-7 col-xl-5">'
-        +  '<div id="searchContainer " class="displayFlex">'
-        + '<input type="text" class="form-control" placeholder="Rechercher" id="searchRmInput" autocomplete="off">'
-        + '<div id="containerSearchParams">'
-        +  '<button id="searchConfig" title="Choix de recherche" class="btn btn-default btn-raised">'
-        +  '</button> </div>'
-        +'</div></div>';
-
-    var selectList = '<select id="searchItems" multiple="multiple"></select>';
-
-    var itemSearch; // element the user type in search field
-    var itemSearchLowerCase;
-
-
-    /**
-     * get configuration informations from data/searchRMConf.json file
-     * @param {*} configurationFileDatas configuartion datas in json
-     */
-    var getConfiguration = function (configurationFileDatas) {
-
-        apiRVAKey = configurationFileDatas.apiRVAKey;
-
-        if (configurationFileDatas.autocomplete) {
-            autocompleteEnabled = true;
-        } else {
-            autocompleteEnabled = false;
+    var _init = function (searchRMConf) {
+        if ($("#searchtool").length === 0) {
+           var searchtool =  '<div class="navbar-form" role="search" id="searchtool">'
+            +    '<div class="form-group input-group">'
+            +        '<input type="text" class="form-control" placeholder="Rechercher" i18n="navbar.search.placeholder" id="searchfield">'
+            +        '<div class="input-group-btn">'
+            +            '<button type="button" class="btn btn-default" aria-label="Help" data-toggle="modal" data-target="#parameterspanel">'
+            +                '<span class="glyphicon glyphicon-option-vertical"></span>'
+            +            '</button>'
+            +        '</div>'
+            +    '</div>'
+            +'</div>';
+            $('.navbar-right')[0].firstElementChild.innerHTML = searchtool;
         }
-
-        searchParameters = configurationFileDatas.searchContent;
-
-        paramsDefaultCheked = configurationFileDatas.searchContentDefaultCheck;
-
-        apiSitesorgKey = configurationFileDatas.apiSitesorgKey;
+        _configureSearch(searchRMConf);
     };
 
 
-    /**
-     * return a word without its accent
-     * @param {*} term 
-     */
-    var normalize = function( term ) {
-        if (term !== null) {
-            var ret = "";
-            for ( var i = 0; i < term.length; i++ ) {
-              ret += accentMap[ term.charAt(i) ] || term.charAt(i);
-            }
-        } else {
-            ret = null;
-        }
-        return ret;
-    };
+    var _configureSearch = function (searchRMConf) {
+        $.getJSON(searchRMConf, function (confData) {
+            _setSearchParameters(confData);
 
-   
-    var getResponses = function (parametersList, placeSearch) {
-
-        var promises = [];
-
-        // depending on search parameters, set in requests array, functions to call to get desired result
-        if (parametersList != null) {
-            parametersList.forEach( function(params) {
-                switch(params.toLowerCase()) {
-                    case 'communes':
-                        promises.push(searchRVA.getCities2());
-                        break;
-                    case 'voies':
-                        promises.push(searchRVA.getLanes(placeSearch));
-                        break;
-                    case 'adresses':
-                        promises.push(searchRVA.getAdresses(placeSearch));
-                        break;
-                    case 'organismes':
-                        promises.push(searchSitesorg.getOrganismes(placeSearch) );
-                        break;
+            $(document).on("keyup", "#searchfield", function (e) {
+                if (e.keyCode == 40) { //down arrow keyCode
+                    currentRmAutocompleteItem++;
+                    if (currentRmAutocompleteItem >= nbResults) {
+                        currentRmAutocompleteItem = 0;
+                    }
+                    var previousItem = currentRmAutocompleteItem - 1;
+                    if (previousItem < 0) {
+                        previousItem = nbResults -1;
+                    }
+                    $('#autocompleteRmItem_' + previousItem).removeClass("selectedRmAutocompleteItem");
+                    $('#autocompleteRmItem_' + currentRmAutocompleteItem).addClass("selectedRmAutocompleteItem");
+                    $('#searchfield').val($('#autocompleteRmItem_' + currentRmAutocompleteItem)[0].innerText);
+                    return;
+                }
+                if (e.keyCode == 38) { // up arrow keyCode
+                    currentRmAutocompleteItem--;
+                    if (currentRmAutocompleteItem < 0) {
+                        currentRmAutocompleteItem = nbResults -1;
+                    }
+                    var nextItem = currentRmAutocompleteItem + 1;
+                    if (nextItem >= nbResults) {
+                        nextItem = 0;
+                    }
+                    $('#autocompleteRmItem_' + nextItem).removeClass("selectedRmAutocompleteItem");
+                    $('#autocompleteRmItem_' + currentRmAutocompleteItem).addClass("selectedRmAutocompleteItem");
+                    $('#searchfield').val($('#autocompleteRmItem_' + currentRmAutocompleteItem)[0].innerText);
+                    return;
+                }
+                if (e.keyCode == 13 && $('#searchresults a').length > 1) {
+                    $('#autocompleteRmItem_' + currentRmAutocompleteItem).trigger('click');
+                    return;
+                }
+                var chars = $(this).val().length;
+                if (chars === 0) {
+                } else if ((chars >0) && (chars < 3)) {
+                    $("#searchresults .list-group-item").remove();
+                } else {
+                    _searchRM(confData, $(this).val());
                 }
             });
+        });
+    };
+
+
+    //////////////////// Search parameters //////////////////////////////////////////
+
+    var _setSearchParameters = function (confData) {
+        confData.searchContent.forEach(function (searchElem) {
+
+            var newSearchParameter = '<li class="mv-param-item" onclick="searchRM.toggleParameter(this)">'
+            + '<a href="#">'
+            +    '<span id="param_search_' + searchElem.categoryName + '" class="state-icon far ';
+            if (searchElem.defaultCheck) {
+                newSearchParameter += 'mv-checked';
+                searchParameters.push('Communes');
+            } else {
+                newSearchParameter += 'mv-unchecked';
+            } 
+            newSearchParameter += '"></span>'
+                +    '<div style="display:inline;">'+ searchElem.searchParameterName +'</div>'
+                + '</a>'
+            + '</li>';
+            $('#searchparameters').append(newSearchParameter);
+        });
+    };
+
+    var toggleParameter = function (li) {
+        var span = $(li).find("span");
+        var param = span[0].id.replace('param_search_', '');
+        var parameterIndex = searchParameters.indexOf(param);
+        if (span.hasClass('mv-unchecked') === true ) {
+            span.removeClass('mv-unchecked').addClass('mv-checked');
+            if (parameterIndex === -1) {
+                searchParameters.push(param);
+            }
+        } else {
+            span.removeClass('mv-checked').addClass('mv-unchecked');
+            if (parameterIndex !== -1) {
+                searchParameters.splice(parameterIndex, 1);
+            }
         }
+    };
+
+    //////////////////// Search input ////////////////////////////////////////////////
+
+    var _filterCities = function (citiesList, elemSearch) {
+        var citiesFound = [];
+        citiesList.forEach(function (city) {
+            if (city.name.toLowerCase().startsWith(elemSearch.toLowerCase()) || city.name2.toLowerCase().startsWith(elemSearch.toLowerCase()) ) {
+                citiesFound.push(city);
+            }
+            if ( (city.name.toLowerCase().includes(elemSearch.toLowerCase()) || city.name.toLowerCase() === elemSearch.toLowerCase() || 
+            city.name2.toLowerCase().includes(elemSearch.toLowerCase()) || city.name2.toLowerCase() === elemSearch.toLowerCase() )
+            && citiesFound.indexOf(city) === -1) {
+                citiesFound.push(city);
+            }
+        });
+        return citiesFound;
+    };
+
+    /**
+     * get main site from organism
+     * @param {*} org organism
+     */
+    var _getMainSite = function (org) {
+        var mainSite = '';
+        if (org.autres !== null) {
+            org.autres.forEach(function (data) {
+                if (data.includes('Site principal :')) {
+                    mainSite = data.split(':')[1].trim();
+                }
+
+            });
+            
+        }
+
+        return mainSite;
+
+    };
+
+    /**
+     * get main site information from organism
+     * @param {*} org organism
+     */
+    var _getSiteFromOrg = function (mainSite) {
+
+        var requestUrl = 'https://api-sitesorg.sig.rennesmetropole.fr/v1/recherche?'
+                       + 'adresse=&etats[]=actif&etats[]=projet&etats[]=inactif&niveaux_org[]=3'
+                       + '&niveaux_org[]=1&niveaux_org[]=2&niveaux_site[]=1&termes='+ mainSite
+                       + '&termes_op=AND&types[]=site&limit=20&offset=0';
+
+        return new Promise(resolve => {
+            $.ajax({
+                url: requestUrl,
+                context: document.body,
+                headers: {'X-API-KEY': searchRmConf.getApiSitesOrgkey()}
+            }).done(function (site) {
+                resolve({site});
+            });
+        });
+        
+    };
+
+    /**
+     * get [x,y] coordinates from site
+     * @param {*} site
+     */
+    var _getSiteCoordinates = function (idSite) {
+
+        var requestUrl = 'https://api-sitesorg.sig.rennesmetropole.fr/v1/sites/' + idSite;
+
+        return new Promise(resolve => {
+            $.ajax({
+                url: requestUrl,
+                context: document.body,
+                headers: {'X-API-KEY': searchRmConf.getApiSitesOrgkey()}
+            }).done(function (res) {
+                resolve({x: res.sitePt.x, y: res.sitePt.y});
+            });
+        });
+
+    }
+
+    var displayOrganism = async function (elem, zoom, querymaponclick) {
+        var mainSite = elem.title;
+        var site = await _getSiteFromOrg(mainSite);
+        var coord = await _getSiteCoordinates(site.site[0].id);
+        var coordNewProj = proj4('EPSG:3948', 'EPSG:4326', [coord.x, coord.y]);
+        mviewer.zoomToLocation(coordNewProj[0], coordNewProj[1], zoom, querymaponclick);
+        mviewer.showLocation('EPSG:4326', coordNewProj[0], coordNewProj[1]);
+    };
+
+    var _getBoundigBoxCenterX = function (lowerCorner, upperCorner) {
+        var xmin = parseFloat(lowerCorner.split(' ')[0]);
+        var xmax = parseFloat(upperCorner.split(' ')[0]);
+        return (xmin + xmax) / 2;
+    }
+
+    var _getBoundigBoxCenterY = function (lowerCorner, upperCorner) {
+        var ymin = parseFloat(lowerCorner.split(' ')[1]);
+        var ymax = parseFloat(upperCorner.split(' ')[1]);
+        return (ymin + ymax) / 2;
+    }
+
+    var displayLocationMarker = function (coordX, coordY, zoom, querymaponclick, proj) {
+        mviewer.zoomToLocation(coordX, coordY, zoom, querymaponclick);
+        mviewer.showLocation(proj, coordX, coordY);
+    };
+
+    var displayLocation = function (coordX, coordY, zoom, querymaponclick) {
+        mviewer.zoomToLocation(coordX, coordY, zoom, querymaponclick);
+        mviewer.hideLocation();
+    };
+
+    var _getApisRequests = function (confData, value) {
+        var promises = [];
+        confData.searchContent.forEach( function (content) {
+            var apiRvaBaseUrl = 'https://api-rva.sig.rennesmetropole.fr/';
+            var apiSitesOrg_url_recherche = 'https://api-sitesorg.sig.rennesmetropole.fr/v1/recherche';
+            var ajaxSetting = {type: 'GET', crossDomain: true,  dataType: "json"};
+            switch (content.categoryName) {
+                case 'Communes':
+                    ajaxSetting.url = apiRvaBaseUrl;
+                    ajaxSetting.data = {key: confData.apiRVAKey, version: '1.0', format: 'json', 'epsg': '3948', 'cmd': 'getcities', 'insee':'all'};
+                    break;
+                case 'Voies':
+                    ajaxSetting.url = apiRvaBaseUrl;
+                    ajaxSetting.data = {key: confData.apiRVAKey, version: '1.0', format: 'json', 'epsg': '3948', 'cmd': 'getlanes', 'insee':'all', "query": value};
+                    break;
+                case 'Adresses':
+                    ajaxSetting.url = apiRvaBaseUrl;
+                    ajaxSetting.data =  {key: confData.apiRVAKey, version: '1.0', format: 'json', 'epsg': '3948', 'cmd': 'getfulladdresses',"query": value};
+                    break;
+                case 'Organismes':
+                    ajaxSetting.url = apiSitesOrg_url_recherche;
+                    ajaxSetting.data = 'adresse=&etats[]=actif&etats[]=projet&etats[]=inactif&niveaux_org[]=3&niveaux_org[]=1&niveaux_org[]=2&niveaux_site[]=1'
+                    + '&termes='+ value + '&termes_op=AND&types[]=organisme&limit=20&offset=0';
+                    ajaxSetting.headers = {'X-API-KEY': confData.apiSitesorgKey};
+                    break;
+            }
+            promises.push( new Promise(resolve => {
+                $.ajax(ajaxSetting).done(function (result) {
+                    var nbItemDisplay = 5;
+                    if (!Number.isNaN(parseInt(content.nbItemDisplay))) {
+                        nbItemDisplay = parseInt(content.nbItemDisplay);
+                    }
+                    var resolveRes = {result : result, nbItemDisplay: nbItemDisplay};
+                    resolveRes['zoom'] = content.zoom;
+                    resolveRes['categoryName'] = content.categoryName;
+                    resolve(resolveRes);
+                });
+            }) );
+        } );
         return promises;
     };
 
-    /**
-     * gather all autocomplete datas into one result
-     * @param {*} requestsResponses 
-     * @param {*} itemSearchLowerCase 
-     */
-    var gatherAutocompleteDatas = function(requestsResponses) {
-
-        var dataAutocomplete = [];
-
-        requestsResponses.forEach(function (response) {
-            
-            if (response.category === 'sitesorg') {
-                setSiteorgRes = searchSitesorg.setSitesorgAutocompleteDatas(response, itemSearchLowerCase);
-                dataAutocomplete = dataAutocomplete.concat(setSiteorgRes.slice(0,6));
-            } else if (response.category === 'rva') {
-                setRvaRes = searchRVA.setRvaAutocompleteDatas(response, itemSearchLowerCase);
-                dataAutocomplete = dataAutocomplete.concat(setRvaRes);
-            }
-
-        });
-        return dataAutocomplete;
-
-    };
-
-    var displayItemMap = async function (uiItem) {
-
-        var coordinatesNewProj;
-
-        if (uiItem.themes === 'rva') {
-            searchRVA.displayMapRvaElement(uiItem);
-            if (uiItem.category === "Adresses") {
-                coordinatesNewProj = proj4('EPSG:3948', projection, [uiItem.x, uiItem.y] );
-                mviewer.showLocation(projection, coordinatesNewProj[0], coordinatesNewProj[1]);
-            }
-        } else if (uiItem.themes === 'sitesorg') {
-            var site = await searchSitesorg.getSiteFromOrg(uiItem.mainSite);
-            var coord = await searchSitesorg.getSiteCoordinates(site);
-            coordinatesNewProj = proj4('EPSG:3948', projection, [coord.x, coord.y]);
-            map.getView().setCenter( coordinatesNewProj );
-            map.getView().setZoom(19);
-            mviewer.showLocation(projection, coordinatesNewProj[0], coordinatesNewProj[1]);
-        }
-
-    };
-
-    /**
-     * launch autocomplete functionality
-     * @param {*} elementId 
-     */
-    var autocomplete = function (elementId) {
-
-        var idParent = '#' + $('#' + elementId).parent()[0].id;
-
-        $(document).on('input', '#searchRmInput', function () {
-
-            var parametersList = $('#searchItems').val();
-            itemSearch = $("#searchRmInput").val();
-            itemSearchLowerCase = itemSearch.toLowerCase();
-        
-            if(itemSearch.includes(',')) {
-                placeSearch = itemSearch.split(',')[0];
-            } else {
-                placeSearch = itemSearch;
-            }
-    
-            var placeSearchLength = placeSearch.trim().length;
-            if (placeSearchLength >= 4 ) {
-    
-                var promises = getResponses(parametersList, placeSearch);
-    
-                Promise.all(promises).then(function(requestsResponses) {
-    
-                    dataAutocomplete = gatherAutocompleteDatas(requestsResponses);
-                    autocompleteRM.autocomplete('searchRmInput', 'searchRm', dataAutocomplete, displayItemMap);
+    var _displayAutocompleteData = function (allResult, value) {
+        var str = '';
+        var nbItem = 0;
+        allResult.forEach( function (data) {
+            str += '<a class="geoportail list-group-item disabled" id="list-group-'+ data.categoryName +'">'+ data.categoryName +'</a>';
+            var dataFiltered = [];
+          switch (data.categoryName) {
+            case 'Communes':
+                var communeData = data.result.rva.answer.cities;
+                dataFiltered = _filterCities(communeData, value);
+                dataFiltered.forEach(function (elem) {
+                    str += "<a class=\"geoportail list-group-item autocompleteRmItem\" id=\"autocompleteRmItem_" + nbItem + "\" href=\"#\" title=\"" + elem.name;
+                    var x = _getBoundigBoxCenterX(elem.lowerCorner, elem.upperCorner);
+                    var y = _getBoundigBoxCenterY(elem.lowerCorner, elem.upperCorner);
+                    var coordNewProj = proj4('EPSG:3948', 'EPSG:4326', [x, y]);
+                    str += '" onclick="searchRM.displayLocation('+
+                    coordNewProj[0] + ',' +
+                    coordNewProj[1] + ',' + data.zoom + ',' + search.options.querymaponclick +', \'EPSG:4326\');">' + elem.name + '</a>';
+                    nbItem++;
                 });
-    
-            }
-            
-        });
-        
-    };
-
-
-    
-    var init = function (confFile) {
-
-        map = mviewer.getMap();
-
-        $('#searchRMContainer').append(searchInput);
-        $('#searchRm').hide();
-
-        projection = rmTools.getProjection();
-
-        itemSearch = $("#searchRmInput").val();
-
-        $.getJSON(confFile, function (confDatas) {
-
-            getConfiguration(confDatas);
-
-            searchRVA.init(apiRVAKey, projection, map);
-            searchSitesorg.init(apiSitesorgKey);
-
-           $('#searchRmInput').keypress(function (event) {
-                var placeSearch = $('#searchRmInput').val().trim();
-                if (event.keyCode == 13 && placeSearch != '') {
-                    searchRVA.searchDisplayRva(placeSearch);
-                }
-            });
-
-            if (autocompleteEnabled) {
-                autocomplete('searchRmInput');
-            }
-
-            $('#searchRm').append(selectList);
-
-            var searchParamsData = [];
-            searchParameters.split(',').forEach(function (element) {
-                searchParamsData.push(element.trim());
-            });
-
-            var paramsDefaultChekedData = [];
-            paramsDefaultCheked.split(',').forEach(function (element) {
-                paramsDefaultChekedData.push(element.trim());
-            });
-
-
-            $("#searchItems").select2({
-                closeOnSelect : false,
-                width: '88%',
-                //dropdowParent: $('#a'),
-                data: searchParamsData
-            }).val(paramsDefaultChekedData).trigger("change");
-
-            $('#searchRm > .select2-container').css( 'overflow-y','auto');
-
-            var display = false;
-            $('#searchRm > .select2-container').hide();
-
-            $('#searchConfig').click(function () {
-                if (display == false) {
-                    display = true;
-                } else if (display == true) {
-                    display = false;
-                }
-                if (display == false) {
-                    $("#searchRm > .select2-container").hide();
-                } else if (display == true) {
-                    $("#searchRm >.select2-container").show();
-                }
-            });
-
+                break;
+            case 'Voies':
+                dataFiltered =  data.result.rva.answer.lanes.slice(0,data.nbItemDisplay);
+                dataFiltered.forEach(function (elem) {
+                    str += "<a class=\"geoportail list-group-item autocompleteRmItem\" id=\"autocompleteRmItem_" + nbItem + "\" href=\"#\" title=\"" + elem.name4;
+                    var x = _getBoundigBoxCenterX(elem.lowerCorner, elem.upperCorner);
+                    var y = _getBoundigBoxCenterY(elem.lowerCorner, elem.upperCorner);
+                    var coordNewProj = proj4('EPSG:3948', 'EPSG:4326', [x, y]);
+                    str += '" onclick="searchRM.displayLocation('+
+                    coordNewProj[0] + ',' +
+                    coordNewProj[1] + ',' + data.zoom + ',' + search.options.querymaponclick +', \'EPSG:4326\');">' + elem.name4 + '</a>';
+                    nbItem++;
+                });
+                break;
+            case 'Adresses':
+                dataFiltered = data.result.rva.answer.addresses.slice(0,data.nbItemDisplay);
+                dataFiltered.forEach(function (elem) {
+                    str += "<a class=\"geoportail list-group-item autocompleteRmItem\" id=\"autocompleteRmItem_" + nbItem + "\" href=\"#\" title=\"" + elem.addr3;
+                    var coordNewProj = proj4('EPSG:3948', 'EPSG:4326', [elem.x, elem.y]);
+                    str += '" onclick="searchRM.displayLocationMarker('+
+                    coordNewProj[0] + ',' +
+                    coordNewProj[1] + ',' + data.zoom + ',' + search.options.querymaponclick +', \'EPSG:4326\');">' + elem.addr3 + '</a>';
+                    nbItem++;
+                });
+                break;
+            case 'Organismes':
+                dataFiltered = data.result.slice(0,data.nbItemDisplay);
+                dataFiltered.forEach( function (elem) {
+                    var elemName = elem.nom;
+                    elem.autres.forEach(function (autresData) {
+                        if (autresData.includes('Localisation :')) {
+                            elemName += ', ' + autresData.split(':')[1].trim();
+                        }
+                    });
+                    var mainSite = _getMainSite(elem);
+                    str += "<a class=\"geoportail list-group-item autocompleteRmItem\" id=\"autocompleteRmItem_" + nbItem + "\" href=\"#\" title=\"" + mainSite
+                    + ' " onclick="searchRM.displayOrganism(this,' + data.zoom
+                    + ','+ search.options.querymaponclick + ')">' + elemName + '</a>';
+                    nbItem++;
+                });
+                break;
+          }
         });
 
+        $(".geoportail").remove();
+        $("#searchresults").append(str);
+        if (search.options.closeafterclick) {
+            $("#searchresults .list-group-item").click(function(){
+                $(".searchresults-title .close").trigger("click");
+            });
+        }
+        $("#searchresults").show();
     };
 
-    /*
-    * enable search functionality
-    */
-    var enable = function() {
-        $('#searchRm').show();
+
+    var _searchRM = function (confData, value) {
+        var promises = _getApisRequests(confData, value);
+        if (typeof previousRequest !== 'undefined') {
+            console.log(previousRequest.PromiseStatus);
+        }
+        previousRequest = Promise.all(promises).then(function(allResult) {
+            _displayAutocompleteData(allResult, value);
+            nbResults = $('.autocompleteRmItem').length;
+        });
     };
 
-
-    /*
-    * disable search functionality
-    */
-    var disable = function() {
-        $('#searchRm').hide();
+    var enable = function () {
+        var searchParams = configuration.getConfiguration().searchparameters;
+        if (searchParams.searchRM === 'true' && searchParams.searchRMConf !== '' && typeof searchParams.searchRMConf !== 'undefined') {
+            _init(searchParams.searchRMConf);
+        }
     };
-
 
     return {
-        init: init,
         enable: enable,
-        disable: disable
+        displayLocation: displayLocation,
+        displayLocationMarker: displayLocationMarker,
+        toggleParameter: toggleParameter,
+        displayOrganism: displayOrganism
     };
 
 })();
+
+setTimeout(searchRM.enable, 2000);
