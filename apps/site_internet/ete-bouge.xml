@@ -26,13 +26,10 @@
         <baselayer visible="false" id="ortho2017" thumbgallery="apps/site_internet/img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;" maxzoom="22"  maxscale="1000" ></baselayer>
     </baselayers>
     <!-- <proxy url="../proxy/?url="/>	 -->
-    
+
     <!-- <olscompletion url="../olscompletion"/> -->
     <!-- <elasticsearch url="https://ows.region-bretagne.fr/kartenn/_search" geometryfield="geometry" linkid="search_id" querymode="match" version="current" /> -->
-<!-- <searchparameters bbox="false" localities="false" features="false" static="false"/>-->
-    <olscompletion url="http://api-adresse.data.gouv.fr/search/" type="ban" attribution="API adresse.data.gouv.fr" />
-    <elasticsearch url="http://ows.region-bretagne.fr/kartenn/_search" geometryfield="geometry" linkid="search_id" querymode="fussy_like_this"/>
-    <searchparameters bbox="true" localities="true" features="true" querymaponclick="true" static="layer1"/>
+    <searchparameters bbox="false" localities="false" features="false" static="false"/>
 
     <themes mini="true"> 
         <theme id="theme-20180625145740" name="Loisirs ados pour cet été" collapsed="true" icon="fas fa-map-marker"> 

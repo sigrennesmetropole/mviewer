@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>    
+    <application 
+        title="Démo HEATMAP" 
+		logo="https://public.sig.rennesmetropole.fr/ressources/img/logos/rm/logo_mviewer_gris_inverse.png"
+        help="demo/demo_sirene_help.html" 
+        showhelp="false" 
+        exportpng="false" 
+        style="apps/site_internet/css/site_internet_gris.css"
+        />
+    <mapoptions maxzoom="20" minzoom="11" projection="EPSG:3857" center="-180000.00,6128726.00" zoom="11" />
+	<searchparameters bbox="false" localities="false" features="false" static="false"/>
+	<baselayers style="gallery"><!-- style="default"||gallery" -->     
+        <baselayer visible="true" id="pvcisimple" thumbgallery="apps/site_internet/img/basemap/pvcisimple.jpg" title="Rennes Metropole" label="Plan de ville" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="ref_fonds:pvci_simple_gris" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;" maxzoom="22"  maxscale="1000" ></baselayer>
+        <baselayer visible="false" id="ortho2017" thumbgallery="apps/site_internet/img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;" maxzoom="22"  maxscale="1000" ></baselayer>
+    </baselayers>
+    <!-- <proxy url=""/> -->
+    <!-- <olscompletion url="http://api-adresse.data.gouv.fr/search/" type="ban" attribution="La recherche d'adresse est un service proposé par l'API adresse.data.gouv.fr"/> -->
+   
+    <themes mini="true">
+        <theme id="theme-20171106150925" name="Representations" collapsed="false" icon="fas fa-barcode">
+            <layer 
+                id="sirene" 
+                name="Carte de chaleur" 
+                visible="true" 
+                exclusive="true"
+				queryable="false"         
+                type="customlayer"
+                url="apps/demo/customlayer/demo_heatmap_rm.js"
+                legendurl="img/legend/heatmap.png" 				 
+				attribution="Rennes Métropole" >
+           </layer>  
+           <layer id="cluster"
+                name="Affichage cluster"
+                visible="false"
+                exclusive="true"
+                type="customlayer"
+                expanded="true"
+                legendurl="img/blank.gif"
+                vectorlegend="true"
+                url="apps/demo/customlayer/demo_cluster_rm.js"
+                attribution="Rennes Métropole"
+                metadata="https://geobretagne.fr/geonetwork/srv/fre/catalog.search#/metadata/74ffc6ac-b97e-4a3b-ac4f-fa72d0e72fb3"
+                metadata-csw="https://geobretagne.fr/geonetwork/srv/fre/xml.metadata.get?uuid=74ffc6ac-b97e-4a3b-ac4f-fa72d0e72fb3"
+                queryable="false"
+                fields="enseigne,idcellcomm,c_insee,c_nom,a_num,a_voie, adresse, siret, activite"
+                aliases="enseigne,idcellcomm,c_insee,commune,numvoie,voie, adresse, siret, activite"
+                searchable="false"
+                tooltip="false"
+                >
+            </layer>
+        </theme>
+    </themes>
+</config>
