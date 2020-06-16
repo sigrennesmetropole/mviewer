@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <application
-        title="L'été, je me bouge"
+        title="L'été à Rennes"
         logo="https://public.sig.rennesmetropole.fr/ressources/img/logos/rm/logo_mviewer_gris_inverse.png"
         titlehelp="À propos des cartes thématiques" 
 		help="apps/site_internet/html/site_internet_help.html"
@@ -32,10 +32,10 @@
     <searchparameters bbox="false" localities="false" features="false" static="false"/>
 
     <themes mini="true"> 
-        <theme id="theme-20180625145740" name="Loisirs ados pour cet été" collapsed="true" icon="fas fa-map-marker"> 
+        <theme id="theme-20180625145740" name="Equipements culturels" collapsed="true" icon="fas fa-book-open"> 
             <layer 
                     id="v_sitorg_organisme"
-                    name="Equipements de quartiers"
+                    name="Equipements culturels"
                     type="wms"
                     url="https://public.sig.rennesmetropole.fr/geoserver/eq_poi/ows"
                     visible="true"
@@ -45,7 +45,43 @@
                     metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/46a39b8c-5ec4-449a-bfe1-8410d0b76c84"
                     queryable="true"
                     featurecount="3"
-                    filter="(code_nomenclature_principale = '7.2.1' or code_nomenclature_principale = '7.2.2' or code_nomenclature_principale = '7.2.3' or code_nomenclature_principale = '7.2.4' or code_nomenclature_principale = '7.2.5' or code_nomenclature_principale = '7.2.6') and etat_organisme = 'actif' and descriptif like '%bouge%'"
+                    filter="code_nomenclature_principale like '7.%' and etat_organisme = 'actif' and jour_periode_ferme not like '%Vacances d''été%' and code_insee='35238'"
+                    infopanel="right-panel">
+                <template url="apps/site_internet/templates/organisme.mst"></template>
+            </layer> 
+        </theme> 
+        <theme id="theme-20180625145760" name="Equipements sportifs" collapsed="true" icon="fas fa-futbol"> 
+            <layer 
+                    id="v_sitorg_organisme"
+                    name="Equipements sportifs"
+                    type="wms"
+                    url="https://public.sig.rennesmetropole.fr/geoserver/eq_poi/ows"
+                    visible="true"
+                    infoformat="application/vnd.ogc.gml"
+                    sld="https://public.sig.rennesmetropole.fr/ressources/img/mviewer/sld/organisme_bleu.sld"
+                    metadata="undefined"
+                    metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/46a39b8c-5ec4-449a-bfe1-8410d0b76c84"
+                    queryable="true"
+                    featurecount="3"
+                    filter="code_nomenclature_principale like '9.%' and etat_organisme = 'actif' and jour_periode_ferme not like '%Vacances d''été%' and code_insee='35238'"
+                    infopanel="right-panel">
+                <template url="apps/site_internet/templates/organisme.mst"></template>
+            </layer> 
+        </theme> 
+        <theme id="theme-20180625145750" name="Directions de quartier" collapsed="true" icon="fas fa-map-marker"> 
+            <layer 
+                    id="v_sitorg_organisme"
+                    name="Directions de quartiers"
+                    type="wms"
+                    url="https://public.sig.rennesmetropole.fr/geoserver/eq_poi/ows"
+                    visible="true"
+                    infoformat="application/vnd.ogc.gml"
+                    sld="https://public.sig.rennesmetropole.fr/ressources/img/mviewer/sld/organisme_vert.sld"
+                    metadata="undefined"
+                    metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/46a39b8c-5ec4-449a-bfe1-8410d0b76c84"
+                    queryable="true"
+                    featurecount="3"
+                    filter="code_nomenclature_principale = '1.1.1' and etat_organisme = 'actif' and jour_periode_ferme not like '%Vacances d''été%' and code_insee='35238'"
                     infopanel="right-panel">
                 <template url="apps/site_internet/templates/organisme.mst"></template>
             </layer> 

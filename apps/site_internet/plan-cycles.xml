@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<application
-        title="Plan Itineraires cyclables"
+        title="Plan des aménagements cyclables"
         logo="https://public.sig.rennesmetropole.fr/ressources/img/logos/rm/logo_mviewer_gris_inverse.png"
         titlehelp="À propos des cartes thématiques" 
 		help="apps/site_internet/html/site_internet_help.html"
@@ -36,7 +36,8 @@
                 name="Stations de vélo libre service"
                 type="wms"
                 url="https://public.sig.rennesmetropole.fr/geoserver/trp_doux/ows"
-                style="stations_levelostar" 
+                style="stations_vls_levelostar" 
+                scalemin="99" scalemax="50000"
                 visible="true"
                 infoformat="application/vnd.ogc.gml"
                 metadata="undefined"
@@ -45,48 +46,43 @@
                 featurecount="3"
                 infopanel="right-panel">            
 				<template url="apps/site_internet/templates/station-velo-ls.mst"></template>        
-			</layer>     
-		</theme>    
-		<theme id="theme-20180824152942" name="Gonflage et réparation de vélo" collapsed="true" icon="fas fa-bicycle">        
+			</layer>          
 			<layer
                 id="v_reparation_velo"
                 name="Gonflage et réparation de vélo"
                 type="wms"
                 url="https://public.sig.rennesmetropole.fr/geoserver/trp_doux/ows"
+                scalemin="99" scalemax="50000" 
                 visible="true"
                 infoformat="application/vnd.ogc.gml"
-                sld="https://public.sig.rennesmetropole.fr/ressources/img/mviewer/sld/reparation-velo-service.sld"
                 metadata="undefined"
                 metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/422a6ed5-619a-4156-8785-174d786ec95c"
                 queryable="true"
                 featurecount="3"
                 infopanel="right-panel">            
 				<template url="apps/site_internet/templates/stations-gonflages-velo.mst"></template>        
-			</layer>     
-		</theme>     
-		<theme id="theme-20180824152943" name="Parcs vélos sécurisés" collapsed="true" icon="fas fa-bicycle">        
+			</layer>          
 			<layer
                 id="parc_velo_securise"
                 name="Parcs vélos sécurisés"
                 type="wms"
                 url="https://public.sig.rennesmetropole.fr/geoserver/trp_doux/ows"
+                scalemin="99" scalemax="50000" 
                 visible="true"
                 infoformat="application/vnd.ogc.gml"
-                sld="https://public.sig.rennesmetropole.fr/ressources/img/mviewer/sld/stationnement-velo-securise.sld"
                 metadata="undefined"
                 metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/8dfdbb9a-29ca-4780-b767-7b2aa3ab5d2a"
                 queryable="true"
                 featurecount="3"
                 infopanel="right-panel">            
 				<template url="apps/site_internet/templates/stationnement-velo-securise.mst"></template>        
-			</layer>     
-		</theme>    
-		<theme id="theme-20180824152944" name="Supports vélos" collapsed="true" icon="fas fa-bicycle">        
+			</layer>          
 			<layer
                 id="v_support_velo"
                 name="Supports vélos"
                 type="wms"
                 url="https://public.sig.rennesmetropole.fr/geoserver/trp_doux/ows"
+                scalemin="99" scalemax="50000" 
                 visible="true"
                 infoformat="application/vnd.ogc.gml"
                 metadata="undefined"
@@ -95,9 +91,7 @@
                 featurecount="3"
                 infopanel="right-panel">            
 				<template url="apps/site_internet/templates/support-velo.mst"></template>        
-			</layer>     
-		</theme>    
-		<theme id="theme-20180824152945" name="Pistes cyclables" collapsed="true" icon="fas fa-bicycle">        
+			</layer>            
 			<layer
                 id="circ_apais_amgt_velo"
                 name="Pistes cyclables"
@@ -108,8 +102,7 @@
                 infoformat="application/vnd.ogc.gml"
                 metadata="undefined"
                 metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/3dafbf1e-37e7-4921-89f3-60505a656b3a"
-                queryable="false"
-                infopanel="right-panel">        
+                queryable="false">        
 			</layer>     
 		</theme>
 	</themes>
