@@ -4,6 +4,7 @@ var searchRM = (function () {
 
     var nbResults = 0;
     var currentRmAutocompleteItem = -1; 
+    var apiSitesOrgkey = '';
 
     var previousRequest;
 
@@ -165,7 +166,7 @@ var searchRM = (function () {
             $.ajax({
                 url: requestUrl,
                 context: document.body,
-                headers: {'X-API-KEY': searchRmConf.getApiSitesOrgkey()}
+                headers: {'X-API-KEY': apiSitesOrgkey}
             }).done(function (site) {
                 resolve({site});
             });
@@ -185,7 +186,7 @@ var searchRM = (function () {
             $.ajax({
                 url: requestUrl,
                 context: document.body,
-                headers: {'X-API-KEY': searchRmConf.getApiSitesOrgkey()}
+                headers: {'X-API-KEY': apiSitesOrgkey}
             }).done(function (res) {
                 resolve({x: res.sitePt.x, y: res.sitePt.y});
             });
@@ -199,6 +200,7 @@ var searchRM = (function () {
         var coord = await _getSiteCoordinates(site.site[0].id);
         var coordNewProj = proj4('EPSG:3948', 'EPSG:4326', [coord.x, coord.y]);
         mviewer.zoomToLocation(coordNewProj[0], coordNewProj[1], zoom, querymaponclick);
+        $("#mv_marker").show();
         mviewer.showLocation('EPSG:4326', coordNewProj[0], coordNewProj[1]);
     };
 
@@ -216,6 +218,7 @@ var searchRM = (function () {
 
     var displayLocationMarker = function (coordX, coordY, zoom, querymaponclick, proj) {
         mviewer.zoomToLocation(coordX, coordY, zoom, querymaponclick);
+        $("#mv_marker").show();
         mviewer.showLocation(proj, coordX, coordY);
     };
 
@@ -230,6 +233,7 @@ var searchRM = (function () {
             var apiRvaBaseUrl = 'https://api-rva.sig.rennesmetropole.fr/';
             var apiSitesOrg_url_recherche = 'https://api-sitesorg.sig.rennesmetropole.fr/v1/recherche';
             var ajaxSetting = {type: 'GET', crossDomain: true,  dataType: "json"};
+            apiSitesOrgkey = confData.apiSitesorgKey;
             switch (content.categoryName) {
                 case 'Communes':
                     ajaxSetting.url = apiRvaBaseUrl;
@@ -247,7 +251,7 @@ var searchRM = (function () {
                     ajaxSetting.url = apiSitesOrg_url_recherche;
                     ajaxSetting.data = 'adresse=&etats[]=actif&etats[]=projet&etats[]=inactif&niveaux_org[]=3&niveaux_org[]=1&niveaux_org[]=2&niveaux_site[]=1'
                     + '&termes='+ value + '&termes_op=AND&types[]=organisme&limit=20&offset=0';
-                    ajaxSetting.headers = {'X-API-KEY': confData.apiSitesorgKey};
+                    ajaxSetting.headers = {'X-API-KEY': apiSitesOrgkey};
                     break;
             }
             promises.push( new Promise(resolve => {
@@ -343,9 +347,6 @@ var searchRM = (function () {
 
     var _searchRM = function (confData, value) {
         var promises = _getApisRequests(confData, value);
-        if (typeof previousRequest !== 'undefined') {
-            console.log(previousRequest.PromiseStatus);
-        }
         previousRequest = Promise.all(promises).then(function(allResult) {
             _displayAutocompleteData(allResult, value);
             nbResults = $('.autocompleteRmItem').length;
