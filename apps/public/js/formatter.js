@@ -374,7 +374,7 @@ var formatter = (function () {
         if (my_links){
             for (var i = 0; i < my_links.length; i++) {
                 var adresse = my_links[i].getAttribute("href");
-                console.log("adresse = " + adresse);
+                //console.log("adresse = " + adresse);
                 if (adresse !== null) {
 
                     if (adresse.substr(0, 4) != "http") {

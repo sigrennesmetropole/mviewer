@@ -2028,7 +2028,7 @@ mviewer = (function () {
          */
 
         sendToGeorchestra: function () {
-            console.log("test");
+            //console.log("test");
             var params = {
                 "services": [],
                 "layers" : []

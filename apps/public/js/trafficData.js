@@ -22,7 +22,7 @@ var trafficData = (function() {
 
                     if (datas.predefinedLocationReference === troncon.properties.id_troncon) {
 
-                        console.log(troncon.geometry);
+                        //console.log(troncon.geometry);
 
                         trafficInfo.push({id: troncon.properties.id_troncon, geometry: troncon.geometry, 
                             averageVehicleSpeed: datas.averageVehicleSpeed, datetime: datas.datetime, trafficStatus: datas.trafficStatus, 
@@ -41,7 +41,7 @@ var trafficData = (function() {
 
     var displayTrafficInfo = function (trafficInfo) {
 
-        console.log(trafficInfo);
+        //console.log(trafficInfo);
 
     };
 

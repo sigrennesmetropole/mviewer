@@ -179,12 +179,12 @@ var configuration = (function () {
                             $(conf).find("theme#" + this.themeId).replaceWith(node);
                         } else {
                             $(conf).find("theme#" + this.themeId).remove();
-                            console.log("La thématique " + this.themeId + " n'a pu être trouvée dans " + this.url );
+                            //console.log("La thématique " + this.themeId + " n'a pu être trouvée dans " + this.url );
                         }
                     },
                     error: function(xhr, status, error) {
                         //Si la thématique n'est pas récupérable, on supprime la thématique dans la configuration courante
-                        console.log(this.url + " n'est pas accessible. La thématique n'a pu être chargée");
+                        //console.log(this.url + " n'est pas accessible. La thématique n'a pu être chargée");
                         $(conf).find("theme#" + this.themeId).remove();
                     }
                 }));
