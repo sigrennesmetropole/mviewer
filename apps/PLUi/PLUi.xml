@@ -15,10 +15,9 @@
         tutorial="true"
         tutorialFile="apps/PLUi/addons/data/didacticielPlui.json"
         showClickNbItems="false"
-    />
-    <!--
         searchCadastre="true"
-         -->
+    />
+    <!-- searchCadastre="true" -->
     <mapoptions maxzoom="20" minzoom="11" projection="EPSG:3857" center="-176970.72,6128725.98" zoom="11" />
     <baselayers style="default">
         <baselayer visible="true" id="PLUi" thumbgallery="apps/public/img/basemap/pvcisimple.jpg" title="Rennes Metropole" label="Fond de plan PLUi" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="ref_fonds:plui_fond_plan" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"  ></baselayer> 
