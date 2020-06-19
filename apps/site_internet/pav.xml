@@ -41,7 +41,7 @@
 				metadata="undefined"            
 				metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/92c64e80-f6f7-4f56-b162-8a07a8b70784"            
 				queryable="true"
-                featurecount="3"
+                featurecount="5"
 				infopanel="right-panel">            
 				<template url="apps/site_internet/templates/pav.mst"></template>        
 			</layer>     
