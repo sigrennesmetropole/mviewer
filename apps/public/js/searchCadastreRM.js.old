@@ -24,8 +24,9 @@ var searchCadastreRM = (function () {
         }
     };
 
-    var selectCityInput = '<select id="communeSearch" name="communeSearch" class="form-control">'
-							+	'<option value="" disabled selected> rechercher la commune de la parcelle</option> </select>';
+    var selectCityInput = '<div class="col-lg-7 noPaddingLeft"> <label>Commune</label>'
+             + '<select id="communeSearch" name="communeSearch" class="form-control">'
+							+	'<option value="" disabled selected> rechercher la commune de la parcelle</option> </select></div>';
 
     var sectionTag = '<div class="col-lg-3">'
             + '<label class="labelSection">Section</label>'
@@ -231,16 +232,12 @@ var searchCadastreRM = (function () {
 
         projection = rmTools.getProjection();
 
-        /*var searchCadastreElement = '<div id="parcelSelector" class="displayFlex col-sm-offset-6 col-sm-6 col-md-offset-3 col-md-8 col-lg-offset-6 col-lg-6 col-xl-offset-7 col-xl-5">' 
+        var searchCadastreElement = '<div id="parcelSelector" class="displayFlex col-sm-offset-6 col-sm-6 col-md-offset-3 col-md-8 col-lg-offset-6 col-lg-6 col-xl-offset-7 col-xl-5">' 
                                   + '<div id="parcelInputs" class="displayFlex">' + selectCityInput + sectionTag  + parcelTag + '</div>'
                                   +'<button id="dispalysearchParcel" title="recherche par parcelle" class="btn btn-default btn-raised">'
-                                  + '</button> </div>';*/
-        var searchCadastreElement = '<div>' + selectCityInput + '</div>';
+                                  + '</button> </div>';
 
-        //$('#searchRMContainer').prepend(searchCadastreElement);
-        $('#bs-example-navbar-collapse-1').append(searchCadastreElement);
-        //$('#searchtool').append(searchCadastreElement);
-
+        $('#searchRMContainer').prepend(searchCadastreElement);
         //$('#zoomtoolbar').before(searchCadastreElement);
 
 
