@@ -31,18 +31,17 @@
     <themes mini="true"> 
         <theme id="theme-20180827150815" name="Stationnement PMR" collapsed="true" icon="fas fa-wheelchair"> 
             <layer 
-                id="v_parking"
-                name="Stationnement PMR sur Rennes Métropole"
+                id="v_stationnement_reserve"
+                name="Stationnement réservé"
                 type="wms"
                 url="https://public.sig.rennesmetropole.fr/geoserver/trp_statio/ows"
                 visible="true"
                 infoformat="application/vnd.ogc.gml"
-                sld="https://public.sig.rennesmetropole.fr/ressources/img/mviewer/sld/stationnement-pmr.sld"
                 metadata="undefined"
-                metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/ceb9828a-951a-46ed-99e3-dc750d07feb9"
+                metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/46a39b8c-5ec4-449a-bfe1-8410d0b76c84"
                 queryable="true"
-                featurecount="3"
-                filter="handicape='Oui'"
+                featurecount="6"
+                filter="categorie = 'PMR'"
                 infopanel="right-panel">
                 <template url="apps/site_internet/templates/stationnement-pmr.mst"></template>
             </layer> 
