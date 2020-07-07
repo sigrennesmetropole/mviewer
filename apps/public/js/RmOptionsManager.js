@@ -149,7 +149,7 @@ var RmOptionsManager = (function () {
 
 
          if (applicationOptions.searchCadastre === "true") {
-            searchCadastreRM.init();
+            //searchCadastreRM.init();
          }
 
 

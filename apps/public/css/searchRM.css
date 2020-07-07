@@ -2,4 +2,12 @@
   background-color: #F1F1F2;
 }
 
+.parcelSelector {
+  top: 8px;
+}
+
+.sectionInputContainer, .parcelleInputContainer {
+  margin-left: 6%;
+}
+
 /*# sourceMappingURL=searchRM.css.map */
