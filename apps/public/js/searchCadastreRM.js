@@ -12,6 +12,8 @@ var searchCadastreRM = (function () {
     var parcelTag = '<div class="parcelleInputContainer">'
         		    +    '<select id="parcelle" class="parcellesList form-control" disabled></select>'
                 +	'</div>';
+    
+    var selectedParcelLayer;
 
     
     var getCenterGeometry = function (geomCoords) {
@@ -33,7 +35,8 @@ var searchCadastreRM = (function () {
 
         var searchCadastreElement = '<ul class="nav navbar-nav navbar-right"><li class="parcelSelector">' + selectCityInput +'</li>'
             + '<li class="parcelSelector">' + sectionTag +'</li>'
-            + '<li class="parcelSelector">' + parcelTag +'</li></ul>';
+            + '<li class="parcelSelector">' + parcelTag +'</li>'
+            + '<li class="parcelSelector"><button type="button" id="cleanParcel" class="btn"> effacer parcelle sélectionnée </button></li></ul>';
 
 
         $('#bs-example-navbar-collapse-1').append(searchCadastreElement);
@@ -70,7 +73,7 @@ var searchCadastreRM = (function () {
             var codeSection = e.currentTarget.selectedOptions[0].value;
             $('.parcellesList').val('').trigger('change');
             $.getJSON(baseUrl_cadastre + 'sections/'+ codeSection +'/parcelles', function(dataApiJson) {
-                var htmlContent = '<option value="" disabled selected> code parcelle</option>';
+                var htmlContent = '<option value="-1" disabled selected> code parcelle</option>';
                 dataApiJson.forEach(function (data) {
                     htmlContent += '<option value="'+ data.idParc +'">'+ data.numero +'</option>'
                 });
@@ -123,6 +126,7 @@ var searchCadastreRM = (function () {
                   layerCadatsreFound = true;
                   lay.setSource(source);
                   layerExtent = lay.getExtent();
+                  selectedParcelLayer = lay;
                 }
               });
               if (!layerCadatsreFound) {
@@ -133,11 +137,19 @@ var searchCadastreRM = (function () {
                   zIndex: 0
                 });
                 mviewer.getMap().addLayer(layer);
+                selectedParcelLayer = layer;
               }
               mviewer.getMap().getView().setCenter(getCenterGeometry(geomNewProj));
               mviewer.getMap().getView().setZoom(17);
             });
     
+        });
+
+        $(document).on('click','#cleanParcel', function (e) {
+          if (typeof selectedParcelLayer !== 'undefined') {
+            mviewer.getMap().removeLayer(selectedParcelLayer);
+            $('#parcelle').val(-1);
+          }
         });
 
     }
