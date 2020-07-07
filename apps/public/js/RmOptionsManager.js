@@ -69,15 +69,6 @@ var RmOptionsManager = (function () {
             printMap.disable();
         }
 
-        /*if (applicationOptions.searchRM === "true") {
-
-            searchRM.init(applicationOptions.searchRMConfFile);
-            searchRM.enable();
-
-        } else {
-            searchRM.disable();
-        }*/
-
         // layers configuration
         for (const layer in layers) {
 
@@ -145,11 +136,6 @@ var RmOptionsManager = (function () {
              tooltipWMS.activatetooltipWMS(layers[layer].layername, layers[layer].tooltipWMSContent);
             }
  
-         }
-
-
-         if (applicationOptions.searchCadastre === "true") {
-            //searchCadastreRM.init();
          }
 
 

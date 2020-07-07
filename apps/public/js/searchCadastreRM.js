@@ -148,4 +148,9 @@ var searchCadastreRM = (function () {
 
 })();
 
-setTimeout(searchCadastreRM.init, 2000);
+
+setTimeout(function () {
+  if (configuration.getConfiguration().searchparameters.searchCadastre === 'true') {
+    searchCadastreRM.init();
+  }
+}, 2000);

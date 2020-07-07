@@ -15,7 +15,6 @@
         tutorial="true"
         tutorialFile="apps/PLUi/addons/data/didacticielPlui.json"
         showClickNbItems="false"
-        searchCadastre="true"
     />
     <!-- searchCadastre="true" -->
     <mapoptions maxzoom="20" minzoom="11" projection="EPSG:3857" center="-176970.72,6128725.98" zoom="11" />
@@ -28,7 +27,7 @@
     <!-- <olscompletion url="../olscompletion"/> -->
     <!-- <elasticsearch url="https://ows.region-bretagne.fr/kartenn/_search" geometryfield="geometry" linkid="search_id" querymode="match" version="current" /> -->
     <searchparameters bbox="false" localities="false" features="false" static="false"
-        searchRM="true" searchRMConf="apps/PLUi/addons/data/searchAddressConf.json"/>
+        searchRM="true" searchRMConf="apps/PLUi/addons/data/searchAddressConf.json" searchCadastre="true"/>
     
     <themes mini="true"> 
         <theme id="theme-20200130112616" name="Contexte" collapsed="false" icon="fas fa-map-signs">
