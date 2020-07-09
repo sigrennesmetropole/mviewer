@@ -7,28 +7,32 @@
             "searchParameterName": "Rechercher des communes RM",
             "defaultCheck": true,
             "nbItemDisplay": 5,
-            "zoom": 14
+            "zoom": 14,
+            "citiesSearch": "Chantepie,l'Hermitage"
         }, 
         {
             "categoryName": "Voies",
             "searchParameterName": "Rechercher des voies RM",
             "defaultCheck": true,
             "nbItemDisplay": 5,
-            "zoom": 17
+            "zoom": 17,
+            "citiesSearch": "Chantepie,l'Hermitage"
         },
         {
             "categoryName": "Adresses",
             "searchParameterName": "Rechercher des adresses RM ",
             "defaultCheck": true,
             "nbItemDisplay": 5,
-            "zoom": 17
+            "zoom": 17,
+            "citiesSearch": "Chantepie,l'Hermitage"
         },
         {
             "categoryName": "Organismes",
             "searchParameterName": "Rechercher des organimes RM ",
             "defaultCheck": true,
             "nbItemDisplay": 5,
-            "zoom": 17
+            "zoom": 17,
+            "citiesSearch": "Chantepie,l'Hermitage"
         }
     ]
 }

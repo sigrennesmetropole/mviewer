@@ -42,7 +42,7 @@ var searchCadastreRM = (function () {
         $('#bs-example-navbar-collapse-1').append(searchCadastreElement);
 
         $.getJSON(baseUrl_cadastre + 'communes', function(dataApiJson) {
-            var htmlContent = '<option value="" disabled selected> rechercher la commune de la parcelle</option>';
+            var htmlContent = '<option value="-1" disabled selected> rechercher la commune de la parcelle</option>';
             dataApiJson.forEach(function (data) {
                 htmlContent += '<option value="'+ data.idComm +'">'+ data.name +'</option>'
             });
@@ -59,7 +59,7 @@ var searchCadastreRM = (function () {
             $('.parcellesList').append('<option></option>');
             // Liste sections
             $.getJSON(baseUrl_cadastre + 'communes/'+ codeCom +'/sections', function(dataApiJson) {
-                var htmlContent = '<option value="" disabled selected> code section</option>';
+                var htmlContent = '<option value="-1" disabled selected> code section</option>';
                 dataApiJson.forEach(function (data) {
                     htmlContent += '<option value="'+ data.idSect +'">'+ data.codSect +'</option>'
                 });
