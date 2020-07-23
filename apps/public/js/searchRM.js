@@ -116,19 +116,85 @@ var searchRM = (function () {
 
     //////////////////// Search input ////////////////////////////////////////////////
 
-    var _filterCities = function (citiesList, elemSearch) {
+    var _filterCities = function (citiesList, elemSearch, citiesSearch) {
         var citiesFound = [];
-        citiesList.forEach(function (city) {
-            if (city.name.toLowerCase().startsWith(elemSearch.toLowerCase()) || city.name2.toLowerCase().startsWith(elemSearch.toLowerCase()) ) {
-                citiesFound.push(city);
-            }
-            if ( (city.name.toLowerCase().includes(elemSearch.toLowerCase()) || city.name.toLowerCase() === elemSearch.toLowerCase() || 
-            city.name2.toLowerCase().includes(elemSearch.toLowerCase()) || city.name2.toLowerCase() === elemSearch.toLowerCase() )
-            && citiesFound.indexOf(city) === -1) {
-                citiesFound.push(city);
-            }
-        });
+        if (typeof citiesSearch !== 'undefined') {
+            var citiesSearchSplitArray = citiesSearch.split(',');
+            citiesList.forEach(function (city) {
+                var citiesFilter = citiesSearchSplitArray.findIndex(item => city.name.toLowerCase() === item.toLowerCase());
+
+                if ( (city.name.toLowerCase().startsWith(elemSearch.toLowerCase()) || city.name2.toLowerCase().startsWith(elemSearch.toLowerCase()) )
+                 && citiesFilter !== -1 ) {
+                    citiesFound.push(city);
+                }
+                if ( ( (city.name.toLowerCase().includes(elemSearch.toLowerCase()) || city.name.toLowerCase() === elemSearch.toLowerCase() || 
+                city.name2.toLowerCase().includes(elemSearch.toLowerCase()) || city.name2.toLowerCase() === elemSearch.toLowerCase() )
+                && citiesFound.indexOf(city) === -1) && citiesFilter !== -1)  {
+                    citiesFound.push(city);
+                }
+
+            });
+        } else {
+            citiesList.forEach(function (city) {
+                if (city.name.toLowerCase().startsWith(elemSearch.toLowerCase()) || city.name2.toLowerCase().startsWith(elemSearch.toLowerCase()) ) {
+                    citiesFound.push(city);
+                }
+                if ( (city.name.toLowerCase().includes(elemSearch.toLowerCase()) || city.name.toLowerCase() === elemSearch.toLowerCase() || 
+                city.name2.toLowerCase().includes(elemSearch.toLowerCase()) || city.name2.toLowerCase() === elemSearch.toLowerCase() )
+                && citiesFound.indexOf(city) === -1) {
+                    citiesFound.push(city);
+                }
+            });
+        };
         return citiesFound;
+    };
+
+    var _filterLanes = function (lanesData) {
+        var lanesFound = [];
+        var lanes = lanesData.result.rva.answer.lanes;
+        if (typeof lanesData.citiesSearch !== 'undefined') {
+            var citiesSearchSplitArray = lanesData.citiesSearch.split(',');
+            lanes.forEach(function (lane) {
+                if ( citiesSearchSplitArray.findIndex(item => lane.name4.split(',')[1].trim().toLowerCase() === item.toLowerCase()) !== -1) {
+                    lanesFound.push(lane);
+                }
+            });
+        } else {
+            lanesFound = lanes;
+        }
+        return lanesFound.slice(0,lanesData.nbItemDisplay);
+    };
+
+    var _filterAddresses = function (addressesData) {
+        var addressesFound = [];
+        var addresses = addressesData.result.rva.answer.addresses;
+        if (typeof addressesData.citiesSearch !== 'undefined') {
+            var citiesSearchSplitArray = addressesData.citiesSearch.split(',');
+            addresses.forEach(function (address) {
+                if ( citiesSearchSplitArray.findIndex(item => address.addr3.split(',')[1].trim().toLowerCase() === item.toLowerCase()) !== -1) {
+                    addressesFound.push(address);
+                }
+            });
+        } else {
+            addressesFound = addresses;
+        }
+        return addressesFound.slice(0,addressesData.nbItemDisplay);
+    };
+
+    var _filterOrganisms = function (organismsData) {
+        var organismsFound = [];
+        if (typeof organismsData.citiesSearch !== 'undefined') {
+            var citiesSearchSplitArray = organismsData.citiesSearch.split(',');
+            var organisms = organismsData.result;
+            organisms.forEach(function (organism) {
+                if ( organism.autres !== null && citiesSearchSplitArray.findIndex(item => organism.autres[0].split(':')[1].trim().toLowerCase() === item.toLowerCase()) !== -1) {
+                    organismsFound.push(organism);
+                }
+            });
+        } else {
+            organismsFound = organisms;
+        }
+        return organismsFound.slice(0,organismsData.nbItemDisplay);
     };
 
     /**
@@ -263,6 +329,7 @@ var searchRM = (function () {
                     var resolveRes = {result : result, nbItemDisplay: nbItemDisplay};
                     resolveRes['zoom'] = content.zoom;
                     resolveRes['categoryName'] = content.categoryName;
+                    resolveRes['citiesSearch'] = content.citiesSearch;
                     resolve(resolveRes);
                 });
             }) );
@@ -279,7 +346,7 @@ var searchRM = (function () {
           switch (data.categoryName) {
             case 'Communes':
                 var communeData = data.result.rva.answer.cities;
-                dataFiltered = _filterCities(communeData, value);
+                dataFiltered = _filterCities(communeData, value, data.citiesSearch);
                 dataFiltered.forEach(function (elem) {
                     str += "<a class=\"geoportail list-group-item autocompleteRmItem\" id=\"autocompleteRmItem_" + nbItem + "\" href=\"#\" title=\"" + elem.name;
                     var x = _getBoundigBoxCenterX(elem.lowerCorner, elem.upperCorner);
@@ -292,7 +359,8 @@ var searchRM = (function () {
                 });
                 break;
             case 'Voies':
-                dataFiltered =  data.result.rva.answer.lanes.slice(0,data.nbItemDisplay);
+                //dataFiltered =  data.result.rva.answer.lanes.slice(0,data.nbItemDisplay);
+                dataFiltered = _filterLanes(data);
                 dataFiltered.forEach(function (elem) {
                     str += "<a class=\"geoportail list-group-item autocompleteRmItem\" id=\"autocompleteRmItem_" + nbItem + "\" href=\"#\" title=\"" + elem.name4;
                     var x = _getBoundigBoxCenterX(elem.lowerCorner, elem.upperCorner);
@@ -305,7 +373,8 @@ var searchRM = (function () {
                 });
                 break;
             case 'Adresses':
-                dataFiltered = data.result.rva.answer.addresses.slice(0,data.nbItemDisplay);
+                //dataFiltered = data.result.rva.answer.addresses.slice(0,data.nbItemDisplay);
+                dataFiltered = _filterAddresses(data);
                 dataFiltered.forEach(function (elem) {
                     str += "<a class=\"geoportail list-group-item autocompleteRmItem\" id=\"autocompleteRmItem_" + nbItem + "\" href=\"#\" title=\"" + elem.addr3;
                     var coordNewProj = proj4('EPSG:3948', 'EPSG:4326', [elem.x, elem.y]);
@@ -316,7 +385,8 @@ var searchRM = (function () {
                 });
                 break;
             case 'Organismes':
-                dataFiltered = data.result.slice(0,data.nbItemDisplay);
+                //dataFiltered = data.result.slice(0,data.nbItemDisplay);
+                dataFiltered = _filterOrganisms(data);
                 dataFiltered.forEach( function (elem) {
                     var elemName = elem.nom;
                     elem.autres.forEach(function (autresData) {
