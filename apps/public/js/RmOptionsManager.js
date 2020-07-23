@@ -1,4 +1,4 @@
-var RmOptionsManager = (function () {
+var rmOptionsManager = (function () {
 
   
     proj4.defs([

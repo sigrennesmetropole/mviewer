@@ -97,7 +97,7 @@
                 name="Pistes cyclables"
                 type="wms"
                 url="https://public.sig.rennesmetropole.fr/geoserver/trp_doux/ows"
-                legendurl="apps/site_internet/img/legend/legende_pistes_cyclables6.png"
+                legendurl="apps/site_internet/img/legend/legende_pistes_cyclables.png"
                 visible="true"
                 infoformat="application/vnd.ogc.gml"
                 metadata="undefined"
