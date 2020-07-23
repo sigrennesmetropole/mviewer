@@ -130,3 +130,11 @@ var printMap = (function() {
 
 })();
 
+setTimeout(function () {
+  if (configuration.getConfiguration().application.printMap === "true") {
+    printMap.init();
+    printMap.enable();
+  } else {
+    printMap.disable();
+  }
+}, 2000);

@@ -145,16 +145,15 @@ var searchRM = (function () {
                     citiesFound.push(city);
                 }
             });
-        }
-
+        };
         return citiesFound;
     };
 
     var _filterLanes = function (lanesData) {
         var lanesFound = [];
+        var lanes = lanesData.result.rva.answer.lanes;
         if (typeof lanesData.citiesSearch !== 'undefined') {
             var citiesSearchSplitArray = lanesData.citiesSearch.split(',');
-            var lanes = lanesData.result.rva.answer.lanes;
             lanes.forEach(function (lane) {
                 if ( citiesSearchSplitArray.findIndex(item => lane.name4.split(',')[1].trim().toLowerCase() === item.toLowerCase()) !== -1) {
                     lanesFound.push(lane);
@@ -168,9 +167,9 @@ var searchRM = (function () {
 
     var _filterAddresses = function (addressesData) {
         var addressesFound = [];
+        var addresses = addressesData.result.rva.answer.addresses;
         if (typeof addressesData.citiesSearch !== 'undefined') {
             var citiesSearchSplitArray = addressesData.citiesSearch.split(',');
-            var addresses = addressesData.result.rva.answer.addresses;
             addresses.forEach(function (address) {
                 if ( citiesSearchSplitArray.findIndex(item => address.addr3.split(',')[1].trim().toLowerCase() === item.toLowerCase()) !== -1) {
                     addressesFound.push(address);
@@ -188,7 +187,7 @@ var searchRM = (function () {
             var citiesSearchSplitArray = organismsData.citiesSearch.split(',');
             var organisms = organismsData.result;
             organisms.forEach(function (organism) {
-                if ( citiesSearchSplitArray.findIndex(item => organism.autres[0].split(':')[1].trim().toLowerCase() === item.toLowerCase()) !== -1) {
+                if ( organism.autres !== null && citiesSearchSplitArray.findIndex(item => organism.autres[0].split(':')[1].trim().toLowerCase() === item.toLowerCase()) !== -1) {
                     organismsFound.push(organism);
                 }
             });

@@ -13,9 +13,9 @@ var RmOptionsManager = (function () {
     var configurationTheme;
     var layers;
 
-    var layerDisplayOpacity = [];
+    //var layerDisplayOpacity = [];
 
-    var searchRMContainer = '<div id="searchRMContainer" class="row col-md-8"></div>';
+    //var searchRMContainer = '<div id="searchRMContainer" class="row col-md-8"></div>';
 
     /**
 
@@ -31,7 +31,7 @@ var RmOptionsManager = (function () {
     /**
      * reposition zoomtoolbar and toolstoolbar when inputs are added
      */
-    var repositionRightElement = function() {
+    /*var repositionRightElement = function() {
 
         var searchRMContainerHeight = $('#searchRMContainer').height();
         var zoomtoolbarHeight = $('#zoomtoolbar').position().top + searchRMContainerHeight + 16;
@@ -43,12 +43,12 @@ var RmOptionsManager = (function () {
        $('#zoomtoolbar').css('top', newZoomtoolbarHeight);
        $('#toolstoolbar').css('top', newToolstoolbarheight);
 
-    };
+    };*/
     
 
     var init = function () {
 
-        $('#zoomtoolbar').before(searchRMContainer);
+        //$('#zoomtoolbar').before(searchRMContainer);
 
         mapOptions = configuration.getConfiguration().mapoptions;
         applicationOptions = getApplicationConfiguration();
@@ -61,13 +61,13 @@ var RmOptionsManager = (function () {
         }
 
 
-        if (applicationOptions.printMap === "true") {
+        /*if (applicationOptions.printMap === "true") {
             mviewer.tools.printMap = printMap;
             mviewer.tools.printMap.init();
             printMap.enable();
         } else {
             printMap.disable();
-        }
+        }*/
 
         // layers configuration
         for (const layer in layers) {
@@ -133,15 +133,15 @@ var RmOptionsManager = (function () {
          for (const layer in layers) {
      
             if (layers[layer].tooltipWMS) {
-             tooltipWMS.activatetooltipWMS(layers[layer].layername, layers[layer].tooltipWMSContent);
+                tooltipWMS.activatetooltipWMS(layers[layer].layername, layers[layer].tooltipWMSContent);
             }
  
          }
 
 
-         if (applicationOptions.searchRM === "true" || applicationOptions.searchCadastre === "true") {
+         /*if (applicationOptions.searchRM === "true" || applicationOptions.searchCadastre === "true") {
             repositionRightElement();
-         }
+         }*/
 
          // MODIF CBR 
          //if (applicationOptions.refreshInfoPanel === 'true') {
@@ -163,7 +163,6 @@ var RmOptionsManager = (function () {
             }
         }
         // FIN MODIF CBR
-
     };
     
     /* SUPPR CBR
