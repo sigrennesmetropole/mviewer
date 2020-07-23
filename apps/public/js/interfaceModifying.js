@@ -115,7 +115,7 @@ var interfaceModifying = (function () {
         });
         $('#menu').click(function () {
        
-            var infoPanels = RmOptionsManager.getInfoPaneles();
+            var infoPanels = rmOptionsManager.getInfoPaneles();
             
             var activeRefresh = false;
             infoPanels.forEach(function (panelId) {

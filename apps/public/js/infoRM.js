@@ -449,10 +449,10 @@ var info = (function () {
                 // debut modif CT 31/01/2020
         /*        if (typeof layerCount !== 'undefined') {
                     if (layerCount.trim().length > 0) {
-                        RmOptionsManager.setClickNbItems(nbItemsSelectedLayer);
+                        rmOptionsManager.setClickNbItems(nbItemsSelectedLayer);
                     }
                 } else {
-         */           RmOptionsManager.setClickNbItems(pos);
+         */           rmOptionsManager.setClickNbItems(pos);
          //       }
                 // fin
 
@@ -924,7 +924,7 @@ var info = (function () {
             }
         });
         // debut modif CT 03/02/2020
-   //     layerCount  = RmOptionsManager.getLayerCount();
+   //     layerCount  = rmOptionsManager.getLayerCount();
         // fin
     };
 
