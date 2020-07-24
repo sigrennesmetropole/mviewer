@@ -36,13 +36,13 @@ var searchCadastreRM = (function () {
         var searchCadastreElement = '<ul class="nav navbar-nav navbar-right"><li class="parcelSelector">' + selectCityInput +'</li>'
             + '<li class="parcelSelector">' + sectionTag +'</li>'
             + '<li class="parcelSelector">' + parcelTag +'</li>'
-            + '<li class="parcelSelector"><button type="button" id="cleanParcel" class="btn" title="effacer parcelle sélectionnée"> effacer parcelle sélectionnée </button></li></ul>';
+            + '<li class="parcelSelector"><button type="button" id="cleanParcel" class="btn" title="Réinitialiser la recherche parcelle"> Réinitialiser la recherche parcelle </button></li></ul>';
 
 
         $('#bs-example-navbar-collapse-1').append(searchCadastreElement);
 
         $.getJSON(baseUrl_cadastre + 'communes', function(dataApiJson) {
-            var htmlContent = '<option value="-1" disabled selected> rechercher la commune de la parcelle</option>';
+            var htmlContent = '<option value="-1" disabled selected> Commune de la parcelle</option>';
             dataApiJson.forEach(function (data) {
                 htmlContent += '<option value="'+ data.idComm +'">'+ data.name +'</option>'
             });
@@ -59,7 +59,7 @@ var searchCadastreRM = (function () {
             $('.parcellesList').append('<option></option>');
             // Liste sections
             $.getJSON(baseUrl_cadastre + 'communes/'+ codeCom +'/sections', function(dataApiJson) {
-                var htmlContent = '<option value="-1" disabled selected> code section</option>';
+                var htmlContent = '<option value="-1" disabled selected> Section</option>';
                 dataApiJson.forEach(function (data) {
                     htmlContent += '<option value="'+ data.idSect +'">'+ data.codSect +'</option>'
                 });
@@ -73,7 +73,7 @@ var searchCadastreRM = (function () {
             var codeSection = e.currentTarget.selectedOptions[0].value;
             $('.parcellesList').val('').trigger('change');
             $.getJSON(baseUrl_cadastre + 'sections/'+ codeSection +'/parcelles', function(dataApiJson) {
-                var htmlContent = '<option value="-1" disabled selected> code parcelle</option>';
+                var htmlContent = '<option value="-1" disabled selected> Numéro</option>';
                 dataApiJson.forEach(function (data) {
                     htmlContent += '<option value="'+ data.idParc +'">'+ data.numero +'</option>'
                 });
