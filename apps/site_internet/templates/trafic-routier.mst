@@ -1,0 +1,14 @@
+{{#features}}
+	<li class="item">
+		<h5 class="rm-popup-title-feature">{{#denomination}} {{{denomination}}}  {{/denomination}}</h5>
+        <p class="rm-popup-text-feature">
+            <div class="descriptionField">
+                {{#fcd_trafic_status}} <span class='rm-popup-label'>État du trafic :</span>  <span class="trafficStatus info">{{{fcd_trafic_status}}}</span>  {{/fcd_trafic_status}}
+            </div>
+
+            <div class="descriptionField">
+                {{#fcd_datetime}} <span class='rm-popup-label'>Date :</span> <span class="datetimeField info">{{{fcd_datetime}}}</span> {{/fcd_datetime}}
+            </div>
+        </p>
+	</li>
+{{/features}}

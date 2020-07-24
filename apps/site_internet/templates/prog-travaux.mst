@@ -1,0 +1,16 @@
+{{#features}}
+	<li class="item">
+		<!--<h5 class="rm-popup-title-feature">Identifiant : {{id_si_voirie }}</h5>-->
+		<p class="rm-popup-text-feature">
+			<span class='rm-popup-label'>Identifiant :</span> {{id_si_voirie }}<br/>
+            {{#nom_commune}}<span class='rm-popup-label'> Commune :</span> {{suivi}} {{nom_commune}}<br/>{{/nom_commune}}
+			{{#nom_voie}}<span class='rm-popup-label'> Voie :</span> {{{nom_voie}}}<br/>{{/nom_voie}}
+			{{#suivi}}<span class='rm-popup-label'> Suivi :</span> {{{suivi}}}<br/>{{/suivi}}
+			{{#cop_service}}<span class='rm-popup-label'> Service  :</span> {{{cop_service}}}<br/>{{/cop_service}}
+			{{#objet}}<span class='rm-popup-label'> Objet :</span> {{{objet}}}<br/>{{/objet}}
+            {{#date_debut}}<span class='rm-popup-label'> Date de début :</span> <span class="date_in_french_format"> {{{date_debut}}} </span><br/>{{/date_debut}}
+			{{#duree_previs}}<span class='rm-popup-label'> Durée prévisionnelle :</span> {{{duree_previs}}}<br/>{{/duree_previs}}
+  		</p>
+	</li>
+{{/features}}
+

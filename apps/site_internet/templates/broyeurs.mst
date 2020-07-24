@@ -1,6 +1,6 @@
 {{#features}}
 	<li class="item">
-		<h5 class="rm-popup-title-feature">{{nom_site_retrait}}</h5><br/><br/>
+		<h5 class="rm-popup-title-feature">{{nom_site_retrait}}</h5>
         <p class="rm-popup-text-feature">
             <div>
                  {{#adresse_site_retrait}}<span class='rm-popup-label'> Adresse :</span> {{{adresse_site_retrait}}}{{/adresse_site_retrait}}

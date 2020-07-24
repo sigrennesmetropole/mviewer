@@ -36,13 +36,11 @@ var trafficData = (function() {
 
             displayTrafficInfo(trafficInfo);
         });
-          
     };
 
     var displayTrafficInfo = function (trafficInfo) {
 
         //console.log(trafficInfo);
-
     };
 
 
