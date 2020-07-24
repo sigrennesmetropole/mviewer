@@ -183,9 +183,9 @@ var searchRM = (function () {
 
     var _filterOrganisms = function (organismsData) {
         var organismsFound = [];
+        var organisms = organismsData.result;
         if (typeof organismsData.citiesSearch !== 'undefined') {
             var citiesSearchSplitArray = organismsData.citiesSearch.split(',');
-            var organisms = organismsData.result;
             organisms.forEach(function (organism) {
                 if ( organism.autres !== null && citiesSearchSplitArray.findIndex(item => organism.autres[0].split(':')[1].trim().toLowerCase() === item.toLowerCase()) !== -1) {
                     organismsFound.push(organism);
