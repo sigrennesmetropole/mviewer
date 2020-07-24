@@ -109,9 +109,35 @@ var printMap = (function() {
       var exportPNGElement = document.getElementById('printMapbtn');
       _map.once('postcompose', function(event) {
           try {
+              /***************************************/
+              // CORRECTION passage ol6
+              /***************************************/
+              /*
               //var canvas = event.context.canvas;
               var canvas = $('.ol-layer > canvas')[0];
               exportPNGElement.href = canvas.toDataURL('image/png');
+              */
+              var mapCanvas = document.createElement('canvas');
+              var size = _map.getSize();
+              mapCanvas.width = size[0];
+              mapCanvas.height = size[1];
+              var mapContext = mapCanvas.getContext('2d');
+              Array.prototype.forEach.call(document.querySelectorAll('.ol-layer canvas'), function(canvas) {
+                if (canvas.width > 0) {
+                  var opacity = canvas.parentNode.style.opacity;
+                  mapContext.globalAlpha = opacity === '' ? 1 : Number(opacity);
+                  var transform = canvas.style.transform;
+                  // Get the transform parameters from the style's transform matrix
+                  var matrix = transform.match(/^matrix\(([^\(]*)\)$/)[1].split(',').map(Number);
+                  // Apply the transform to the export map context
+                  CanvasRenderingContext2D.prototype.setTransform.apply(mapContext, matrix);
+                  mapContext.drawImage(canvas, 0, 0);
+                }
+              });
+              exportPNGElement.href = mapCanvas.toDataURL('image/png');
+              // FIN CORRECTION
+                
+       
               createPrintWindow(exportPNGElement.href);
           }
           catch(err) {
@@ -130,11 +156,3 @@ var printMap = (function() {
 
 })();
 
-setTimeout(function () {
-  if (configuration.getConfiguration().application.printMap === "true") {
-    printMap.init();
-    printMap.enable();
-  } else {
-    printMap.disable();
-  }
-}, 2000);

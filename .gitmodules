@@ -1,0 +1,3 @@
+[submodule "apps/cartoHoraires"]
+	path = apps/cartoHoraires
+	url = https://github.com/sigrennesmetropole/cartoHoraires.git

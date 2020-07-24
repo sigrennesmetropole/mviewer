@@ -16,7 +16,7 @@ $("#menu-toggle").click(function(e) {
       $('#menu li a').click(
         function() {
            // debut modif CT 04/02/2020
-           var appliConf = RmOptionsManager.getApplicationConfiguration();
+           var appliConf = rmOptionsManager.getApplicationConfiguration();
            // fin
           if ($("#wrapper").hasClass("toggled-2")) {
             mviewer.toggleMenu(true);
@@ -31,7 +31,7 @@ $("#menu-toggle").click(function(e) {
           if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
             //$('#menu ul:visible').slideUp('normal');
             // debut modif CT 04/02/2020
-            var alwaysOpen = RmOptionsManager.getThemeConfiguration( $(checkElement).parent()[0].id ).alwaysOpen;
+            var alwaysOpen = rmOptionsManager.getThemeConfiguration( $(checkElement).parent()[0].id ).alwaysOpen;
             if (alwaysOpen !== "true") {
               $(checkElement).slideUp('normal');
               $(this).closest("li").removeClass("opened");

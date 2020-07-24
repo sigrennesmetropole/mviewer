@@ -179,12 +179,12 @@ var configuration = (function () {
                             $(conf).find("theme#" + this.themeId).replaceWith(node);
                         } else {
                             $(conf).find("theme#" + this.themeId).remove();
-                            console.log("La thématique " + this.themeId + " n'a pu être trouvée dans " + this.url );
+                            //console.log("La thématique " + this.themeId + " n'a pu être trouvée dans " + this.url );
                         }
                     },
                     error: function(xhr, status, error) {
                         //Si la thématique n'est pas récupérable, on supprime la thématique dans la configuration courante
-                        console.log(this.url + " n'est pas accessible. La thématique n'a pu être chargée");
+                        //console.log(this.url + " n'est pas accessible. La thématique n'a pu être chargée");
                         $(conf).find("theme#" + this.themeId).remove();
                     }
                 }));
@@ -874,6 +874,10 @@ var configuration = (function () {
         } // fin de else
 
          //Export PNG
+         /*******************************************/ 
+         //CORRECTION BUG EXPORT ISSUE #347 MViewer
+         /*******************************************/ 
+         /*
         if (conf.application.exportpng === "true" && document.getElementById('exportpng')) {
             var exportPNGElement = document.getElementById('exportpng');
             if ('download' in exportPNGElement) {
@@ -882,6 +886,44 @@ var configuration = (function () {
                         try {
                             var canvas = event.context.canvas;
                             exportPNGElement.href = canvas.toDataURL('image/png');
+                        }
+                        catch(err) {
+                            mviewer.alert(err, "alert-info");
+                        }
+                    });
+                    _map.renderSync();
+                }, false);
+            } else {
+                $("#exportpng").hide();
+            }
+        } else {
+            $("#exportpng").hide();
+        }
+        */
+        if (conf.application.exportpng === "true" && document.getElementById('exportpng')) {
+            var exportPNGElement = document.getElementById('exportpng');
+            if ('download' in exportPNGElement) {
+                exportPNGElement.addEventListener('click', function(e) {
+                    _map.once('postcompose', function(event) {
+                        try {
+                            var mapCanvas = document.createElement('canvas');
+                            var size = _map.getSize();
+                            mapCanvas.width = size[0];
+                            mapCanvas.height = size[1];
+                            var mapContext = mapCanvas.getContext('2d');
+                            Array.prototype.forEach.call(document.querySelectorAll('.ol-layer canvas'), function(canvas) {
+                              if (canvas.width > 0) {
+                                var opacity = canvas.parentNode.style.opacity;
+                                mapContext.globalAlpha = opacity === '' ? 1 : Number(opacity);
+                                var transform = canvas.style.transform;
+                                // Get the transform parameters from the style's transform matrix
+                                var matrix = transform.match(/^matrix\(([^\(]*)\)$/)[1].split(',').map(Number);
+                                // Apply the transform to the export map context
+                                CanvasRenderingContext2D.prototype.setTransform.apply(mapContext, matrix);
+                                mapContext.drawImage(canvas, 0, 0);
+                              }
+                            });
+                            exportPNGElement.href = mapCanvas.toDataURL('image/png');
                         }
                         catch(err) {
                             mviewer.alert(err, "alert-info");

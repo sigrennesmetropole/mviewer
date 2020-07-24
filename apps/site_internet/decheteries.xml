@@ -22,7 +22,7 @@
     <!--<mapoptions maxzoom="20" projection="EPSG:3857" center="-287709,6137894" zoom="9" projextent="-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244" />-->
     <mapoptions maxzoom="20" minzoom="11" projection="EPSG:3857" center="-190690.24433942206,6128725.984905125" zoom="11" />
 
-	<baselayers style="gallery"><!-- style="default"||gallery" -->     
+	<baselayers style="default"><!-- style="default"||gallery" -->     
 	    <baselayer visible="true" id="pvcisimple" thumbgallery="apps/site_internet/img/basemap/pvcisimple.jpg" title="Rennes Metropole" label="Plan de ville" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="ref_fonds:pvci_simple_gris" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;" maxzoom="22"  maxscale="1000" ></baselayer>
         <baselayer visible="false" id="ortho2017" thumbgallery="apps/site_internet/img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;" maxzoom="22"  maxscale="1000" ></baselayer>
     </baselayers>

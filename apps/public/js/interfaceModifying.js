@@ -115,7 +115,7 @@ var interfaceModifying = (function () {
         });
         $('#menu').click(function () {
        
-            var infoPanels = RmOptionsManager.getInfoPaneles();
+            var infoPanels = rmOptionsManager.getInfoPaneles();
             
             var activeRefresh = false;
             infoPanels.forEach(function (panelId) {
@@ -158,6 +158,8 @@ var interfaceModifying = (function () {
         if (sld) {
             if (sld.indexOf('bleu') != -1) {
                 color = 'goutte_bleu';
+            } else if (sld.indexOf('vert-eau') != -1) {
+                color = 'goutte_vert-eau';
             } else if (sld.indexOf('vert') != -1) {
                 color = 'goutte_vert';
             } else if (sld.indexOf('violet') != -1){

@@ -505,7 +505,7 @@ mviewer = (function () {
         }
         
         // AJOUT CBR
-        RmOptionsManager.init();
+        rmOptionsManager.init();
         // FIN AJOUT CBR
     };
 
@@ -1932,8 +1932,8 @@ mviewer = (function () {
             $("#els_marker").show();
             // debut modif CT 31/01/2020
             //var nbItems = info.getClickNbItems();
-            var nbItems = RmOptionsManager.getClickNbItems();
-            if (nbItems > 1 && RmOptionsManager.getApplicationConfiguration().showClickNbItems !== "false") { 
+            var nbItems = rmOptionsManager.getClickNbItems();
+            if (nbItems > 1 && rmOptionsManager.getApplicationConfiguration().showClickNbItems !== "false") { 
                 
                _popup.setPosition(ptResult);
                // AJOUT CBR : div d'affichage Nb résultats
@@ -1943,7 +1943,7 @@ mviewer = (function () {
                //} 
                // FIN AJOUT CBR
                //$("#popup-number-results").html(info.getClickNbItems() + ' résultats');
-               $("#popup-number-results").html(RmOptionsManager.getClickNbItems() + ' résultats');
+               $("#popup-number-results").html(rmOptionsManager.getClickNbItems() + ' résultats');
 
                $("#popup-number-results").show();
 
@@ -2028,7 +2028,7 @@ mviewer = (function () {
          */
 
         sendToGeorchestra: function () {
-            console.log("test");
+            //console.log("test");
             var params = {
                 "services": [],
                 "layers" : []

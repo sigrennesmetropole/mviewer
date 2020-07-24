@@ -59,20 +59,23 @@ var formatter = (function () {
             var li_elements = li_tab[cpt].getElementsByClassName("horaires");
             var variations = li_tab[cpt].getElementsByClassName("variationvac");
 
-            for (var i = 0, len = li_elements.length; i < len; i++) {
-                var contenu = "<ul><li>";
-                contenu += li_elements[i].innerHTML.replace(/ \/ /g, "</li><li>")
-                if (variations.length > 0) {
-                    contenu += "</li><li><i>" + variations[0].innerHTML+"</i>";
+            if (li_elements.length >0){
+                for (var i = 0, len = li_elements.length; i < len; i++) {
+                    var contenu = "<ul><li>";
+                    contenu += li_elements[i].innerHTML.replace(/ \/ /g, "</li><li>")
+                    if (variations.length > 0) {
+                        contenu += "</li><li><i>" + variations[0].innerHTML+"</i>";
+                    }
+                    contenu += "</li></ul>";
+                    li_elements[i].innerHTML = contenu ;
+                    //li_elements[i].classList.remove('horaires');
                 }
-                contenu += "</li></ul>";
-                li_elements[i].innerHTML = contenu ;
-                //li_elements[i].classList.remove('horaires');
-            }
-            // non affichage des noeuds inutiles
-            for (var k = 0, len_k = variations.length; k < len_k; k++) {variations[k].style.display="none";}    
+                // non affichage des noeuds inutiles
+                for (var k = 0, len_k = variations.length; k < len_k; k++) {variations[k].style.display="none";}   
+            } else if (variations.length > 0) {//  cas des variations sans grille horaire définie
+                variations[0].innerHTML = "<span class='rm-popup-label'> Horaires :</span>" + variations[0].innerHTML+"<br/>";
+            } 
         }
-        
     };
     
     /****** FERMETURES ORGANISMES ******/
@@ -355,13 +358,13 @@ var formatter = (function () {
     // Liste des équipements (exemeple : broyeurs)
     function rmListeEquipt() {
         var ul_element=document.getElementsByClassName("liste_equipement");
-        var list_retenue='';
-        if (ul_element.length >0){
-            var li_elements = ul_element[0].getElementsByClassName("rm_visible_true");
+        for (var k = 0; k < ul_element.length; k++) {
+            var list_retenue='';
+            var li_elements = ul_element[k].getElementsByClassName("rm_visible_true");
                 for (var i = 0, len = li_elements.length; i < len; i++) {
                     list_retenue +=  "<li>" +li_elements[i].innerHTML+"</li>";
                 }
-            ul_element[0].innerHTML="<ul>"+list_retenue+"</ul>";
+            ul_element[k].innerHTML="<ul>"+list_retenue+"</ul>";
         }
     };
 
@@ -374,7 +377,7 @@ var formatter = (function () {
         if (my_links){
             for (var i = 0; i < my_links.length; i++) {
                 var adresse = my_links[i].getAttribute("href");
-                console.log("adresse = " + adresse);
+                //console.log("adresse = " + adresse);
                 if (adresse !== null) {
 
                     if (adresse.substr(0, 4) != "http") {
@@ -413,6 +416,27 @@ var formatter = (function () {
         }
     };
     
+    function formatDateTimeInFrench() {
+        var dates = document.getElementsByClassName("datetimeField");
+        var heure = '';
+        for (var i = 0; i < dates.length; i++) {
+            var text = dates[i].innerText;
+            var timestampSplit = text.split('T');
+
+            if (typeof timestampSplit[1] !== 'undefined') {
+                var heureSplit = text.split('T')[1].split(':');
+                heure = ' à ' + heureSplit[0] + 'h' + heureSplit[1];
+            }
+
+            var date = timestampSplit[0].split('-');
+            if (typeof date[2] === 'undefined' || typeof date[1] === 'undefined') {
+                dates[i].innerText = date[0];
+            } else {
+                dates[i].innerText = date[2] + '/' + date[1] + '/' + date[0] + heure;
+            }
+        }
+    };
+    
     
     /****** QUARTIERS ******/
     function rmQuartiers() {
@@ -424,6 +448,37 @@ var formatter = (function () {
         }
     };
 
+
+    /****** DONNEES TRAFIC TR ******/
+
+    function rmTraficStatus() {
+        var trafficStatus = document.getElementsByClassName("trafficStatus");
+        for (var j = 0; j < trafficStatus.length; j++) {    
+            var text = trafficStatus[j].innerText;
+            var newText = '';
+            switch (text) {
+                case 'freeFlow':
+                    newText = 'fluide'
+                    break;
+                case 'heavy':
+                    newText = 'ralenti'
+                    break;
+                case 'congested':
+                    newText = 'bouchon';
+                    break;
+                case 'impossible':
+                    newText = 'impossible';
+                    break;
+                case 'unknown':
+                    newText = 'inconnu';
+                    break;
+                default:
+                    newText = text;
+            }
+            trafficStatus[j].innerText = newText;
+        }
+        
+    };
     
 
     // Mise en forme des composants des panneaux d'information (appelée à chaque chargement de panel)
@@ -437,7 +492,9 @@ var formatter = (function () {
         rmListeEquipt();
         corrWebAddr();
         formatDateInFrench();
+        formatDateTimeInFrench();
         rmQuartiers();
+        rmTraficStatus();
     };
 
     return {

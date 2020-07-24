@@ -4,7 +4,7 @@
         
 		<p class="rm-popup-text-feature">
 			<span>Le plan détermine la part minimale d'espace végétalisé à préserver pour chaque terrain soit à partir d'une valeur fixe (ex : 30%), soit à partir d'une valeur variable (ex : T2).</span> <br/>
-			<span>Dans le cas d'une valeur variable, le % minimal de surface éco-aménagée à respecter est déterminé selon la taille du terrain (voir la pièce du dossier D-2-2-2-2 Liste des valeurs variables en fonction de la taille du terrain)LINK</span> <br/>
+			<span>Dans le cas d'une valeur variable, le % minimal de surface éco-aménagée à respecter est déterminé selon la taille du terrain (voir la pièce du dossier D-2-2-2-2 Liste des valeurs variables en fonction de la taille du terrain).</span> <br/>
 			<span>Dans les secteurs concernés par un plan de détail (d), un plan masse (m), un plan d'épannelage (e) ou une orientation d'aménagement et de programmation de quartier (OAPq), des règles spécifiques à la végétalisation peuvent être indiquées dans ces documents qu'il convient de consulter.</span> <br/>
 			<span>Les couleurs n'ont pas de valeur règlementaires, c'est la valeur de l'étiquette qui détermine la part minimale d'espace végétalisé à préserver.</span> <br/>
 			<span>Pour en savoir plus sur le mode de calcul, les cas particuliers et pour les secteurs non représentés sur les plans, voir les règles de Végétalisation dans le règlement littéral (Titre IV – Règles applicables à toutes les zones).</span> <br/>
@@ -20,6 +20,14 @@
 			<div>
 				<span class="glyphicon glyphicon-hand-up"></span>
 				<a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/un-plan-local-durbanisme-intercommunal-plui-pour-43-communes" target="_blank"> consulter la page web dédiée au PLUi </a>
+			</div>
+			<div>
+				<span class="glyphicon glyphicon-hand-up"></span>
+				<a id='lienweb' class='lienweb' href="https://app.sig.rennesmetropole.fr/calculsCVEP/index.html" target="_blank"> accéder au simulateur de calcul du coefficient de végétalisation </a>
+			</div>
+			<div>
+				<span class="glyphicon glyphicon-hand-up"></span>
+				<a id='lienweb' class='lienweb' href="https://vegeteaux.sig.rennesmetropole.fr/" target="_blank"> éditer le formulaire pour le coefficient de végétalisation de votre projet </a>
 			</div>
 		</div>
 	</li>
