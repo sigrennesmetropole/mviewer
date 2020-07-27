@@ -4,28 +4,28 @@
     "searchContent": [
         {
             "categoryName": "Communes",
-            "searchParameterName": "Rechercher des communes RM",
+            "searchParameterName": "Rechercher des communes",
             "defaultCheck": true,
             "nbItemDisplay": 5,
             "zoom": 14
         }, 
         {
             "categoryName": "Voies",
-            "searchParameterName": "Rechercher des voies RM",
+            "searchParameterName": "Rechercher des voies",
             "defaultCheck": true,
             "nbItemDisplay": 5,
             "zoom": 17
         },
         {
             "categoryName": "Adresses",
-            "searchParameterName": "Rechercher des adresses RM ",
+            "searchParameterName": "Rechercher des adresses",
             "defaultCheck": true,
             "nbItemDisplay": 5,
             "zoom": 17
         },
         {
             "categoryName": "Organismes",
-            "searchParameterName": "Rechercher des organimes RM ",
+            "searchParameterName": "Rechercher des organimes",
             "defaultCheck": true,
             "nbItemDisplay": 5,
             "zoom": 17

@@ -114,9 +114,7 @@ var rmOptionsManager = (function () {
                             }
     
                             if (confLayer.hideLayerName == 'true') {
-    
                                 interfaceModifying.hideLayerName(layers[layer].layerid);
-    
                             }
 
                             // SUPPR CBR - Gestion des options dépliées par défaut gérées dans mviewerRM
@@ -126,6 +124,12 @@ var rmOptionsManager = (function () {
                             }
                             */
                             // FIN SUPPR CBR
+                            
+                            // AJOUT - Rechargement des données de la couche au click sur la carte
+                            if (confLayer.refreshOnClick === 'true') {
+                                interfaceModifying.refreshMap(layers[layer].id);
+                            }
+                            // FIN AJOUT
     
                         }
         
