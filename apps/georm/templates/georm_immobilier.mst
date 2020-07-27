@@ -1,8 +1,8 @@
 {{#features}}
 	<li class="item">
 		<h5 class="rm-popup-title-feature immobilier-title">{{nom_prog}}</h5>
-		<p class="rm-popup-text-feature">
-			{{#commune}}<span class='rm-popup-label'> {{commune}}<br/><br/>{{/commune}}
+		<p class="rm-popup-text-feature"
+            {{#commune}}<span class='rm-popup-label'> {{commune}}<br/><br/></span> {{/commune}}
 			{{#forme_urbaine}}<span class='rm-popup-label'> Forme urbaine :</span> {{forme_urbaine}}<br/>{{/forme_urbaine}}
 			{{#type_logmt}}<span class='rm-popup-label'> Types de logements :</span> {{type_logmt}}<br/>{{/type_logmt}}
 		</p>
