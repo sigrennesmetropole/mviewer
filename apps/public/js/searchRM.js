@@ -71,7 +71,13 @@ var searchRM = (function () {
                     _searchRM(confData, $(this).val());
                 }
             });
+
+            $(document).on('click', '#searchparameters', function () {
+                _searchRM(confData, $(this).val());
+            });
+
         });
+
     };
 
 
@@ -294,10 +300,13 @@ var searchRM = (function () {
     };
 
     var _getApisRequests = function (confData, value) {
+        
+        var searchItemChecked = $('#searchparameters li a .mv-checked');
         var promises = [];
+        var apiRvaBaseUrl = 'https://api-rva.sig.rennesmetropole.fr/';
+        var apiSitesOrg_url_recherche = 'https://api-sitesorg.sig.rennesmetropole.fr/v1/recherche';
+
         confData.searchContent.forEach( function (content) {
-            var apiRvaBaseUrl = 'https://api-rva.sig.rennesmetropole.fr/';
-            var apiSitesOrg_url_recherche = 'https://api-sitesorg.sig.rennesmetropole.fr/v1/recherche';
             var ajaxSetting = {type: 'GET', crossDomain: true,  dataType: "json"};
             apiSitesOrgkey = confData.apiSitesorgKey;
             switch (content.categoryName) {
@@ -320,20 +329,29 @@ var searchRM = (function () {
                     ajaxSetting.headers = {'X-API-KEY': apiSitesOrgkey};
                     break;
             }
-            promises.push( new Promise(resolve => {
-                $.ajax(ajaxSetting).done(function (result) {
-                    var nbItemDisplay = 5;
-                    if (!Number.isNaN(parseInt(content.nbItemDisplay))) {
-                        nbItemDisplay = parseInt(content.nbItemDisplay);
-                    }
-                    var resolveRes = {result : result, nbItemDisplay: nbItemDisplay};
-                    resolveRes['zoom'] = content.zoom;
-                    resolveRes['categoryName'] = content.categoryName;
-                    resolveRes['citiesSearch'] = content.citiesSearch;
-                    resolve(resolveRes);
-                });
-            }) );
+
+            for (var i = 0; i < searchItemChecked.length; i++) {
+                if (searchItemChecked[i].id === 'param_search_' + content.categoryName) {
+
+                    promises.push( new Promise(resolve => {
+                        $.ajax(ajaxSetting).done(function (result) {
+                            var nbItemDisplay = 5;
+                            if (!Number.isNaN(parseInt(content.nbItemDisplay))) {
+                                nbItemDisplay = parseInt(content.nbItemDisplay);
+                            }
+                            var resolveRes = {result : result, nbItemDisplay: nbItemDisplay};
+                            resolveRes['zoom'] = content.zoom;
+                            resolveRes['categoryName'] = content.categoryName;
+                            resolveRes['citiesSearch'] = content.citiesSearch;
+                            resolve(resolveRes);
+                        });
+                    }) );
+
+                }
+            }
+
         } );
+
         return promises;
     };
 

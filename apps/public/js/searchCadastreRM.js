@@ -36,7 +36,7 @@ var searchCadastreRM = (function () {
         var searchCadastreElement = '<ul class="nav navbar-nav navbar-right"><li class="parcelSelector">' + selectCityInput +'</li>'
             + '<li class="parcelSelector">' + sectionTag +'</li>'
             + '<li class="parcelSelector">' + parcelTag +'</li>'
-            + '<li class="parcelSelector"><button type="button" id="cleanParcel" class="btn" title="effacer parcelle sélectionnée"> effacer parcelle sélectionnée </button></li></ul>';
+            + '<li class="parcelSelector"><button type="button" id="cleanParcel" class="btn" title="Réinitialiser parcelle sélectionnée"> Réinitialiser parcelle sélectionnée </button></li></ul>';
 
 
         $('#bs-example-navbar-collapse-1').append(searchCadastreElement);
