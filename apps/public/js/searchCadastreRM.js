@@ -33,23 +33,51 @@ var searchCadastreRM = (function () {
 
         baseUrl_cadastre = 'https://api-cadastre.sig.rennesmetropole.fr/v1/';
 
-        var searchCadastreElement = '<ul class="nav navbar-nav navbar-right"><li class="parcelSelector">' + selectCityInput +'</li>'
+        /*var searchCadastreElement = '<ul class="nav navbar-nav navbar-right"><li class="parcelSelector">' + selectCityInput +'</li>'
             + '<li class="parcelSelector">' + sectionTag +'</li>'
-            + '<li class="parcelSelector">' + parcelTag +'</li>'
-            + '<li class="parcelSelector"><button type="button" id="cleanParcel" class="btn" title="Réinitialiser parcelle sélectionnée"> Réinitialiser parcelle sélectionnée </button></li></ul>';
+            + '<li class="parcelSelector">' + parcelTag +'</li></ul>';*/
+            //+ '<li class="parcelSelector"><button type="button" id="cleanParcel" class="btn" title="Réinitialiser parcelle sélectionnée"> Réinitialiser parcelle sélectionnée </button></li></ul>';
 
+          /*var searchCadastreElement = '<ul class="nav navbar-nav navbar-right"><li class="parcelSelector"><div class="parcelSelectors">'
+            + '<label>Recherche de parcelle</label>' 
+            + selectCityInput + sectionTag + parcelTag +'</div></li></ul>';*/
+
+          var searchCadastreElement = '<ul class="nav navbar-nav navbar-right"><li class="parcelSelector"><div class="parcelSelectorsContainer">'
+            + '<div><p class="labelRechercheParcelle">Recherche de parcelle</p></div><div class="parcelSelectors">' 
+            + selectCityInput + sectionTag + parcelTag +'</div></li></ul>';
 
         $('#bs-example-navbar-collapse-1').append(searchCadastreElement);
 
+
         $.getJSON(baseUrl_cadastre + 'communes', function(dataApiJson) {
-            var htmlContent = '<option value="-1" disabled selected> rechercher la commune de la parcelle</option>';
+            //var htmlContent = '<option value="-1" disabled selected> rechercher la commune de la parcelle</option>';
+            var htmlContent = '';
             dataApiJson.forEach(function (data) {
                 htmlContent += '<option value="'+ data.idComm +'">'+ data.name +'</option>'
             });
             $('#communeSearch').html(htmlContent);
+            $('#communeSearch').select2({
+              placeholder: "commune",
+              allowClear: true,
+              dropdownAutoWidth: true,
+            });
+            $('#section').select2({
+              placeholder: "section",
+              allowClear: true,
+              dropdownAutoWidth: true,
+              width: '100%',
+            });
+            $('#parcelle').select2({
+              placeholder: "parcelle",
+              allowClear: true,
+              dropdownAutoWidth: true,
+              width: '100%',
+            });
             $(".sectionsList").prop("disabled", true);
             $(".parcellesList").prop("disabled", true);
+            $('#communeSearch').val('0').trigger('change');
         });
+
 
         $(document).on('change','#communeSearch', function (e) {
             var codeCom = e.currentTarget.selectedOptions[0].value;
@@ -59,11 +87,17 @@ var searchCadastreRM = (function () {
             $('.parcellesList').append('<option></option>');
             // Liste sections
             $.getJSON(baseUrl_cadastre + 'communes/'+ codeCom +'/sections', function(dataApiJson) {
-                var htmlContent = '<option value="-1" disabled selected> code section</option>';
+                //var htmlContent = '<option value="-1" disabled selected> code section</option>';
+                var htmlContent = '';
                 dataApiJson.forEach(function (data) {
                     htmlContent += '<option value="'+ data.idSect +'">'+ data.codSect +'</option>'
                 });
                 $('#section').html(htmlContent);
+                $('#section').select2({
+                  placeholder: "section",
+                  allowClear: true,
+                  dropdownAutoWidth: true,
+                });
                 $(".sectionsList").prop("disabled", false);
                 $(".parcellesList").prop("disabled", true);
             });
@@ -73,11 +107,17 @@ var searchCadastreRM = (function () {
             var codeSection = e.currentTarget.selectedOptions[0].value;
             $('.parcellesList').val('').trigger('change');
             $.getJSON(baseUrl_cadastre + 'sections/'+ codeSection +'/parcelles', function(dataApiJson) {
-                var htmlContent = '<option value="-1" disabled selected> code parcelle</option>';
+                //var htmlContent = '<option value="-1" disabled selected> code parcelle</option>';
+                var htmlContent = '';
                 dataApiJson.forEach(function (data) {
                     htmlContent += '<option value="'+ data.idParc +'">'+ data.numero +'</option>'
                 });
                 $('#parcelle').html(htmlContent);
+                $('#parcelle').select2({
+                  placeholder: "parcelle",
+                  allowClear: true,
+                  dropdownAutoWidth: true,
+                });
                 $(".parcellesList").prop("disabled", false);
             });
         });
@@ -139,18 +179,26 @@ var searchCadastreRM = (function () {
                 mviewer.getMap().addLayer(layer);
                 selectedParcelLayer = layer;
               }
-              mviewer.getMap().getView().setCenter(getCenterGeometry(geomNewProj));
+              var geometryCenter = getCenterGeometry(geomNewProj);
+              mviewer.getMap().getView().setCenter(geometryCenter);
               mviewer.getMap().getView().setZoom(17);
+
+              var e = {
+                coordinate:geometryCenter,
+                pixel: mviewer.getMap().getPixelFromCoordinate(mviewer.getMap().getView().getCenter())
+              };
+              info.queryMap(e);
+
             });
     
         });
 
-        $(document).on('click','#cleanParcel', function (e) {
+        /*$(document).on('click','#cleanParcel', function (e) {
           if (typeof selectedParcelLayer !== 'undefined') {
             mviewer.getMap().removeLayer(selectedParcelLayer);
             $('#parcelle').val(-1);
           }
-        });
+        });*/
 
     }
 
