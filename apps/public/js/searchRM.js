@@ -355,9 +355,12 @@ var searchRM = (function () {
         return promises;
     };
 
-    var _displayAutocompleteData = function (allResult, value) {
+    var _displayAutocompleteData = function (allResult, value, createHtml) {
         var str = '';
         var nbItem = 0;
+        var cities = [];
+        var lane = [];
+        var address = [];
         allResult.forEach( function (data) {
             str += '<a class="geoportail list-group-item disabled" id="list-group-'+ data.categoryName +'">'+ data.categoryName +'</a>';
             var dataFiltered = [];
@@ -375,6 +378,7 @@ var searchRM = (function () {
                     coordNewProj[1] + ',' + data.zoom + ',' + search.options.querymaponclick +', \'EPSG:4326\');">' + elem.name + '</a>';
                     nbItem++;
                 });
+                cities.push(dataFiltered);
                 break;
             case 'Voies':
                 //dataFiltered =  data.result.rva.answer.lanes.slice(0,data.nbItemDisplay);
@@ -389,6 +393,7 @@ var searchRM = (function () {
                     coordNewProj[1] + ',' + data.zoom + ',' + search.options.querymaponclick +', \'EPSG:4326\');">' + elem.name4 + '</a>';
                     nbItem++;
                 });
+                lane.push(dataFiltered);
                 break;
             case 'Adresses':
                 //dataFiltered = data.result.rva.answer.addresses.slice(0,data.nbItemDisplay);
@@ -401,6 +406,7 @@ var searchRM = (function () {
                     coordNewProj[1] + ',' + data.zoom + ',' + search.options.querymaponclick +', \'EPSG:4326\');">' + elem.addr3 + '</a>';
                     nbItem++;
                 });
+                address.push(dataFiltered);
                 break;
             case 'Organismes':
                 //dataFiltered = data.result.slice(0,data.nbItemDisplay);
@@ -422,14 +428,21 @@ var searchRM = (function () {
           }
         });
 
-        $(".geoportail").remove();
-        $("#searchresults").append(str);
-        if (search.options.closeafterclick) {
-            $("#searchresults .list-group-item").click(function(){
-                $(".searchresults-title .close").trigger("click");
-            });
+        if(createHtml != false) {
+            $(".geoportail").remove();
+            $("#searchresults").append(str);
+            if (search.options.closeafterclick) {
+                $("#searchresults .list-group-item").click(function(){
+                    $(".searchresults-title .close").trigger("click");
+                });
+            }
+            $("#searchresults").show();
         }
-        $("#searchresults").show();
+        return {
+            cities: cities,
+            lane: lane,
+            address: address
+        }
     };
 
 
@@ -456,7 +469,9 @@ var searchRM = (function () {
         displayLocation: displayLocation,
         displayLocationMarker: displayLocationMarker,
         toggleParameter: toggleParameter,
-        displayOrganism: displayOrganism
+        displayOrganism: displayOrganism,
+        request: _getApisRequests,
+        getAutocompleteData: _displayAutocompleteData
     };
 
 })();
