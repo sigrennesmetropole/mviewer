@@ -31,7 +31,8 @@ url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="ra
 attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;"/>
 	</baselayers>
     
-	<searchparameters bbox="false" localities="false" features="false" static="false"/>
+	<searchparameters bbox="false" localities="false" features="false" static="false"
+		searchRM="true" searchRMConf="apps/site_internet/addons/data/searchRVAConf.json"/>
     
 	<themes mini="true">
         <theme id="theme-trafic_dessus" name="Trafic routier (dessus)" collapsed="true" icon="fas fa-road">

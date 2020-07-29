@@ -67,6 +67,18 @@
 				infopanel="right-panel">
                 <template url="apps/georm/templates/georm_station-velo-ls.mst"></template>
 			</layer>
+            <layer
+                id="v_stationnement_reserve"
+                name="Stationnements réservés"
+                type="wms"
+                url="https://public.sig.rennesmetropole.fr/geoserver/trp_statio/ows"
+                visible="false"
+                infoformat="application/vnd.ogc.gml"
+                metadata="undefined"
+                queryable="true"
+                featurecount="5"
+                infopanel="right-panel"><template url="apps/georm/templates/georm_stationnement_reserve.mst"></template>
+            </layer>
 			<layer
 				id="v_star_arret_physique"
 				name="Arrêts de bus"

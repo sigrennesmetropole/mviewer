@@ -3,10 +3,10 @@
 		<h5 class="rm-popup-title-feature arret-bus-title">{{#ap_nom}} {{{ap_nom}}}  {{/ap_nom}}</h5>
         
 		<p class="rm-popup-text-feature">
-			<p> {{#nom}} {{{nom}}}  {{/nom}} </p>
-			<p> {{#access_pmr}}<span class='rm-popup-label'> Accès personnes à mobilité réduite :</span> {{{access_pmr}}}<br/>{{/access_pmr}} </p>
-			<p> {{#access_li_nok}} <span class='rm-popup-label'>Ligne(s) non accessible(s) : </span> {{{access_li_nok}}}  {{/access_li_nok}} </p>
-			<p> {{#equip_mobilier}} <span class='rm-popup-label'>Equipements : </span> {{{equip_mobilier}}}  {{/equip_mobilier}} </p>
+			{{#nom}} {{{nom}}} <br/> {{/nom}}
+			{{#access_pmr}}<span class='rm-popup-label'> Accès personnes à mobilité réduite :</span> {{{access_pmr}}}<br/>{{/access_pmr}}
+			{{#access_li_nok}} <span class='rm-popup-label'>Ligne(s) non accessible(s) : </span> {{{access_li_nok}}} <br/>{{/access_li_nok}}
+			{{#equip_mobilier}} <span class='rm-popup-label'>Equipements : </span> {{{equip_mobilier}}}  <br/>{{/equip_mobilier}}
 		</p>
 	</li>
 {{/features}}

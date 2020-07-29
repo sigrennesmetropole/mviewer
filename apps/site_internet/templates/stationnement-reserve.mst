@@ -4,8 +4,10 @@
 		<p class="rm-popup-text-feature">
 			<span class='rm-popup-label'> Adresse :</span> {{{nom_voie}}} - {{{nom_com}}}<br/>
 			{{#nom_quartier}}<span class='rm-popup-label'> Quartier :</span> {{{nom_quartier}}}<br/>{{/nom_quartier}}
-			{{#type}}<span class='rm-popup-label'> Type de parking :</span> {{{type}}}<br/>{{/type}}
 			{{#nb_places}}<span class='rm-popup-label'> Nombre de places :</span> {{nb_places}}<br/>{{/nb_places}}
+			{{#type}}<span class='rm-popup-label'> Type de parking :</span> {{{type}}}<br/>{{/type}}
+            {{#conformite_pmr}} <span class='rm-popup-label'>Conformité PMR : </span> {{{conformite_pmr}}} <br/> {{/conformite_pmr}}
+            {{#non_conformite_pmr}} <span class='rm-popup-label'>Non conformité PMR : </span> {{{non_conformite_pmr}}} <br/> {{/non_conformite_pmr}} 
 		</p>
 	</li>
 {{/features}}

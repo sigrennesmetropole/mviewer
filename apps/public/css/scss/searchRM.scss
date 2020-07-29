@@ -12,4 +12,13 @@
 
 #cleanParcel {
     margin-left: 3%;
+    background-color: #4D4D4D;
+    color: white;
+    border-color: white;
+}
+
+#cleanParcel:hover {
+    background-color: #ccc;
+    color: #333;
+    border-color: #333;
 }

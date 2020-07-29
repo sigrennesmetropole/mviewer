@@ -2,14 +2,10 @@
 	<li class="item">
 		<h5 class="rm-popup-title-feature election-centre-title"> Centre de vote - Bureau(x) n° {{#burx_liste}} {{{burx_liste}}}  {{/burx_liste}}</h5>
 		<p class="rm-popup-text-feature">
-            <p>  <span class='rm-popup-label'> Commune : </span> {{#c_nom}} {{{c_nom}}} {{/c_nom}} </p>
-	    <p> 
-                {{#loc_voie}}<span class='rm-popup-label'> Adresse : </span> {{/loc_voie}}
-                {{#loc_adr}} {{{loc_adr}}} {{/loc_adr}}
-                {{#loc_voie}} {{{loc_voie}}} {{/loc_voie}}
-            </p>
-            <p>  <span class='rm-popup-label'> Bâtiment : </span> {{#loc_bat}} {{{loc_bat}}} {{/loc_bat}} </p>
-            <p> {{#loc_salle}}<span class='rm-popup-label'>Salle : </span> {{{loc_salle}}} {{/loc_salle}} </p>
+            {{#c_nom}}<span class='rm-popup-label'> Commune : </span> {{{c_nom}}} <br/> {{/c_nom}}
+            {{#loc_voie}}<span class='rm-popup-label'> Adresse : </span> {{#loc_adr}} {{{loc_adr}}} {{/loc_adr}} {{{loc_voie}}} <br/> {{/loc_voie}}
+            {{#loc_bat}}<span class='rm-popup-label'> Bâtiment : </span>  {{{loc_bat}}} <br/>{{/loc_bat}}
+            {{#loc_salle}}<span class='rm-popup-label'>Salle : </span> {{{loc_salle}}} <br/>{{/loc_salle}} 
         </p>
 	</li>
 {{/features}}
