@@ -120,7 +120,7 @@ var searchRM = (function () {
         }
     };
 
-    //////////////////// Search input ////////////////////////////////////////////////
+    //////////////////// Search input /////////////////////////////////////////////////
 
     var _filterCities = function (citiesList, elemSearch, citiesSearch) {
         var citiesFound = [];
