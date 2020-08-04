@@ -71,6 +71,11 @@ var searchRM = (function () {
                     _searchRM(confData, $(this).val());
                 }
             });
+
+            $(document).on('click', '#searchparameters', function () {
+                _searchRM(confData, $(this).val());
+            });
+
         });
     };
 
@@ -114,7 +119,7 @@ var searchRM = (function () {
         }
     };
 
-    //////////////////// Search input ////////////////////////////////////////////////
+    //////////////////// Search input /////////////////////////////////////////////////
 
     var _filterCities = function (citiesList, elemSearch, citiesSearch) {
         var citiesFound = [];
@@ -183,9 +188,9 @@ var searchRM = (function () {
 
     var _filterOrganisms = function (organismsData) {
         var organismsFound = [];
+        var organisms = organismsData.result;
         if (typeof organismsData.citiesSearch !== 'undefined') {
             var citiesSearchSplitArray = organismsData.citiesSearch.split(',');
-            var organisms = organismsData.result;
             organisms.forEach(function (organism) {
                 if ( organism.autres !== null && citiesSearchSplitArray.findIndex(item => organism.autres[0].split(':')[1].trim().toLowerCase() === item.toLowerCase()) !== -1) {
                     organismsFound.push(organism);
@@ -294,10 +299,13 @@ var searchRM = (function () {
     };
 
     var _getApisRequests = function (confData, value) {
+        
+        var searchItemChecked = $('#searchparameters li a .mv-checked');
         var promises = [];
+        var apiRvaBaseUrl = 'https://api-rva.sig.rennesmetropole.fr/';
+        var apiSitesOrg_url_recherche = 'https://api-sitesorg.sig.rennesmetropole.fr/v1/recherche';
+
         confData.searchContent.forEach( function (content) {
-            var apiRvaBaseUrl = 'https://api-rva.sig.rennesmetropole.fr/';
-            var apiSitesOrg_url_recherche = 'https://api-sitesorg.sig.rennesmetropole.fr/v1/recherche';
             var ajaxSetting = {type: 'GET', crossDomain: true,  dataType: "json"};
             apiSitesOrgkey = confData.apiSitesorgKey;
             switch (content.categoryName) {
@@ -320,26 +328,37 @@ var searchRM = (function () {
                     ajaxSetting.headers = {'X-API-KEY': apiSitesOrgkey};
                     break;
             }
-            promises.push( new Promise(resolve => {
-                $.ajax(ajaxSetting).done(function (result) {
-                    var nbItemDisplay = 5;
-                    if (!Number.isNaN(parseInt(content.nbItemDisplay))) {
-                        nbItemDisplay = parseInt(content.nbItemDisplay);
-                    }
-                    var resolveRes = {result : result, nbItemDisplay: nbItemDisplay};
-                    resolveRes['zoom'] = content.zoom;
-                    resolveRes['categoryName'] = content.categoryName;
-                    resolveRes['citiesSearch'] = content.citiesSearch;
-                    resolve(resolveRes);
-                });
-            }) );
+
+            for (var i = 0; i < searchItemChecked.length; i++) {
+                if (searchItemChecked[i].id === 'param_search_' + content.categoryName) {
+
+                    promises.push( new Promise(resolve => {
+                        $.ajax(ajaxSetting).done(function (result) {
+                            var nbItemDisplay = 5;
+                            if (!Number.isNaN(parseInt(content.nbItemDisplay))) {
+                                nbItemDisplay = parseInt(content.nbItemDisplay);
+                            }
+                            var resolveRes = {result : result, nbItemDisplay: nbItemDisplay};
+                            resolveRes['zoom'] = content.zoom;
+                            resolveRes['categoryName'] = content.categoryName;
+                            resolveRes['citiesSearch'] = content.citiesSearch;
+                            resolve(resolveRes);
+                        });
+                    }) );
+
+                }
+            }
+
         } );
         return promises;
     };
 
-    var _displayAutocompleteData = function (allResult, value) {
+    var _displayAutocompleteData = function (allResult, value, createHtml) {
         var str = '';
         var nbItem = 0;
+        var cities = [];
+        var lane = [];
+        var address = [];
         allResult.forEach( function (data) {
             str += '<a class="geoportail list-group-item disabled" id="list-group-'+ data.categoryName +'">'+ data.categoryName +'</a>';
             var dataFiltered = [];
@@ -357,6 +376,7 @@ var searchRM = (function () {
                     coordNewProj[1] + ',' + data.zoom + ',' + search.options.querymaponclick +', \'EPSG:4326\');">' + elem.name + '</a>';
                     nbItem++;
                 });
+                cities.push(dataFiltered);
                 break;
             case 'Voies':
                 //dataFiltered =  data.result.rva.answer.lanes.slice(0,data.nbItemDisplay);
@@ -371,6 +391,7 @@ var searchRM = (function () {
                     coordNewProj[1] + ',' + data.zoom + ',' + search.options.querymaponclick +', \'EPSG:4326\');">' + elem.name4 + '</a>';
                     nbItem++;
                 });
+                lane.push(dataFiltered);
                 break;
             case 'Adresses':
                 //dataFiltered = data.result.rva.answer.addresses.slice(0,data.nbItemDisplay);
@@ -383,6 +404,7 @@ var searchRM = (function () {
                     coordNewProj[1] + ',' + data.zoom + ',' + search.options.querymaponclick +', \'EPSG:4326\');">' + elem.addr3 + '</a>';
                     nbItem++;
                 });
+                address.push(dataFiltered);
                 break;
             case 'Organismes':
                 //dataFiltered = data.result.slice(0,data.nbItemDisplay);
@@ -404,14 +426,21 @@ var searchRM = (function () {
           }
         });
 
-        $(".geoportail").remove();
-        $("#searchresults").append(str);
-        if (search.options.closeafterclick) {
-            $("#searchresults .list-group-item").click(function(){
-                $(".searchresults-title .close").trigger("click");
-            });
+        if(createHtml != false) {
+            $(".geoportail").remove();
+            $("#searchresults").append(str);
+            if (search.options.closeafterclick) {
+                $("#searchresults .list-group-item").click(function(){
+                    $(".searchresults-title .close").trigger("click");
+                });
+            }
+            $("#searchresults").show();
         }
-        $("#searchresults").show();
+        return {
+            cities: cities,
+            lane: lane,
+            address: address
+        }
     };
 
 
@@ -428,6 +457,9 @@ var searchRM = (function () {
         if (searchParams.searchRM === 'true' && searchParams.searchRMConf !== '' && typeof searchParams.searchRMConf !== 'undefined') {
             _init(searchParams.searchRMConf);
         }
+        if (searchParams.disableSearchExtentLimitation === 'true') {
+            $('#searchparameters')[0].children[0].style.display = 'none';
+        }
     };
 
     return {
@@ -435,7 +467,9 @@ var searchRM = (function () {
         displayLocation: displayLocation,
         displayLocationMarker: displayLocationMarker,
         toggleParameter: toggleParameter,
-        displayOrganism: displayOrganism
+        displayOrganism: displayOrganism,
+        request: _getApisRequests,
+        getAutocompleteData: _displayAutocompleteData
     };
 
 })();

@@ -59,12 +59,13 @@
 	
 #mv-navbar a.navbar-brand, .mv-title{
 	color:#ffffff!important;	
+	font-family: 'vistaSansOT_regular', Arial, Sans-serif;
 	font-size: 20px;
 }
 
 p.navbar-text.mv-title{
 	font-size: 18px;
-	font-family: 'vistaSansOT_bold', Arial, Sans-serif;
+	font-family: 'vistaSansOT_regular', Arial, Sans-serif;
 	letter-spacing: 0.5px;
 }
 

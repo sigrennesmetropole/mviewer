@@ -2,12 +2,26 @@
   background-color: #F1F1F2;
 }
 
-.parcelSelector, #cleanParcel {
+#cleanParcel {
   top: 8px;
 }
 
 .sectionInputContainer, .parcelleInputContainer {
-  margin-left: 6%;
+  margin-left: 1%;
+}
+
+
+.parcelSelectors {
+  display: flex;
+}
+
+.parcelSelectorsContainer {
+  padding: 1% 4% 1% 2%;
+  background-color: #7A7A7A;
+}
+
+.labelRechercheParcelle {
+  font-weight: bold;
 }
 
 #cleanParcel {
@@ -22,5 +36,6 @@
     color: #333;
     border-color: #333;
 }
+
 
 /*# sourceMappingURL=searchRM.css.map */

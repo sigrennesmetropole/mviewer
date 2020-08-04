@@ -5,4 +5,5 @@ panels/*
 !apps/public/img/*
 !apps/public/js/*
 !apps/public/lib/*
-
+*.bak
+*.orig

@@ -49,7 +49,7 @@
     <!-- <olscompletion url="../olscompletion"/> -->
     <!-- <elasticsearch url="https://ows.region-bretagne.fr/kartenn/_search" geometryfield="geometry" linkid="search_id" querymode="match" version="current" /> -->
     <searchparameters bbox="false" localities="false" features="false" static="false"
-		searchRM="true" searchRMConf="apps/georm/addons/data/searchConf.json"/>
+		searchRM="true" searchRMConf="apps/georm/addons/data/searchConf.json" disableSearchExtentLimitation="true"/>
     
 	<themes mini="true">
 		<theme id="theme-transport" name="Transport" collapsed="true" icon="fas fa-bus">
