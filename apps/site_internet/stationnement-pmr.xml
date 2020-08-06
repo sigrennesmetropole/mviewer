@@ -35,14 +35,13 @@
                 name="Stationnement réservé"
                 type="wms"
                 url="https://public.sig.rennesmetropole.fr/geoserver/trp_statio/ows"
-                legendurl="apps/site_internet/img/legend/stationnement_pmr.png"
+                style="trp_statio:pmr" 
                 visible="true"
                 infoformat="application/vnd.ogc.gml"
                 metadata="undefined"
                 metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/46a39b8c-5ec4-449a-bfe1-8410d0b76c84"
                 queryable="true"
                 featurecount="6"
-                filter="categorie = 'PMR'"
                 infopanel="right-panel">
                 <template url="apps/site_internet/templates/stationnement-reserve.mst"></template>
             </layer> 
