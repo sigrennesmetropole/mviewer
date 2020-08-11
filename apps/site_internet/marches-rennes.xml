@@ -43,7 +43,7 @@
                     queryable="true"    
                     featurecount="3"        
                     filter="code_nomenclature_principale = '3.5.2' AND etat_organisme='actif' AND code_insee='35238'"            
-                    infopanel="right-panel"><template url="apps/site_internet/templates/organisme.mst"/>
+                    infopanel="right-panel"><template url="apps/site_internet/templates/organisme_ouvertures.mst"/>
             </layer>
             <layer
                     id="v_marche_emplacement_vdr"
