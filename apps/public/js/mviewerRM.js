@@ -824,6 +824,9 @@ mviewer = (function () {
             // display legend panel
             mviewer.toggleLegend(false);
         }
+        if (configuration.getConfiguration().mobile) {
+            mviewer.toggleLegend(true);
+        }
         $("#menu").html(htmlListGroup);
         initMenu();
         // Open theme item if set to collapsed=false
