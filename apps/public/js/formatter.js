@@ -57,9 +57,11 @@ var formatter = (function () {
         var li_tab = document.getElementsByClassName("carousel slide");
         for (var cpt = 0, len_cpt = li_tab.length; cpt < len_cpt; cpt++) {
             var li_elements = li_tab[cpt].getElementsByClassName("horaires");
+            var li_ouvert = li_tab[cpt].getElementsByClassName("horaires_ouvert");
             var variations = li_tab[cpt].getElementsByClassName("variationvac");
 
-            if (li_elements.length >0){
+            if (li_elements.length >0 || li_ouvert.length >0){
+                // grille complete
                 for (var i = 0, len = li_elements.length; i < len; i++) {
                     var contenu = "<ul><li>";
                     contenu += li_elements[i].innerHTML.replace(/ \/ /g, "</li><li>")
@@ -68,7 +70,40 @@ var formatter = (function () {
                     }
                     contenu += "</li></ul>";
                     li_elements[i].innerHTML = contenu ;
-                    //li_elements[i].classList.remove('horaires');
+                }
+                // grille d'ouvertures
+                for (var j = 0, len_j = li_ouvert.length; j < len_j; j++) {
+                    /*
+                    var contenu = "<ul>";
+                    const jours = li_ouvert[j].innerHTML.split(' / ');
+                    for (jour_j=0, len_jours = jours.length; jour_j < len_jours; jour_j++){
+                        if (jours[jour_j].indexOf("Fermé")===-1){
+                            contenu += "<li>"+jours[jour_j]+"</li>";
+                        }
+                    }
+                    
+                    if (variations.length > 0) {
+                        contenu += "<li><i>" + variations[0].innerHTML+"</i></li>";
+                    }
+                    contenu += "</ul>";
+                    li_ouvert[j].innerHTML = contenu ;
+                    */
+                    var ligne_h = [];
+                    const jours = li_ouvert[j].innerHTML.split(' / ');
+                    for (jour_j=0, len_jours = jours.length; jour_j < len_jours; jour_j++){
+                        if (jours[jour_j].indexOf("Fermé")===-1){
+                            ligne_h.push(jours[jour_j]);
+                        }
+                    }
+                    if (variations.length > 0) {
+                        ligne_h.push(variations[0].innerHTML);
+                    }
+                    var contenu = "<ul>";
+                    for (lignej=0, len_lignes=ligne_h.length; lignej < len_lignes; lignej++){
+                        contenu += "<li>"+ligne_h[lignej]+"</li>";
+                    }
+                    contenu += "</ul>";
+                    li_ouvert[j].innerHTML = contenu ;
                 }
                 // non affichage des noeuds inutiles
                 for (var k = 0, len_k = variations.length; k < len_k; k++) {variations[k].style.display="none";}   
