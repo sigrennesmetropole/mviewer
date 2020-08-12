@@ -48,6 +48,10 @@
 	border-color:#4D4D4D;
 }
 
+.navbar-nav>li>a{
+    color:#ffffff!important;
+}
+
 #mv-navbar{
 	border-color:#4D4D4D;
 	background-color: #4D4D4D;
@@ -177,6 +181,11 @@ p.navbar-text.mv-title{
 /*******************************
 -------------LEGEND LAYER
 ********************************/
+
+@media (min-width: 200px)
+#legend:not(.active) {
+    width: 35px;
+}
 
 #layers-container a {
 	color: #4D4D4D;
