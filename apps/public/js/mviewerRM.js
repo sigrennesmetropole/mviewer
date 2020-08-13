@@ -825,7 +825,11 @@ mviewer = (function () {
             mviewer.toggleLegend(false);
         }
         if (configuration.getConfiguration().mobile) {
-            mviewer.toggleLegend(true);
+            //mviewer.toggleLegend(true);
+            $('#legend-modal').on('show.bs.modal', function (e) {
+              //mviewer.toggleLegend(true);
+                $("#legend").addClass("active");
+            })
         }
         $("#menu").html(htmlListGroup);
         initMenu();
