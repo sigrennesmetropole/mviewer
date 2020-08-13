@@ -194,6 +194,11 @@ p.navbar-text.mv-title{
   line-height: initial;
 }
 
+#legend-modal .close {
+  color: #4D4D4D!important;
+  opacity: 1!important;
+}
+
 #layers-container a {
 	color: #4D4D4D;
 	font-family: 'vistaSansOT_bold', Arial, Sans-serif;
