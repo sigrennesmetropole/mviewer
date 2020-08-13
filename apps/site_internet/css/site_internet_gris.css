@@ -182,11 +182,7 @@ p.navbar-text.mv-title{
 -------------LEGEND LAYER
 ********************************/
 
-/*@media (min-width: 200px)
-#legend:not(.active) {
-    width: 35px;
-}
-*/
+
 #legend-modal .modal-title {
   text-indent: -9999px;
   line-height: 0;
@@ -196,6 +192,11 @@ p.navbar-text.mv-title{
   text-indent: 0;
   display: block;
   line-height: initial;
+}
+
+#legend-modal .close {
+  color: #4D4D4D!important;
+  opacity: 1!important;
 }
 
 #layers-container a {

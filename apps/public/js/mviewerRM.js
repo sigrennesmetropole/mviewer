@@ -825,10 +825,9 @@ mviewer = (function () {
             mviewer.toggleLegend(false);
         }
         if (configuration.getConfiguration().mobile) {
-            //mviewer.toggleLegend(true);
             $('#legend-modal').on('show.bs.modal', function (e) {
-              //mviewer.toggleLegend(true);
                 $("#legend").addClass("active");
+                $("#legend .mv-layer-remove").hide();
             })
         }
         $("#menu").html(htmlListGroup);
