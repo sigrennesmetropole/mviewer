@@ -30,11 +30,7 @@
     <!-- <olscompletion url="../olscompletion"/> -->
     <!-- <elasticsearch url="https://ows.region-bretagne.fr/kartenn/_search" geometryfield="geometry" linkid="search_id" querymode="match" version="current" /> -->
     <searchparameters bbox="false" localities="false" features="false" static="false"/>
-    <!--
-    <olscompletion url="http://api-adresse.data.gouv.fr/search/" type="ban" attribution="API adresse.data.gouv.fr" />
-    <elasticsearch url="http://ows.region-bretagne.fr/kartenn/_search" geometryfield="geometry" linkid="search_id" querymode="fussy_like_this"/>
-    <searchparameters bbox="true" localities="true" features="true" querymaponclick="true" static="layer1"/>
-    -->
+
     <themes mini="true"> 
         <theme id="theme-20180827150815" name="Points d'accès multimédia" collapsed="true" icon="fas fa-desktop">
             <layer 
