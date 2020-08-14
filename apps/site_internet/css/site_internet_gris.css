@@ -181,7 +181,18 @@ p.navbar-text.mv-title{
 /*******************************
 -------------LEGEND LAYER
 ********************************/
+@media (min-width: 768px){
 
+    #legend-modal .modal-dialog {
+        margin:0;
+    }
+    
+    #legend-modal .modal-content {
+        position: fixed;
+        top: 75px;
+        left: 10px;
+    }
+}
 
 #legend-modal .modal-title {
   text-indent: -9999px;
