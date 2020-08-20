@@ -7,9 +7,17 @@
 }
 
 .sectionInputContainer, .parcelleInputContainer {
-    margin-left: 6%;
+    /*margin-left: 6%;*/
+    margin-left: 2%;
 }
 
 #cleanParcel {
     margin-left: 3%;
+}
+
+.parcelSelectors {
+    position: fixed; 
+    top: 64px; 
+    right: 347px; 
+    display: flex;
 }

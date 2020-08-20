@@ -2,32 +2,24 @@
   background-color: #F1F1F2;
 }
 
-#cleanParcel {
+.parcelSelector, #cleanParcel {
   top: 8px;
 }
 
-
 .sectionInputContainer, .parcelleInputContainer {
-  margin-left: 1%;
-}
-
-
-.parcelSelectors {
-  display: flex;
-}
-
-.parcelSelectorsContainer {
-  padding: 1% 4% 1% 2%;
-  background-color: #7A7A7A;
-}
-
-.labelRechercheParcelle {
-  font-weight: bold;
+  /*margin-left: 6%;*/
+  margin-left: 2%;
 }
 
 #cleanParcel {
   margin-left: 3%;
 }
 
+.parcelSelectors {
+  position: fixed;
+  top: 64px;
+  right: 347px;
+  display: flex;
+}
 
 /*# sourceMappingURL=searchRM.css.map */
