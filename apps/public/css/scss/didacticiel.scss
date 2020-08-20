@@ -8,7 +8,7 @@ $didacticiel-color-2: rgba(0,0,0,0.3);
 $didacticiel-color-3: #eae672;
 $didacticiel-color-4: #aaa;
 $didacticiel-color-5: #A31;
-$didacticiel-width-1: 100%;
+$didacticiel-width-1: 90%;
 $didacticiel-font-family: 'VistaSansOT_regular';
 $didacticiel-font-size: 12px;
 $didacticiel-size-1: 10px;
@@ -115,7 +115,7 @@ $didacticiel-transform-origin: 50% 100%;
 
   .didacticiel {
     display: none;
-    position: fixed;
+    position: relative;
     z-index: 1;
     left: $didacticiel-zero;
     top: $didacticiel-zero;

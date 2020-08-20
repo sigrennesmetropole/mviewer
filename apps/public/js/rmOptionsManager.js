@@ -169,12 +169,14 @@ var rmOptionsManager = (function () {
          
         // MODIF CBR
          //enableForeword();
-        if(applicationOptions.tutorial === 'true' && applicationOptions.tutorialFile.trim() !== ''){
+        if(applicationOptions.tutorial === 'true' && applicationOptions.tutorialFile.trim() !== '' && !configuration.getConfiguration().mobile){
             rmTools.initTutorial();
             if (applicationOptions.showhelp === 'true') {
                 $('#help').addClass('showtuto');
                     $('#help').on('hidden.bs.modal', function () {
-                        if ($('#help').hasClass('showtuto')){rmTools.displayTutorial(applicationOptions.tutorialFile);}
+                        if ($('#help').hasClass('showtuto')){
+                            rmTools.displayTutorial(applicationOptions.tutorialFile);
+                        }
                     });
             } else {
                 rmTools.displayTutorial(applicationOptions.tutorialFile);

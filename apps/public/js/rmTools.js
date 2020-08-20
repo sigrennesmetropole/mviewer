@@ -97,6 +97,7 @@ var rmTools = (function() {
 
                     if (typeof data.height === 'undefined') {
                         data.height = "auto";
+                       
                     }
                     if (typeof data.width === 'undefined') {
                         data.width = "auto";

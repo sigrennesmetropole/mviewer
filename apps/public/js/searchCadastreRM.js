@@ -60,18 +60,21 @@ var searchCadastreRM = (function () {
               placeholder: "commune",
               allowClear: true,
               dropdownAutoWidth: true,
+              selectOnClose: true,
+              width: '15em'
             });
             $('#section').select2({
               placeholder: "section",
               allowClear: true,
               dropdownAutoWidth: true,
-              width: '100%',
+              width: '6em',
             });
             $('#parcelle').select2({
               placeholder: "parcelle",
               allowClear: true,
               dropdownAutoWidth: true,
-              width: '100%',
+              width: '6em',
+              selectOnClose: true
             });
             $(".sectionsList").prop("disabled", true);
             $(".parcellesList").prop("disabled", true);
@@ -80,7 +83,10 @@ var searchCadastreRM = (function () {
 
 
         $(document).on('change','#communeSearch', function (e) {
-            var codeCom = e.currentTarget.selectedOptions[0].value;
+          var codeCom = '';
+            if (typeof e.currentTarget.selectedOptions[0] !== 'undefined') {
+              codeCom = e.currentTarget.selectedOptions[0].value;
+            }
             $('.sectionsList').empty();
             $('.parcellesList').empty();
             $('.sectionsList').append('<option></option>');
@@ -97,6 +103,8 @@ var searchCadastreRM = (function () {
                   placeholder: "section",
                   allowClear: true,
                   dropdownAutoWidth: true,
+                  selectOnClose: true,
+                  width: '6em',
                 });
                 $(".sectionsList").prop("disabled", false);
                 $(".parcellesList").prop("disabled", true);
@@ -117,6 +125,8 @@ var searchCadastreRM = (function () {
                   placeholder: "parcelle",
                   allowClear: true,
                   dropdownAutoWidth: true,
+                  selectOnClose: true,
+                  width: '6em',
                 });
                 $(".parcellesList").prop("disabled", false);
             });

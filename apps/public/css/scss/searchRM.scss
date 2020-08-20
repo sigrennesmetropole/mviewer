@@ -7,8 +7,26 @@
 }
 
 .sectionInputContainer, .parcelleInputContainer {
-    margin-left: 6%;
+    margin-left: 3%;
 }
+
+.parcelSelectors {
+    display: flex;
+  }
+  
+  .parcelSelectorsContainer {
+    display: flex;
+    padding: 0.5% 4% 0.5% 2%;
+  }
+
+  .parcelSelector {
+    border: solid 1px #ffffff;
+  }
+  
+  .labelRechercheParcelle {
+    color: #ffffff;
+    margin-right: 7%;
+  }
 
 #cleanParcel {
     margin-left: 3%;

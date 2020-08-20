@@ -2,41 +2,43 @@
   background-color: #F1F1F2;
 }
 
-#cleanParcel {
+.parcelSelector, #cleanParcel {
   top: 8px;
 }
 
-
 .sectionInputContainer, .parcelleInputContainer {
-  margin-left: 1%;
+  margin-left: 3%;
 }
-
 
 .parcelSelectors {
   display: flex;
 }
 
 .parcelSelectorsContainer {
-  padding: 1% 4% 1% 2%;
-  background-color: #7A7A7A;
+  display: flex;
+  padding: 0.5% 4% 0.5% 2%;
+}
+
+.parcelSelector {
+  border: solid 1px #ffffff;
 }
 
 .labelRechercheParcelle {
-  font-weight: bold;
+  color: #ffffff;
+  margin-right: 7%;
 }
 
 #cleanParcel {
-    margin-left: 3%;
-    background-color: #4D4D4D;
-    color: white;
-    border-color: white;
+  margin-left: 3%;
+  background-color: #4D4D4D;
+  color: white;
+  border-color: white;
 }
 
 #cleanParcel:hover {
-    background-color: #ccc;
-    color: #333;
-    border-color: #333;
+  background-color: #ccc;
+  color: #333;
+  border-color: #333;
 }
-
 
 /*# sourceMappingURL=searchRM.css.map */
