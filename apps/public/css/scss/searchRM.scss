@@ -7,7 +7,8 @@
 }
 
 .sectionInputContainer, .parcelleInputContainer {
-    margin-left: 3%;
+    /*margin-left: 6%;*/
+    margin-left: 2%;
 }
 
 .parcelSelectors {
@@ -39,4 +40,11 @@
     background-color: #ccc;
     color: #333;
     border-color: #333;
+}
+
+.parcelSelectors {
+    position: fixed; 
+    top: 64px; 
+    right: 347px; 
+    display: flex;
 }

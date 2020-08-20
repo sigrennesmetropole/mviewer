@@ -7,7 +7,8 @@
 }
 
 .sectionInputContainer, .parcelleInputContainer {
-  margin-left: 3%;
+  /*margin-left: 6%;*/
+  margin-left: 2%;
 }
 
 .parcelSelectors {
@@ -26,6 +27,8 @@
 .labelRechercheParcelle {
   color: #ffffff;
   margin-right: 7%;
+  /*margin-left: 6%;*/
+  margin-left: 2%;
 }
 
 #cleanParcel {
@@ -39,6 +42,13 @@
   background-color: #ccc;
   color: #333;
   border-color: #333;
+}
+
+.parcelSelectors {
+  position: fixed;
+  top: 64px;
+  right: 347px;
+  display: flex;
 }
 
 /*# sourceMappingURL=searchRM.css.map */
