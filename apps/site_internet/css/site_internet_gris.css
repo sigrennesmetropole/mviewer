@@ -48,6 +48,10 @@
 	border-color:#4D4D4D;
 }
 
+.navbar-nav>li>a{
+    color:#ffffff!important;
+}
+
 #mv-navbar{
 	border-color:#4D4D4D;
 	background-color: #4D4D4D;
@@ -59,12 +63,13 @@
 	
 #mv-navbar a.navbar-brand, .mv-title{
 	color:#ffffff!important;	
+	font-family: 'vistaSansOT_regular', Arial, Sans-serif;
 	font-size: 20px;
 }
 
 p.navbar-text.mv-title{
 	font-size: 18px;
-	font-family: 'vistaSansOT_bold', Arial, Sans-serif;
+	font-family: 'vistaSansOT_regular', Arial, Sans-serif;
 	letter-spacing: 0.5px;
 }
 
@@ -176,6 +181,33 @@ p.navbar-text.mv-title{
 /*******************************
 -------------LEGEND LAYER
 ********************************/
+@media (min-width: 768px){
+    #legend-modal .modal-dialog {
+        margin:0;
+    }
+    
+    #legend-modal .modal-content {
+        position: fixed;
+        top: 75px;
+        left: 10px;
+    }
+}
+
+#legend-modal .modal-title {
+  text-indent: -9999px;
+  line-height: 0;
+}
+#legend-modal .modal-title::after {
+  content: "Légende";
+  text-indent: 0;
+  display: block;
+  line-height: initial;
+}
+
+#legend-modal .close {
+  color: #4D4D4D!important;
+  opacity: 1!important;
+}
 
 #layers-container a {
 	color: #4D4D4D;

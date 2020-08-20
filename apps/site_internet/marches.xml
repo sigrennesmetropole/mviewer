@@ -43,7 +43,7 @@
                 queryable="true"
                 featurecount="3"
                 filter="code_nomenclature_principale = '3.5.2' AND etat_organisme='actif'"
-                infopanel="right-panel"><template url="apps/site_internet/templates/organisme.mst"></template>
+                infopanel="right-panel"><template url="apps/site_internet/templates/organisme_ouvertures.mst"></template>
             </layer> 
         </theme> 
     </themes>

@@ -68,20 +68,34 @@
         <theme id="stat_resa" name="Stationnements réservés" collapsed="true" icon="fas fa-parking">         
             <layer 
                 id="v_stationnement_reserve"
-                name="Stationnement réservé"
+                name="Auto-partage"
                 type="wms"
                 url="https://public.sig.rennesmetropole.fr/geoserver/trp_statio/ows"
-                legendurl="apps/site_internet/img/legend/stationnement_autopartage_minute.png"
+                style="trp_statio:auto_partage" 
                 visible="true"
                 infoformat="application/vnd.ogc.gml"
                 metadata="undefined"
                 metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/46a39b8c-5ec4-449a-bfe1-8410d0b76c84"
                 queryable="true"
-                featurecount="6"
-                filter="categorie IN ('Auto-partage','Arrêt minute')"
+                featurecount="3"
                 infopanel="right-panel">
                 <template url="apps/site_internet/templates/stationnement-reserve.mst"></template>
             </layer>   
+            <layer 
+                id="v_stationnement_reserve"
+                name="Arrêt minute"
+                type="wms"
+                url="https://public.sig.rennesmetropole.fr/geoserver/trp_statio/ows"
+                style="trp_statio:arret_minute" 
+                visible="true"
+                infoformat="application/vnd.ogc.gml"
+                metadata="undefined"
+                metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/46a39b8c-5ec4-449a-bfe1-8410d0b76c84"
+                queryable="true"
+                featurecount="3"
+                infopanel="right-panel">
+                <template url="apps/site_internet/templates/stationnement-reserve.mst"></template>
+            </layer>  
             <!--
             <layer 
                 id="v_stationnement_reserve"

@@ -48,7 +48,6 @@ var searchCadastreRM = (function () {
 
         $('#bs-example-navbar-collapse-1').append(searchCadastreElement);
 
-
         $.getJSON(baseUrl_cadastre + 'communes', function(dataApiJson) {
             //var htmlContent = '<option value="-1" disabled selected> rechercher la commune de la parcelle</option>';
             var htmlContent = '';
@@ -80,7 +79,6 @@ var searchCadastreRM = (function () {
             $(".parcellesList").prop("disabled", true);
             $('#communeSearch').val('0').trigger('change');
         });
-
 
         $(document).on('change','#communeSearch', function (e) {
           var codeCom = '';

@@ -77,7 +77,6 @@ var searchRM = (function () {
             });
 
         });
-
     };
 
 
@@ -351,7 +350,6 @@ var searchRM = (function () {
             }
 
         } );
-
         return promises;
     };
 

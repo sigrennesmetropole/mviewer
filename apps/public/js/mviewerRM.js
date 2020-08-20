@@ -824,6 +824,12 @@ mviewer = (function () {
             // display legend panel
             mviewer.toggleLegend(false);
         }
+        if (configuration.getConfiguration().mobile) {
+            $('#legend-modal').on('show.bs.modal', function (e) {
+                $("#legend").addClass("active");
+                $("#legend .mv-layer-remove").hide();
+            })
+        }
         $("#menu").html(htmlListGroup);
         initMenu();
         // Open theme item if set to collapsed=false
