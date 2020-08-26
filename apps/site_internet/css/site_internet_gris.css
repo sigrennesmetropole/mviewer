@@ -432,19 +432,51 @@ h4.title{
     /*color: #863030;*/
     font-size:13px;
     margin-top:10%;
+    height: 33%;
+    overflow-y: auto;
 }
 
+/*.carousel-inner>.item {
+    height: 73% !important;
+    height: 65vh !important;
+}*/
 
 .rm-popup-footer {
-    position: absolute;
-    /*bottom: 0;
-    bottom: 80px!important;*/
-    bottom: 5px!important;
+    position: fixed;
+    /*bottom: 5px!important;*/
+    bottom: 19px!important;
     border: 2px solid;
     border-radius: 11%;
     padding: 2% 4% 2% 3%;
     color:#4d4d4d;
+    list-style: none;
 }
+
+/*@media (min-height: 510px ) {
+    .rm-popup-footer {
+        bottom: 19px !important;
+    }
+}*/
+
+
+@media (min-height: 475px ) {
+    .rm-popup-text-feature {
+        height: 30%;
+    }
+}
+
+@media (min-height: 588px ) {
+    .rm-popup-text-feature {
+        height: 46%;
+    }
+}
+
+@media (min-height: 735px ) {
+    .rm-popup-text-feature {
+        height: 57%;
+    }
+}
+
 
 .rm-popup-alerte-legende{
     font-family:"VistaSansOT_italic";

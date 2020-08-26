@@ -20,9 +20,7 @@ var info = (function () {
      */
 
     var _mvReady = true;
-
     var _panelsTemplate = {"right-panel": "default", "bottom-panel": "default", "modal-panel": "default"};
-
     /**
      * Property: _overLayers
      * {object} hash of all overlay Layers (static)

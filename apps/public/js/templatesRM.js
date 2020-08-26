@@ -282,4 +282,3 @@ mviewer.templates.featureInfo.accordion = [
         '</div>',
     '</div>'
 ].join("");
-
