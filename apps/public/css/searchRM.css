@@ -13,6 +13,10 @@
 
 .parcelSelectors {
   display: flex;
+  position: fixed;
+  top: 64px;
+  right: 119px;
+  display: flex;
 }
 
 .parcelSelectorsContainer {
@@ -40,13 +44,6 @@
   background-color: #ccc;
   color: #333;
   border-color: #333;
-}
-
-.parcelSelectors {
-  position: fixed;
-  top: 64px;
-  right: 347px;
-  display: flex;
 }
 
 /***********************************************/

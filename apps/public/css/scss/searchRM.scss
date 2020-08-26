@@ -12,9 +12,13 @@
 }
 
 .parcelSelectors {
-    display: flex;
-  }
-  
+  display: flex;
+  position: fixed; 
+  top: 64px; 
+  right: 119px; 
+  display: flex;
+}
+
   .parcelSelectorsContainer {
     display: flex;
     padding: 0.5% 4% 0.5% 2%;
@@ -42,12 +46,6 @@
     border-color: #333;
 }
 
-.parcelSelectors {
-    position: fixed; 
-    top: 64px; 
-    right: 347px; 
-    display: flex;
-}
 
 
 /***********************************************/

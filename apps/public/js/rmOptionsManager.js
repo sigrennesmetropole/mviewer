@@ -60,7 +60,6 @@ var rmOptionsManager = (function () {
             mviewer.getMap().getView().setMinZoom(parseFloat(mapOptions.minzoom));
         }
 
-
         if (applicationOptions.printMap === "true") {
             mviewer.tools.printMap = printMap;
             mviewer.tools.printMap.init();
@@ -68,15 +67,6 @@ var rmOptionsManager = (function () {
         } else {
             printMap.disable();
         }
-
-        /*if (applicationOptions.searchRM === "true") {
-
-            searchRM.init(applicationOptions.searchRMConfFile);
-            searchRM.enable();
-
-        } else {
-            searchRM.disable();
-        }*/
 
         // layers configuration
         for (const layer in layers) {
@@ -149,11 +139,6 @@ var rmOptionsManager = (function () {
              tooltipWMS.activatetooltipWMS(layers[layer].layername, layers[layer].tooltipWMSContent);
             }
  
-         }
-
-
-         if (applicationOptions.searchCadastre === "true") {
-            searchCadastreRM.init();
          }
 
 

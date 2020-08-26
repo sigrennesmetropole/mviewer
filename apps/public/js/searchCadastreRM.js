@@ -206,7 +206,7 @@ var searchCadastreRM = (function () {
 
 
 setTimeout(function () {
-  if (configuration.getConfiguration().searchparameters.searchCadastre === 'true') {
+  if (configuration.getConfiguration().searchparameters.searchCadastre === 'true' && API.mode !== 'u' && API.mode !== 's') {
     searchCadastreRM.init();
   }
 }, 2000);
