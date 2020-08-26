@@ -78,5 +78,9 @@
     height: 57%;
   }
 }
+#modal-panel-selector .rm-popup-footer {
+  position: relative;
+  bottom: 0px !important;
+}
 
 /*# sourceMappingURL=searchRM.css.map */
