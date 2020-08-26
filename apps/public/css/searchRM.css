@@ -27,8 +27,6 @@
 .labelRechercheParcelle {
   color: #ffffff;
   margin-right: 7%;
-  /*margin-left: 6%;*/
-  margin-left: 2%;
 }
 
 #cleanParcel {
@@ -49,6 +47,39 @@
   top: 64px;
   right: 347px;
   display: flex;
+}
+
+/***********************************************/
+.rm-popup-text-feature {
+  height: 33%;
+  overflow-y: auto;
+}
+
+.rm-popup-footer {
+  position: fixed;
+  /*bottom: 5px!important;*/
+  bottom: 19px !important;
+  border: 2px solid;
+  border-radius: 11%;
+  padding: 2% 4% 2% 3%;
+  color: #4d4d4d;
+  list-style: none;
+}
+
+@media (min-height: 475px) {
+  .rm-popup-text-feature {
+    height: 30%;
+  }
+}
+@media (min-height: 588px) {
+  .rm-popup-text-feature {
+    height: 46%;
+  }
+}
+@media (min-height: 735px) {
+  .rm-popup-text-feature {
+    height: 57%;
+  }
 }
 
 /*# sourceMappingURL=searchRM.css.map */
