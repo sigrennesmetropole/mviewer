@@ -33,20 +33,12 @@ var searchCadastreRM = (function () {
 
         baseUrl_cadastre = 'https://api-cadastre.sig.rennesmetropole.fr/v1/';
 
-        /*var searchCadastreElement = '<ul class="nav navbar-nav navbar-right"><li class="parcelSelector">' + selectCityInput +'</li>'
-            + '<li class="parcelSelector">' + sectionTag +'</li>'
-            + '<li class="parcelSelector">' + parcelTag +'</li></ul>';*/
-            //+ '<li class="parcelSelector"><button type="button" id="cleanParcel" class="btn" title="Réinitialiser parcelle sélectionnée"> Réinitialiser parcelle sélectionnée </button></li></ul>';
-
-          /*var searchCadastreElement = '<ul class="nav navbar-nav navbar-right"><li class="parcelSelector"><div class="parcelSelectors">'
-            + '<label>Recherche de parcelle</label>' 
-            + selectCityInput + sectionTag + parcelTag +'</div></li></ul>';*/
-
-          var searchCadastreElement = '<ul class="nav navbar-nav navbar-right"><li class="parcelSelector"><div class="parcelSelectorsContainer">'
+          /*var searchCadastreElement = '<ul class="nav navbar-nav navbar-right"><li class="parcelSelector"><div class="parcelSelectorsContainer">'
             + '<div><p class="labelRechercheParcelle">Recherche de parcelle</p></div><div class="parcelSelectors">' 
             + selectCityInput + sectionTag + parcelTag +'</div></li></ul>';
+          $('#bs-example-navbar-collapse-1').append(searchCadastreElement);*/
 
-        $('#bs-example-navbar-collapse-1').append(searchCadastreElement);
+          $('#page-content-wrapper').append('<div class="parcelSelectors">' + selectCityInput + sectionTag + parcelTag + '</div>');
 
         $.getJSON(baseUrl_cadastre + 'communes', function(dataApiJson) {
             //var htmlContent = '<option value="-1" disabled selected> rechercher la commune de la parcelle</option>';
@@ -59,18 +51,19 @@ var searchCadastreRM = (function () {
               placeholder: "commune",
               allowClear: true,
               dropdownAutoWidth: true,
+              width: '210px',
             });
             $('#section').select2({
               placeholder: "section",
               allowClear: true,
               dropdownAutoWidth: true,
-              width: '100%',
+              width: '75px',
             });
             $('#parcelle').select2({
               placeholder: "parcelle",
               allowClear: true,
               dropdownAutoWidth: true,
-              width: '100%',
+              width: '75px',
             });
             $(".sectionsList").prop("disabled", true);
             $(".parcellesList").prop("disabled", true);
@@ -78,7 +71,10 @@ var searchCadastreRM = (function () {
         });
 
         $(document).on('change','#communeSearch', function (e) {
-            var codeCom = e.currentTarget.selectedOptions[0].value;
+          var codeCom = '';
+            if (typeof e.currentTarget.selectedOptions[0] !== 'undefined') {
+              codeCom = e.currentTarget.selectedOptions[0].value;
+            }
             $('.sectionsList').empty();
             $('.parcellesList').empty();
             $('.sectionsList').append('<option></option>');
@@ -95,6 +91,7 @@ var searchCadastreRM = (function () {
                   placeholder: "section",
                   allowClear: true,
                   dropdownAutoWidth: true,
+                  width: '75px',
                 });
                 $(".sectionsList").prop("disabled", false);
                 $(".parcellesList").prop("disabled", true);
@@ -115,6 +112,7 @@ var searchCadastreRM = (function () {
                   placeholder: "parcelle",
                   allowClear: true,
                   dropdownAutoWidth: true,
+                  width: '75px',
                 });
                 $(".parcellesList").prop("disabled", false);
             });
@@ -208,7 +206,7 @@ var searchCadastreRM = (function () {
 
 
 setTimeout(function () {
-  if (configuration.getConfiguration().searchparameters.searchCadastre === 'true') {
+  if (configuration.getConfiguration().searchparameters.searchCadastre === 'true' && API.mode !== 'u' && API.mode !== 's') {
     searchCadastreRM.init();
   }
 }, 2000);

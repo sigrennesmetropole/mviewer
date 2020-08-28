@@ -20,7 +20,9 @@ var searchRM = (function () {
             +        '</div>'
             +    '</div>'
             +'</div>';
-            $('.navbar-right')[0].firstElementChild.innerHTML = searchtool;
+            if (typeof $('.navbar-right')[0] !== 'undefined') {
+                $('.navbar-right')[0].firstElementChild.innerHTML = searchtool;
+            }
         }
         _configureSearch(searchRMConf);
     };

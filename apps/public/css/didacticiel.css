@@ -9,7 +9,7 @@
 .note {
   color: #333;
   position: relative;
-  width: 100%;
+  width: 90%;
   font-family: "VistaSansOT_regular";
   font-size: 12px;
   box-shadow: 0 10px 10px 2px rgba(0, 0, 0, 0.3);
@@ -90,12 +90,12 @@
 }
 .didacticiel {
   display: none;
-  position: fixed;
+  position: relative;
   z-index: 1;
   left: 0;
   top: 0;
   height: 100%;
-  width: 100%;
+  width: 90%;
   overflow: auto;
   /*background-color: rgba(0, 0, 0, 0.5);*/
 }

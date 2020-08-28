@@ -60,7 +60,6 @@ var rmOptionsManager = (function () {
             mviewer.getMap().getView().setMinZoom(parseFloat(mapOptions.minzoom));
         }
 
-
         if (applicationOptions.printMap === "true") {
             mviewer.tools.printMap = printMap;
             mviewer.tools.printMap.init();
@@ -68,15 +67,6 @@ var rmOptionsManager = (function () {
         } else {
             printMap.disable();
         }
-
-        /*if (applicationOptions.searchRM === "true") {
-
-            searchRM.init(applicationOptions.searchRMConfFile);
-            searchRM.enable();
-
-        } else {
-            searchRM.disable();
-        }*/
 
         // layers configuration
         for (const layer in layers) {
@@ -152,11 +142,6 @@ var rmOptionsManager = (function () {
          }
 
 
-         if (applicationOptions.searchCadastre === "true") {
-            searchCadastreRM.init();
-         }
-
-
          if (applicationOptions.searchRM === "true" || applicationOptions.searchCadastre === "true") {
             repositionRightElement();
          }
@@ -169,12 +154,14 @@ var rmOptionsManager = (function () {
          
         // MODIF CBR
          //enableForeword();
-        if(applicationOptions.tutorial === 'true' && applicationOptions.tutorialFile.trim() !== ''){
+        if(applicationOptions.tutorial === 'true' && applicationOptions.tutorialFile.trim() !== '' && !configuration.getConfiguration().mobile){
             rmTools.initTutorial();
             if (applicationOptions.showhelp === 'true') {
                 $('#help').addClass('showtuto');
                     $('#help').on('hidden.bs.modal', function () {
-                        if ($('#help').hasClass('showtuto')){rmTools.displayTutorial(applicationOptions.tutorialFile);}
+                        if ($('#help').hasClass('showtuto')){
+                            rmTools.displayTutorial(applicationOptions.tutorialFile);
+                        }
                     });
             } else {
                 rmTools.displayTutorial(applicationOptions.tutorialFile);

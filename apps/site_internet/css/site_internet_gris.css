@@ -435,17 +435,6 @@ h4.title{
 }
 
 
-.rm-popup-footer {
-    position: absolute;
-    /*bottom: 0;
-    bottom: 80px!important;*/
-    bottom: 5px!important;
-    border: 2px solid;
-    border-radius: 11%;
-    padding: 2% 4% 2% 3%;
-    color:#4d4d4d;
-}
-
 .rm-popup-alerte-legende{
     font-family:"VistaSansOT_italic";
     font-size:10px;
