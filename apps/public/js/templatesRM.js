@@ -60,8 +60,10 @@ mviewer.templates.layerControl = [
             '</a>',        
             */            
             /*'<a href="#" class="close" aria-label="close" onclick="mviewer.removeLayer(this)" title="Supprimer" >×</a>',*/
+            '{{^permanentlayer}}',
             '<a href="#" class="mv-layer-remove" aria-label="close" onclick="mviewer.removeLayer(this)" title="Supprimer" i18n="theme.layers.remove">',
                 '<span class="glyphicon glyphicon-remove"></span></a>',
+            '{{/permanentlayer}}',
         '</div>',
         '<div class="layerdisplay-subtitle">',
         '{{#styleControl}}',

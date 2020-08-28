@@ -2168,16 +2168,11 @@ mviewer = (function () {
                 $("#layers-container").prepend(item);
             }
 
-            // AJOUT CBR - Options de la couche visibles sur option
+            // AJOUT CBR - Options de la couche visibles par défaut
             if (layer.expandedoptions) {
                 this.toggleLayerOptions($('.mv-layer-details[data-layerid="'+layer.id+'"]')[0]);
             }
-            // FIN AJOUT
-            // AJOUT CBR - Suppression de couche permanente interdite
-            if (layer.permanentlayer) {
-                $('.mv-layer-details[data-layerid="'+layer.id+'"]').find('.mv-layer-remove').remove();
-            }
-            // FIN AJOUT            
+            // FIN AJOUT       
             
 
             //Dynamic vector Legend
@@ -2425,17 +2420,19 @@ mviewer = (function () {
             }
             var layerid = item.attr("data-layerid");
             var layer = _overLayers[layerid];
-            item.remove();
-            layer.layer.setVisible(false);
-            var li = $(".mv-nav-item[data-layerid='"+layerid+"']");
-            li.find("a span").removeClass("mv-checked").addClass("mv-unchecked");
-            li.find("input").val(false);
-            // deactivate custom controls
-            if (layer.customcontrol && mviewer.customControls[layer.layerid]) {
-                mviewer.customControls[layer.layerid].destroy();
+            if (!layer.permanentlayer){
+                item.remove();
+                layer.layer.setVisible(false);
+                var li = $(".mv-nav-item[data-layerid='"+layerid+"']");
+                li.find("a span").removeClass("mv-checked").addClass("mv-unchecked");
+                li.find("input").val(false);
+                // deactivate custom controls
+                if (layer.customcontrol && mviewer.customControls[layer.layerid]) {
+                    mviewer.customControls[layer.layerid].destroy();
+                }
+                //Remove Layer infos in info panels
+                mviewer.removeLayerInfo(layer.layerid);
             }
-            //Remove Layer infos in info panels
-            mviewer.removeLayerInfo(layer.layerid);
             //check if layers-container is empty
             if ($("#layers-container .list-group-item").length === 0) {
                 $("#legend").addClass("empty");
