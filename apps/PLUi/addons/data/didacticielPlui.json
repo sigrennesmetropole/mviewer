@@ -1,11 +1,11 @@
 [
     {
-        "content": "<p style=\"margin-top: -40px!important; margin-left: -20px;\"> <span style=\"vertical-align: text-bottom\"><img src=\"apps/site_internet/img/gui/icone arrow up.png\" style=\"vertical-align: bottom;\"></span> <span style=\"margin-left:-10px\">  Me localiser sur <u>une parcelle</u></span> </p> <p style=\"text-align:right;margin-right:-35px\" > ou <u>une adresse</u> <img style=\"transform: rotate(-25deg); margin-top:-25px;\" src=\"apps/site_internet/img/gui/icone arrow2.png\" > </p><p><br/> <img src=\"apps/site_internet/img/gui/icone arrow down2.png\" style=\"margin-left: -25px;vertical-align: text-top\"> Ou naviguer dans la carte </p>",
+        "content": "<div style=\"margin-top: -50px !important; margin-left: 2px;display: flex;flex-direction: row;align-items: end;\"><div style=\"margin-right: 2%;\">Me localiser sur une</div><div style=\"display: flex;flex-direction: column;\"><div><img src=\"apps/site_internet/img/gui/icone arrow up2.png\" style=\"vertical-align: bottom;\"></div><div><u>adresse</u></div></div></div><p style=\"text-align:right;margin-right:-35px\" > ou <u>une parcelle</u> <img style=\"transform: rotate(-25deg); margin-top:-25px;\" src=\"apps/site_internet/img/gui/icone arrow2.png\" > </p><p><br/> <img src=\"apps/site_internet/img/gui/icone arrow down2.png\" style=\"margin-left: -25px;vertical-align: text-top\"> Ou naviguer dans la carte </p>",
         "order": 1,
-        "width": "18em",
-        "top": "1%",
-        "left": "65%",
-        "height": "114px"
+        "width": "16em",
+        "top": "-1em",
+        "left": "67%",
+        "height": "120px"
     },
     {
         "content": "<div> <img src=\"apps/site_internet/img/gui/icone arrow up left.png\" style=\"vertical-align:bottom; margin-top: -30px; margin-left: -10px;\"> Afficher la légende </div> <div><br/><br/></div> <div> <img src=\"apps/site_internet/img/gui/icone arrow down left.png\" style=\"margin-right: 5px;margin-bottom: 5px;margin-left: -30px;margin-top: 15px;vertical-align: text-top;float:left\"> Sélectionnez les thèmes que vous souhaitez consulter </div>",

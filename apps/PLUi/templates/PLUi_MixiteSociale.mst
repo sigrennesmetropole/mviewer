@@ -6,10 +6,9 @@
 			<span>Le plan indique la part de logements aidés ou régulés à réaliser sur certains terrains</span> <br/><br/>
 			<span>Pour en savoir plus sur les règles applicables dans ces secteurs, voir les règles liées aux Equipements, réseaux, servitudes et emplacements réservés dans le règlement littéral (Titre III – Légende du règlement graphique).</span> <br/><br/>
 		</p>
-		</br></br>
-		<span class="rm-popup-alerte-legende">La légende indique systématiquement l’ensemble des informations identifiées sur la métropole. Toutes les communes ne sont pas pour autant dotées de toutes ces thématiques sur leur territoire.</span>
 	
-
+	<div class="containerBottom">
+		<span class="rm-popup-alerte-legende">La légende indique systématiquement l’ensemble des informations identifiées sur la métropole. Toutes les communes ne sont pas pour autant dotées de toutes ces thématiques sur leur territoire.</span>
 		<div class="rm-popup-footer">
             <div>
                 <span class="glyphicon glyphicon-hand-up"></span>
@@ -20,6 +19,7 @@
                 <a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/un-plan-local-durbanisme-intercommunal-plui-pour-43-communes" target="_blank">&nbsp; consulter la page web dédiée au PLUi </a>
             </div>
         </div>
+	</div>
 
 	</li>
 {{/features}}
