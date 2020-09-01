@@ -113,8 +113,7 @@
 				infopanel="right-panel">
                 <template url="apps/georm/templates/organismes.mst"></template>
 			</layer>
-			<group name ="Stationnements réservés" id="grp1">
-				<layer
+			<layer
                 id="v_stationnement_reserve"
                 name="Stationnements réservés pour personnes à mobilité réduite"
                 type="wms"
@@ -126,8 +125,8 @@
                 featurecount="5"
 				style="trp_statio:georm_pmr"
                 infopanel="right-panel"><template url="apps/georm/templates/georm_stationnement_reserve.mst"></template>
-				</layer>
-				<layer
+			</layer>
+			<layer
                 id="v_stationnement_reserve"
                 name="Stationnements réservés spécifiques"
                 type="wms"
@@ -139,8 +138,8 @@
                 featurecount="5"
 				style="trp_statio:georm_specifique"
                 infopanel="right-panel"><template url="apps/georm/templates/georm_stationnement_reserve.mst"></template>
-				</layer>
-				<layer
+			</layer>
+			<layer
                 id="v_stationnement_reserve"
                 name="Stationnements réservés pour la sécurité"
                 type="wms"
@@ -152,8 +151,8 @@
                 featurecount="5"
 				style="trp_statio:georm_securite"
                 infopanel="right-panel"><template url="apps/georm/templates/georm_stationnement_reserve.mst"></template>
-				</layer>
-				<layer
+			</layer>
+			<layer
                 id="v_stationnement_reserve"
                 name="Autres stationnements réservés"
                 type="wms"
@@ -165,8 +164,7 @@
                 featurecount="5"
 				style="trp_statio:georm_reserve"
                 infopanel="right-panel"><template url="apps/georm/templates/georm_stationnement_reserve.mst"></template>
-				</layer>
-			</group>
+			</layer>
 		</theme>
 		<theme id="theme-cadrevie" name="Cadre de vie" collapsed="true" icon="fas fa-leaf">
 			<layer
