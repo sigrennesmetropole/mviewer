@@ -69,7 +69,7 @@
 			</layer>
             <layer
                 id="v_stationnement_reserve"
-                name="Stationnements réservés"
+                name="Stationnements réservés pour personnes à mobilité réduite"
                 type="wms"
                 url="https://public.sig.rennesmetropole.fr/geoserver/trp_statio/ows"
                 visible="false"
@@ -77,6 +77,47 @@
                 metadata="undefined"
                 queryable="true"
                 featurecount="5"
+				style="georm_pmr"
+                infopanel="right-panel"><template url="apps/georm/templates/georm_stationnement_reserve.mst"></template>
+            </layer>
+			
+			<layer
+                id="v_stationnement_reserve"
+                name="Stationnements réservés à la sécurité"
+                type="wms"
+                url="https://public.sig.rennesmetropole.fr/geoserver/trp_statio/ows"
+                visible="false"
+                infoformat="application/vnd.ogc.gml"
+                metadata="undefined"
+                queryable="true"
+                featurecount="5"
+				style="georm_securite"
+                infopanel="right-panel"><template url="apps/georm/templates/georm_stationnement_reserve.mst"></template>
+            </layer>
+			<layer
+                id="v_stationnement_reserve"
+                name="Stationnements automobiles spécifiques"
+                type="wms"
+                url="https://public.sig.rennesmetropole.fr/geoserver/trp_statio/ows"
+                visible="false"
+                infoformat="application/vnd.ogc.gml"
+                metadata="undefined"
+                queryable="true"
+                featurecount="5"
+				style="georm_specifique"
+                infopanel="right-panel"><template url="apps/georm/templates/georm_stationnement_reserve.mst"></template>
+            </layer>
+			<layer
+                id="v_stationnement_reserve"
+                name="Autres stationnements réservés"
+                type="wms"
+                url="https://public.sig.rennesmetropole.fr/geoserver/trp_statio/ows"
+                visible="false"
+                infoformat="application/vnd.ogc.gml"
+                metadata="undefined"
+                queryable="true"
+                featurecount="5"
+				style="georm_reserve"
                 infopanel="right-panel"><template url="apps/georm/templates/georm_stationnement_reserve.mst"></template>
             </layer>
 			<layer
