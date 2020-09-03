@@ -12,20 +12,19 @@
 			Pour les autres destinations, en fonction du secteur applicable sur le terrain du projet, et pour en savoir plus sur le mode de calcul, voir les règles de stationnement dans le règlement littéral (Titre IV – Règles applicables à toutes les zones). 
 		</p>
 
-        </br></br>
-
-        <span class="rm-popup-alerte-legende">La légende indique systématiquement l’ensemble des informations identifiées sur la métropole. Toutes les communes ne sont pas pour autant dotées de toutes ces thématiques sur leur territoire.</span>
-
-		<div class="rm-popup-footer">
-            <div>
-                <span class="glyphicon glyphicon-hand-up"></span>
-                <a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/consulter-les-documents-du-plan-local-durbanisme-intercommunal-plui?idParent=10&typeParent=node" target="_blank">&nbsp; consulter les pièces du PLUi </a>
-            </div>
-            <div>
-                <span class="glyphicon glyphicon-hand-up"></span>
-                <a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/un-plan-local-durbanisme-intercommunal-plui-pour-43-communes" target="_blank">&nbsp; consulter la page web dédiée au PLUi </a>
-            </div>
-        </div>
+		<div class="containerBottom">
+			<span class="rm-popup-alerte-legende">La légende indique systématiquement l’ensemble des informations identifiées sur la métropole. Toutes les communes ne sont pas pour autant dotées de toutes ces thématiques sur leur territoire.</span>
+			<div class="rm-popup-footer">
+				<div>
+					<span class="glyphicon glyphicon-hand-up"></span>
+					<a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/consulter-les-documents-du-plan-local-durbanisme-intercommunal-plui?idParent=10&typeParent=node" target="_blank">&nbsp; consulter les pièces du PLUi </a>
+				</div>
+				<div>
+					<span class="glyphicon glyphicon-hand-up"></span>
+					<a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/un-plan-local-durbanisme-intercommunal-plui-pour-43-communes" target="_blank">&nbsp; consulter la page web dédiée au PLUi </a>
+				</div>
+			</div>
+		</div>
 	</li>
 {{/features}}
 

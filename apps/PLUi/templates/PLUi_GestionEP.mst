@@ -6,26 +6,26 @@
 			<span>En fonction de la capacité d'infiltration des sols, le plan indique les secteurs où l'infiltration des eaux pluviales liées aux surfaces imperméabilisées est interdite, non obligatoire ou obligatoire.</span> <br/><br/>
 			<span>Pour en savoir plus sur le mode de calcul et les cas particuliers, voir les règles Équipements et réseaux dans le règlement littéral (Titre IV – Règles applicables à toutes les zones).</span> <br/>
 		</p>
-
-		</br></br>
-		<span class='rm-popup-alerte-legende'>La légende indique systématiquement l’ensemble des informations identifiées sur la métropole. Toutes les communes ne sont pas pour autant dotées de toutes ces thématiques sur leur territoire.</span>
 	
-		<div class="rm-popup-footer">
-			<div>
-				<span class="glyphicon glyphicon-hand-up"></span>
-				<a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/consulter-les-documents-du-plan-local-durbanisme-intercommunal-plui?idParent=10&typeParent=node" target="_blank">&nbsp;&nbsp; consulter les pièces du PLUi</a>
-			</div>
-			<div>
-				<span class="glyphicon glyphicon-hand-up"></span>
-				<a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/un-plan-local-durbanisme-intercommunal-plui-pour-43-communes" target="_blank"> consulter la page web dédiée au PLUi </a>
-			</div>
-			<div>
-				<span class="glyphicon glyphicon-hand-up"></span>
-				<a id='lienweb' class='lienweb' href="https://app.sig.rennesmetropole.fr/calculsCVEP/index.html" target="_blank"> accéder au simulateur de calcul de gestion des eaux pluviales </a>
-			</div>
-			<div>
-				<span class="glyphicon glyphicon-hand-up"></span>
-				<a id='lienweb' class='lienweb' href="https://vegeteaux.sig.rennesmetropole.fr/" target="_blank"> éditer le formulaire pour la gestion des eaux pluviales sur votre terrain </a>
+		<div class="containerBottom">
+			<span class='rm-popup-alerte-legende'>La légende indique systématiquement l’ensemble des informations identifiées sur la métropole. Toutes les communes ne sont pas pour autant dotées de toutes ces thématiques sur leur territoire.</span>
+			<div class="rm-popup-footer">
+				<div>
+					<span class="glyphicon glyphicon-hand-up"></span>
+					<a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/consulter-les-documents-du-plan-local-durbanisme-intercommunal-plui?idParent=10&typeParent=node" target="_blank">&nbsp;&nbsp; consulter les pièces du PLUi</a>
+				</div>
+				<div>
+					<span class="glyphicon glyphicon-hand-up"></span>
+					<a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/un-plan-local-durbanisme-intercommunal-plui-pour-43-communes" target="_blank"> consulter la page web dédiée au PLUi </a>
+				</div>
+				<div>
+					<span class="glyphicon glyphicon-hand-up"></span>
+					<a id='lienweb' class='lienweb' href="https://app.sig.rennesmetropole.fr/calculsCVEP/index.html" target="_blank"> accéder au simulateur de calcul de gestion des eaux pluviales </a>
+				</div>
+				<div>
+					<span class="glyphicon glyphicon-hand-up"></span>
+					<a id='lienweb' class='lienweb' href="https://vegeteaux.sig.rennesmetropole.fr/" target="_blank"> éditer le formulaire pour la gestion des eaux pluviales sur votre terrain </a>
+				</div>
 			</div>
 		</div>
 	</li>
