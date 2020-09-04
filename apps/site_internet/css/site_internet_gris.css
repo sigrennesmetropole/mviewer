@@ -731,6 +731,15 @@ a:hover{
 	font-family: 'vistaSansOT_regular', Arial, Sans-serif!important;
 }
 
+.searchresults-title {
+    background-color: #4d4d4d;
+    color: #ffffff;
+}
+
+.searchresults-title .close{
+    color: #ffffff;
+}
+
 /*******************************
 ------------- MAP OPTIONS
 ********************************/

@@ -95,6 +95,7 @@ var searchCadastreRM = (function () {
                 });
                 $(".sectionsList").prop("disabled", false);
                 $(".parcellesList").prop("disabled", true);
+                $(".sectionsList").val("-1").trigger('change');
             });
         });
 
@@ -115,6 +116,7 @@ var searchCadastreRM = (function () {
                   width: '75px',
                 });
                 $(".parcellesList").prop("disabled", false);
+                $(".parcellesList").val("-1").trigger('change');
             });
         });
 
