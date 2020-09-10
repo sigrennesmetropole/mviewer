@@ -126,7 +126,14 @@ var interfaceModifying = (function () {
                     activeRefresh = true;
                 }
             });
-            if (activeRefresh && event !== null) {
+			//if (activeRefresh && event !== null) {
+            if (activeRefresh) {
+				if (event == null) {
+					event = {
+                        coordinate:mviewer.getMarker().getPosition(),
+                        pixel: _map.getPixelFromCoordinate(mviewer.getMarker().getPosition())
+                    };
+				}
                 info.queryMap(event);
             }
          });

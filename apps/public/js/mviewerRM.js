@@ -1851,6 +1851,15 @@ mviewer = (function () {
         getMap: function () {
             return _map;
         },
+		
+		/**
+         * Public Method: getMarker
+         *
+         */
+
+        getMarker: function () {
+            return _marker;
+        },
 
         /**
          * Public Method: init
@@ -1935,7 +1944,7 @@ mviewer = (function () {
             //marker
             var ptResult = ol.proj.transform([x, y], proj, _projection.getCode());
             _marker.setPosition(ptResult);
-            $("#els_marker").show();
+            $("#mv_marker").show();
             // debut modif CT 31/01/2020
             //var nbItems = info.getClickNbItems();
             var nbItems = rmOptionsManager.getClickNbItems();
