@@ -1851,6 +1851,15 @@ mviewer = (function () {
         getMap: function () {
             return _map;
         },
+		
+		/**
+         * Public Method: getMarker
+         *
+         */
+
+        getMarker: function () {
+            return _marker;
+        },
 
         /**
          * Public Method: init
@@ -1935,7 +1944,7 @@ mviewer = (function () {
             //marker
             var ptResult = ol.proj.transform([x, y], proj, _projection.getCode());
             _marker.setPosition(ptResult);
-            $("#els_marker").show();
+            $("#mv_marker").show();
             // debut modif CT 31/01/2020
             //var nbItems = info.getClickNbItems();
             var nbItems = rmOptionsManager.getClickNbItems();
@@ -2394,6 +2403,7 @@ mviewer = (function () {
 
             var li = $(".mv-nav-item[data-layerid='"+layer.layerid+"']");
             li.find("a span").removeClass("mv-unchecked").addClass("mv-checked");
+            li.find("a span").removeClass("far").addClass("fas");
             li.find("input").val(true);
             // activate custom controls
             if (layer.customcontrol && mviewer.customControls[layer.layerid]) {
@@ -2425,6 +2435,7 @@ mviewer = (function () {
                 layer.layer.setVisible(false);
                 var li = $(".mv-nav-item[data-layerid='"+layerid+"']");
                 li.find("a span").removeClass("mv-checked").addClass("mv-unchecked");
+				li.find("a span").removeClass("fas").addClass("far");
                 li.find("input").val(false);
                 // deactivate custom controls
                 if (layer.customcontrol && mviewer.customControls[layer.layerid]) {

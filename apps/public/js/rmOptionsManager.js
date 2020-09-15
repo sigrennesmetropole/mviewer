@@ -15,8 +15,6 @@ var rmOptionsManager = (function () {
 
     var layerDisplayOpacity = [];
 
-    var searchRMContainer = '<div id="searchRMContainer" class="row col-md-8"></div>';
-
     /**
 
      * Property: _clickNbItems
@@ -27,28 +25,9 @@ var rmOptionsManager = (function () {
 
      */
     var _clickNbItems = 0;
-
-    /**
-     * reposition zoomtoolbar and toolstoolbar when inputs are added
-     */
-    var repositionRightElement = function() {
-
-        var searchRMContainerHeight = $('#searchRMContainer').height();
-        var zoomtoolbarHeight = $('#zoomtoolbar').position().top + searchRMContainerHeight + 16;
-        var toolstoolbarheight = $('#toolstoolbar').position().top + searchRMContainerHeight + 18;
-
-        var newZoomtoolbarHeight = zoomtoolbarHeight + 'px';
-        var newToolstoolbarheight = toolstoolbarheight + 'px';
-
-       $('#zoomtoolbar').css('top', newZoomtoolbarHeight);
-       $('#toolstoolbar').css('top', newToolstoolbarheight);
-
-    };
     
 
     var init = function () {
-
-        $('#zoomtoolbar').before(searchRMContainer);
 
         mapOptions = configuration.getConfiguration().mapoptions;
         applicationOptions = getApplicationConfiguration();
@@ -58,14 +37,6 @@ var rmOptionsManager = (function () {
 
         if (mapOptions.minzoom != null) {
             mviewer.getMap().getView().setMinZoom(parseFloat(mapOptions.minzoom));
-        }
-
-        if (applicationOptions.printMap === "true") {
-            mviewer.tools.printMap = printMap;
-            mviewer.tools.printMap.init();
-            printMap.enable();
-        } else {
-            printMap.disable();
         }
 
         // layers configuration
@@ -107,13 +78,6 @@ var rmOptionsManager = (function () {
                                 interfaceModifying.hideLayerName(layers[layer].layerid);
                             }
 
-                            // SUPPR CBR - Gestion des options dépliées par défaut gérées dans mviewerRM
-                            /*
-                            if (confLayer.displayOpacityByDefault === "true") {
-                                layerDisplayOpacity.push(confLayer.name);
-                            }
-                            */
-                            // FIN SUPPR CBR
                             
                             // AJOUT - Rechargement des données de la couche au click sur la carte
                             if (confLayer.refreshOnClick === 'true') {
@@ -130,8 +94,6 @@ var rmOptionsManager = (function () {
             });
                         
          }
-
-         tooltipWMS.init();
  
          for (const layer in layers) {
      
@@ -141,11 +103,6 @@ var rmOptionsManager = (function () {
  
          }
 
-
-         if (applicationOptions.searchRM === "true" || applicationOptions.searchCadastre === "true") {
-            repositionRightElement();
-         }
-
          // MODIF CBR 
          //if (applicationOptions.refreshInfoPanel === 'true') {
             interfaceModifying.refreshInfoPanel();
@@ -153,7 +110,7 @@ var rmOptionsManager = (function () {
          // FIN MODIF CBR
          
         // MODIF CBR
-         //enableForeword();
+
         if(applicationOptions.tutorial === 'true' && applicationOptions.tutorialFile.trim() !== '' && !configuration.getConfiguration().mobile){
             rmTools.initTutorial();
             if (applicationOptions.showhelp === 'true') {
@@ -171,33 +128,6 @@ var rmOptionsManager = (function () {
 
     };
     
-    /* SUPPR CBR
-    var enableForeword = function () {
-
-        if ($('#help').hasClass('showtuto') && applicationOptions.tutorial === 'true' && applicationOptions.tutorialFile.trim() !== '') {
-            rmTools.displayTutorial(applicationOptions.tutorialFile);
-            
-        }
-        
-        if (applicationOptions.foreword === 'true') {
-
-            var forewordContentSplit = applicationOptions.forewordContent.split('||');
-            var title = forewordContentSplit[0];
-            var content = forewordContentSplit[1];
-
-            if (typeof title === 'undefined') {
-                title = '';
-            }
-
-            if (typeof content === 'undefined') {
-                content = '';
-            }
-            
-            rmTools.displayForeword(title, content, false);
-        }
- 
-    };
-    */
     
     var getLayerCount = function () {
 
@@ -305,7 +235,6 @@ var rmOptionsManager = (function () {
   
     return {
         init: init,
-        /*enableForeword: enableForeword,*/
         getLayerCount: getLayerCount,
         getInfoPaneles: getInfoPaneles,
         getApplicationConfiguration: getApplicationConfiguration,

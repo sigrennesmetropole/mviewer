@@ -69,3 +69,5 @@ var tooltipWMS  = (function () {
     };
 
 })();
+
+setTimeout(tooltipWMS.init, 2000);

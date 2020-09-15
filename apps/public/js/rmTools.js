@@ -215,83 +215,8 @@ var rmTools = (function() {
         return blob;
     };
 
-    /* SUPPR CBR
-    var displayForeword = function (title, content, displayCheckbox) {
-
-        var forewordContent = '<div class="foreword"> <div class="foreword-modal">'
-        +'<div class="foreword-modal-content">'
-        +  '<div class="foreword-modal-header">'
-        +    '<span class="foreword-close">&times;</span>'
-        +    '<h2>'+ title +'</h2>'
-        +  '</div>'
-        +  '<div class="foreword-modal-body">' + content + '</div>'
-        +'<div class="foreword-modal-footer">';
-
-        if (displayCheckbox) {
-
-            forewordContent += '<input type="checkbox" id="neplusafficher"> <span>Ne plus afficher</span>';
-
-        }
-
-        forewordContent += ' </div></div></div></div></div>';
-
-        // add foreword container
-        if ( document.querySelector('#forewordContainer') === null ) {
-            $('body').append('<div id="forewordContainer"></div>');
-        } else {
-            $('#forewordContainer').css('z-index', '1');
-        }
-            
-
-        if (!localStorage.getItem("NePasAfficher")) {
-
-            $('#forewordContainer').html(forewordContent);
-
-        } else {
-
-            $('#forewordContainer').remove();
-            
-            if (document.querySelector('#tutorialContainer') !== null) {
-                $('#tutorialContainer').show();
-            }
-        }
-
-        const closeBtn = document.querySelector('.foreword-close');
-
-        if (closeBtn != null) {
-            closeBtn.addEventListener('click', fermerAPropos);
-        }
-
-        $('#forewordContainer').click(function(e) {
-            
-            if (e.target.className === 'foreword-modal') {
-                fermerAPropos(); 
-            }
-
-        });
-
-        function fermerAPropos() {
-       
-            var neplusafficherId = document.getElementById("neplusafficher");
-
-            if (neplusafficherId !== null && neplusafficherId.checked){
-                localStorage.setItem("NePasAfficher", "true");
-            } 
-
-            $('#forewordContainer').remove();
-
-            if (document.querySelector('#tutorialContainer') !== null) {
-                $('#tutorialContainer').show();
-            }
-            
-        }
-
-    };
-*/
     var getProjection = function () {
-
-        return mviewer.getMap().getView().getProjection().getCode();
-
+        return  mviewer.getProjection().getCode();
     };
 
 
@@ -301,7 +226,6 @@ var rmTools = (function() {
         getVisibleLayers: getVisibleLayers,
         initTutorial: initTutorial,
         displayTutorial: displayTutorial,
-        /* displayForeword: displayForeword, */
         generatePDFNru: generatePDFNru,
         getProjection: getProjection
     }

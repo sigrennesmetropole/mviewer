@@ -51,7 +51,7 @@ var printMap = (function() {
 
       // for each item in the lengend of mviewer, we get the item name
       $.each($('.layerdisplay-title'), function (i, title) {
-        legendTitles.push(title.firstChild.innerText);
+        legendTitles.push(title.children[1].innerText);
       });
 
       // for each item in the lengend of mviewer, we get the picture of the lengend
@@ -155,4 +155,13 @@ var printMap = (function() {
     };
 
 })();
+
+setTimeout(function () {
+  if (configuration.getConfiguration().application.printMap === "true") {
+    printMap.init();
+    printMap.enable();
+  } else {
+    printMap.disable();
+  }
+}, 2000);
 

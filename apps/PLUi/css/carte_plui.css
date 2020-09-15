@@ -1,0 +1,15 @@
+/******************************************************************************
+--------------------------- CSS THEME MVIEWER / PLUi -----------------
+********************************************************************************/
+
+/*  Import du style du site internet  */
+@import url("../../site_internet/css/site_internet_gris.css");
+
+
+
+#lienNru {
+		border: none;
+    	background-color: #fff;
+		font-family: 'vistaSansOT_bold', Arial, Sans-serif;
+	}
+
