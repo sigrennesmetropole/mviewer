@@ -2403,6 +2403,7 @@ mviewer = (function () {
 
             var li = $(".mv-nav-item[data-layerid='"+layer.layerid+"']");
             li.find("a span").removeClass("mv-unchecked").addClass("mv-checked");
+            li.find("a span").removeClass("far").addClass("fas");
             li.find("input").val(true);
             // activate custom controls
             if (layer.customcontrol && mviewer.customControls[layer.layerid]) {
@@ -2434,6 +2435,7 @@ mviewer = (function () {
                 layer.layer.setVisible(false);
                 var li = $(".mv-nav-item[data-layerid='"+layerid+"']");
                 li.find("a span").removeClass("mv-checked").addClass("mv-unchecked");
+				li.find("a span").removeClass("fas").addClass("far");
                 li.find("input").val(false);
                 // deactivate custom controls
                 if (layer.customcontrol && mviewer.customControls[layer.layerid]) {

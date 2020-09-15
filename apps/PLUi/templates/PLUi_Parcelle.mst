@@ -10,7 +10,7 @@
                 Avertissement : le zonage simplifié en couleur ne renseigne que le nom de la zone. Il ne comporte pas les règles graphiques (emplacements réservés, espaces boisés  classés, zones inondables,…).</br></br>
                 
             <span class='rm-popup-label'>Renseignements d'urbanisme :  </span></br>
-                Pour éditer la fiche de Renseignement d'Urbanisme, &gt;<button id='lienNru' class='lienweb' title="{{nru}}">Cliquez ici</button>&lt;
+                Pour éditer la fiche de Renseignement d'Urbanisme, <button id='lienNru' class='lienweb' title="{{nru}}">&gt; cliquez ici &lt;</button>
 			
 			{{#web}}<br/><span class='rm-popup-label'> Pour la fiche de Renseignement d'urbanisme, </span><a id='lienweb' class='lienweb' title="{{nru}}"> Cliquez ici </a> {{/web}}
 			{{#id_parc}} <input type="hidden" id="urlNru" value="https://api-urba.sig.rennesmetropole.fr/v1/nru/{{{id_parc}}}"> {{/id_parc}}
@@ -73,10 +73,3 @@
 
 </script>
 
-<style>
-
-	#lienNru {
-		border: none;
-    		background-color: #fff;
-	}
-</style>
