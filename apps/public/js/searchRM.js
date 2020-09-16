@@ -10,9 +10,14 @@ var searchRM = (function () {
 
     var _init = function (searchRMConf) {
         if ($("#searchtool").length === 0) {
+            var inputlabel = configuration.getConfiguration().searchparameters.inputlabel;
+            var placeholder = "Rechercher";
+            if (typeof inputlabel !== 'undefined' && inputlabel.trim() !== '') {
+                placeholder = inputlabel;
+            }
            var searchtool =  '<div class="navbar-form" role="search" id="searchtool">'
             +    '<div class="form-group input-group">'
-            +        '<input type="text" class="form-control" placeholder="Rechercher" i18n="navbar.search.placeholder" id="searchfield">'
+            +        '<input type="text" class="form-control" placeholder="'+ placeholder +'" i18n="navbar.search.placeholder" id="searchfield">'
             +        '<div class="input-group-btn">'
             +            '<button type="button" class="btn btn-default" aria-label="Help" data-toggle="modal" data-target="#parameterspanel">'
             +                '<span class="glyphicon glyphicon-option-vertical"></span>'
