@@ -30,7 +30,7 @@
         searchRM="true" searchCadastre="true" 
         searchRMConf="apps/PLUi/addons/data/searchAddressConf.json" 
         disableSearchExtentLimitation="true"
-        inputlabel="AdresseTototo" />
+        inputlabel="Adresse" />
     
     <themes mini="true"> 
         <theme id="theme-20200130112616" name="Contexte" collapsed="false" icon="fas fa-map-signs">
