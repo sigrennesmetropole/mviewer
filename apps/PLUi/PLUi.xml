@@ -27,7 +27,10 @@
     <!-- <olscompletion url="../olscompletion"/> -->
     <!-- <elasticsearch url="https://ows.region-bretagne.fr/kartenn/_search" geometryfield="geometry" linkid="search_id" querymode="match" version="current" /> -->
     <searchparameters bbox="false" localities="false" features="false" static="false" querymaponclick="true"
-        searchRM="true" searchCadastre="true" searchRMConf="apps/PLUi/addons/data/searchAddressConf.json" disableSearchExtentLimitation="true"/>
+        searchRM="true" searchCadastre="true" 
+        searchRMConf="apps/PLUi/addons/data/searchAddressConf.json" 
+        disableSearchExtentLimitation="true"
+        inputlabel="Adresse" />
     
     <themes mini="true"> 
         <theme id="theme-20200130112616" name="Contexte" collapsed="false" icon="fas fa-map-signs">
