@@ -103,6 +103,7 @@ var rmOptionsManager = (function () {
  
          }
 
+
          // MODIF CBR 
          //if (applicationOptions.refreshInfoPanel === 'true') {
             interfaceModifying.refreshInfoPanel();
@@ -110,7 +111,6 @@ var rmOptionsManager = (function () {
          // FIN MODIF CBR
          
         // MODIF CBR
-
         if(applicationOptions.tutorial === 'true' && applicationOptions.tutorialFile.trim() !== '' && !configuration.getConfiguration().mobile){
             rmTools.initTutorial();
             if (applicationOptions.showhelp === 'true') {
