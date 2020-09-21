@@ -2,33 +2,29 @@
 	<li class="item">
 		<h5 class="rm-popup-title-feature">{{nom_site_retrait}}</h5>
         <p class="rm-popup-text-feature">
-            <div>
-                 {{#adresse_site_retrait}}<span class='rm-popup-label'> Adresse :</span> {{{adresse_site_retrait}}}{{/adresse_site_retrait}}
-                 {{#courriel1}}<br/><span class='rm-popup-label'> Courriel :</span> <a href="mailto:{{{courriel1}}}"> {{{courriel1}}}</a>  {{/courriel1}} {{#courriel2}} / <a href="mailto:{{{courriel2}}}"> {{{courriel2}}}</a>{{/courriel2}}
-                 {{#telephone1}}<br/><span class='rm-popup-label'> Téléphone :</span> {{{telephone1}}}  {{/telephone1}} {{#telephone2}} / {{{telephone2}}}{{/telephone2}}
-                 {{#url_communication}}<br/><span class='rm-popup-label'> Site internet :</span><a id='lienweb' class='lienweb' href="{{{url_communication}}}" target="_blank" title="{{{url_communication}}}"> Cliquez ici </a> <br/>{{/url_communication}}
-                 {{#nom_structure_relais}}<br/><span class='rm-popup-label'> Structure relais :</span> {{{nom_structure_relais}}}<br/>{{/nom_structure_relais}}
-            </div><br/>
-            <div>
-                <span class='rm-popup-label'> Equipement en prêt:</span><br/>
-                <span class='liste_equipement'>
-                    <span class='rm_visible_{{{broyeur_elect}}}'> <span class='rm-popup-label'> Broyeur électrique :</span> {{{desc_broyeur_elect}}}</span>
-                    <span class='rm_visible_{{{broyeur_therm}}}'> <span class='rm-popup-label'> Broyeur thermique :</span> {{{desc_broyeur_therm}}}</span>
-                    <span class='rm_visible_{{{tondeuse_therm}}}'> <span class='rm-popup-label'> Tondeuse thermique :</span> {{{desc_tondeuse_therm}}}</span>
-                </span>
-            </div>
-            <div>
-                {{#jours_pret}}<br/><span class='rm-popup-label'> Jours de prêt :</span> {{{jours_pret}}}{{/jours_pret}}
-                {{#tarifs}}
-                    <br/><span><span class='rm-popup-label'> Tarifs :</span> {{{tarifs}}}
-                    {{#caution}}<br/><span><span class='rm-popup-label'> Caution :</span> {{{caution}}} € {{/caution}}
-                {{/tarifs}}
-                {{#perimetre_pret}}<br/><span class='rm-popup-label'> Périmètre de prêt :</span> {{{perimetre_pret}}}{{/perimetre_pret}}
-            </div>
-            <div>
-                {{#commentaire}}<br/><span class='rm-popup-label'> Commentaire :</span> {{{commentaire}}}{{/commentaire}}
-                {{#url_desc_materiel}}<br/><span class='rm-popup-label'> Description du matériel :</span> <a id='lienweb_desc' class='lienweb' href="{{{url_desc_materiel}}}" target="_blank" title="{{{url_desc_materiel}}}"> Cliquez ici </a>{{/url_desc_materiel}}
-            </div>
+             {{#adresse_site_retrait}}<span class='rm-popup-label'> Adresse :</span> {{{adresse_site_retrait}}}{{/adresse_site_retrait}}
+             {{#courriel1}}<br/><span class='rm-popup-label'> Courriel :</span> <a href="mailto:{{{courriel1}}}"> {{{courriel1}}}</a>  {{/courriel1}} {{#courriel2}} / <a href="mailto:{{{courriel2}}}"> {{{courriel2}}}</a>{{/courriel2}}
+             {{#telephone1}}<br/><span class='rm-popup-label'> Téléphone :</span> {{{telephone1}}}  {{/telephone1}} {{#telephone2}} / {{{telephone2}}}{{/telephone2}}
+             {{#url_communication}}<br/><span class='rm-popup-label'> Site internet :</span><a id='lienweb' class='lienweb' href="{{{url_communication}}}" target="_blank" title="{{{url_communication}}}"> Cliquez ici </a> <br/>{{/url_communication}}
+        <br/>
+
+            <span class='rm-popup-label'> Equipement en prêt:</span><br/>
+            <span class='liste_equipement'>
+                <span class='rm_visible_{{{broyeur_elect}}}'> <span class='rm-popup-label'> Broyeur électrique :</span> {{{desc_broyeur_elect}}}</span>
+                <span class='rm_visible_{{{broyeur_therm}}}'> <span class='rm-popup-label'> Broyeur thermique :</span> {{{desc_broyeur_therm}}}</span>
+                <span class='rm_visible_{{{tondeuse_therm}}}'> <span class='rm-popup-label'> Tondeuse thermique :</span> {{{desc_tondeuse_therm}}}</span>
+            </span>
+
+            {{#jours_pret}}<br/><span class='rm-popup-label'> Jours de prêt :</span> {{{jours_pret}}}{{/jours_pret}}
+            {{#tarifs}}
+                <br/><span><span class='rm-popup-label'> Tarifs :</span> {{{tarifs}}}
+                {{#caution}}<br/><span><span class='rm-popup-label'> Caution :</span> {{{caution}}} € {{/caution}}
+            {{/tarifs}}
+            {{#perimetre_pret}}<br/><span class='rm-popup-label'> Périmètre de prêt :</span> {{{perimetre_pret}}}{{/perimetre_pret}}
+
+            {{#commentaire}}<br/><span class='rm-popup-label'> Commentaire :</span> {{{commentaire}}}{{/commentaire}}
+            {{#url_desc_materiel}}<br/><span class='rm-popup-label'> Description du matériel :</span> <a id='lienweb_desc' class='lienweb' href="{{{url_desc_materiel}}}" target="_blank" title="{{{url_desc_materiel}}}"> Cliquez ici </a>{{/url_desc_materiel}}
+
         </p>
 
 	</li>
