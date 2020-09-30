@@ -4,6 +4,12 @@ const layer = new ol.layer.Vector({
         format: new ol.format.GeoJSON()
     }),
     style: function(feature, resolution) {
+        var date_deb_split = feature.get('date_deb').split('T')[0].split('-');
+        var date_fin_split = feature.get('date_fin').split('T')[0].split('-');
+        var date_deb_french = date_deb_split[2] + '/' + date_deb_split[1] + '/' + date_deb_split[0];
+        var date_fin_french = date_fin_split[2] + '/' + date_fin_split[1] + '/' + date_fin_split[0];
+        feature.set('date_deb_french', date_deb_french);
+        feature.set('date_fin_french', date_fin_french);
         var fillcolor;
         if(feature.get('niv_perturbation') === 'Secteur à éviter') {
             fillcolor = '#ff0000';

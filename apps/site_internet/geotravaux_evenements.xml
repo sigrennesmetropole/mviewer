@@ -64,7 +64,7 @@ attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork
                 featurecount="5"
                 tooltip="true" 
                 tooltipenabled="true" 
-                tooltipcontent="&lt;span class=&apos;rm-tooltip-title&apos;&gt;{{localisation}}&lt;/span&gt;&lt;/b&gt;&lt;br/&gt;{{niv_perturbation}}&lt;br/&gt; du &lt;span class=&apos;date_in_french_format&apos;&gt;{{date_deb}}&lt;/span&gt; au &lt;span class=&apos;date_in_french_format&apos;&gt;{{date_fin}}&lt;/span&gt;"
+                tooltipcontent="&lt;span class=&apos;rm-tooltip-title&apos;&gt;{{localisation}}&lt;/span&gt;&lt;/b&gt;&lt;br/&gt;{{niv_perturbation}}&lt;br/&gt; du &lt;span class=&apos;date_in_french_format&apos;&gt;{{date_deb_french}}&lt;/span&gt; au &lt;span class=&apos;date_in_french_format&apos;&gt;{{date_fin_french}}&lt;/span&gt;"
 				infopanel="right-panel">
                  <template url="apps/site_internet/templates/geotravaux_evenements.mst"></template>
 			</layer>
@@ -81,7 +81,7 @@ attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork
                 featurecount="5"
                 tooltip="true" 
                 tooltipenabled="true" 
-                tooltipcontent="&lt;span class=&apos;rm-tooltip-title&apos;&gt;{{localisation}}&lt;/span&gt;&lt;/b&gt;&lt;br/&gt;{{niv_perturbation}}&lt;br/&gt; du &lt;span class=&apos;date_in_french_format&apos;&gt;{{date_deb}}&lt;/span&gt; au &lt;span class=&apos;date_in_french_format&apos;&gt;{{date_fin}}&lt;/span&gt;"
+                tooltipcontent="&lt;span class=&apos;rm-tooltip-title&apos;&gt;{{localisation}}&lt;/span&gt;&lt;/b&gt;&lt;br/&gt;{{niv_perturbation}}&lt;br/&gt; du &lt;span class=&apos;date_in_french_format&apos;&gt;{{date_deb_french}}&lt;/span&gt; au &lt;span class=&apos;date_in_french_format&apos;&gt;{{date_fin_french}}&lt;/span&gt;"
 				infopanel="right-panel">
                 <template url="apps/site_internet/templates/geotravaux_evenements.mst"></template>
 			</layer>			
