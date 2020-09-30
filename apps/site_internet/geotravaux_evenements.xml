@@ -14,7 +14,7 @@
 		printMap="true" 
 		togglealllayersfromtheme="false"
         showClickNbItems="false" />
-	<mapoptions maxzoom="20" minzoom="11" projection="EPSG:3857" center="-186098.36482879001,6125889.9088213602" zoom="12" />
+	<mapoptions maxzoom="20" minzoom="13" projection="EPSG:3857" center="-186098.36482879001,6125889.9088213602" zoom="11" />
     
 	<baselayers style="default">
 		<baselayer visible="true" id="pvci_nb" thumbgallery="img/basemap/pvcinb.jpg" title="Rennes Metropole" label="Plan de ville gris" type="WMTS" 
