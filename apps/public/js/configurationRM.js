@@ -287,10 +287,9 @@ var configuration = (function () {
         try {
         _map = mviewer.initMap(conf.mapoptions);
         }catch (error){
-            $('.single4').hide();
-            $('#loader-title').hide();
-            $('#loader-subtitle').hide();
-            $('#loader-errormsg').fadeIn("5000");
+            $('.single4').fadeToggle("slow");
+            $('#loader-title').fadeToggle("slow");
+            $('#loader-errormsg').fadeToggle("slow");
 
         }
 
