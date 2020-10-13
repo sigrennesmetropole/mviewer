@@ -13,3 +13,32 @@
 		font-family: 'vistaSansOT_bold', Arial, Sans-serif;
 	}
 
+.rm-popup-text-feature{
+	height: 70%;
+	overflow-y: auto;
+	}
+	.rm-popup-footer {
+	border: 2px solid;
+	border-radius: 11%;
+	padding: 2% 4% 2% 3%;
+	color:#4d4d4d;
+	list-style: none;
+	}
+
+	.containerBottom {
+		position: fixed;
+		bottom: 19px!important;
+		background-color: #ffffff;
+		padding-top: 7%;
+	  }
+
+	  .containerBottomOap {
+		position: fixed;
+		bottom: 44px!important;
+		background-color: #ffffff;
+		padding-top: 7%;
+	  }
+
+	  .listeRefs {
+		font-family: 'VistaSansOT_regular','roboto_regular', Arial, Sans-serif;;
+	  }
