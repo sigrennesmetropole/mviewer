@@ -4,7 +4,7 @@
         title="Programmation des travaux sur Rennes Métropole"
         logo="https://public.sig.rennesmetropole.fr/ressources/img/logos/rm/logo_mviewer_gris_inverse.png"
         titlehelp="À propos des cartes thématiques" 
-		help="apps/site_internet/html/site_internet_help.html"
+        help="apps/site_internet/html/site_internet_help.html"
         showhelp="false"
         exportpng="true"
         geoloc="true"
@@ -15,42 +15,60 @@
     <mapoptions maxzoom="20" minzoom="10" projection="EPSG:3857" center="-186098.36,6128582.53" zoom="11" />
     
     <baselayers style="default"><!-- style="default"||gallery" -->     
-	    <baselayer visible="false" id="pvcisimplegris" thumbgallery="apps/public/img/basemap/pvcilight.jpg" title="Rennes Metropole" label="Plan de ville simple gris" type="WMTS" 
-			url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="ref_fonds:pvci_simple_gris" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" 
-			attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/home&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;">
-		</baselayer>
-		<baselayer visible="true" id="pvci_nb" thumbgallery="apps/public/img/basemap/pvcinb.jpg" title="Rennes Metropole" label="Plan de ville gris" type="WMTS" 
-			url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="ref_fonds:pvci_nb" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" 
-			attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/home&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;">
-		</baselayer>
-		<baselayer visible="false" id="pvcicouleur" thumbgallery="apps/public/img/basemap/pvci.jpg" title="Rennes Metropole" label="Plan de ville couleur" type="WMTS" 
-			url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="ref_fonds:pvci" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" 
-			attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/6ecb85b1-ec5e-4427-ae81-9c83b21a7f32&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;">
-		</baselayer>
-		<baselayer visible="false" id="ortho2017" thumbgallery="apps/public/img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" 
+        <baselayer visible="false" id="pvcisimplegris" thumbgallery="apps/public/img/basemap/pvcilight.jpg" title="Rennes Metropole" label="Plan de ville simple gris" type="WMTS" 
+            url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="ref_fonds:pvci_simple_gris" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" 
+            attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/home&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;">
+        </baselayer>
+        <baselayer visible="true" id="pvci_nb" thumbgallery="apps/public/img/basemap/pvcinb.jpg" title="Rennes Metropole" label="Plan de ville gris" type="WMTS" 
+            url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="ref_fonds:pvci_nb" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" 
+            attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/home&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;">
+        </baselayer>
+        <baselayer visible="false" id="pvcicouleur" thumbgallery="apps/public/img/basemap/pvci.jpg" title="Rennes Metropole" label="Plan de ville couleur" type="WMTS" 
+            url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="ref_fonds:pvci" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" 
+            attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/6ecb85b1-ec5e-4427-ae81-9c83b21a7f32&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;">
+        </baselayer>
+        <baselayer visible="false" id="ortho2017" thumbgallery="apps/public/img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" 
             url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" 
             attribution="&lt;a href=&quot;https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/6ecb85b1-ec5e-4427-ae81-9c83b21a7f32&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;">
-		</baselayer>
+        </baselayer>
     </baselayers>
 
     <searchparameters bbox="false" localities="false" features="false" static="false"/>
     
     <themes mini="true"> 
-        <theme id="lrs-travaux" name="Programmation des travaux" collapsed="true" icon="fas fa-star">         
+        <theme id="lrs-travaux" name="Programmation des travaux" collapsed="true" icon="fas fa-road">         
             <layer
-				id="v_voirie_programmation_travaux"
-				name="Travaux programmés"
-				type="wms"
-				url="https://public.sig.rennesmetropole.fr/geoserver/trp_rout/ows"
-				visible="true"
-				infoformat="application/vnd.ogc.gml"
-				metadata="undefined"
-				metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/03268497-3416-4326-9119-48744df1a3c2"
-				queryable="true"
+                id="v_voirie_programmation_travaux"
+                name="Tronçons"
+                type="wms"
+                url="https://public.sig.rennesmetropole.fr/geoserver/trp_rout/ows"
+                visible="true"
+                style="v_voirie_programmation_travaux"
+                infoformat="application/vnd.ogc.gml"
+                metadata="undefined"
+                metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/03268497-3416-4326-9119-48744df1a3c2"
+                queryable="true"
                 featurecount="6"
-				infopanel="right-panel">
+                infopanel="right-panel">
                 <template url="apps/site_internet/templates/prog-travaux.mst"></template>
-			</layer>   
+            </layer>   
+        </theme> 
+        <theme id="lrs-recouvrements" name="Recouvrements" collapsed="true" icon="fas fa-star">
+            <layer
+                id="v_voirie_programmation_travaux"
+                name="Recouvrements"
+                type="wms"
+                url="https://public.sig.rennesmetropole.fr/geoserver/trp_rout/ows"
+                visible="true"
+                style="v_voirie_recouvrement_travaux"
+                infoformat="application/vnd.ogc.gml"
+                metadata="undefined"
+                metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/03268497-3416-4326-9119-48744df1a3c2"
+                queryable="true"
+                featurecount="6"
+                infopanel="right-panel">
+                <template url="apps/site_internet/templates/prog-travaux.mst"></template>
+            </layer>   
         </theme> 
     </themes>
 </config>
