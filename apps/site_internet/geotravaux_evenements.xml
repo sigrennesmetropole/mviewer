@@ -35,6 +35,7 @@ attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork
 		searchRM="true" searchRMConf="apps/site_internet/addons/data/searchRVAConf.json"/>
     
 	<themes mini="true">
+    <!--
         <theme id="theme-trafic_dessus" name="Trafic routier (dessus)" collapsed="true" icon="fas fa-road">
              <layer
                 id="trp_rout:v_rva_trafic_fcd"
@@ -50,6 +51,7 @@ attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork
                 infopanel="right-panel"><template url="apps/site_internet/templates/trafic-routier.mst"></template>
             </layer>
         </theme>
+    -->
 		<theme id="geotravaux" name="Travaux en cours" collapsed="true" icon="fas fa-exclamation-triangle">
             <layer
 				id="geotravaux_evenement_1j"
