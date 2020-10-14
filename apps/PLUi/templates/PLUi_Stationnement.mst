@@ -1,7 +1,7 @@
 {{#features}} 
 	<li class="item">
 		<h5 class="rm-popup-title-feature">{{nom_usage}}</h5>
-		<p class="rm-popup-text-feature">
+		<p class="rm-popup-text-feature plui-popup-text-feature">
 			Le plan indique dans quel secteur de stationnement est localisé le terrain et fixe le nombre de places de stationnement automobile à réaliser au minimum sur le terrain du projet pour les logements selon leurs types : <br/><br/>
 			 - LLS : Logement locatif financé par un prêt aidé ou agrée par l'Etat, <br/>
 			 - AL : Autre logement <br/>
@@ -12,9 +12,9 @@
 			Pour les autres destinations, en fonction du secteur applicable sur le terrain du projet, et pour en savoir plus sur le mode de calcul, voir les règles de stationnement dans le règlement littéral (Titre IV – Règles applicables à toutes les zones). 
 		</p>
 
-		<div class="containerBottom">
+		<div class="plui-containerBottom">
 			<span class="rm-popup-alerte-legende">La légende indique systématiquement l’ensemble des informations identifiées sur la métropole. Toutes les communes ne sont pas pour autant dotées de toutes ces thématiques sur leur territoire.</span>
-			<div class="rm-popup-footer">
+			<div class="rm-popup-footer plui-popup-footer">
 				<div>
 					<span class="glyphicon glyphicon-hand-up"></span>
 					<a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/consulter-les-documents-du-plan-local-durbanisme-intercommunal-plui?idParent=10&typeParent=node" target="_blank">&nbsp; consulter les pièces du PLUi </a>

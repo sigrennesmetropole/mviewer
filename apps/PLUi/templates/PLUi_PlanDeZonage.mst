@@ -2,7 +2,7 @@
 	<li class="item">
 		<h5 class="rm-popup-title-feature">{{nom_usage}}</h5>
         
-		<p class="rm-popup-text-feature">
+		<p class="rm-popup-text-feature plui-popup-text-feature">
 			<span style="font-family:'roboto_italic'"> La légende indique systématiquement l’ensemble des informations identifiées sur la métropole (par simplification). Toutes les communes ne sont pas pour autant dotées de toutes ces thématiques sur leur territoire</span> <br/><br/>
 			<span class='rm-popup-label'> Normes de stationnement pour la sous-destination « logement » </span> (indiquées en annotation sur chaque secteur cartographié)<br/><br/>
 			     Nombre de places minimum exigées (ex : 0,80 pl./logt) : <br/>

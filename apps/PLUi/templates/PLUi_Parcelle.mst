@@ -2,7 +2,7 @@
 	<li class="item">
 		<h5 class="rm-popup-title-feature">Zonages et parcelle</h5>
         
-		<p class="rm-popup-text-feature">
+		<p class="rm-popup-text-feature plui-popup-text-feature">
 			<span class='rm-popup-label'>Limites de zone et autres règlements graphique :  </span></br>
                 Pour connaître les règles applicables dans les différentes zones et les effets des règles graphiques, consulter le règlement littéral</br></br>
                 
@@ -15,8 +15,8 @@
 			{{#web}}<br/><span class='rm-popup-label'> Pour la fiche de Renseignement d'urbanisme, </span><a id='lienweb' class='lienweb' title="{{nru}}"> Cliquez ici </a> {{/web}}
 			{{#id_parc}} <input type="hidden" id="urlNru" value="https://api-urba.sig.rennesmetropole.fr/v1/nru/{{{id_parc}}}"> {{/id_parc}}
 		</p>
-		<div class="containerBottom">
-			<div class="rm-popup-footer">
+		<div class="plui-containerBottom">
+			<div class="rm-popup-footer plui-popup-footer">
 				<div>
 					<span class="glyphicon glyphicon-hand-up"></span>
 					<a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/consulter-les-documents-du-plan-local-durbanisme-intercommunal-plui?idParent=10&typeParent=node" target="_blank">&nbsp; consulter les pièces du PLUi </a>

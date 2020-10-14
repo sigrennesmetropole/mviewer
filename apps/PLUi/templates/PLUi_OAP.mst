@@ -2,10 +2,10 @@
 	<li class="item">
 		<h5 class="rm-popup-title-feature">{{nom_usage}}</h5>
         
-		<div class="rm-popup-text-feature">
+		<div class="rm-popup-text-feature plui-popup-text-feature">
 			<p>Le plan montre les périmètres à l'intérieur desquels des orientations d'aménagement et de programmation d'échelle métropolitaine, intercommunale ou communale s'appliquent.</p>
 			<p>Pour en savoir plus sur les orientations applicables dans ces secteurs, voir les pièces du dossier relatives aux orientations d'aménagement et de programmation :</p>
-			<div class="listeRefs">
+			<div class="plui-listeRefs">
 				<span style="color: #333;">C- 1 Orientations d'Aménagement et de Programmation d'échelle métropolitaine et intercommunale : </span> <br/>
 				<span style="color: #333;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C-1-1 Projet patrimonial, paysager, trame verte et bleue et les axes de développement de la ville archipel </span> <br/>
 				<span style="color: #333;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C-1-2 Les secteurs d'enjeux intercommunaux </span> <br/>
@@ -14,9 +14,9 @@
 			</div>
 		</div>
 	
-		<div class="containerBottomOap">
+		<div class="plui-containerBottomOap">
 			<span class="rm-popup-alerte-legende">La légende indique systématiquement l’ensemble des informations identifiées sur la métropole. Toutes les communes ne sont pas pour autant dotées de toutes ces thématiques sur leur territoire.</span>
-			<div class="rm-popup-footer">
+			<div class="rm-popup-footer plui-popup-footer">
 				<div>
 					<span class="glyphicon glyphicon-hand-up"></span>
 					<a id='lienweb' class='lienweb' href="https://metropole.rennes.fr/consulter-les-documents-du-plan-local-durbanisme-intercommunal-plui?idParent=10&typeParent=node" target="_blank">&nbsp; consulter les pièces du PLUi </a>
