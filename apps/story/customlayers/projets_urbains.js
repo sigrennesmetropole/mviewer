@@ -1,6 +1,5 @@
 mviewer.customLayers.projurbains = (function() {
-    let data_proj = "apps/story/data/projets_urba2.geojson";
-    //let data = "apps/story/data/horaires3.geojson";
+    let data_proj = "apps/story/data/projets_urba_mviewer.geojson";
     
     function markerStyle(feature) {
         let categ = feature.get('categorie');

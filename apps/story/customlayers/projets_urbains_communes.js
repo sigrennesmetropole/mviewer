@@ -1,6 +1,5 @@
 mviewer.customLayers.projurbains_communes = (function() {
     let data_communes = 'https://public.sig.rennesmetropole.fr/geoserver/ows?SERVICE=WFS&VERSION=1.0.0&REQUEST=GetFeature&typeName=v_sitorg_organisme&CQL_FILTER=code_insee%20%3C%3E%20%2735238%27%20AND%20code_nomenclature_principale%20%3D%20%271.1.4%27&outputFormat=application%2Fjson&srsname=EPSG:3857';
-    //let data_communes = "apps/story/data/communes2.geojson";
 
     function communeStyle() {
         return [
