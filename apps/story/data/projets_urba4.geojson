@@ -1,0 +1,63 @@
+{
+    "type" : "FeatureCollection",
+    "name" : "Geojson localisation",
+	"crs" : {
+		"type" : "name",
+		"properties" : {
+			"name" : "EPSG:3857"
+		}
+	},
+	"features" : [
+        {
+            "type" : "Feature",
+            "id" : "1",
+            "geometry" : {
+                "type" : "Point",
+                "coordinates" : [ -185901.65225007778, 6124076.0081961965 ]
+            },
+            "properties" : {
+				"nom_ope" : "EuroRennes",
+				"categorie" : "Projet d'aménagement",
+				"numero" : 1,
+				"moa" : "Rennes Métropole - Territoires Publics",
+				"moe" : "Urbanistes : FGP, Paysagiste : TER",
+				"surface" : "58 hectares",
+				"programme" : "125 000 m² de bureaux, plus de 1500 logements, 10 000 m² de locaux réservés à l’hôtellerie, 30 000 m² de commerces et services, 9 500 m² d’équipements (pôle métropolitain de mobillité; gare,  gare routière, parkings et station de métro)",
+				"TITRE" : "EuroRennes,  nuage et paysage  au-dessus des voies ferrées",
+				"CHAPEAU" : "La gare s'est implantée en 1857 au sud de la ville. Depuis lors, le centre-ville s'étend vers elle avec l'implantation du quartier Colombier  dans les années 70 puis la construction de grands équipements métropolitains comme les Champs Libres ou Le Liberté dans les années 2000. Dans la continuité de cette évolution,  et la nécessité de d'adapter la gare à la croissance de voyageurs, le projet EuroRennes  porte sur 58 ha et se compose de  15 secteurs (aménagement mis en œuvre  depuis 2013). C'est également  3km de franges ferroviaires,  terrains  propriétés de la SNCF ou de lisières urbaines, qui   vont être aménagées.",
+				"LE PROJET" : "Avec  la mise en service de la LGV, en 2017, qui place Rennes à 1h27 de Paris, et le développement de la seconde ligne de métro, 120 000 voyageurs par jour  transiteront en 2020 par la gare. Le projet EuroRennes répond, d'abord, à la nécessité de transformer la gare en un pôle d'échanges multimodal pour accueillir  plus de voyageurs et faciliter les passages entre les différents modes de transport. La transformation de l'équipement entraîne une recomposition du quartier avec la volonté d'étendre le centre-ville jusqu'à la gare et de faciliter les liaisons avec les quartiers sud de Rennes. L'équipe d'urbanistes et de paysagistes (FGP + Agence TER)  ont alors conçu un projet original,   une structure qui passe au-dessus des voies, une gare-paysage, clé de voûte d'EuroRennes. Ce \"paysage construit\"  créée le lien entre le nord et le sud de la gare, efface la coupure historique des voies ferrées et du relief très important, 11 mètres de différence entre les  deux rives. 1400 logements,  125 000 m² de bureaux, 30 000 m² de commerces s'implantent de part et d'autre des voies ferrés. Des projets remarquables comme <a target=\"_blank\" href=\"https://metropole.rennes.fr/eurorennes-urban-quartz-inaugure\">Urban Quartz</a>, Identity, <a target=\"_blank\" href=\"stories/projets_urba/medias/Documents/Eurorennes/Document1_IlotBeaumont.pdf\">l'Ilôt Beaumont</a> ou <a target=\"_blank\" href=\"https://metropole.rennes.fr/projet-samsic-eurorennes-le-laureat-devoile\">la Tour Samsic</a> font d'EuroRennes la  vitrine de la capitale bretonne et de son dynamisme.",
+				"ACTUALITES" : "<a target=\"_blank\" href=\"stories/projets_urba/medias/Documents/Eurorennes/Document2_la nouvelle gare.pdf\">La nouvelle gare</a> est livrée avec des espaces intérieurs recomposés, de nouveaux commerces et restaurants, et en fin d'année l'achèvement des espaces publics extérieurs. En lien avec  la nouvelle gare et l'achèvement de sa place, <a target=\"_blank\" href=\"https://metropole.rennes.fr/le-nouveau-visage-de-lavenue-janvier\">l'avenue Janvier</a> se transforme  mais aussi les boulevards Beaumont et Solferino. Les travaux commencent en avril  2020 pour le programme de l'îlot Beaumont de  Legendre Immobilier avec l'architecte danois Kempe Thill et  les architectes rennais de l'Atelier 56S.Ce sont 180 logements (résidence service et logements sociaux) et 13 000 m² de bureaux, livrés entre 2021 et 2022. Le groupe Samsic, associé à Bâti Armor va construire cinq bâtiments sur les secteurs Féval et Blériot d'EuroRennes. Le projet prévoit une  tour de 26 étages  avec  des commerces sur deux étages et des logements sur les 25 autres.  Les quatre autres bâtiments  abritent des bureaux (dont ceux de Samsic pour 15 000 m²) des logements, un hôtel quatre étoiles avec un restaurant panoramique. Le lauréat du concours d'architecture international est  JDS/Julien De Smedt Architects (Copenhague et Bruxelles) avec  Stéphane Maupin (Paris) et  Maurer et Gilbert architectes rennais. ",
+				"Le saviez vous ?" : "Signée par tous les acteurs, <a target=\"_blank\" href=\"stories/projets_urba/medias/Documents/Eurorennes/Document3_ Charte DD.pdf\">une \"charte du développement durable\"</a> sert de fil rouge à toutes les étapes de ce projet d'aménagement d'intérêt communautaire  - conception, études, aménagement - et à toutes ses facettes - espaces publics, espaces privés. Cette charte définit les grands objectifs d’un cadre de programmation exigeant sur six thèmes majeurs qui font la ville durable : la mixité des programmes, les mobilités,   la gestion des nuisances,  l’énergie et les ressources,  la qualité des ambiances architecturale, urbaine et paysagère et la gouvernance. Ce sont autant de réflexions et d’innovations à la clé pour imaginer un renouvellement qui aille dans le sens de l'écologie urbaine. ",
+				"plus_info" : "<a target=\"_blank\" href=\"https://www.eurorennes.fr/\">Plus d'informations</a>",
+				"image1" : "stories//projets_urba/medias/Images/Eurorennes/Photo1.jpg",
+				"credit1" : " ©  DAUH/SPEU",
+				"Légende1" : "État d'avancement du projet ",
+				"image2" : "stories/projets_urba/medias/Images/Eurorennes/Photo2.jpg",
+				"credit2" : "  ©  FGP",
+				"Légende2" : "Vue 3D du projet  ©  FGP",
+				"image3" : "stories/projets_urba/medias/Images/Eurorennes/Photo3.jpg",
+				"credit3" : " ©J.Mignot / Rennes, Ville et Métropole ",
+				"Légende 3" : "La nouvelle gare, nuage et paysage  ",
+				"image4" : "stories/projets_urba/medias/Images/Eurorennes/Photo4.jpg",
+				"credit4" : " ©J.Mignot / Rennes, Ville et Métropole ",
+				"légende4" : "La nouvelle gare, le hall des arrivées   ",
+				"image5" : "stories/projets_urba/medias/Images/Eurorennes/Photo5.jpg",
+				"credit5" : " ©C.Le Dévéhat / Rennes, Ville et Métropole",
+				"légende5" : "Urban Quartz, bureaux livrés en 2019 ",
+				"video1" : "https://www.youtube.com/embed/EcyynbGaDwo",
+				"crédit vidéo" : "S.Priou / Rennes, Ville et Métropole",
+				"légende vidéo" : "Le projet de l'ilot Beaumont",
+				"lien projet1" : "https://metropole.rennes.fr/eurorennes-urban-quartz-inaugure",
+				"lien projet2" : "https://metropole.rennes.fr/projet-samsic-eurorennes-le-laureat-devoile",
+				"PDF projet" : "stories/projets_urba/medias/Documents/Eurorennes/Document1_IlotBeaumont.pdf",
+				"lien actualités" : "https://metropole.rennes.fr/le-nouveau-visage-de-lavenue-janvier",
+				"PDF actualités" : "stories/projets_urba/medias/Documents/Eurorennes/Document2_la nouvelle gare.pdf",
+				"PDF _le saviez vous_" : "stories/projets_urba/medias/Documents/Eurorennes/Document3_ Charte DD.pdf",
+				"lien _Plus d'informations_" : "https://www.eurorennes.fr/",
+				"PDF _Plus d'informations_" : "stories/projets_urba/medias/Documents/Eurorennes/",
+				"x_cc48" : -185901.65225007778,
+				"y_cc48" : 6124076.0081961965
+			}
+        }
+    ]
+}

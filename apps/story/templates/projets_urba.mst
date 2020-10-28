@@ -1,0 +1,73 @@
+{{#features}}
+    <div >
+        <h4 class="title-feature">{{TITRE}} </h4>
+        <div class="rm-reperes">
+            {{#moa}} <span class="rm-clerepere">Maîtrise d'ouvrage : </span>{{{moa}}}{{/moa}}
+            {{#moe}} / <span class="rm-clerepere">Maîtrise d'oeuvre : </span>{{{moe}}}{{/moe}}
+            {{#surface}} / <span class="rm-clerepere">Surface : </span>{{{surface}}}{{/surface}}
+            {{#programme}} / <span class="rm-clerepere">Programmation : </span>{{{programme}}}{{/programme}}
+        </div>
+        <p class="text-feature" id="p_categ">
+            {{#categorie}}<span class="rm-soustitre"><br> Catégorie :</span> <i categorie="{{categorie}}" class="fas fa-map-marker-alt fa-2x"></i> {{{categorie}}}<br/>{{/categorie}}
+        </p>
+        <p class="text-feature">
+            {{#CHAPEAU}}{{{CHAPEAU}}}<br/>{{/CHAPEAU}}
+        </p>
+        <p class="text-feature">
+            {{#LE PROJET}}<span class="rm-soustitre"> Le projet </span><br/> {{{LE PROJET}}}<br/>{{/LE PROJET}}
+        </p>
+        
+        <p class="text-feature">
+            {{#ACTUALITES}}<span class="rm-soustitre"> Actualités </span><br/>{{{ACTUALITES}}}<br/>{{/ACTUALITES}}
+        </p>
+        
+        <section>
+            
+            <div id="slideauto{{{numero}}}" class="slide-feature slideA{{{numero}}}">
+                {{#image1}}<div class="thumbnail iframe-popup slide-feature{{{numero}}}" onclick='carousel.getpopupslide("slideauto{{{numero}}}", 0);'>
+                    <img src="{{image1}}" class="slick-slide-image" style="height: 150px;" {{#credit1}}data-sources="{{credit1}}"{{/credit1}} />
+                    <div class="text-credit">{{Légende1}}<br/>{{credit1}}</div>
+                    </div>{{/image1}}
+                {{#image2}}<div class="thumbnail iframe-popup slide-feature{{{numero}}}" onclick='carousel.getpopupslide("slideauto{{{numero}}}", 1);'>
+                    <img src="{{image2}}" class="slick-slide-image" style="height: 150px;" {{#credit2}}data-sources="{{credit2}}"{{/credit2}} />
+                    <div class="text-credit">{{Légende2}}<br/>{{credit2}}</div>
+                    </div>{{/image2}}
+                {{#image3}}<div class="thumbnail iframe-popup slide-feature{{{numero}}}" onclick='carousel.getpopupslide("slideauto{{{numero}}}", 2);'>
+                    <img src="{{image3}}" class="slick-slide-image" style="height: 150px;" {{#credit3}}data-sources="{{credit3}}"{{/credit3}} />
+                    <div class="text-credit">{{Légende3}}<br/>{{credit3}}</div>
+                    </div>{{/image3}}
+                {{#image4}}<div class="thumbnail iframe-popup slide-feature{{{numero}}}" onclick='carousel.getpopupslide("slideauto{{{numero}}}", 3);'>
+                    <img src="{{image4}}" class="slick-slide-image" style="height: 150px;" {{#credit4}}data-sources="{{credit4}}"{{/credit4}} />
+                    <div class="text-credit">{{Légende4}}<br/>{{credit4}}</div>
+                    </div>{{/image4}}
+                {{#image5}}<div class="thumbnail iframe-popup slide-feature{{{numero}}}" onclick='carousel.getpopupslide("slideauto{{{numero}}}", 4);'>
+                    <img src="{{image5}}" class="slick-slide-image" style="height: 150px;" {{#credit5}}data-sources="{{credit5}}"{{/credit5}} />
+                    <div class="text-credit">{{Légende5}}<br/>{{credit5}}</div>
+                    </div>{{/image5}}
+            </div>
+        </section>
+        
+        
+        
+        <p class="text-feature">
+            {{#Le saviez vous ?}}<span class="rm-soustitre"> Le saviez-vous ? </span><br/>{{{Le saviez vous ?}}}<br/>{{/Le saviez vous ?}}
+        </p>
+        
+        <div class="rm-video-div">
+           {{#video1}}
+                <iframe src="{{video1}}" style="height:300px;width:540px;" allowfullscreen="true" {{#creditvideo1}}data-sources="{{creditvideo1}}"{{/creditvideo1}} />
+                {{#légende vidéo}}<div class="text-credit">{{légende vidéo}}</div>{{/légende vidéo}}
+                {{#creditvideo1}}<div class="text-credit">{{creditvideo1}}</div>{{/creditvideo1}}
+           {{/video1}}
+        </div>
+        
+        <p class="text-feature rm-plus-info-p">
+            {{#plus_info}}<br/>
+            <span class="rm-plus-info">
+                <i class="fas fa-info-circle fa-2x" style="margin-bottom: 5px;vertical-align: middle;"></i>
+                {{{plus_info}}}
+            </span><br/><br/>{{/plus_info}}
+        </p>
+    </div>
+{{/features}}
+

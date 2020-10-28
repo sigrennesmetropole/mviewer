@@ -1,0 +1,25 @@
+{
+    "type":"FeatureCollection",
+    "totalFeatures":2,
+    "features":[
+        {
+            "type":"Feature",
+            "id":"v_horaires.fid-32e01ae8_1750d844a10_-2283",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[-186421.073937,6122350.696927]
+            },
+            "geometry_name":"shape",
+            "properties":{"id":36219,"individu_id":3633,"moytransp_id":7,"transport_lib":"Vélo / VAE / Vélostar","jour":1,"absence":null,"absence_id":null,"absence_lib":null,"horaire":"18:15","mouvement":"D","date_saisie":"2020-09-29Z","caduc":false,"bbox":[-186421.073937,6122350.696927,-186421.073937,6122350.696927]}
+        },{
+            "type":"Feature",
+            "id":"v_horaires.fid-32e01ae8_1750d844a10_-2282",
+            "geometry":{
+                "type":"Point",
+                "coordinates":[-186421.073937,6122350.696927]
+            },
+            "geometry_name":"shape",
+            "properties":{"id":36218,"individu_id":3633,"moytransp_id":7,"transport_lib":"Vélo / VAE / Vélostar","jour":1,"absence":null,"absence_id":null,"absence_lib":null,"horaire":"08:30","mouvement":"A","date_saisie":"2020-09-29Z","caduc":false,"bbox":[-186421.073937,6122350.696927,-186421.073937,6122350.696927]}
+        }
+    ]
+}

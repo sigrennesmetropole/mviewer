@@ -1,0 +1,300 @@
+/******************************************************************************
+--------------------------- CSS THEME MVIEWER / Story des projets urbains -----
+********************************************************************************/
+
+/*  Import du style du site internet  */
+@import url("../../site_internet/css/site_internet_gris.css");
+
+/* Colors */
+:root {
+--col_gris: #4D4D4D;
+--police_reg: #36334F;
+--col_titre: #032E46;
+--police_sstitre: #57B3B9;
+--col_rennes2030: #e6334c;
+--col_liens: #032E46;
+}
+
+
+/* TITRE APPLICATION */
+#mv-navbar{
+  border-color: var(--col_rennes2030)!important;
+  background-color: var(--col_rennes2030)!important;
+}
+
+.navbar-header{
+  background-color: var(--col_rennes2030)!important;
+}
+
+/* BOUTON DE LEGENDE */
+#layers-container-box-header {
+  background-color: var(--col_rennes2030)!important;
+}
+
+/* SLIDER PHOTO */
+.slick-prev:before, .slick-next:before { 
+    color: #555 !important;
+}
+
+.slick-slide {
+    margin: 0px 0px;
+    transition: all ease-in-out .3s;
+    opacity: .75;
+    text-align: center;
+}
+.slick-slide-image {
+    display: inline-block!important;
+}
+
+.slick-active {
+    opacity: 1;
+}
+
+.slick-current {
+    opacity: 1;
+}
+
+.slick-dots li.slick-active button:before
+{
+    opacity: 1;
+    color: #032E46;
+    font-size: 8px;
+}
+
+.slick-arrow{
+    z-index: 1080;
+}
+
+.slide-feature{
+    width:80%;
+    position:relative;
+    margin-top: 30px;
+    margin-right: auto;
+    margin-bottom: 30px;
+    margin-left: auto;
+}
+.slide-feature-popup{
+    width:90%;
+    height:95%;
+    position:relative;
+    margin-top: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+
+.iframe-popup {
+    cursor: pointer;
+    margin: auto;
+}
+
+.carousel-inner{
+    padding-left: 30px;
+    color: white;
+    width:auto!important;
+    overflow: auto!important;
+}
+
+
+/* FICHE INFO */
+#right-panel.active {
+    width:40%!important;
+}
+
+.title-feature {
+    color: #032E46;
+    font-family:"vistaSansOT_bold";
+    font-size:23px;
+    margin-bottom:0.25%;
+    line-height:1;
+    margin-top: 20px!important;
+}
+.text-feature{
+    font-family:"vistaSansOT_regular";
+    color:#555;
+    font-size:14px;
+}
+
+.rm-soustitre{
+    font-family:"vistaSansOT_bold";
+    color:rgb(230, 51, 76, 1);
+    font-size:16px;
+}
+.text-actu{
+    font-family:"vistaSansOT_regular";
+    color:#555;
+    font-size:14px;
+    margin-top:10px;
+    margin-right: 50px;
+    margin-left: 50px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #032E46;
+}
+
+.icone_categ {
+    vertical-align : sub;
+}
+
+.marker-categ-bleu{
+    color: #33919d;  
+}
+.marker-categ-vert{
+    color: #8f9169;  
+}
+
+.text-credit{
+    font-family:"vistaSansOT_bold";
+    color:#555;
+    font-size:9px;
+    padding-right: 10px;
+    padding-left: 10px;
+    text-align:left
+}
+.rm-video-div{
+    text-align: center;
+}
+
+.rm-msg-urbanisme{
+    font-family: 'vistaSansOT_bold', Arial, Sans-serif;
+    color:  var(--col_rennes2030)!important;
+}
+
+.rm-plus-info-p{
+    text-align: center;
+}
+.rm-plus-info{
+    border-style: solid;
+    padding: 15px 10px 10px 10px;
+    border-color: #555;
+    border-width: thin;
+}
+.rm-reperes{
+    font-family:"vistaSansOT_regular";
+    color:#555;
+    font-size:12px;
+    padding-top: 5px;
+}
+.rm-clerepere{
+    font-family: "vistaSansOT_bold";
+}
+
+a[href$=".pdf"],a[href^="http"] {
+  color: var(--col_liens)!important;
+  font-weight: bold!important;
+  text-decoration: underline!important;
+  text-decoration-style: dotted!important;
+}
+a[href$=".pdf"]:hover,a[href^="http"]:hover{
+	color: var(--col_liens)!important;
+	text-decoration: underline!important;
+}
+
+
+/* FENETRES MODALES */
+
+.modal-title{
+		font-family:"vistaSansOT_regular";
+		color:#555;
+		font-size:16px;
+}
+
+.modal-body{
+	color: #555;
+	font-family: "vistaSansOT_regular";
+	font-size: 12px;
+	text-align: justify;
+	padding-top: 0;
+    height: 95%;
+}
+
+
+/* BLOCAGE MODALE NATIVE SUR IMAGES */
+
+#imagepopup{
+    display:none!important;
+}
+
+
+/* SUPPRESSION ENTETE FICHE INFO */
+.mv-header{
+    height: 0;
+}
+
+
+/* MODALE VISU MODALE */
+
+@media (min-width: 768px) {
+    .modal-lg-carousel {
+        width: auto!important;
+        height: 90%!important;
+        /*padding: 0 5%!important;*/
+        padding: 0!important;
+        margin:30px 5% 0 5%!important;*/
+    }
+}
+
+@media (max-width: 767px){
+    .modal-lg-carousel {
+        width: auto!important;
+        height: auto!important;
+        max-height:80%;
+        min-height: 40%;
+    }
+}
+
+#carousel-modal{
+    z-index: 1080;
+    height: 100%;
+    padding:0!important;
+}
+
+#carousel-modal>.modal-content{
+    height: 95%!important;
+    width: 95%!important;
+}
+
+#carousel-body{
+    padding-top: 0;
+    padding-bottom:0;
+}
+
+#carousel-row{
+    height: 100%!important;
+}
+
+#car-slideauto div{
+    text-align:center;
+    height: 100%;
+}
+
+#car-slideauto .text-credit {
+    font-size: 11px;
+}
+
+.slide-car {
+    height:100%;
+}
+.img_downld{
+    border:solid;
+    padding:5px;
+    background-color: white;
+    position: relative;
+    top: 20px;
+}
+
+.car_centertag{
+    height: 95%;
+}
+
+.car_photo{
+    max-width: 100%;
+    max-height: 100%;
+    max-height: -webkit-fill-available;
+}
+
+.car-text-credit{
+text-align: center!important;
+}

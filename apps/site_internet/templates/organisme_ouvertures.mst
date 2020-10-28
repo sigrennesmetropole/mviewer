@@ -10,9 +10,9 @@
 			{{#infos_horaires}}<span class='rm-popup-label'> Informations :</span> {{{infos_horaires}}}<br/>{{/infos_horaires}}
 			{{#variation_conges_scolaires}}<span class='variationvac'> {{{variation_conges_scolaires}}}</span>{{/variation_conges_scolaires}}
 
-			<span class='rm-popup-label'> Fermetures :</span> <span class='rm-fermetures'></span>
-			{{#jour_periode_ferme}} <span class='daysOff'> {{{jour_periode_ferme}}} </span>{{/jour_periode_ferme}}
-			{{#com_fermeture_conges}}<span class='comfermeture'> {{{com_fermeture_conges}}}</span>{{/com_fermeture_conges}}
+            <span class='rm-popup-label'> Fermetures :</span> <span class='rm-fermetures'></span>
+            {{#jour_periode_ferme}} <span class='daysOff'> {{{jour_periode_ferme}}} </span>{{/jour_periode_ferme}}
+            {{#com_fermeture_conges}}<span class='comfermeture'> {{{com_fermeture_conges}}}</span>{{/com_fermeture_conges}}
 
             {{#jours_excep_fermes}}
                 <span class='rm-popup-label'> Fermetures exceptionnelles :</span> <br/>

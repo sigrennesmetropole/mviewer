@@ -1,0 +1,56 @@
+{
+    "type": "FeatureCollection",
+    "totalFeatures": 1,
+    "features": [{
+            "type": "Feature",
+            "id": "v_sitorg_organisme.fid-40b98828_1752b32f127_-55e3",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-187026.78, 6125418.16]
+            },
+            "geometry_name": "shape",
+            "properties": {
+                "id_organisme": 5120,
+                "nom_usage": "Mairie de Rennes",
+                "sigle": null,
+                "web": "https://metropole.rennes.fr",
+                "etat_organisme": "actif",
+                "commentaire": "MàJ 09/08/18 - MLM changement nom d'usage et nom officiel<br/>Mise à jour le 7/11/2017.RAS.Ajout horaires.<br/>Modification descriptif le 11/12/2018.",
+                "descriptif": "Mme Nathalie APPERE, maire.<br/>216 815 habitants (source INSEE - recensement de la population 2017-population municipale).",
+                "code_nomenclature_principale": "1.1.4",
+                "nom_theme_principal": "Administration/Démarches",
+                "nom_activite_principale": "Commune",
+                "nom_specialite_principale": "Mairie/Hôtel de ville",
+                "code_nomenclature_secondaire": "1.1.1",
+                "id_site_principal": 4227,
+                "nom_site_principal": "Mairie de Rennes",
+                "id_site_pere": null,
+                "nom_site_pere": null,
+                "code_insee": "35238",
+                "adresse_postale_adr": "Place de la Mairie",
+                "adresse_postale_bp_cs": "CS 63126",
+                "adresse_postale_cp": "35031",
+                "adresse_postale_comm": "Rennes",
+                "adresse_postale_cedex": "Cedex",
+                "nom_pvci": null,
+                "mot_cle": "Public | Horaires",
+                "est_organisme_principal": "oui",
+                "mails": "contact@ville-rennes.fr",
+                "telephones": "02 23 62 10 10",
+                "indice_niveau": 0,
+                "infos_horaires": "Chaque adjoint ou conseiller municipal délégué assure à tour de rôle une semaine de permanence à l'accueil de l'Hôtel de ville, du lundi au vendredi, 9h30 à 11h30 et 14h à 16h.",
+                "horaire_grille": "Lundi : 08:30-17:00 / Mardi : 08:30-17:00 / Mercredi : 08:30-17:00 / Jeudi : 08:30-17:00 / Vendredi : 08:30-17:00 / Samedi : 09:30-12:00 / Dimanche : Fermé",
+                "jour_periode_ferme": "Jours ou périodes de fermeture : Jour de l'an, Lundi de Pâques, Fête du travail, Victoire 1945, Ascension, Lundi de Pentecôte, Fête nationale, Assomption, Toussaint, Armistice 1918, Noël",
+                "variation_conges_scolaires": null,
+                "com_fermeture_conges": null,
+                "jours_excep_fermes": null
+            }
+        }
+    ],
+    "crs" : {
+		"type" : "name",
+		"properties" : {
+			"name" : "EPSG:3857"
+		}
+	}
+}

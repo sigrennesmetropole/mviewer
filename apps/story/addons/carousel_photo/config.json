@@ -1,0 +1,14 @@
+{
+    "js": [
+        "js/main.js",
+        "js/lib/slick/slick.js"
+    ],
+    "css": [
+        "js/lib/slick/slick.css",
+        "js/lib/slick/slick-theme.css"
+    ],
+    "html": "carousel.html",
+    "target": "page-content-wrapper",
+    "options": {
+    }
+}
