@@ -25,23 +25,23 @@
             
             <div id="slideauto{{{numero}}}" class="slide-feature slideA{{{numero}}}">
                 {{#image1}}<div class="thumbnail iframe-popup slide-feature{{{numero}}}" onclick='carousel.getpopupslide("slideauto{{{numero}}}", 0);'>
-                    <img src="{{image1}}" class="slick-slide-image" style="height: 150px;" {{#credit1}}data-sources="{{credit1}}"{{/credit1}} />
+                    <img src="{{image1}}" class="slick-slide-image" loading="lazy" style="height: 150px;" {{#credit1}}data-sources="{{credit1}}"{{/credit1}} />
                     <div class="text-credit">{{Légende1}}<br/>{{credit1}}</div>
                     </div>{{/image1}}
                 {{#image2}}<div class="thumbnail iframe-popup slide-feature{{{numero}}}" onclick='carousel.getpopupslide("slideauto{{{numero}}}", 1);'>
-                    <img src="{{image2}}" class="slick-slide-image" style="height: 150px;" {{#credit2}}data-sources="{{credit2}}"{{/credit2}} />
+                    <img src="{{image2}}" class="slick-slide-image" loading="lazy" style="height: 150px;" {{#credit2}}data-sources="{{credit2}}"{{/credit2}} />
                     <div class="text-credit">{{Légende2}}<br/>{{credit2}}</div>
                     </div>{{/image2}}
                 {{#image3}}<div class="thumbnail iframe-popup slide-feature{{{numero}}}" onclick='carousel.getpopupslide("slideauto{{{numero}}}", 2);'>
-                    <img src="{{image3}}" class="slick-slide-image" style="height: 150px;" {{#credit3}}data-sources="{{credit3}}"{{/credit3}} />
+                    <img src="{{image3}}" class="slick-slide-image" loading="lazy" style="height: 150px;" {{#credit3}}data-sources="{{credit3}}"{{/credit3}} />
                     <div class="text-credit">{{Légende3}}<br/>{{credit3}}</div>
                     </div>{{/image3}}
                 {{#image4}}<div class="thumbnail iframe-popup slide-feature{{{numero}}}" onclick='carousel.getpopupslide("slideauto{{{numero}}}", 3);'>
-                    <img src="{{image4}}" class="slick-slide-image" style="height: 150px;" {{#credit4}}data-sources="{{credit4}}"{{/credit4}} />
+                    <img src="{{image4}}" class="slick-slide-image" loading="lazy" style="height: 150px;" {{#credit4}}data-sources="{{credit4}}"{{/credit4}} />
                     <div class="text-credit">{{Légende4}}<br/>{{credit4}}</div>
                     </div>{{/image4}}
                 {{#image5}}<div class="thumbnail iframe-popup slide-feature{{{numero}}}" onclick='carousel.getpopupslide("slideauto{{{numero}}}", 4);'>
-                    <img src="{{image5}}" class="slick-slide-image" style="height: 150px;" {{#credit5}}data-sources="{{credit5}}"{{/credit5}} />
+                    <img src="{{image5}}" class="slick-slide-image" loading="lazy" style="height: 150px;" {{#credit5}}data-sources="{{credit5}}"{{/credit5}} />
                     <div class="text-credit">{{Légende5}}<br/>{{credit5}}</div>
                     </div>{{/image5}}
             </div>
