@@ -3,13 +3,6 @@
     "apiSitesorgKey": "c583383089f1c7e544e32cdf44c11045",
     "searchContent": [
         {
-            "categoryName": "Communes",
-            "searchParameterName": "Rechercher des communes",
-            "defaultCheck": true,
-            "nbItemDisplay": 5,
-            "zoom": 15
-        }, 
-        {
             "categoryName": "Voies",
             "searchParameterName": "Rechercher des voies",
             "defaultCheck": true,
