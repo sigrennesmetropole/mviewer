@@ -53,13 +53,14 @@
             {{#Le saviez vous ?}}<span class="rm-soustitre"> Le saviez-vous ? </span><br/>{{{Le saviez vous ?}}}<br/>{{/Le saviez vous ?}}
         </p>
         
+        {{#video1}}
         <div class="rm-video-div">
-           {{#video1}}
-                <iframe src="{{video1}}" style="height:300px;width:540px;" allowfullscreen="true" {{#creditvideo1}}data-sources="{{creditvideo1}}"{{/creditvideo1}} />
-                {{#légende vidéo}}<div class="text-credit">{{légende vidéo}}</div>{{/légende vidéo}}
-                {{#creditvideo1}}<div class="text-credit">{{creditvideo1}}</div>{{/creditvideo1}}
-           {{/video1}}
+            <iframe width="560" height="315" src="{{video1}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen {{#creditvideo1}}data-sources="{{creditvideo1}}"{{/creditvideo1}}></iframe>
+            <!-- <iframe src="{{video1}}" style="height:300px;width:540px;" allowfullscreen="true" {{#creditvideo1}}data-sources="{{creditvideo1}}"{{/creditvideo1}} /> -->
+            {{#légende vidéo}}<div class="text-credit">{{légende vidéo}}</div>{{/légende vidéo}}
+            {{#creditvideo1}}<div class="text-credit">{{creditvideo1}}</div>{{/creditvideo1}}
         </div>
+        {{/video1}}
         
         <p class="text-feature rm-plus-info-p">
             {{#plus_info}}<br/>

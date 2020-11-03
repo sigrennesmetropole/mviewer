@@ -458,10 +458,14 @@ ul ul {
     padding-bottom:70px;
 }
 */
+div .carousel {
+    padding-bottom:70px!important;
+}
+
 #right-panel .carousel-inner {
     padding-left: 10px!important;
     padding-right:25px!important;
-    padding-bottom:70px!important;
+    /*padding-bottom:70px!important;*/
 }
 
 #right-panel .slide .carousel-control .glyphicon-chevron-left {
