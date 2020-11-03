@@ -1,0 +1,95 @@
+{{#features}}
+	<li class="item">
+		<h5 id="{{{id_organisme}}}" class="rm-popup-title-feature organisme-title">{{nom_usage}}</h5>
+        
+		<p class="rm-popup-text-feature">
+			<span class='rm-popup-label'> Adresse :</span> {{adresse_postale_adr}} {{adresse_postale_cp}} {{adresse_postale_comm}}<br/>
+			{{#nom_site_principal}}<span class='rm-popup-label'> Nom du site :</span> {{{nom_site_principal}}}<br/>{{/nom_site_principal}}
+			{{#descriptif}}<span class='rm-popup-label'> Descriptif :</span> {{{descriptif}}}<br/>{{/descriptif}}
+			{{#horaire_grille}}<span class='rm-popup-label'> Horaires :</span><br><span class='horaires_ouvert'>{{{horaire_grille}}}</span>{{/horaire_grille}}
+			{{#infos_horaires}}<span class='rm-popup-label'> Informations :</span> {{{infos_horaires}}}<br/>{{/infos_horaires}}
+			{{#variation_conges_scolaires}}<span class='variationvac'> {{{variation_conges_scolaires}}}</span>{{/variation_conges_scolaires}}
+
+			<span class='rm-popup-label'> Fermetures :</span> <span class='rm-fermetures'></span>
+			{{#jour_periode_ferme}} <span class='daysOff'> {{{jour_periode_ferme}}} </span>{{/jour_periode_ferme}}
+			{{#com_fermeture_conges}}<span class='comfermeture'> {{{com_fermeture_conges}}}</span>{{/com_fermeture_conges}}
+
+            {{#jours_excep_fermes}}
+                <span class='rm-popup-label'> Fermetures exceptionnelles :</span> <br/>
+                <span class="exceptionalClosures">{{{jours_excep_fermes}}}</span>
+            {{/jours_excep_fermes}}
+
+		<p class="hiddenField orgTheme"> {{#nom_theme_principal}} {{{nom_theme_principal}}} {{/nom_theme_principal}} </p>
+		<p class="hiddenField orgId"> {{#id_organisme}} {{{id_organisme}}} {{/id_organisme}} </p>  
+        </p>
+	</li>
+{{/features}}
+
+
+
+<script>
+
+	for ( var i =0; i < $('.orgTheme').length; i++) {
+		var id= '';
+		switch( $('.orgTheme')[i].innerText.trim() ) {
+			case 'Déplacement/mobilité':
+				id = $('.orgTheme')[i].parentElement.children[0].id;
+				if (typeof id === 'string') {
+					$('#' + id).addClass('transportDeplacement');
+				}
+			break;
+			case 'Environnement/Cadre de vie':
+				id = $('.orgTheme')[i].parentElement.children[0].id;
+				if (typeof id === 'string') {
+					$('#' + id).addClass('cadreDeVie');
+				}
+			break;
+			case 'Education/Enseignement/Recherche':
+				id = $('.orgTheme')[i].parentElement.children[0].id;
+				if (typeof id === 'string') {
+					$('#' + id).addClass('educationEnfance');
+				}
+			break;
+			case 'Santé/Action sociale':
+				id = $('.orgTheme')[i].parentElement.children[0].id;
+				if (typeof id === 'string') {
+					$('#' + id).addClass('socialSanté');
+				}
+			break;
+			case 'Administration/Démarches':
+			case 'Sécurité/Justice':
+				id = $('.orgTheme')[i].parentElement.children[0].id;
+				if (typeof id === 'string') {
+					$('#' + id).addClass('servicesPublics');
+				}
+			break;
+			case 'Culture/Socioculturel':
+				id = $('.orgTheme')[i].parentElement.children[0].id;
+				if (typeof id === 'string') {
+					$('#' + id).addClass('cultureSocioculturel');
+				}
+			break;
+			case 'Sport':
+				id = $('.orgTheme')[i].parentElement.children[0].id;
+				if (typeof id === 'string') {
+					$('#' + id).addClass('sportsLoisirs');
+				}
+			break;
+			case 'Logement/Urbanisme':
+				id = $('.orgTheme')[i].parentElement.children[0].id;
+				if (typeof id === 'string') {
+					$('#' + id).addClass('logementHebergementJeunes');
+				}
+			break;
+			case 'Economie/Emploi':
+				id = $('.orgTheme')[i].parentElement.children[0].id;
+				if (typeof id === 'string') {
+					$('#' + id).addClass('economieEmploi');
+				}
+			break;
+			default:
+		}
+	}
+
+
+</script>

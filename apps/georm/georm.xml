@@ -481,7 +481,7 @@
 				tooltipWMS="false"
 				tooltipWMSContent= "[b]$nom_usage[/b]"
 				infopanel="right-panel">
-                <template url="apps/georm/templates/organismes.mst"></template>
+                <template url="apps/georm/templates/organismes_ouvertures.mst"></template>
 			</layer>
 		</theme>
 		<theme id="theme-extras" name="Extras" collapsed="true" icon="fas fa-plus-square">

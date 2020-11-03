@@ -1,0 +1,20 @@
+{
+    "apiRVAKey": "4d6518cc4f4d39580da4",
+    "apiSitesorgKey": "c583383089f1c7e544e32cdf44c11045",
+    "searchContent": [
+        {
+            "categoryName": "Voies",
+            "searchParameterName": "Rechercher des voies",
+            "defaultCheck": true,
+            "nbItemDisplay": 5,
+            "zoom": 15
+        },
+        {
+            "categoryName": "Adresses",
+            "searchParameterName": "Rechercher des adresses",
+            "defaultCheck": true,
+            "nbItemDisplay": 5,
+            "zoom": 15
+        }
+    ]
+}

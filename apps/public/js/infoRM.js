@@ -153,7 +153,8 @@ var info = (function () {
             var vectorLayers = {};
             var format = new ol.format.GeoJSON();
             _map.forEachFeatureAtPixel(pixel, function(feature, layer) {
-                var l = layer.get('mviewerid');
+                //var l = layer.get('mviewerid');
+                var l = (layer!= null ? layer.get('mviewerid'): null);
                 if (l && l != 'featureoverlay' && l != 'elasticsearch' ) {
                     var queryable = _overLayers[l].queryable;
                     if (queryable) {
@@ -635,9 +636,9 @@ var info = (function () {
                     feature.getProperties()["title"] || feature.getProperties()["nom"] ||
                     feature.getProperties()[l.fields[0]]);
             }
-
+            
             _featureTooltip.css({
-                left: (pixel[0]) + 'px',
+                left: (parseInt($("#map").css('margin-left'))+ pixel[0]) + 'px',
                 top: (pixel[1] - 15) + 'px'
             });
             _featureTooltip.tooltip('hide')
