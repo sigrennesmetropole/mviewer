@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <application
-        title="Covid-19 | Distance autorisée de déplacement"
+        title="Autorisation de déplacement"
         logo="https://public.sig.rennesmetropole.fr/ressources/img/logos/rm/logo_mviewer_gris_inverse.png"
         titlehelp="À propos des cartes thématiques"
 		help="apps/site_internet/html/site_internet_help.html"
