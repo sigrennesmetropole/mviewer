@@ -9,7 +9,7 @@ var configuration = (function () {
 
     // Mviewer version a saisir manuellement
 
-    var VERSION = "3.3";
+    var VERSION = "3.4";
 
     var _showhelp_startup = false;
 
@@ -179,12 +179,12 @@ var configuration = (function () {
                             $(conf).find("theme#" + this.themeId).replaceWith(node);
                         } else {
                             $(conf).find("theme#" + this.themeId).remove();
-                            //console.log("La thématique " + this.themeId + " n'a pu être trouvée dans " + this.url );
+                            console.log("La thématique " + this.themeId + " n'a pu être trouvée dans " + this.url );
                         }
                     },
                     error: function(xhr, status, error) {
                         //Si la thématique n'est pas récupérable, on supprime la thématique dans la configuration courante
-                        //console.log(this.url + " n'est pas accessible. La thématique n'a pu être chargée");
+                        console.log(this.url + " n'est pas accessible. La thématique n'a pu être chargée");
                         $(conf).find("theme#" + this.themeId).remove();
                     }
                 }));
@@ -308,11 +308,13 @@ var configuration = (function () {
                 url: _authentification.url, success: function (response) {
                     //test georchestra proxy
                     if(response.proxy == "true") {
-                        $("#login").show();
+                        $("#login-box").show();
+                        let title = mviewer.lang ? mviewer.tr('tbar.right.logout') : "Se déconnecter";
                         if (response.user !="") {
                             $("#login").attr("href",_authentification.logouturl);
-                            $("#login").attr("title","Se déconnecter");
-                            console.log("Bonjour " + response.user);
+                            $("#login").attr("title", title);
+                            $("#login span")[0].className = 'fas fa-lock';
+                            $("#login-box>span").text(response.user);
                         } else {
                             var url="";
                             if (location.search=="") {
@@ -588,7 +590,7 @@ var configuration = (function () {
                         layer.attributefilter === "true") ? true : false;
                     oLayer.attributefield = layer.attributefield;
                     oLayer.attributeoperator = layer.attributeoperator || "=";
-                    oLayer.attributelabel = layer.attributelabel || "Attributs";
+                    oLayer.attributelabel = layer.attributelabel;
                     if (layer.attributevalues && layer.attributevalues.search(",")) {
                         oLayer.attributevalues = layer.attributevalues.split(",");
                     }
@@ -637,12 +639,7 @@ var configuration = (function () {
                     oLayer.dynamiclegend = (layer.dynamiclegend === "true") ? true : false;
                     oLayer.vectorlegend =  (layer.vectorlegend === "true") ? true : false;
                     oLayer.nohighlight =  (layer.nohighlight === "true") ? true : false;
-                    if (layer.geocodingfields) {
-                        oLayer.geocodingfields = layer.geocodingfields.split(",");
-                    }
-                    oLayer.geocoder = layer.geocoder || false;
-                    oLayer.xfield = layer.xfield;
-                    oLayer.yfield = layer.yfield;
+                    oLayer.infohighlight =  (layer.infohighlight === "false") ? false : true;
                     oLayer.legendurl=(layer.legendurl)? layer.legendurl : mviewer.getLegendUrl(oLayer);
                     if (oLayer.legendurl === "false") {oLayer.legendurl = "";}
                     // AJOUT CBR - déplier par défaut les options de la couche dans la légende
@@ -838,17 +835,24 @@ var configuration = (function () {
                         mviewer.processLayer(oLayer, l);
                     }// end kml
 
-                    if (oLayer.type === 'csv') {
+                    if (oLayer.type === 'import') {
                         l = new ol.layer.Vector({
                             source: new ol.source.Vector()
                         });
-                        if (oLayer.url) {
-                            csv.loadCSV(oLayer, l);
-                        } else {
-                            csv.initLoaderFile(oLayer);
+                        if (layer.projections) {
+                            oLayer.projections = layer.projections;
                         }
+                        if (layer.geocodingfields) {
+                            oLayer.geocodingfields = layer.geocodingfields.split(",");
+                        }
+                        oLayer.geocoder = layer.geocoder || false;
+                        oLayer.geocoderurl = layer.geocoderurl || false;
+                        oLayer.xfield = layer.xfield;
+                        oLayer.yfield = layer.yfield;
+                        //allow transformation to mapProjection before map is initialized
+                        oLayer.mapProjection = conf.mapoptions.projection;
                         mviewer.processLayer(oLayer, l);
-                    }// end csv
+                    }// end import
 
                     if (oLayer.type === 'customlayer') {
                         var hook_url = 'customLayers/' + oLayer.id + '.js';

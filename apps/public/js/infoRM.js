@@ -73,11 +73,24 @@ var info = (function () {
     /**
      * Property: _sourceOverlay
      * @type {ol.source.Vector}
-     * Used to hightlight vector features
+     * Used to hightlight hovered vector features
      */
 
     var _sourceOverlay;
 
+/**
+     * Property: _queriedFeatures
+     * Array of ol.Feature
+     * Used to store features retrieved on click
+     */
+    var _queriedFeatures;
+
+    /**
+     * Property: _firstlayerFeatures
+     * Array of ol.Feature
+     * Used to store features of firstlayer retrieved on click
+     */
+    var _firstlayerFeatures;
     // debut modif CT 31/01/2020
     var nbItemsSelectedLayer = 0;
     //var layerCount  = "";
@@ -124,6 +137,9 @@ var info = (function () {
      */
 
     var _queryMap = function (evt, options) {
+    	_queriedFeatures = [];
+        _firstlayerFeatures = [];
+        var showPin = false;
         // AJOUT CBR
         var pos = 0;
         // FIN AJOUT
@@ -155,14 +171,19 @@ var info = (function () {
             _map.forEachFeatureAtPixel(pixel, function(feature, layer) {
                 //var l = layer.get('mviewerid');
                 var l = (layer!= null ? layer.get('mviewerid'): null);
-                if (l && l != 'featureoverlay' && l != 'elasticsearch' ) {
+                if (l && l != 'featureoverlay' && l != 'selectoverlay' && l != 'subselectoverlay' && l != 'elasticsearch' ) {
                     var queryable = _overLayers[l].queryable;
                     if (queryable) {
+                        if (layer.get('infohighlight')) {
+                            _queriedFeatures.push(feature);
+                        } else {
+                            showPin = true;
+                        }
                         if (vectorLayers[l] && vectorLayers[l].features) {
-                            vectorLayers[l].features.push({properties: feature.getProperties()});
+                            vectorLayers[l].features.push(feature);
                         } else {
                             vectorLayers[l] = {features:[]};
-                            vectorLayers[l].features.push({properties: feature.getProperties()});
+                            vectorLayers[l].features.push(feature);
                         }
                      }
                 }
@@ -310,6 +331,7 @@ var info = (function () {
                     var theme = layerinfos.theme;
                     var layerid = layerinfos.layerid;
                     var theme_icon = layerinfos.icon;
+                    var infohighlight = layerinfos.infohighlight;
                     // debut modif CT 03/02/2020
                     var color_back = interfaceModifying.getColorBack(layerinfos.sld);
                     // fin
@@ -326,6 +348,8 @@ var info = (function () {
                                 && (layerResponse.search('<!--nodatadetect--><!--nodatadetect-->')<0)
                                 && (layerResponse.search('<!--nodatadetect-->\n<!--nodatadetect-->')<0)) {
                                 html = layerResponse;
+                            // no geometry in html
+                            showPin = true;
                             }
                             break;
                         case "application/vnd.ogc.gml":
@@ -362,46 +386,46 @@ var info = (function () {
                         }
                     } else {
                         if (xml) {
-                            var obj = _parseGML(xml);
-                            var features = obj.features;
-                            if (features.length > 0) {
-                                // MODIF CBR pour gestion des multiples features
-                                /*
-                                if (layerinfos.template) {
-                                   html_result.push(applyTemplate(features.reverse(), layerinfos));
-                                } else {
-                                    html_result.push(createContentHtml(features.reverse(), layerinfos));
-                                }
-                                */
-                                var conf = configuration.getConfiguration();
-                                // découper chaque feature en simulant une nouvelle couche
-                                var uniqueFeature = [];
-                                features.forEach(function(feature) {
-                                    var uniqueFeature = [];
-                                    uniqueFeature.push(feature);
+                            var getFeatureInfo = _parseWMSGetFeatureInfo(xml, layerid);
+                            if(!getFeatureInfo.hasGeometry || !getFeatureInfo.features.length || !infohighlight) {
+                                showPin = true;
+                            } else {
+                                // no geometry could be found in gml
+                                _queriedFeatures.push.apply(_queriedFeatures, getFeatureInfo.features);
+                                var features = getFeatureInfo.features;
+                                if (features.length > 0) {
+                                    // MODIF CBR pour gestion des multiples features
+                                    /*
                                     if (layerinfos.template) {
-                                       html_result.push(applyTemplate(uniqueFeature.reverse(), layerinfos));
+                                        html_result.push(applyTemplate(features, layerinfos));
                                     } else {
-                                        html_result.push(createContentHtml(uniqueFeature.reverse(), layerinfos));
+                                        html_result.push(createContentHtml(features, layerinfos));
                                     }
-                                });
-                                // FIN MODIF CBR
+                                    */
+                                    var conf = configuration.getConfiguration();
+                                    // découper chaque feature en simulant une nouvelle couche
+                                    var uniqueFeature = [];
+                                    features.forEach(function(feature) {
+                                        var uniqueFeature = [];
+                                        uniqueFeature.push(feature);
+                                        if (layerinfos.template) {
+                                           html_result.push(applyTemplate(uniqueFeature.reverse(), layerinfos));
+                                        } else {
+                                            html_result.push(createContentHtml(uniqueFeature.reverse(), layerinfos));
+                                        }
+                                    });
+                                    showPin = true;
+                                    // FIN MODIF CBR
+                                }
                             }
                         }
                     }
                     //If many results, append panels views
                     if (html_result.length > 0) {
                         // debut modif CT 31/01/2020
-                        /*interfaceModifying.queryMapModifications(html_result, layerid, layerCount, nbItemsSelectedLayer, pos, id, views, panel, name, layerid,
-                                    theme_icon, color_back);*/
-
                         for (var i = 0; i < html_result.length; i++) {
                             // debut modif CT 09/01/2020
-          //                  if (typeof layerCount !== 'undefined') {
-          //                      if (layerCount.trim().length > 0 && layerCount.replace(':', '') === layerid) {
-                                    nbItemsSelectedLayer++;
-          //                      }
-          //                  }
+                             nbItemsSelectedLayer++;
                             // fin
                             pos++;
                             if (i > 0) {
@@ -419,7 +443,8 @@ var info = (function () {
                                 "theme_icon": theme_icon,
                                 "cat_color": color_back,
                                 "index": pos,
-                                "html": html_result[i]
+                                "html": html_result[i],
+                        		"pin": showPin
                             });
                         
                             if (pos > 1) {
@@ -440,20 +465,20 @@ var info = (function () {
                             "name": name,
                             "layerid": layerid,
                             "theme_icon": theme_icon,
-                            "html": html_result.join("")
-                        });*/
+                        "html": html_result.join(""),
+                        "pin": showPin
+                    });*/
                     }
                 });
-
-                // debut modif CT 31/01/2020
-        /*        if (typeof layerCount !== 'undefined') {
-                    if (layerCount.trim().length > 0) {
-                        rmOptionsManager.setClickNbItems(nbItemsSelectedLayer);
-                    }
-                } else {
-         */           rmOptionsManager.setClickNbItems(pos);
-         //       }
-                // fin
+                
+            var infoLayers = [];
+            for (var panel in views) {
+                infoLayers = infoLayers.concat(views[panel].layers);
+            }
+            mviewer.setInfoLayers(infoLayers);
+            // debut modif CT 31/01/2020
+	        rmOptionsManager.setClickNbItems(pos);
+            // fin
 
                 $.each(views, function (panel, view) {
                     if (views[panel].layers.length > 0){
@@ -466,10 +491,6 @@ var info = (function () {
                         }
                         $("#"+panel+" .popup-content").append(template);
                         //TODO reorder tabs like in theme panel
-                        // debut modif CT 07/02/2020
-                        //SUPPR CBR - l ordre des onglets correspond à l'ordre défini des couches dans le fichier de conf
-                        //interfaceModifying.setTabFirstPosition(template);
-                        // fin
 
                     var title = $("[href='#slide-"+panel+"-1']").closest("li").attr("title");
                     $("#"+panel+" .mv-header h5").text(title);
@@ -501,13 +522,44 @@ var info = (function () {
                         html: true,
                         template: mviewer.templates.tooltip
                    });
+                    // init sub selection
+                    _firstlayerFeatures = _queriedFeatures.filter(feature => {
+                        return feature.get("mviewerid") == views[panel].layers[0].layerid;
+                    })
+                    // change feature of sub selection
                    $('.carousel.slide').on('slide.bs.carousel', function (e) {
                       $(e.currentTarget).find(".counter-slide").text($(e.relatedTarget).attr("data-counter"));
+                        var selectedFeature = _queriedFeatures.filter(feature => {
+                            return feature.ol_uid == e.relatedTarget.id;
+                        })
+                        mviewer.highlightSubFeature(selectedFeature[0]);
+                    });                    
+                    // change layer of sub selection
+                    if (configuration.getConfiguration().mobile) {
+                        $('.panel-heading').on('click', function (e) {
+                            changeSubFeatureLayer(e);
+                        });
+                    } else {
+                        $('.nav-tabs li').on('click', function (e) {
+                            changeSubFeatureLayer(e);
                    });
+                    }
+                } else {
+                    $('#'+panel).removeClass("active");
+                }
+                // highlight features and sub feature
+                // MODIF CBR
+                /*
+                mviewer.highlightFeatures(_queriedFeatures);
+                mviewer.highlightSubFeature(_firstlayerFeatures[0]);
+                */
+                // FIN MODIF CBR
+                // show pin as fallback if no geometry for wms layer
+                if (showPin || (!_queriedFeatures.length && !_firstlayerFeatures.length)) {
                    mviewer.showLocation(_projection.getCode(), _clickCoordinates[0], _clickCoordinates[1]);
 
                 } else {
-                    $('#'+panel).removeClass("active");
+                    $("#mv_marker").hide();
                 }
             });
             $('#loading-indicator').hide();
@@ -519,6 +571,13 @@ var info = (function () {
             _mvReady = true;
 
         };
+
+        var changeSubFeatureLayer = function (e) {
+            _firstlayerFeatures = _queriedFeatures.filter(feature => {
+                return feature.get("mviewerid") == e.currentTarget.dataset.layerid; 
+            })
+            mviewer.highlightSubFeature(_firstlayerFeatures[0]);
+        }
 
         var ajaxFunction = function () {
             urls.forEach(function(request) {
@@ -571,7 +630,11 @@ var info = (function () {
         $("#map").css("cursor", "");
 
         var feature = _map.forEachFeatureAtPixel(pixel, function (feature, layer) {
-            if (!layer || layer.get('mviewerid') === 'featureoverlay') {
+            if (!layer 
+                || layer.get('mviewerid') === 'featureoverlay' 
+                || layer.get('mviewerid') === 'selectoverlay' 
+                || layer.get('mviewerid') === 'subselectoverlay'
+            ) {
                 return;
             }
             var ret = false;
@@ -649,97 +712,34 @@ var info = (function () {
     };
 
      /**
-     * Private Method:  parseGML used to parse GML response
-     from servers like geoserver, mapserver, arcgisserver
+     * Private Method: _parseWMSGetFeatureInfo used to parse GML response
+     from wms servers. Tries to use bbox as geometry if no geometry returned 
      * @ param xml {Geography Markup Language}
      */
-    var _parseGML = function (xml) {
-        var results = $.xml2json(xml);
-        var list = [];
-        var o = {features: []};
-        // GEOSERVER
-        if (results.featureMember) {
-            if ($.isArray(results.featureMember) === false) {
-                list.push(results.featureMember);
-            } else {
-                list = results.featureMember;
+    var _parseWMSGetFeatureInfo = function (xml, layerid) {
+        var features = new ol.format.WMSGetFeatureInfo().readFeatures(xml);
+        var hasGeometry = true;
+        features.forEach(feature => {
+            // set layer mviewerid for features from WMS layers (already present for vector layers)
+            feature.set("mviewerid", layerid);
+            // if getfeatureinfo does not return geometry try to set geometry with center of extent
+            if (feature.getGeometry() === undefined) {
+                var properties = feature.getProperties();
+                hasGeometry = false;
+                for (p in properties) {
+                    if (Array.isArray(properties[p]) && properties[p].length === 4) {
+                        var center = ol.extent.getCenter(properties[p]);
+                        feature.setGeometry(new ol.geom.Point(center));
+                        hasGeometry = true;
             }
-            for (var j=0; j<list.length; j++) {
-                var obj=list[j];
-                for(var prop in obj) {
-                    if(obj.hasOwnProperty(prop))
-                        o.features.push({layername:prop, properties:obj[prop]});
                 }
             }
-        } else if (results.FeatureInfoCollection) {
-            // ArcGIS Server
-            var feat_info_col_list = [];
-
-            if ($.isArray(results.FeatureInfoCollection) === false) {
-                feat_info_col_list.push(results.FeatureInfoCollection);
-            } else {
-                feat_info_col_list = results.FeatureInfoCollection;
-            }
-
-            for (var i=0; i<feat_info_col_list.length; i++) {
-                feat_info_col = feat_info_col_list[i];
-                var feat_info_list = [];
-                var layer_name = feat_info_col.layername;
-
-                if ($.isArray(feat_info_col.FeatureInfo) === false) {
-                    feat_info_list.push(feat_info_col.FeatureInfo);
-                } else {
-                    for (var j=0; j<feat_info_col.FeatureInfo.length ;j++) {
-                        feat_info_list.push(feat_info_col.FeatureInfo[j]);
+        })
+        return {
+            'features': features,
+            'hasGeometry': hasGeometry
+        };
                     }
-                }
-
-                for (var k=0; k<feat_info_list.length; k++) {
-                    var field_obj=feat_info_list[k];
-                    var feat_obj = {};
-                    for (var field in field_obj.Field) {
-                        feat_obj[field_obj.Field[field].FieldName] = field_obj.Field[field].FieldValue;
-                    }
-                    o.features.push({layername:layer_name, properties:feat_obj});
-                }
-            }
-        } else if (results.member) {
-             if ($.isArray(results.member) === false) {
-                list.push(results.member);
-            } else {
-                list = results.member;
-            }
-            for (var j=0; j<list.length; j++) {
-                var obj=list[j];
-                for(var prop in obj) {
-                    if(obj.hasOwnProperty(prop))
-                        o.features.push({layername:prop, properties:obj[prop]});
-                }
-            }
-        } else {
-            // MAPSERVER Huge hack
-            for (var p in results) {
-                if (typeof(results[p]) === 'object') {
-                    //Search for response type : layername_layer & layername_feature
-                    var mslayer = p.substring(0,p.search('_layer')); //eg. STQ_layer
-                    if (results[mslayer + '_layer'] && results[mslayer + '_layer'][mslayer + '_feature']) {
-                        if ($.isArray(results[mslayer + '_layer'][mslayer + '_feature']) === false) {
-                            o.features.push({layername:mslayer, properties:results[mslayer + '_layer'][mslayer + '_feature']});
-                        } else {
-                            for (var k=0; k<results[mslayer + '_layer'][mslayer + '_feature'].length ;k++) {
-                                o.features.push({
-                                    layername:mslayer,
-                                    properties:results[mslayer + '_layer'][mslayer + '_feature'][k]
-                                });
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        return o;
-    };
 
     /**
      * Private Method: createContentHtml
@@ -756,14 +756,14 @@ var info = (function () {
         features.forEach(function (feature) {
             var nbimg = 0;
             counter+=1;
-            var attributes = feature.properties;
+            var attributes = feature.getProperties();
             var fields = (olayer.fields) ? olayer.fields : $.map(attributes, function (value, key) {
                 if (typeof value !== "object") {
                     return key;
                 }
             });
-            var featureTitle = feature.properties.title || feature.properties.name || feature.properties[fields[0]];
-            var li = '<li class="item" ><div class="gml-item" ><div class="gml-item-title">'
+            var featureTitle = feature.getProperties().title || feature.getProperties().name || feature.getProperties()[fields[0]];
+            var li = '<li id="' + feature.ol_uid + '" class="item" ><div class="gml-item" ><div class="gml-item-title">'
             if (typeof featureTitle != 'undefined') {
                 li += featureTitle;
             }
@@ -803,22 +803,24 @@ var info = (function () {
         var tpl = olayer.template;
         var obj = {features: []};
         var activeAttributeValue = false;
+        var geojson = new ol.format.GeoJSON();
         // if attributeControl is used for this layer, get the active attribute value and
         // set this value as property like 'value= true'. This allows use this value in Mustache template
         if (olayer.attributefilter && olayer.layer.getSource().getParams()['CQL_FILTER']) {
             var activeFilter = olayer.layer.getSource().getParams()['CQL_FILTER'];
-            activeAttributeValue = activeFilter.split(" " + olayer.attributeoperator + " ")[1].replace(/\'/g, "");
+            activeFilter.split(olayer.attributeoperator).map(e=>e.replace(/[\' ]/g, ''))[1];
         }
         olfeatures.forEach(function(feature){
             if (activeAttributeValue) {
-                feature.properties[activeAttributeValue] = true;
+                feature.setProperties({'activeAttributeValue': true});
             }
             // add a key_value array with all the fields, allowing to iterate through all fields in a mustache templaye
-            feature.properties['fields_kv'] = function () {
+            var fields_kv = function () {
               fields_kv = [];
               keys = Object.keys(this);
               for (i = 0 ; i < keys.length ; i++ ) {
-                if (keys[i] == "fields_kv" || keys[i] == "serialized") {
+                if (keys[i] == "fields_kv" || keys[i] == "serialized" 
+                    || keys[i] === "feature_ol_uid" || keys[i] === "mviewerid" || typeof this[keys[i]] === "object") {
                   continue;
                 }
                 field_kv = {
@@ -829,12 +831,15 @@ var info = (function () {
               }
               return fields_kv;
             }
+            feature.setProperties({'fields_kv': fields_kv});
             // add a serialized version of the object so it can easily be passed through HTML GET request
             // you can deserialize it with `JSON.parse(data)` when data is the serialized data
-            feature.properties['serialized'] = function () {
-              return encodeURIComponent(JSON.stringify(feature.properties));
+            var serialized = function () {
+              return encodeURIComponent(geojson.writeFeature(feature));
             }
-            obj.features.push(feature.properties);
+            feature.setProperties({'serialized': serialized})
+            // attach ol_uid to identify feature in DOM (not all features have a feature id as property)
+            obj.features.push({...feature.getProperties(), feature_ol_uid: feature.ol_uid});
         });
         var rendered = Mustache.render(tpl, obj);
         return _customizeHTML(rendered, olfeatures.length);
@@ -922,9 +927,6 @@ var info = (function () {
                 $('#feature-info').tooltip('hide');
             }
         });
-        // debut modif CT 03/02/2020
-   //     layerCount  = rmOptionsManager.getLayerCount();
-        // fin
     };
 
     /**
