@@ -532,7 +532,11 @@ var info = (function () {
                         var selectedFeature = _queriedFeatures.filter(feature => {
                             return feature.ol_uid == e.relatedTarget.id;
                         })
+                        // MODIF CBR
+                        /*
                         mviewer.highlightSubFeature(selectedFeature[0]);
+                        */
+                        // FIN MODIF CBR
                     });                    
                     // change layer of sub selection
                     if (configuration.getConfiguration().mobile) {
@@ -576,7 +580,11 @@ var info = (function () {
             _firstlayerFeatures = _queriedFeatures.filter(feature => {
                 return feature.get("mviewerid") == e.currentTarget.dataset.layerid; 
             })
+            // MODIF CBR
+            /*
             mviewer.highlightSubFeature(_firstlayerFeatures[0]);
+            */
+            // FIN MODIF CBR
         }
 
         var ajaxFunction = function () {
