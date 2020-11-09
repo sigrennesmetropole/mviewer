@@ -92,7 +92,6 @@
 
     // initialisation des événements
     function _init(){
-        console.log("mise en place de l'événement");
         var activeTabs;
         var oldTabs;
         jQuery('#right-panel > .popup-content').on("DOMSubtreeModified", function() {
@@ -102,7 +101,6 @@
                     activeTabs.push(l_tabs[i].innerHTML);
                 }
                 if(!oldTabs || oldTabs.length==0 ||activeTabs.sort().join() != oldTabs.sort().join()){
-                    console.log("panneau droit chargé à nouveau");
                     oldTabs =  [].concat(activeTabs);
                     rmCategorieProjUrbain();
                     rmSlickPhotoCarousel();
@@ -115,7 +113,6 @@
                     activeTabs.push(l_tabs[i].innerHTML);
                 }
                 if(!oldTabs || oldTabs.length==0 ||activeTabs.sort().join() != oldTabs.sort().join()){
-                    console.log("panneau droit chargé à nouveau");
                     oldTabs =  [].concat(activeTabs);
                     rmCategorieProjUrbain();
                     rmSlickPhotoCarousel();
