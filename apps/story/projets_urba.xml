@@ -26,10 +26,10 @@
     </extensions>
     
     <themes mini="true">
-        <theme id="theme-zac" name="ZAC" collapsed="true" icon="fas fa-border-style"> 
+        <theme id="theme-zac" name="ZAC et ZA" collapsed="true" icon="fas fa-border-style"> 
             <layer 
                 id="urba_fonc:zac"
-                name="Zones d'activité"
+                name="Zone d'aménagement concerté (ZAC) et zone d'activités (ZA)"
                 type="wms"
                 url="https://public.sig.rennesmetropole.fr/geoserver/wms"
                 sld="https://public.sig.rennesmetropole.fr/ressources/img/mviewer/sld/zac_contour_encours.sld"
