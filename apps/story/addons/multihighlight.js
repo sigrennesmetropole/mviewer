@@ -11,7 +11,7 @@ var multihighlight = (function() {
         anchorXUnits: 'fraction',
         anchorYUnits: 'pixels',
         scale:0.25,
-        src: 'https://public.sig.rennesmetropole.fr/ressources/img/mviewer/marker_rennes2030_2.png',
+        src: 'https://public.sig.rennesmetropole.fr/ressources/img/mviewer/marker_rennes2030_3.png',
       }),
     });
     
