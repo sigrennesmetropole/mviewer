@@ -1,6 +1,6 @@
 const layer = new ol.layer.Vector({
     source: new ol.source.Vector({
-        url: 'https://public.sig.rennesmetropole.fr/geoserver/wfs?service=WFS&version=1.0.0&request=GetFeature&typeNames=trp_rout:geotravaux_evenement_1j&outputFormat=application/json&srsName=EPSG:4326',
+        url: 'https://public-test.sig.rennesmetropole.fr/geoserver/wfs?service=WFS&version=1.0.0&request=GetFeature&typeNames=trp_rout:geotravaux_evenement_1j&outputFormat=application/json&srsName=EPSG:4326',
         format: new ol.format.GeoJSON()
     }),
     style: function(feature, resolution) {
