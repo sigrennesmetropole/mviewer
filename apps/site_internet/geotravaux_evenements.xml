@@ -40,7 +40,7 @@ attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork
                 id="trp_rout:v_rva_trafic_fcd"
                 name="Trafic routier"
                 type="wms"
-                url="https://public-test.sig.rennesmetropole.fr/geoserver/ows"
+                url="https://public.sig.rennesmetropole.fr/geoserver/ows"
                 visible="true"
                 infoformat="application/vnd.ogc.gml"
                 metadata="undefined"
