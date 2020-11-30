@@ -7,13 +7,15 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="description" content="Visualiseur géographique" />
 
-    <link rel="icon" type="image/png" href="favicon.png" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/css/flag-icon.css" rel="stylesheet">
+    <!--SIG Rennes Metropole personnalized favicon-->
+    <!-- <link rel="icon" type="image/png" href="favicon.png" /> -->
+    <link rel="icon" type="image/png" href="favicon_gris.ico" />
+    <link href="lib/flag-icon-3.4.3/flag-icon.css" rel="stylesheet">
     <link href="lib/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="lib/simple-slidebar/simple_slidebar.css" rel="stylesheet">
     <link href="lib/bootstrap-datepicker-1.6.1/css/bootstrap-datepicker3.min.css" rel="stylesheet">
     <link rel="stylesheet" href="lib/bootstrap-slider/9.1.3/css/bootstrap-slider.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" />
+    <link rel="stylesheet" href="lib/bootstrap-tagsinput-0.8.0/bootstrap-tagsinput.css" />
     <link href="lib/font-awesome-5.13.0/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="lib/openlayers/6.3.1/css/ol.css" type="text/css" />
     <link rel="stylesheet" href="css/mviewer.css" type="text/css" />
@@ -79,6 +81,7 @@
         <div id="loader-errormsg" style='display:none'><i class="fas fa-exclamation-triangle" style="font-size:xx-large"></i><br>Votre navigateur n'est pas compatible avec cette application.<br> Les navigateurs recommandés sont Google Chrome, Mozilla Firefox, Microsoft Edge, Apple Safari ou tout navigateur à base de Chromium. <br> Si votre navigateur fait partie de cette liste, veuillez le mettre à jour ou tester un autre navigateur.</div>
 
     </div>
+    <div id="error"><h1></h1></div>
     <div id="main" style="opacity: 0.01;">
     <!-- Ajax Loader -->
     <div id="loading-indicator" style="display:none">
@@ -123,6 +126,15 @@
                 <!--//LANG SELECTOR-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <div id="login-box" class="navbar-form" style="display:none;">
+                        <span></span>
+                        <a class="btn btn-default btn-raised" type="button" href="?login" id="login" title="Se connecter" tabindex="110" accesskey="10"
+                            i18n="tbar.right.login">
+                            <span class="fas fa-lock-open" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </li>
                 <li>
                     <div class="navbar-form" role="search" id="searchtool">
                         <div class="form-group input-group">
@@ -219,10 +231,6 @@
             </div>
             <!-- SECOND VERTICAL RIGHT TOOLBAR -->
             <div id="toolstoolbar" class="btn-group-vertical btn-group-sm" role="group" aria-label="true">
-                <a class="btn btn-default btn-raised" type="button" href="?login" id="login" title="Se connecter" tabindex="110" accesskey="10"
-                    i18n="tbar.right.login" style="display:none;">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                </a>
                 <button data-toggle="modal" data-target="#sharepanel" onclick="mviewer.mapShare();" id="sharebtn" title="Partager cette carte"
                      i18n="tbar.right.share" tabindex="111" accesskey="11" class="btn btn-default btn-raised">
                      <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
@@ -449,7 +457,7 @@
         <!--ALERTS AREA -->
         <div id="alerts-zone" ></div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+        <script src="lib/mustache-2.3.0/mustache.min.js"></script>
         <script type="text/javascript" src="lib/proj4js/2.3.6/proj4.js"></script>
         <script type="text/javascript" src="lib/jquery/base/1.10.2/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="lib/openlayers/6.3.1/build/ol.js"></script>
@@ -461,7 +469,7 @@
         <script type="text/javascript" src="lib/bootstrap-slider/9.1.3/bootstrap-slider.min.js"></script>
         <script type="text/javascript" src="lib/typeahead/typeahead.bundle.min.js"></script>
         <script type="text/javascript" src="lib/bootstrap-typeahead/bootstrap3-typeahead.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+        <script src="lib/bootstrap-tagsinput-0.8.0/bootstrap-tagsinput.min.js"></script>
         <script type="text/javascript" src="lib/fuse/fuse.min.js"></script>
         <script type="text/javascript" src="js/extend.js"></script>
         <script type="text/javascript" src="js/utils.js"></script>
@@ -471,8 +479,7 @@
         <script type="text/javascript" src="js/measure.js"></script>
         <script type="text/javascript" src="js/info.js"></script>
         <script type="text/javascript" src="js/search.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.6.3/papaparse.min.js"></script>
-        <script type="text/javascript" src="js/csv.js"></script>
+        <script src="lib/papaparse-4.6.3/papaparse.min.js"></script>
         <script type="text/javascript" src="js/mviewer.js"></script>
         <!--SIG Rennes Metropole mviewer personnalized js file-->
         <script type="text/javascript" src="apps/public/js/mviewerRM.js"></script>
@@ -481,6 +488,7 @@
         <script type="text/javascript" src="js/featurestyles.js"></script>
         <script type="text/javascript" src="js/custom.js" ></script>
         <script type="text/javascript" src="lib/i18njs/i18n.js" ></script>
+        <script type="text/javascript" src="lib/moment/moment.js" ></script>
 
         <!--SIG Rennes Metropole personnalized css file-->
         <link rel="stylesheet" href="apps/public/lib/select2-4.0.13/select2.min.css" type="text/css" />
@@ -581,7 +589,15 @@
                     configuration.getExtensions(xml);
                 }, // fin success config
                 error: function (request, status, error) {
-                    mviewer.alert("Fichier de configuration : " + configFile + " non trouvé ou incorrect !", "alert-danger");
+                    if (request.statusCode().status === 404) {
+                        $("#error h1").text(`Erreur ${request.statusCode().status} : ${error}`);
+                        $("#error").append(`<p>Fichier de configuration : <strong>${configFile} </strong>non trouvé.</p>`);
+                    } else if (status === 'parsererror') {
+                        $("#error h1").text('Erreur XML');
+                        $("#error").append(`<p>Erreur : fichier de configuration <strong>${configFile} </strong> mal formé.</p>`);
+                    }
+                    $("#error").show();
+                    $("#loading-page").hide();
                 }
             });
 
