@@ -5,7 +5,7 @@ mviewer.customLayers.projurbains = (function() {
         let categ = feature.get('categorie');
         
         if (categ == "Projet d'aménagement") {
-            return featureMarker('https://public.sig.rennesmetropole.fr/ressources/img/mviewer/marker_bleu.png');
+            return featureMarker('https://public.sig.rennesmetropole.fr/ressources/img/mviewer/marker_bleu_smap.png');
         } 
         else if (categ == "Espace public") {
             return featureMarker('https://public.sig.rennesmetropole.fr/ressources/img/mviewer/marker_vert.png');

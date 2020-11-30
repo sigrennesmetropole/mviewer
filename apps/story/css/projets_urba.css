@@ -133,6 +133,10 @@
     font-size:14px;
 }
 
+.rm-popup-text-feature {
+    margin-top: 5%;
+}
+
 .rm-soustitre{
     font-family:"vistaSansOT_bold";
     color:rgb(230, 51, 76, 1);
