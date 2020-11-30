@@ -43,6 +43,7 @@
             </layer> 
         </theme>    
         <theme id="theme-communes" name="Projets et Communes" collapsed="true" icon="fas fa-map-marker-alt"> 
+            
             <layer 
                 id="projurbains_communes"
                 name="Mairies / Hôtels de ville"
@@ -50,13 +51,14 @@
                 url="apps/story/customlayers/projets_urbains_communes.js" 
                 style=""
                 legendurl="apps/story/img/legend_communes.png"
-                opacity="0.75"
+                opacity="0.80"
                 visible="true"
                 queryable="true"
                 featurecount="3"
                 infopanel="right-panel">
                 <template url="apps/story/templates/communes.mst"></template>
             </layer> 
+            
             
             <layer 
                 id="projurbains"

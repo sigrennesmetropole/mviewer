@@ -15,13 +15,29 @@ mviewer.customLayers.projurbains_communes = (function() {
         ];
     }
     
+    function communeRondStyle() {
+        let style = new ol.style.Style({
+            image: new ol.style.Circle({
+                radius: 10,
+                fill: new ol.style.Fill({
+                    color: 'rgb(251, 197, 136, 1)',
+                }),
+                stroke: new ol.style.Stroke({
+                    color: '#f78b12',
+                    width: 0.5
+                })
+            })
+        });
+        return [style];
+    }
+    
     
     let communeLayer = new ol.layer.Vector({
         source: new ol.source.Vector({
             url: data_communes,
             format: new ol.format.GeoJSON()
         }),
-        style: communeStyle,
+        style: communeRondStyle,
     });
     
     return {

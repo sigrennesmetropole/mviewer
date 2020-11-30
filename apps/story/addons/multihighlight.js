@@ -1,11 +1,12 @@
 var multihighlight = (function() {
 
     var _overlayer=null;
+    var _communeoverlayer=null;
     
     /*
     * HighlightStyle
     */ 
-    var highlightStyle = new ol.style.Style({
+    var highlightGoutteStyle = new ol.style.Style({
       image: new ol.style.Icon({
         anchor: [0.5, 46],
         anchorXUnits: 'fraction',
@@ -15,18 +16,35 @@ var multihighlight = (function() {
       }),
     });
     
+    var highlightRondStyle = new ol.style.Style({
+      image: new ol.style.Icon({
+        anchor: [0.5, 46],
+        anchorXUnits: 'fraction',
+        anchorYUnits: 'pixels',
+        scale:0.25,
+        src: 'https://public.sig.rennesmetropole.fr/ressources/img/mviewer/rond_rennes2030.png',
+      }),
+    });
+    
     /*
     * Gestion des features de la couche overlay
     */
     var displayFeatureInfo = function (features) {
+        _overlayer.getSource().clear(); // remove all features
+        _communeoverlayer.getSource().clear(); // remove all features
         if (features && features.length) {
-            _overlayer.getSource().clear(); // remove all features
-            let featHL_t = [];
+            let featHL_pj_t = [];
+            let featHL_com_t = [];
             for (const f in features) {
-                featHL_t.push(features[f].clone());
+                if (features[f].get('id_organisme') != undefined && features[f].get('id_organisme') != null){
+                    featHL_com_t.push(features[f].clone());
+                } else {
+                    featHL_pj_t.push(features[f].clone());
+                }
             }
-            _overlayer.getSource().addFeatures(featHL_t); // add this
-        }
+            _overlayer.getSource().addFeatures(featHL_pj_t); // add this
+            _communeoverlayer.getSource().addFeatures(featHL_com_t); // add this
+        } 
     };
     
     /*
@@ -37,12 +55,26 @@ var multihighlight = (function() {
         _map.getLayers().forEach(function (lyr) {
             if ('featureoverlay' == lyr.get('mviewerid')) {
                 _overlayer = lyr;
-                _overlayer.setStyle(highlightStyle);
+                _overlayer.setStyle(highlightGoutteStyle);
             }
         });
+        createLayerHighCommune();
+        
         _map.on('pointermove', function (e) {
             displayFeatureInfo(_map.getFeaturesAtPixel(e.pixel));
         });
+    }
+    
+    
+    function createLayerHighCommune() {
+        
+        let communeHighlightLayer = new ol.layer.Vector({
+            source: new ol.source.Vector(),
+            style: highlightRondStyle,
+        });
+        communeHighlightLayer.mviewerid='communeOverlay';
+        _map.getLayers().push(communeHighlightLayer);
+        _communeoverlayer = communeHighlightLayer;
     }
     
     /*
