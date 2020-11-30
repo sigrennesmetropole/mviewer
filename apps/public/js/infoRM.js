@@ -139,7 +139,10 @@ var info = (function () {
     var _queryMap = function (evt, options) {
     	_queriedFeatures = [];
         _firstlayerFeatures = [];
-        var showPin = false;
+        // MODIF CBR
+        //var showPin = false;
+        var showPin = true;
+        // FIN MODIF CBR
         // AJOUT CBR
         var pos = 0;
         // FIN AJOUT

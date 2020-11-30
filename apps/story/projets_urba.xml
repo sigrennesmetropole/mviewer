@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <application
-        title="Les projets urbains sur Rennes Métropole "
+        title="Les projets urbains de Rennes et de la métropole"
         logo="https://public.sig.rennesmetropole.fr/ressources/img/logos/rm/logo_mviewer_transp.png"
         titlehelp="À propos des cartes thématiques" 
         help="apps/story/html/site_internet_help.html"
@@ -26,10 +26,10 @@
     </extensions>
     
     <themes mini="true">
-        <theme id="theme-zac" name="ZAC" collapsed="true" icon="fas fa-border-style"> 
+        <theme id="theme-zac" name="ZAC et ZA" collapsed="true" icon="fas fa-border-style"> 
             <layer 
                 id="urba_fonc:zac"
-                name="Zones d'activité"
+                name="Zones d'aménagement concerté (ZAC) / zones d'activités (ZA)"
                 type="wms"
                 url="https://public.sig.rennesmetropole.fr/geoserver/wms"
                 sld="https://public.sig.rennesmetropole.fr/ressources/img/mviewer/sld/zac_contour_encours.sld"
@@ -43,20 +43,22 @@
             </layer> 
         </theme>    
         <theme id="theme-communes" name="Projets et Communes" collapsed="true" icon="fas fa-map-marker-alt"> 
+            
             <layer 
                 id="projurbains_communes"
-                name="Mairie/Hôtel de ville"
+                name="Mairies / Hôtels de ville"
                 type="customlayer"
                 url="apps/story/customlayers/projets_urbains_communes.js" 
                 style=""
                 legendurl="apps/story/img/legend_communes.png"
-                opacity="0.75"
+                opacity="0.80"
                 visible="true"
                 queryable="true"
                 featurecount="3"
                 infopanel="right-panel">
                 <template url="apps/story/templates/communes.mst"></template>
             </layer> 
+            
             
             <layer 
                 id="projurbains"

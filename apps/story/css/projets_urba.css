@@ -15,6 +15,24 @@
 --col_liens: #032E46;
 }
 
+/* SCROLLBAR */
+.carousel-inner::-webkit-scrollbar-track
+{
+	/*border-radius: 10px;*/
+	/*background-color: #F5F5F5;*/
+}
+
+.carousel-inner::-webkit-scrollbar
+{
+	width: 8px;
+}
+
+.carousel-inner::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: var(--col_rennes2030);
+}
+
 
 /* TITRE APPLICATION */
 #mv-navbar{
@@ -113,6 +131,10 @@
     font-family:"vistaSansOT_regular";
     color:#555;
     font-size:14px;
+}
+
+.rm-popup-text-feature {
+    margin-top: 5%;
 }
 
 .rm-soustitre{

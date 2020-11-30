@@ -31,14 +31,24 @@
     <themes mini="true">
         <theme id="theme-20180827150815" name="Distance de déplacement autorisé - Covid19" collapsed="true" icon="fas fa-walking">
             <layer
-                id="distconfinement"
-                name="Autorisation de déplacement"
+                id="distconfinement_20km"
+                name="Autorisation de 20km"
                 type="customlayer"
-                url="apps/site_internet/customlayer/distance_confinement.js" style=""
-                legendurl="apps/story/img/legend_pj_urbains.png"
+                url="apps/site_internet/customlayer/dist_confinement_20km.js" style=""
+                legendurl="apps/site_internet/img/legend/dist_20km.png"
                 opacity="1"
                 visible="true"
                 tooltip="false" />
+            <layer
+                id="distconfinement_1km"
+                name="Autorisation de 1km"
+                type="customlayer"
+                url="apps/site_internet/customlayer/dist_confinement_1km.js" style=""
+                legendurl="apps/site_internet/img/legend/dist_1km.png"
+                opacity="1"
+                visible="true"
+                tooltip="false" /> 
+            
         </theme>
     </themes>
 </config>
