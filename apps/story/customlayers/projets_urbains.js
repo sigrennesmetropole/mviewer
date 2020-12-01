@@ -34,7 +34,6 @@ mviewer.customLayers.projurbains = (function() {
         style: markerStyle,
     });
     
-
     
     return {
         layer: projetLayer,

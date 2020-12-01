@@ -80,15 +80,19 @@ var multihighlight = (function() {
     /*
     * Attend le chargement de la carte avant d'initialiser le highlight
     */
-    var check = function(){
+    var _init = function (){
         if(mviewer.getMap()){
-            mviewer.getMap().once('postrender', m => {
+            mviewer.getMap().once('postcompose', m => {
                     initHighlightLayer();
                 });
         } else {
-            setTimeout(check, 100); // check again in a second
+            setTimeout(_init, 500); // check again in half a second
         }
     }
-    check();
+    
+    _init();
+    
+    
+
 
 })();
