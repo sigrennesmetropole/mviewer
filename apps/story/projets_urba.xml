@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <application
-        title="Les projets urbains de Rennes et de la métropole"
+        title="Opérations d'aménagement publiques conduites par la ville de  Rennes et par Rennes Métropole"
         logo="https://public.sig.rennesmetropole.fr/ressources/img/logos/rm/logo_mviewer_transp.png"
         titlehelp="À propos des cartes thématiques" 
         help="apps/story/html/site_internet_help.html"
