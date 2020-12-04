@@ -284,15 +284,8 @@ var configuration = (function () {
         }
 
         //map options
-        try {
         _map = mviewer.initMap(conf.mapoptions);
-        }catch (error){
-            $('.single4').hide();
-            $('#loader-title').hide();
-            $('#loader-subtitle').hide();
-            $('#loader-errormsg').fadeIn("5000");
-            
-        }
+
 
         if (conf.proxy && conf.proxy.url) {
             _proxy = conf.proxy.url;
