@@ -284,8 +284,8 @@ var configuration = (function () {
         }
 
         //map options
-        try {
         _map = mviewer.initMap(conf.mapoptions);
+<<<<<<< HEAD
         }catch (error){
             $('.single4').hide();
             $('#loader-title').hide();
@@ -293,6 +293,9 @@ var configuration = (function () {
             $('#loader-errormsg').fadeIn("5000");
 
         }
+=======
+
+>>>>>>> 9795c0c (Gestion des navigateurs incompatibles)
 
         if (conf.proxy && conf.proxy.url) {
             _proxy = conf.proxy.url;
