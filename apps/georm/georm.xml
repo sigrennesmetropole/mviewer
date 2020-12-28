@@ -211,7 +211,7 @@
 				metadata="undefined"
 				queryable="true"
                 featurecount="5"
-				tooltip="false"
+				tooltip="true"
 				tooltipcontent="id_pav"
 				tooltipenabled="app:sv_metier_v_gesbac_pav"
 				tooltipWMS="false"
