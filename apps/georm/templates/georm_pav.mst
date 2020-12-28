@@ -2,7 +2,7 @@
 	<li class="item">
 		<h5 class="rm-popup-title-feature pav-title">Point d'apport volontaire</h5>
 		<p class="rm-popup-text-feature">
-			{{#id_pav}}<span class="pavid"><span class='rm-popup-label'> Identifiant:</span> {{{id_pav}}}<br/></span>{{/id_pav}}
+			{{#id_pav}}<span class='rm-popup-label'> Numéro :</span> {{{id_pav}}}<br/>{{/id_pav}}
 			{{#adresse_complete}}<span class='rm-popup-label'> Adresse :</span> {{{num_voie}}}{{{adresse_complete}}}<br/>
 				{{#localisation}}{{{localisation}}}<br/>{{/localisation}}
 			{{/adresse_complete}}
