@@ -64,6 +64,8 @@
                 <span class='rm_visible_{{{f_cart_impr}}}'> Cartouches d'imprimante</span>
                 <span class='rm_visible_{{{f_incinerables}}}'> Incinérables</span>
                 <span class='rm_visible_{{{f_piles}}}'> Piles</span>
+                <span class='rm_visible_{{{f_souches}}}'> Souches</span>
+                <span class='rm_visible_{{{f_plastrigides}}}'> Plastiques rigides</span>
 			</span>
 		</p>
 	</li>
