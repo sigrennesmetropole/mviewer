@@ -514,7 +514,7 @@ var info = (function () {
                             '<div class="loader">Loading...</div>',
                             '</div>'].join(""));
                     });
-                    $("#"+panel+" .popup-content img").click(function(){mviewer.popupPhoto($(this).attr("src"))});
+                    $("#"+panel+" .popup-content img").click(function(){mviewer.popupPhoto($(this).attr("src"), $(this).parent().find(".text-credit").text())});
                     $("#"+panel+" .popup-content img").on("vmouseover",function(){$(this).css('cursor', 'pointer');})
                         .attr("title","Cliquez pour agrandir cette image");
                     $(".popup-content .nav-tabs li>a").tooltip('destroy').tooltip({
