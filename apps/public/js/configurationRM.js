@@ -286,7 +286,6 @@ var configuration = (function () {
         //map options
         _map = mviewer.initMap(conf.mapoptions);
 
-
         if (conf.proxy && conf.proxy.url) {
             _proxy = conf.proxy.url;
         }
