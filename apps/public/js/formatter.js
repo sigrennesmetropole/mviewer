@@ -430,6 +430,24 @@ var formatter = (function () {
         }
     };
 
+    /****** PHOTO + CREDIT dans même champ ******/
+    function splitphotocredit() {
+        var mypic = document.getElementsByClassName("photo_credit");
+        if (mypic){
+            for (var i = 0; i < mypic.length; i++) {
+                var source = mypic[i].getAttribute("src");
+                var photo = source.split("|")[0];
+                var credit = source.split("|")[1];
+                
+                if (credit !== undefined && credit !== "") {
+                    mypic[i].setAttribute("src", photo.trim());
+                    mypic[i].parentNode.getElementsByClassName("text-credit")[0].innerHTML=credit.trimStart();
+                    mypic[i].parentNode.getElementsByClassName("text-credit")[0].style.display = "block";;
+                }
+           
+            }
+        }
+    };
     
     /****** DATES ******/
     
@@ -526,6 +544,7 @@ var formatter = (function () {
         exceptionalClosureDechet();
         rmListeEquipt();
         corrWebAddr();
+        splitphotocredit();
         formatDateInFrench();
         formatDateTimeInFrench();
         rmQuartiers();

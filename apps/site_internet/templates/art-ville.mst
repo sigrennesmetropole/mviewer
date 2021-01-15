@@ -9,8 +9,12 @@
 			{{#artiste}}<span class='rm-popup-label'> Artiste :</span> {{{artiste}}}<br/>{{{biblio}}}<br/>{{/artiste}}
 			{{#autre_info}}<span class='rm-popup-label'> Information supplémentaire :</span> {{{autre_info}}}<br/>{{/autre_info}}
 		</p>
-		{{#photo}}<img class="photo" src="{{{url_photo}}}{{{photo}}}" alt="{{{oeuvre_nom}}}"> 
-		 <p class="labelPictureEnlarge">Cliquez pour agrandir cette image</p>
+		{{#photo}}
+            <div id="picture">
+                <img class="photo photo_credit" src="{{{url_photo}}}{{{photo}}}" alt="{{{oeuvre_nom}}}"> 
+                <div class="text-credit" style="display:none;"><br/>{{credit1}}</div>
+                <p class="labelPictureEnlarge">Cliquez pour agrandir cette image</p>
+             </div>
 		{{/photo}}
 	</li>
 {{/features}}

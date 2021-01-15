@@ -1980,8 +1980,9 @@ mviewer = (function () {
          *
          */
 
-        popupPhoto: function (src) {
+        popupPhoto: function (src, credit) {
             $("#imagepopup").find("img").attr("src",src);
+            if (credit !== undefined && credit.trim() !==""){$("#imagepopup").find(".popphotocredit").html (credit);}
             $("#imagepopup").modal('show');
         },
 
