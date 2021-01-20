@@ -22,6 +22,7 @@
 
     <themes mini="true"> 
         <theme id="theme-20210120_001" name="Lieux de glisse urbaine" collapsed="true" icon="fas fa-map-marker-alt"> 
+            <!--
             <layer 
                 id="v_sport_proximite"
                 name="Equipements de glisse"
@@ -38,7 +39,8 @@
                 infopanel="right-panel">
                 <template url="apps/site_internet/templates/equipt_sportif.mst"></template>
             </layer>
-        <!--
+            -->
+        
             <layer 
                 id="v_sport_proximite"
                 name="Accès libre"
@@ -71,7 +73,7 @@
                 infopanel="right-panel">
                 <template url="apps/site_internet/templates/equipt_sportif.mst"></template>
             </layer>
-        -->
+        
         </theme> 
     </themes>
 </config>
