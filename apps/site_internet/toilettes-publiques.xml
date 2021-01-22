@@ -32,7 +32,7 @@
                 sld="https://public.sig.rennesmetropole.fr/ressources/img/mviewer/sld/toilettes_publiques_bleu.sld"
                 metadata="undefined"
                 queryable="true"
-                featurecount="3"
+                featurecount="5"
                 infopanel="right-panel">
                 <template url="apps/site_internet/templates/toilettes-publiques.mst"></template>
             </layer>
