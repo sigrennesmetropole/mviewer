@@ -1,0 +1,45 @@
+/******************************************************************************
+--------------------------- CSS THEME MVIEWER / Story des projets urbains -----
+********************************************************************************/
+
+/*  Import du style du site internet  */
+@import url("site_internet_gris.css");
+
+/*  Import du style du slider photos  */
+@import url("slider_photo.css");
+
+
+/* FICHE INFO */
+#right-panel.active {
+    width:30%!important;
+}
+
+
+.rm-popup-text-feature {
+    margin-top: 5%;
+}
+
+
+.text-credit{
+    font-family:"vistaSansOT_bold";
+    color:#555;
+    font-size:9px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.picture {
+    text-align: -webkit-center;;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin-top: 30px;
+    margin-right: auto;
+    margin-bottom: 30px;
+    margin-left: auto;
+}
+
+.photo {
+    max-height: 200px;
+}
+

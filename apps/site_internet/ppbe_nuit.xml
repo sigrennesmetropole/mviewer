@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <application
+        title="Plan de prévention du bruit dans l'environnement (nuit)"
+        logo="https://public.sig.rennesmetropole.fr/ressources/img/logos/rm/logo_mviewer_gris_inverse.png"
+        titlehelp="À propos des cartes thématiques" 
+        help="apps/site_internet/html/site_internet_help.html"
+        showhelp="false"
+        exportpng="false"
+        style="apps/site_internet/css/site_internet_gris.css"
+        measuretools="false" 
+        togglealllayersfromtheme="true" 
+         />
+    <mapoptions maxzoom="15" minzoom="11" projection="EPSG:3857" center="-190690.24433942206,6128725.984905125" zoom="11" />
+    <searchparameters bbox="false" localities="false" features="false" static="false"/>
+    <baselayers style="default"><!-- style="default"||gallery" -->     
+        <baselayer visible="true" id="pvcisimple" thumbgallery="apps/site_internet/img/basemap/pvcisimple.jpg" title="Rennes Metropole" label="Plan de ville" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?service/wmts?" layers="ref_fonds:pvci_simple_gris" format="image/png" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;" maxzoom="22"  maxscale="1000" ></baselayer>
+        <baselayer visible="false" id="ortho2017" thumbgallery="apps/site_internet/img/basemap/ortho2014.jpg" title="Rennes Metropole" label="Vue aérienne" type="WMTS" url="https://public.sig.rennesmetropole.fr/geowebcache/service/wmts?" layers="raster:ortho2017" format="image/jpeg" style="_null" matrixset="EPSG:3857" fromcapacity="false" attribution="&lt;a href=&quot;https://applications.region-bretagne.fr/geonetwork/?uuid=3a0ac2e3-7af1-4dec-9f36-dae6b5a8c731&quot; target=&quot;_blank&quot; &gt;Rennes Métropole&lt;/a&gt;" maxzoom="22"  maxscale="1000" ></baselayer>
+    </baselayers>
+    <searchparameters bbox="false" localities="false" features="false" static="false"/>
+
+    <themes mini="false" legendmini="true">
+        <theme id="2021033115000-ecran" name="Écrans acoustiques" collapsed="true" icon="fas fa-shield-alt">
+            <layer
+                id="bruit_ec_acoustique_2010"
+                name="Écrans acoustiques"
+                type="wms"
+                url="https://public.sig.rennesmetropole.fr/geoserver/sec_sanit/ows"
+                dynamiclegend="false"
+                visible="true"
+                infoformat="application/vnd.ogc.gml"
+                metadata="undefined"
+                metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/fcf2ee8d-1cce-40fd-9f2c-fa84cb3bb6c8"
+                queryable="false">
+            </layer>
+        </theme>
+        <theme id="2021033115000-isop" name="Isophones" collapsed="false" icon="fas fa-signal">
+            <layer
+                id="bruit_isophone_2010_2018"
+                name="Bruit routier"
+                type="wms"
+                url="https://public.sig.rennesmetropole.fr/geoserver/sec_sanit/ows"
+                style="bruit_routier_isophone_2010_2018_Ln"
+                dynamiclegend="false"
+                visible="true"
+                infoformat="application/vnd.ogc.gml"
+                metadata="undefined"
+                metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/fcf2ee8d-1cce-40fd-9f2c-fa84cb3bb6c8"
+                queryable="false"
+                filter="type='Routier'">
+            </layer>
+            <layer
+                id="bruit_isophone_2010_2018"
+                name="Bruit métro"
+                type="wms"
+                url="https://public.sig.rennesmetropole.fr/geoserver/sec_sanit/ows"
+                style="bruit_metro_isophone_2010_2018_Ln"
+                dynamiclegend="false"
+                visible="true"
+                infoformat="application/vnd.ogc.gml"
+                metadata="undefined"
+                metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/fcf2ee8d-1cce-40fd-9f2c-fa84cb3bb6c8"
+                queryable="false"
+                filter="type='Métro'">
+            </layer>
+            <layer
+                id="bruit_isophone_2010_2018"
+                name="Bruit ferré"
+                type="wms"
+                url="https://public.sig.rennesmetropole.fr/geoserver/sec_sanit/ows"
+                style="bruit_ferre_isophone_2010_2018_Ln"
+                dynamiclegend="false"
+                visible="true"
+                infoformat="application/vnd.ogc.gml"
+                metadata="undefined"
+                metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/fcf2ee8d-1cce-40fd-9f2c-fa84cb3bb6c8"
+                queryable="false"
+                filter="type='Ferré'">
+            </layer>
+            <layer
+                id="bruit_isophone_2010_2018"
+                name="Bruit aérien"
+                type="wms"
+                url="https://public.sig.rennesmetropole.fr/geoserver/sec_sanit/ows"
+                style="bruit_aerien_isophone_2010_2018_Ln"
+                dynamiclegend="false"
+                visible="true"
+                infoformat="application/vnd.ogc.gml"
+                metadata="undefined"
+                metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/fcf2ee8d-1cce-40fd-9f2c-fa84cb3bb6c8"
+                queryable="false"
+                filter="type='Aérien'">
+            </layer>
+            <layer
+                id="bruit_isophone_2010_2018"
+                name="Bruit industriel"
+                type="wms"
+                url="https://public.sig.rennesmetropole.fr/geoserver/sec_sanit/ows"
+                style="bruit_industriel_isophone_2010_2018_Ln"
+                visible="true"
+                infoformat="application/vnd.ogc.gml"
+                metadata="undefined"
+                metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/fcf2ee8d-1cce-40fd-9f2c-fa84cb3bb6c8"
+                queryable="false"
+                filter="type='Industriel'">
+            </layer>
+        </theme>
+        <theme id="2021033115000-dpsmt" name="Dépassement de seuil" collapsed="true" icon="fas fa-signal">
+            <layer
+                id="bruit_seuil_2010_2018"
+                name="Bruit routier"
+                type="wms"
+                url="https://public.sig.rennesmetropole.fr/geoserver/sec_sanit/ows"
+                style="bruit_routier_seuil_2010_2018_Ln"
+                dynamiclegend="false"
+                visible="false"
+                infoformat="application/vnd.ogc.gml"
+                metadata="undefined"
+                metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/fcf2ee8d-1cce-40fd-9f2c-fa84cb3bb6c8"
+                queryable="false"
+                filter="type='Routier'">
+            </layer>
+            <layer
+                id="bruit_seuil_2010_2018"
+                name="Bruit ferré"
+                type="wms"
+                url="https://public.sig.rennesmetropole.fr/geoserver/sec_sanit/ows"
+                style="bruit_ferre_seuil_2010_2018_Ln"
+                dynamiclegend="false"
+                visible="false"
+                infoformat="application/vnd.ogc.gml"
+                metadata="undefined"
+                metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/fcf2ee8d-1cce-40fd-9f2c-fa84cb3bb6c8"
+                queryable="false"
+                filter="type='Ferré'">
+            </layer>
+        </theme>
+        <theme id="2021033115000-cumul" name="Cumul de bruit" collapsed="true" icon="fas fa-signal">
+            <layer
+                id="bruit_cumul_2010"
+                name="Cumul du bruit"
+                type="wms"
+                url="https://public.sig.rennesmetropole.fr/geoserver/sec_sanit/ows"
+                dynamiclegend="false"
+                visible="false"
+                infoformat="application/vnd.ogc.gml"
+                metadata="undefined"
+                metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/fcf2ee8d-1cce-40fd-9f2c-fa84cb3bb6c8"
+                queryable="false">
+            </layer>
+        </theme>
+    </themes>
+</config>

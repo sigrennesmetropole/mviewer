@@ -458,7 +458,7 @@ ul ul {
     padding-bottom:70px;
 }
 */
-div .carousel {
+#right-panel div .carousel {
     padding-bottom:70px!important;
 }
 
@@ -549,6 +549,7 @@ div .carousel {
 .labelPictureEnlarge {
     font-family:"VistaSansOT_light_italic","roboto_regular";
     text-align: center;
+    font-size: 11px;
 }
 
 .carousel-inner>.item>a>img {
@@ -1049,3 +1050,4 @@ button.btn.btn-default.navbar-btn.mv-navbar-btn:focus{
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1040
   }
+  
