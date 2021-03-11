@@ -53,7 +53,7 @@
                 metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/46a39b8c-5ec4-449a-bfe1-8410d0b76c84"
                 queryable="true"
                 featurecount="3"
-                filter="pratiques = 'Glisse urbaine' AND crit_acces='Accès libre'"
+                filter="pratiques = 'Glisse urbaine' AND equip_type = 'Activités de glisse' AND crit_acces='Accès libre'"
                 infopanel="right-panel">
                 <template url="apps/site_internet/templates/equipt_sportif.mst"></template>
             </layer>
@@ -69,7 +69,7 @@
                 metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/46a39b8c-5ec4-449a-bfe1-8410d0b76c84"
                 queryable="true"
                 featurecount="3"
-                filter="pratiques = 'Glisse urbaine' AND crit_acces='Accès restreint'"
+                filter="pratiques = 'Glisse urbaine' AND equip_type = 'Activités de glisse' AND crit_acces='Accès restreint'"
                 infopanel="right-panel">
                 <template url="apps/site_internet/templates/equipt_sportif.mst"></template>
             </layer>

@@ -47,6 +47,10 @@
     
     <searchparameters bbox="false" localities="false" features="false" static="false" searchRM="true" searchRMConf="apps/georm/addons/data/searchConf.json" disableSearchExtentLimitation="true" />   
     
+    <extensions>
+         <extension type="component" id="carousel_photo" path="apps/public/addons"/>
+    </extensions>
+    
 	<themes mini="true">
 		<theme id="theme-transport" name="Transport" collapsed="true" icon="fas fa-bus">
 		<layer
@@ -374,7 +378,7 @@
                 <template url="apps/georm/templates/organismes.mst"></template>
 			</layer>
 			<layer
-				id="mur_tague"
+				id="art_ville"
 				name="Street art"
 				type="wms"
 				url="https://public.sig.rennesmetropole.fr/geoserver/ptou_lois/ows"
@@ -385,12 +389,13 @@
 				metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/2ff4b02a-7d1e-4e9c-a0c2-dddbb11a3168"
 				queryable="true"
                 featurecount="5"
+                filter="type='Street art' AND (etat='Existant' OR etat='En projet')"
 				infopanel="right-panel">
                 <template url="apps/georm/templates/georm_street-art.mst"></template>
 			</layer>
 			<layer
 				id="art_ville"
-				name="Art dans la ville"
+				name="Art sur l'espace public"
 				type="wms"
 				url="https://public.sig.rennesmetropole.fr/geoserver/ptou_lois/ows"
 				visible="false"
@@ -400,6 +405,39 @@
 				metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/5451cbf0-6353-47ad-a274-f237001aed10"
 				queryable="true"
                 featurecount="5"
+                filter="type='Œuvre sur l''espace public' AND (etat='Existant' OR etat='En projet')"
+				infopanel="right-panel">
+                <template url="apps/georm/templates/georm_art-ville.mst"></template>
+			</layer>
+            <layer
+				id="art_ville"
+				name="Art sur dans un bâtiment"
+				type="wms"
+				url="https://public.sig.rennesmetropole.fr/geoserver/ptou_lois/ows"
+				visible="false"
+				infoformat="application/vnd.ogc.gml"
+				sld="https://public.sig.rennesmetropole.fr/ressources/img/mviewer/sld/georm_art-ville.sld"
+				metadata="undefined"
+				metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/5451cbf0-6353-47ad-a274-f237001aed10"
+				queryable="true"
+                featurecount="5"
+                filter="type='Œuvre dans un bâtiment' AND (etat='Existant' OR etat='En projet')"
+				infopanel="right-panel">
+                <template url="apps/georm/templates/georm_art-ville.mst"></template>
+			</layer>
+            <layer
+				id="art_ville"
+				name="Art pour la mémoire"
+				type="wms"
+				url="https://public.sig.rennesmetropole.fr/geoserver/ptou_lois/ows"
+				visible="false"
+				infoformat="application/vnd.ogc.gml"
+				sld="https://public.sig.rennesmetropole.fr/ressources/img/mviewer/sld/georm_art-ville.sld"
+				metadata="undefined"
+				metadata-csw="https://public.sig.rennesmetropole.fr/geonetwork/srv/fre/catalog.search#/metadata/5451cbf0-6353-47ad-a274-f237001aed10"
+				queryable="true"
+                featurecount="5"
+                filter="etat='Pour mémoire'"
 				infopanel="right-panel">
                 <template url="apps/georm/templates/georm_art-ville.mst"></template>
 			</layer>

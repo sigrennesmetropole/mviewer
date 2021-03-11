@@ -9,12 +9,17 @@
         var aRecuperer=document.getElementById(idSlider).getElementsByClassName("slick-slide");
         var numPhoto=1;
         for (var i = 0, len = aRecuperer.length; i < len; i++ ) {
-            if (aRecuperer[i].getAttribute("role") && aRecuperer[i].getAttribute("role")=="tabpanel"){
+            if (aRecuperer.length == 1 || aRecuperer[i].getAttribute("role") && aRecuperer[i].getAttribute("role")=="tabpanel"){
+                //let src = aRecuperer[i].querySelectorAll('img')[0].src;
                 let src = aRecuperer[i].querySelectorAll('img')[0].src;
+                /*let blob = fetch(src).then(r => r.blob());
+                let objectURL = URL.createObjectURL(blob);
+                */
                 let datasource = aRecuperer[i].querySelectorAll('img')[0].getAttribute('data-sources');
                 let credit = aRecuperer[i].querySelector('.text-credit').innerHTML;
                 codeHTML +="<div style='height: 100%;'>";
-                codeHTML +="<a class='img_downld' href='"+ src + "' download>Télécharger l'image</a>";
+                /*if (blob) {codeHTML +="<a class='img_downld' href='"+ objectURL + "' download>Télécharger l'image</a>";}*/
+                codeHTML +="<a class='img_downld' target='_blank' href='"+ src + "' download>Télécharger l'image</a>";
                 codeHTML +="<center style='height: 90%;'><img id='car_photo"+ numPhoto +"' class='car_photo' src='" + src + "'  data-sources='"+ datasource + "' />";
                 codeHTML +="<span class='text-credit car-text-credit'>" + credit + "</span></center>";
                 codeHTML +="</div>";
@@ -41,6 +46,7 @@
                     slidesToScroll:1,
                     slidesToShow: 1,
                     lazyLoad: 'ondemand',
+                    centerMode:true,
                     initialSlide: posSlide });
                     
              }, 180);
@@ -50,24 +56,37 @@
 
     // Instanciation carousel des fiches d'info
     function rmSlickPhotoCarousel(){
-        slick_tab=$("div.slide-feature");
-        for (var cpt = 0, len_cpt = slick_tab.length; cpt < len_cpt; cpt++) {
-            var carousel = slick_tab[cpt];
-            var carousel_cls = carousel.classList[1];
-            $('.'+carousel_cls).slick({
-                dots: true,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                autoplay: true,
-                infinite: true,
-                arrows : true,
-                autoplaySpeed:2000,
-                centerMode: true,
-                variableWidth: true,
-                centerPadding: '60px',
-                lazyLoad: 'ondemand'
-          });
-        }
+        $("div.slide-feature").each(function () {
+            var l_photos=$(this).find(".slick-slide-image");
+            if (l_photos.length==1) {
+                rmReplaceSliderWithOnePic($(this));
+            } else {
+                var carousel_cls = $( this ).attr('class').split(/\s+/)[1];
+                $('.'+carousel_cls).not('.slick-initialized').slick({
+                    dots: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    infinite: true,
+                    arrows : true,
+                    autoplaySpeed:2000,
+                    centerMode: true,
+                    variableWidth: true,
+                    centerPadding: '60px',
+                    lazyLoad: 'ondemand'
+                });
+            }
+        });
+    }
+    
+    function rmReplaceSliderWithOnePic(slider){
+        slider.removeClass("slide-feature");
+        slider.find(".thumbnail").each(function () {
+            $(this).removeClass();
+            $(this).addClass("picture slick-slide");
+            $(this).show();
+            $(this).append('<p class="labelPictureEnlarge rm-popup-label">Cliquez pour agrandir cette image</p>');
+        });
     }
 
 
@@ -89,6 +108,8 @@
         }
         }
     }
+    
+
 
     // initialisation des événements
     function _init(){
@@ -118,6 +139,9 @@
                     rmSlickPhotoCarousel();
                 }
             });
+            
+        
+
     }
     
     
