@@ -424,6 +424,13 @@ h4.title{
     overflow-wrap: break-word;
 }
 
+.rm-popup-subtitle-feature {
+    font-family: 'vistaSansOT_light', Arial, Sans-serif; 
+    color:#555;
+    font-size:11px;
+    font-style:italic;
+}
+
 .rm-popup-label {
     font-family: 'vistaSansOT_bold', Arial, Sans-serif;  
     color:#555;

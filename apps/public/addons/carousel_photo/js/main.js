@@ -57,20 +57,35 @@
     // Instanciation carousel des fiches d'info
     function rmSlickPhotoCarousel(){
         $("div.slide-feature").each(function () {
-            var carousel_cls = $( this ).attr('class').split(/\s+/)[1];
-            $('.'+carousel_cls).not('.slick-initialized').slick({
-                dots: true,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                autoplay: true,
-                infinite: true,
-                arrows : true,
-                autoplaySpeed:2000,
-                centerMode: true,
-                variableWidth: true,
-                centerPadding: '60px',
-                lazyLoad: 'ondemand'
-            });
+            var l_photos=$(this).find(".slick-slide-image");
+            if (l_photos.length==1) {
+                rmReplaceSliderWithOnePic($(this));
+            } else {
+                var carousel_cls = $( this ).attr('class').split(/\s+/)[1];
+                $('.'+carousel_cls).not('.slick-initialized').slick({
+                    dots: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    infinite: true,
+                    arrows : true,
+                    autoplaySpeed:2000,
+                    centerMode: true,
+                    variableWidth: true,
+                    centerPadding: '60px',
+                    lazyLoad: 'ondemand'
+                });
+            }
+        });
+    }
+    
+    function rmReplaceSliderWithOnePic(slider){
+        slider.removeClass("slide-feature");
+        slider.find(".thumbnail").each(function () {
+            $(this).removeClass();
+            $(this).addClass("picture slick-slide");
+            $(this).show();
+            $(this).append('<p class="labelPictureEnlarge rm-popup-label">Cliquez pour agrandir cette image</p>');
         });
     }
 

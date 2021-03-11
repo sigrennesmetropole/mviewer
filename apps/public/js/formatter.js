@@ -530,7 +530,31 @@ var formatter = (function () {
             }
             trafficStatus[j].innerText = newText;
         }
-        
+    };
+    
+    
+    /****** DONNEES ART DANS LA VILLE ******/
+    function rmArtVilleType() {
+        $( ".rm_artville" ).each(function () {
+            if ($( this ).attr('etat') == "Pour mémoire") {
+                $( this ).addClass('art-memoire');
+                $( this ).parent().find(".rm-popup-subtitle-feature").show();
+            } else {
+                $( this ).parent().find(".rm-popup-subtitle-feature").hide();
+                var type = $( this ).attr('type');
+                switch (type) {
+                    case "Œuvre sur l'espace public" :
+                        $( this ).addClass('art-espub');
+                        break;
+                    case "Œuvre dans un bâtiment" :
+                        $( this ).addClass('art-bati');
+                        break;
+                    case "Street art" :
+                        $( this ).addClass('art-street');
+                        break;
+                }
+            }
+        });
     };
     
 
@@ -549,6 +573,7 @@ var formatter = (function () {
         formatDateTimeInFrench();
         rmQuartiers();
         rmTraficStatus();
+        rmArtVilleType();
     };
 
     return {

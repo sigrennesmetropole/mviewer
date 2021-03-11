@@ -1,6 +1,7 @@
 {{#features}}
 	<li class="item">
-		<h5 class="rm-popup-title-feature art-ville-title">{{oeuvre_nom}}</h5>
+		<h5 class="rm-popup-title-feature art-ville-title rm_artville" etat="{{etat}}" type="{{type}}">{{oeuvre_nom}}</h5>
+        <span class="rm-popup-subtitle-feature" > Pour la mémoire </span>
 		<p class="rm-popup-text-feature">
 			{{#localisation}}<span class='rm-popup-label'> Localisation :</span> {{localisation}}<br/>{{/localisation}}
 			{{#oeuvre_desc}}<span class='rm-popup-label'> Description :</span> {{oeuvre_desc}}<br/>{{/oeuvre_desc}}
@@ -8,8 +9,31 @@
 			{{#artiste}}<span class='rm-popup-label'> Artiste :</span> {{{artiste}}}<br/>{{{biblio}}}<br/>{{/artiste}}
 			{{#autre_info}}<span class='rm-popup-label'> Information supplémentaire :</span> {{{autre_info}}}<br/>{{/autre_info}}
 		</p>
-		{{#photo}}<img src="{{{url_photo}}}{{{photo}}}" alt="{{{oeuvre_nom}}}">
-			<p class="labelPictureEnlarge">Cliquez pour agrandir cette image</p>
-		{{/photo}}
+        {{#photo_1}}
+            <section>
+                <div id="slideauto{{{id}}}" class="slide-feature slideA{{{id}}}">
+                    {{#photo_1}}<div class="thumbnail iframe-popup slide-feature{{{id}}}" onclick='carousel.getpopupslide("slideauto{{{id}}}", 0);'>
+                        <img src="{{{url_photo}}}{{{photo_1}}}" class="slick-slide-image photo_credit" loading="lazy" style="height: 150px;" {{#credit1}}data-sources="{{credit1}}"{{/credit1}} />
+                        <div class="text-credit" style="display:none;">{{photo_1}}</div>
+                        </div>{{/photo_1}}
+                    {{#photo_2}}<div class="thumbnail iframe-popup slide-feature{{{id}}}" onclick='carousel.getpopupslide("slideauto{{{id}}}", 1);'>
+                        <img src="{{{url_photo}}}{{{photo_2}}}" class="slick-slide-image photo_credit" loading="lazy" style="height: 150px;" {{#credit2}}data-sources="{{credit2}}"{{/credit2}} />
+                        <div class="text-credit" style="display:none;">{{photo_2}}</div>
+                        </div>{{/photo_2}}
+                    {{#photo_3}}<div class="thumbnail iframe-popup slide-feature{{{id}}}" onclick='carousel.getpopupslide("slideauto{{{id}}}", 2);'>
+                        <img src="{{{url_photo}}}{{{photo_3}}}" class="slick-slide-image photo_credit" loading="lazy" style="height: 150px;" {{#credit3}}data-sources="{{credit3}}"{{/credit3}} />
+                        <div class="text-credit" style="display:none;">{{credit3}}</div>
+                        </div>{{/photo_3}}
+                    {{#photo_4}}<div class="thumbnail iframe-popup slide-feature{{{id}}}" onclick='carousel.getpopupslide("slideauto{{{id}}}", 3);'>
+                        <img src="{{{url_photo}}}{{{photo_4}}}" class="slick-slide-image photo_credit" loading="lazy" style="height: 150px;" {{#credit4}}data-sources="{{credit4}}"{{/credit4}} />
+                        <div class="text-credit" style="display:none;">{{credit4}}</div>
+                        </div>{{/photo_4}}
+                    {{#photo_5}}<div class="thumbnail iframe-popup slide-feature{{{id}}}" onclick='carousel.getpopupslide("slideauto{{{id}}}", 4);'>
+                        <img src="{{{url_photo}}}{{{photo_5}}}" class="slick-slide-image photo_credit" loading="lazy" style="height: 150px;" {{#credit5}}data-sources="{{credit5}}"{{/credit5}} />
+                        <div class="text-credit" style="display:none;">{{credit5}}</div>
+                        </div>{{/photo_5}}
+                </div>
+            </section>
+        {{/photo_1}}
 	</li> 
 {{/features}} 

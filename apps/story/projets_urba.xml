@@ -21,7 +21,7 @@
     <searchparameters bbox="false" localities="false" features="false" static="false"/>
     
     <extensions>
-         <extension type="component" id="carousel_photo" path="apps/story/addons"/>
+         <extension type="component" id="carousel_photo" path="apps/public/addons"/>
          <extension type="javascript" src="apps/story/addons/multihighlight.js"/> 
     </extensions>
     
