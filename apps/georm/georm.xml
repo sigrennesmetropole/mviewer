@@ -411,7 +411,7 @@
 			</layer>
             <layer
 				id="art_ville"
-				name="Art sur dans un bâtiment"
+				name="Art dans un bâtiment"
 				type="wms"
 				url="https://public.sig.rennesmetropole.fr/geoserver/ptou_lois/ows"
 				visible="false"
