@@ -1,8 +1,0 @@
-{{#features}}
-        <li class="item" >
-            <h5 class="rm-popup-title-feature">Fontaine de {{nom}} </h5>
-		    <p class="rm-popup-text-feature"> Bornes et fontaines d'eau potable de la ville de Rennes</p>
-        </li>
-{{/features}}
-
-
